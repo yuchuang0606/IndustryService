@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./css/index.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
 <body>
 	<%@ include file="/templates/header.jsp" %>
+	<%@ include file="/templates/logo.jsp" %>
+	<%@ include file="/templates/navigator.jsp" %>
 </body>
 </html>

@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.header {
+	height:35px;
+	width:100%;
+	line-height:35px;
+	background-color:#F2F2F2;
+}
+.headcontent {
+	width:960px;
+	margin:0px auto;
+	padding-left:7px;
+}
+.pipe {
+	float:left;
+	margin:0 5px;
+	color:#fff;
+}
+.contentleft {
+	float:left;
+}
+.contentleft a {
+	float:left;
+	font-size:14px;
+	color:#000;
+}
+.contentleft a:hover {
+	text-decoration:none;
+}
+.contentleft a:link {
+	text-decoration:none;
+}

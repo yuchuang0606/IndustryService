@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+.navigator {
+	height:39px;
+	line-height:39px;
+	width:100%;
+	background-color:#3366FF;
+}
