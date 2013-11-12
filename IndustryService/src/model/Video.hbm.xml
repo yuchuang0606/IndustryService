@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Video" table="tpf_video">
+<id name="videoid">
+<generator class="native"/>
+</id>
+<property name="videoname"/>
+<property name="createtime"/>
+<property name="describe"/>
+<property name="link"/>
+<property name="authorid"/>
+<property name="ispass"/>
+<property name="opentimes"/>
+</class>
+</hibernate-mapping>
