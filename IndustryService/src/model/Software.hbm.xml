@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Software" table="tpf_software">
+<id name="softwareid">
+<generator class="native"/>
+</id>
+<property name="describe"/>
+<property name="createtime"/>
+<property name="link"/>
+<property name="authorid"/>
+<property name="ispass"/>
+<property name="downloadtimes"/>
+<property name="version"/>
+<property name="name" />
+<property name="softpic" />
+<property name="tag" />
+<property name="viewtimes" />
+<property name="size" />
+</class>
+</hibernate-mapping>

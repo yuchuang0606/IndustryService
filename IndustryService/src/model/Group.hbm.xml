@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Group" table="tpf_group">
+<id name="groupid">
+<generator class="native"/>
+</id>
+<property name="groupname"/>
+<property name="groupdesribe"/>
+</class>
+</hibernate-mapping>
