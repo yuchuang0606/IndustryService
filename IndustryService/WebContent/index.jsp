@@ -11,5 +11,6 @@
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
+	<%@ include file="/templates/content.jsp" %>
 </body>
 </html>
