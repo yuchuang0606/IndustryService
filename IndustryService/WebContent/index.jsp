@@ -12,7 +12,11 @@
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
+<<<<<<< HEAD
 	<%@ include file="/templates/content.jsp" %>
 	<%@ include file="/templates/footer.jsp" %>
+=======
+	
+>>>>>>> branch 'master' of https://github.com/yuchuang0606/IndustryService.git
 </body>
 </html>
