@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="./css/index.css" type="text/css" />
+<link rel="shortcut icon" href="./image/c.png" type="image/x-icon" />
 <title>大连工业设计服务平台</title>
 </head>
 <body>
