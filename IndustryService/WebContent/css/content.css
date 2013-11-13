@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+.content {
+	width:960px;
+	height:950px;;
+	margin:5px auto;
+}
+/*左侧栏*/
+.mainleft {
+	float:left;
+	width:320px;
+	height:auto;
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+}
+/*用户登录*/
+.memberlogin {
+	width:100%;
+	height:240px;
+	background-color:#F1FDFE;
+}
+/*div标题*/
+.divtitle {
+	width:100%;
+	height:35px;
+	line-height:35px;
+	background-color:#50d5dd;
+}
+.more {float:right;width:40px;margin-right:10px;}
+.more a {font-size:13px;color:#3C3C3C;text-decoration:none;}
+.more a:link {color:#3C3C3C}
+.more a:hover {color:#ea5e00;text-decoration:none;}
+/*公告*/
+.notice {
+	width:100%;
+	height:240px;
+}
+/*公告条目*/
+.blockdiv {
+	width:100%;
+	height:205px;
+	background-color: #F1FDFE;
+	font-size: 14px;
+	float:left;
+}
+.blockdiv a {
+	text-decoration: none;
+	transition: color .2s;
+	color:#3C3C3C;
+}
+.blockdiv a:hover {
+	color: #ea5e00;
+	cursor: pointer;
+}
+.blockdiv ul {
+	padding:0px 10px;
+}
+.blockdiv ul li {
+	height:25px;
+	line-height:25px;
+	padding:2px 5px;
+	overflow:hidden;
+	list-style-type: disc;
+	list-style-position: inside;
+}
+/*在线服务*/
+.onlineservice {
+	width:100%;
+	height:145px;
+	background-color:#F1FDFE;
+}
+/*右侧主体*/
+.mainright {
+	height:950px;
+	width:636px;
+	float:left;
+	background-color:#ffe;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+    border-top: 1px solid #999;
+}
+.news {
+	height:240px;
+	width:100%;
+	padding-left:10px;
+	backgroud-color:#ffc;
+}
+.container {float:left;width:308px; height:240px;}
+.container img{width:308px; height:240px;border:0;vertical-align:top;}
+
+.newslist {
+	float:left;
+	width:308px;
+	height:235px;
+	padding-left:10px;
+	backgroud-color:#fdd;
+}
+.CADService {
+	height:240px;
+	width:100%;
+}
+.service {
+	height:205px;width:100%;background-color:#F1FDFE;
+}
+.servicediv {
+	float:left;height:190px;width:191px;padding:10px 10px 0 10px;
+}
+.serviceimage {height:80px;padding-left:66px;}
+.imageintroduction {height:98px;padding-top:10px;overflow:hidden;}
+.imageintroduction a {
+	font-size:13px;
+	color:#3c3c3c;
+	text-decoration:none;
+}
+.imageintroduction a:hover {
+	color:#ea5e00;
+    text-decoration:none;
+}
+.software {
+	height:235px;
+	width:100%;
+	margin-top:0px;
+}
+.softrows {height:200px;width:100%;}
+.softtop,.softbottom {height:100px;width:95%;margin:0px auto;}
+.softlist {float:left;height:90px;width:180px;margin:5px auto;padding:0px 10px;}
+.softimage {float:left;height:40px;width:40px;padding:25px 10px;}
+.softimage img{width:40px;height:40px;}
+.softinfo {float:left;height:70px;width:120px;text-align:left;padding:10px 0px;overflow:hidden;}
+.softname {height:50px;overflow:hidden;}
+.softinfo label {font-size:13px;color:#3c3c3c;}
+.softinfo a {font-size:13px;color:blue;text-decoration:none;}
+.softinfo a:link {color: blue}
+.softinfo a:hover {color:#ea5e00;text-decoration:none;}
+
+.video {height:235px;width:100%;margin-top:0px;}
+.videoimage {height:120px;padding-left:20px;}
+.videoimage img {width:150px;height:100px;}
+.videoinfo {height:70px;padding-left:20px;overflow:hidden;}
+.videoname {height:33px;overflow:hidden;}
+.video label {font-size:13px;color:#3c3c3c;}
+.videoinfo img {width:12px;height:12px;}
+.videoinfo a {font-size:13px;color:blue;text-decoration:none;}
+.videoinfo a:link {color: blue}
+.videoinfo a:hover {color:#ea5e00;text-decoration:none;}
+
+
