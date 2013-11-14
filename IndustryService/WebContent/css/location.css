@@ -11,3 +11,6 @@
 	margin:0px auto;
 	padding-left:10px;
 }
+.loccontent a {text-decoration:none;}
+.loccontent a:link {color:#3C3C3C}
+.loccontent a:hover {color:#ea5e00;text-decoration:none;}

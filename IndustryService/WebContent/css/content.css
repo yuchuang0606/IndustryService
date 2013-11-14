@@ -1,8 +1,9 @@
 @CHARSET "UTF-8";
 .content {
 	width:960px;
-	height:950px;;
+	height:auto;
 	margin:5px auto;
+	padding-bottom: 190px;
 }
 /*左侧栏*/
 .mainleft {
@@ -24,6 +25,7 @@
 	height:35px;
 	line-height:35px;
 	background-color:#C2FCF8;/*50d5dd*/
+	border-bottom:1px solid #dddddd;
 }
 .more {float:right;width:40px;margin-right:10px;}
 .more a {font-size:13px;color:#3C3C3C;text-decoration:none;}
@@ -70,7 +72,7 @@
 }
 /*右侧主体*/
 .mainright {
-	height:950px;
+	height:auto;
 	width:636px;
 	float:left;
 	background-color:#ffe;

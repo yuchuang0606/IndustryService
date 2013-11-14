@@ -4,6 +4,7 @@
 	height:120px;
 	width:100%;
 	line-height:120px;
+	background: linear-gradient(#50d5dd, #fff);
 	-ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50d5dd', endColorstr='#fff');
 	background: -moz-linear-gradient(top, #50d5dd, #fff); /* for firefox 3.6+ */
 	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#50d5dd), to(#fff));

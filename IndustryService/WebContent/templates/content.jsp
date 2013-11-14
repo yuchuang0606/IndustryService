@@ -13,11 +13,11 @@
 				<form action="/people/login?" method="post">
 				<div class="row">
 					<label>用户名：</label>
-					<input type="text" name="username" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}" style="color:gray;"/><br>
+					<input type="text" name="username" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}"/><br>
 				</div>
 				<div class="row">
 					<label>密&nbsp;&nbsp;码：</label>
-					<input type="password" name="pwd" size="20"/>
+					<input type="text" name="pwd" size="20" value="请输入密码" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.type='password';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.type='text',this.style.color='gray'}"/>
 				</div>
 				<div class="row">
 					<input type="submit" value="登  录" id="submit" style="font-weight:bold"/>
@@ -36,22 +36,22 @@
 			<div class="blockdiv">
 				<ul class="texthidden">
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台</a>
 					</li>
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 					</li>
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 					</li>
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 					</li>
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 					</li>
 					<li>
-						<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+						<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 					</li>
 				</ul>
 			</div>
@@ -102,22 +102,22 @@
 				<div class="blockdiv">
 					<ul class="texthidden">
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台">[平台公告] 祝贺诸城市工业设计服务平台</a>
 						</li>
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 						</li>
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 						</li>
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 						</li>
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 						</li>
 						<li>
-							<a href="#">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+							<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
 						</li>
 					</ul>
 				</div>
@@ -133,7 +133,7 @@
 						<img src="./image/cad2d.png" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#">CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。</a>
+						<a href="#" title="CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。">CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。</a>
 					</div> 
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
@@ -141,7 +141,7 @@
 						<img src="./image/cad3d.png" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#">CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。</a>
+						<a href="#" title="CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。">CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。</a>
 					</div> 
 				</div>
 				<div class="servicediv">
@@ -149,7 +149,7 @@
 						<img src="./image/cam5.jpg" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#">CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。</a>
+						<a href="#" title="CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。">CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。</a>
 					</div> 
 				</div>
 			</div>
@@ -158,7 +158,7 @@
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件下载</span>
 				<div class="more">
-					<a href="#">更多》</a>
+					<a href="softlist.jsp">更多》</a>
 				</div>
 			</div>
 			<div class="softrows">
@@ -170,7 +170,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
+							<a href="#" title="CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -182,7 +182,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
+							<a href="#" title="CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -194,7 +194,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
+							<a href="#" title="CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -208,7 +208,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
+							<a href="#" title="CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -220,7 +220,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
+							<a href="#" title="CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]">CAXA电子图板2013r2（2013-11-01发布 支持网盘/高速下载）[CAXA审核]</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -232,7 +232,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="#">CAXA数控仿真2013r1（推荐网盘下载）</a>
+							<a href="#" title="CAXA数控仿真2013r1（推荐网盘下载）">CAXA数控仿真2013r1（推荐网盘下载）</a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -255,7 +255,7 @@
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="#">变形金刚大黄蜂</a>
+						<a href="#" title="变形金刚大黄蜂">变形金刚大黄蜂</a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
@@ -268,7 +268,7 @@
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="#">工艺图表2013系列教程第四课：工艺汇总表基本功能(仅支持在线播放)</a>
+						<a href="#" title="工艺图表2013系列教程第四课：工艺汇总表基本功能(仅支持在线播放)">工艺图表2013系列教程第四课：工艺汇总表基本功能(仅支持在线播放)</a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
@@ -280,7 +280,7 @@
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="#">电子图板2013系列培训第二讲 基本绘图及编辑</a>
+						<a href="#" title="电子图板2013系列培训第二讲 基本绘图及编辑">电子图板2013系列培训第二讲 基本绘图及编辑</a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
