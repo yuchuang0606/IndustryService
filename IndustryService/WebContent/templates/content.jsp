@@ -6,7 +6,8 @@
 <div class="content">
 	<div class="mainleft">
 		<div class="memberlogin">
-			<div class="divtitle" style="background-image:url('./image/divt.png');">
+			<div class="divtitle">
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">用户登录</span>
 			</div>
 			<div class="loginform">
 				<form action="/people/login?" method="post">
