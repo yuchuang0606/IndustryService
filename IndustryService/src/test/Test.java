@@ -20,9 +20,9 @@ public class Test {
 		u.setUsergroup(1);
 		u.setUserid(2);
 		//uc.addUser(u);
-		//List<User> my=uc.listUser("username", "admin");
-		//System.out.print(my.size());
-		uc.deleteUser(u);
+		List<User> my=uc.listUser("username", "admin");
+		System.out.print(my.size());
+		//uc.deleteUser(u);
 	}
 
 }

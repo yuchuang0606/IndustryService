@@ -11,16 +11,11 @@ org.hibernate.dialect.MySQLDialect
 <property name="hibernate.connection.driver_class">
 com.mysql.jdbc.Driver
 </property>
-<!-- 数据库的连接字符串和用户名密码 -->
-<property name="hibernate.connection.url">
-jdbc:mysql://192.168.1.200:3306/TPF
-</property>
-<property name="hibernate.connection.username">
-root
-</property>
-<property name="hibernate.connection.password">
-105105
-</property>
+<property name="hibernate.connection.provider_class">
+org.hibernate.connection.ProxoolConnectionProvider 
+</property> 
+<property name="hibernate.proxool.pool_alias">DBPool</property> 
+<property name="hibernate.proxool.xml">proxoolconf.xml</property>  
 <!-- 在使用hibernate时会显示相应的SQL -->
 <property name="show_sql">true</property>
 <!-- 会自动完成类到数据表的转换 -->

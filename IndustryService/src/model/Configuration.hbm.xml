@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Configuration" table="tpf_configuration">
+<id name="configid">
+<generator class="native"/>
+</id>
+<property name="config_name"/>
+<property name="config_path"/>
+<property name="condition"/>
+</class>
+</hibernate-mapping>
