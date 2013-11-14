@@ -15,7 +15,7 @@
 		</li>
 		<li><a href="#">CAD在线服务</a>
 		</li>
-		<li><a href="#">软件下载</a>
+		<li><a href="softlist.jsp">软件下载</a>
 		</li>
 		<li><a href="#">在线视频</a>
 		</li>
