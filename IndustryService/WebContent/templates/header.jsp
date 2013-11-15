@@ -23,5 +23,9 @@ function AddFavorite(title, url) {
 			<span class="pipe">|</span>
 			<a href="http://www.caxa.com">CAXA首页</a>
 		</div>
+		<div class="contentright">
+			<span class="pipe">|</span>
+			<a href="#">注册</a>
+		</div>
 	</div>
 </div>

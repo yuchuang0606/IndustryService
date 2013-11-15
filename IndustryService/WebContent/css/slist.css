@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+@import "./DataTables/demo_page.css";
+@import "./DataTables/demo_table.css";
+@import "./DataTables/demo_table_jui.css";
+.slist {
+	width:960px;
+	height:auto;
+	margin:5px auto;
+	padding-bottom: 80px;
+}
+.slist_l {
+	float:left;
+	width:260px;
+	height:300px;
+	border-top:1px solid #999;
+	border-left:1px solid #999;
+}
+.slist_r {
+	float:left;
+	width:697px;
+	height:800px;
+	border-top:1px solid #999;
+	border-left:1px solid #999;
+	border-right:1px solid #999;
+}
+/*div标题*/
+.divtitle {
+	width:100%;
+	height:35px;
+	line-height:35px;
+	background-color:#C2FCF8;/*50d5dd*/
+	border-bottom:1px solid #dddddd;
+}
+/*条目*/
+.blockdiv {
+	width:100%;
+	height:205px;
+	background-color: #F1FDFE;
+	font-size: 14px;
+	float:left;
+}
+.texthidden li em {
+	width:18px;
+	height:18px;
+	float:left;
+	margin:3px 10px 0px 0px;
+	background: url(../image/listnum.png) no-repeat;
+}
+.num1 {background-position:-20px 0px;}
+.num2 {background-position:-50px 0px;}
+.num3 {background-position:-70px 0px;}
+.num4 {background-position:-90px 0px;}
+.num5 {background-position:-4px 0px;}
+.num6 {background-position:-4px 0px;}
+.num7 {background-position:-4px 0px;}
+.num8 {background-position:-4px -20px;}
+.num9 {background-position:-4px -20px;}
+
+.blockdiv a, .softtype span a{
+	text-decoration: none;
+	transition: color .2s;
+	color:#3C3C3C;
+}
+.blockdiv a:hover {
+	color: #ea5e00;
+	cursor: pointer;
+}
+.blockdiv ul {
+	padding:0px 10px;
+}
+.blockdiv ul li {
+	height:25px;
+	line-height:25px;
+	padding:2px 5px;
+	overflow:hidden;
+	list-style-type: none;
+	list-style-position: inside;
+}
+.softtype {
+	width:100%;
+	height:36px;
+	line-height:36px;
+	margin:0px auto;
+	border-bottom:1px solid #dddddd;
+}
+.softtype span,.searchsoft span {font-size: 14px;margin-left:10px;}
+.searchsoft {
+	width:100%;
+	height:60px;
+	padding-top:5px;
+	border-bottom:1px solid #dddddd;
+}
+.opspan input {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+#submit {
+    margin:0px 0 0 30px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #EBFFFF;
+    background-color:#ea5e00;
+}
+.listinfo {
+	width:100%;
+	height:auto;
+}
+.softinfo {
+	height:80px;
+	width:100%;
+	border-bottom:1px solid #dddddd;
+}
+.softimage {height:60px;width:60px;float:left;}
+.softdetail {height:60px;width:520px;line-height:20px;float:left;}
+.softdetail span{font-size:14px;}
+.softhandle {height:60px;width:60px;float:left;}
+.softhandle span{height:30px;margin-top:10px;line-height:30px;}

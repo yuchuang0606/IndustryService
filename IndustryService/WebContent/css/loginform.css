@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+.loginform {
+    width:100%;
+    margin:10px auto;
+    height:200px;
+    display:block;
+}
+.row {
+    margin-top:20px;
+    margin-bottom:20px;
+    height:40px;
+    line-height:40px;
+}
+.loginform label {
+    width:80px;
+    float:left;
+    text-align:right;
+    padding:0px 10px;
+    line-height:32px;
+    font-size:14px;
+}
+.loginform input {
+    padding: 0 10px 0 6px;
+    float: left;
+    width:160px;
+    background-position: 0 -160px;
+    background-repeat: no-repeat;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    height: 30px;
+    font-size: 14px;
+    color: #333;
+}
+#submit {
+    margin:0px 0 0 100px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100px;
+    height: 36px;
+    color: #EBFFFF;
+    background-color:#ea5e00;
+}
+.loginform form a{
+    margin-left:30px;
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+	box-shadow: 10px;
+}
+.loginform form a:link{
+    color:#0099FF;
+    text-decoration:none;
+}
+.loginform form a:hover{
+    color:#ea5e00;
+    text-decoration:underline;
+}
