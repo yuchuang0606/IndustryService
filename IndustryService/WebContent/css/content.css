@@ -10,8 +10,8 @@
 	float:left;
 	width:320px;
 	height:auto;
-	border-top: 1px solid #999;
-	border-left: 1px solid #999;
+	border-top: 1px solid #AFEEEE;
+	border-left: 1px solid #AFEEEE;
 }
 /*用户登录*/
 .memberlogin {
@@ -40,7 +40,7 @@
 .blockdiv {
 	width:100%;
 	height:205px;
-	background-color: #F1FDFE;
+	background-color: #fff;
 	font-size: 14px;
 	float:left;
 }
@@ -68,23 +68,23 @@
 .onlineservice {
 	width:100%;
 	height:145px;
-	background-color:#F1FDFE;
+	background-color:#fff;
 }
 /*右侧主体*/
 .mainright {
 	height:auto;
 	width:636px;
 	float:left;
-	background-color:#ffe;
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-    border-top: 1px solid #999;
+	background-color:#fff;
+	border-left: 1px solid #AFEEEE;
+	border-right: 1px solid #AFEEEE;
+    border-top: 1px solid #AFEEEE;
 }
 .news {
 	height:240px;
 	width:100%;
 	padding-left:10px;
-	backgroud-color:#ffc;
+	backgroud-color:#fff;
 }
 .container {float:left;width:308px; height:240px;}
 .container img{width:308px; height:240px;border:0;vertical-align:top;}
@@ -94,14 +94,14 @@
 	width:308px;
 	height:235px;
 	padding-left:10px;
-	backgroud-color:#fdd;
+	backgroud-color:#fff;
 }
 .CADService {
 	height:240px;
 	width:100%;
 }
 .service {
-	height:205px;width:100%;background-color:#F1FDFE;
+	height:205px;width:100%;background-color:#fff;
 }
 .servicediv {
 	float:left;height:190px;width:191px;padding:10px 10px 0 10px;

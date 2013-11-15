@@ -56,12 +56,15 @@
 .num8 {background-position:-4px -20px;}
 .num9 {background-position:-4px -20px;}
 
-.blockdiv a, .softtype span a{
+.blockdiv a,.softtype span a,.sortoption span a,.softdetail span a{
 	text-decoration: none;
 	transition: color .2s;
 	color:#3C3C3C;
 }
-.blockdiv a:hover {
+.blockdiv a:link,.softtype span a:link,,.sortoption span a:link,.softdetail span a:link {
+	color:#3C3C3C;
+}
+.blockdiv a:hover,.softtype span a:hover,,.sortoption span a:hover,.softdetail span a:hover {
 	color: #ea5e00;
 	cursor: pointer;
 }
@@ -76,14 +79,14 @@
 	list-style-type: none;
 	list-style-position: inside;
 }
-.softtype {
+.softtype,.sortoption {
 	width:100%;
 	height:36px;
 	line-height:36px;
 	margin:0px auto;
 	border-bottom:1px solid #dddddd;
 }
-.softtype span,.searchsoft span {font-size: 14px;margin-left:10px;}
+.softtype span,.searchsoft span,.sortoption span {font-size: 14px;margin-left:10px;}
 .searchsoft {
 	width:100%;
 	height:60px;
@@ -116,8 +119,8 @@
 	width:100%;
 	border-bottom:1px solid #dddddd;
 }
-.softimage {height:60px;width:60px;float:left;}
-.softdetail {height:60px;width:520px;line-height:20px;float:left;}
-.softdetail span{font-size:14px;}
-.softhandle {height:60px;width:60px;float:left;}
+.softimage {height:60px;width:60px;float:left;padding:10px 5px;}
+.softdetail {height:60px;width:520px;line-height:20px;float:left;padding:10px 10px;}
+.softdetail span,.softoption span{font-size:14px;}
+.softhandle {height:60px;width:60px;float:left;padding:10px 5px;}
 .softhandle span{height:30px;margin-top:10px;line-height:30px;}

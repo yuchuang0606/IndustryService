@@ -73,7 +73,32 @@
 				<span class="opspan"><input name="option" type="radio" value="author" />作者</span>
 			</form>
 		</div>
+		<div class="sortoption">
+			<span>排序方式：</span>
+			<span><a href="#">更新时间</a></span>
+			<span><a href="#">下载次数</a></span>
+			<span><a href="#">浏览次数</a></span>
+		</div>
 		<div class="listinfo">
+			<div class="softinfo">
+				<div class="softimage">
+			    	<img src="./image/cad2d.png" height="60" width="60"></img>
+			    </div>
+			    <div class="softdetail">
+	    			<span>名称：<a href="#">变形金刚大黄蜂</a></span><br/>
+	    			<span>标签：变形金刚 实体设计</span><br/>
+	    			<span><a href="#" title="">作者：aaaaaaa</a>&nbsp;&nbsp;</span>
+	    			<span>时间：2013/10/15</span>
+	    			<span>金币：0</span>
+	    			<span>浏览:434</span>
+	    			<span>下载:20</span>
+	    		</div>
+	    		<div class="softhandle">
+	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
+	    			<span><a href="#"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+	    		</div>
+			</div>
+			<!--
 			<input type="button" id="btnTest" value="刷新" />
 			<table id="myDataTable" class="display" cellpadding="0" cellspacing="0" border="0">
 			    <thead>
@@ -103,13 +128,14 @@
 			    	</td>
 			    	<td>
 			    		<div class="softhandle">
-			    			<span><a href=""><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-			    			<span><a href=""><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
+			    			<span><a href="#"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
 			    		</div>
 			    	</td>
 			    	</tr>
 			    </tbody>
 			</table>
+			 -->
 		</div>
 	</div>
 </div>
@@ -122,7 +148,7 @@
 	//        "sDom": "<>lfrtip<>",
 	//        "bAutoWith": false,
 	//        "bDeferRender": false,
-	        "bJQueryUI": false, //开关，是否启用JQueryUI风格
+	//        "bJQueryUI": false, //开关，是否启用JQueryUI风格
 	//        "bLengthChange": true, //开关，是否显示每页大小的下拉框
 	//        "bProcessing": true,
 	//        "bScrollInfinite": false,
@@ -138,12 +164,12 @@
 	        "aaSorting": [[1, "asc"]],
 	        "sPaginationType": "full_numbers",
 	        "oLanguage": {
-	            "sProcessing": "正在加载中......",
+	            "sProcessing": "正在加载中...",
 	            "sLengthMenu": "每页显示 _MENU_ 条记录",
 	            "sZeroRecords": "对不起，查询不到相关数据！",
-	            "sEmptyTable": "表中无数据存在！",
+	            "sEmptyTable": "无数据存在！",
 	            "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
-	            "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+	            "sInfoFiltered": "共有 _MAX_ 条记录",
 	            "sSearch": "搜索",
 	            "oPaginate": {
 	                "sFirst": "首页",
@@ -159,11 +185,11 @@
     $(function () {
         tbl = $('#myDataTable').dataTable({
             "bServerSide": true,
-            "sAjaxSource": "Home/AjaxHandler",      //mvc后台ajax调用接口。
-            'bPaginate': true,                      //是否分页。
-            "bProcessing": true,                    //当datatable获取数据时候是否显示正在处理提示信息。
-            'bFilter': false,                       //是否使用内置的过滤功能。
-            'bLengthChange': true,                  //是否允许用户自定义每页显示条数。
+            "sAjaxSource": "",      //mvc后台ajax调用接口。
+            'bPaginate': true,      //是否分页。
+            "bProcessing": true,    //当datatable获取数据时候是否显示正在处理提示信息。
+            'bFilter': false,       //是否使用内置的过滤功能。
+            'bLengthChange': true,  //是否允许用户自定义每页显示条数。
             'sPaginationType': 'full_numbers',      //分页样式
             "aoColumns": [
                     { "sName": "ID",
