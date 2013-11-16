@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <div style='width:978px; clear: both; text-align: left; margin: 0 auto;'>
             <div style="width: 700px; float: left; margin: 0 8px 0 0;">                
                 <div style="width: 700px; float: left">
@@ -11,16 +12,25 @@
                                         <td>
                                             <span id="lbZyName">变形金刚大黄蜂</span>&nbsp;
                                         </td>
-                                        <td>
-                                            
-                                            <a id="lbtInitPage" href="javascript:__doPostBack(&#39;lbtInitPage&#39;,&#39;&#39;)"></a>
-                                            
+                                        <td>                                            
+                                            <a id="lbtInitPage" href="javascript:__doPostBack(&#39;lbtInitPage&#39;,&#39;&#39;)"></a>                                            
                                         </td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
                     </table>
+                    <tr>
+						<td id="tdVideo" colspan="2" align="left" class="border7">
+   							<table id="video3" cellpadding="0" cellspacing="0">
+								<tr>
+									<td>
+        								<script src='http://union.bokecc.com/player?vid=8352E53A661FD5DC9C33DC5901307461&siteid=470E510AC82C1D91&autoStart=true&width=640&height=481&playerid=3B585756AB7400D2&playertype=2' type="text/javascript"></script>
+        							</td>
+								</tr>
+							</table>
+     					</td>
+					</tr>
                     <table width="700px" cellpadding="0" cellspacing="0" align="center">
                         <tr>
                             <td colspan="2" height="19px">
@@ -29,33 +39,26 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="border18" height="10px" align="left">
-                                &nbsp;
-                                
+                                &nbsp;                                
                             </td>
                         </tr>
-                        <tr>
-                            
+                        <tr>                            
                         </tr>
                         <tr>
-                            <td width="300px" class="border10" height="340px" valign="top">
+                        <tr>
+                        	<td colspan="2" align="left" class="border7">
+                            	<font size = 3; FACE = 标楷体 , 细明体; color = #424242>详细信息:</font>
+                            </td>
+                        </tr>
+                            <td width="300px" class="border10" height="240px" valign="top">
                                 <table>
                                     <tr>
-                                        <td valign="top">
+                                        <td valign="top">                                        	
                                             <div id="source" style="width: 300px; height: 240px; border: solid #ccc 0px; overflow: hidden;
                                                 text-align: left; font-size: 1px;">
-                                                <a href='image/softinfo1.jpg' title="">
+                                                <a href='image/videoinfo1.jpg' title="">
                                                     <img src='image/videoinfo1.jpg' alt="" id="m" border="0" width="300px" height="240px" /></a>
                                             </div>          
-                                             <tr>
-                            					<td colspan="2" align="left" class="border7">
-                               					 <font size = 2; FACE = 标楷体 , 细明体; color = #424242>详细信息:</font>
-                            					</td>
-                        					</tr>
-                        					<tr>
-                            					<td colspan="2" align="left" class="border9" style="line-height: 20px; padding: 0 20px 5px 20px">
-                                				<span id="lbMemo"><font size = 2>论坛实体设高手（小博士）分享的大黄蜂视频，采用实体设计2013直接建模技术，快速完成大黄蜂的建模及渲染。该作品获得第三届3D大赛一等奖，更多精彩内容请到论坛查看。http://top.caxa.com/showtopic-38887.aspx</font> </span>
-                            					</td>
-                        					</tr>
                                         </td>
                                     </tr>
                                 </table>
@@ -65,8 +68,7 @@
                                     <tr>
                                         <td>
                                             <div id="rights">
-                                                <div id="rights_">
-                                                    
+                                                <div id="rights_">                                                    
                                                             <table width="350">
                                                                 <tr align="left">
                                                                     <td width="85" align="left" valign="top">
@@ -80,16 +82,10 @@
                                                                                         <tr>
                                                                                             <td width="260px" valign="top">
                                                                                                 <font size = 2><span id="rpZyDesc_ctl00_lbZyName1">变形金刚大黄蜂</span>[CAXA审核]</font>
-                                                                                            </td>
-                                                                                            <!--<td width="34px" valign="top" align="right">
-                                                                                                <a id="rpZyDesc_ctl00_lbtEdit1" href="javascript:__doPostBack(&#39;rpZyDesc$ctl00$lbtEdit1&#39;,&#39;&#39;)" style="color:#614DB3;font-weight:bold;text-decoration:none;">编辑</a>
-                                                                                                
-                                                                                                
-                                                                                            </td>-->
+                                                                                            </td>                                                                                            
                                                                                         </tr>
                                                                                     </table>
-                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 																		</div>
                                                                     </td>
                                                                 </tr>
@@ -202,21 +198,23 @@
                                                                         <span id="rpZyDesc_ctl00_lbScore"><font size = 2>0</font></span>
                                                                     </td>
                                                                 </tr>
-                                                            </table>
-                                                </div>
-                                                <!-- <div id="dest">
-                                                </div> -->
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                            </table>                                                            
+                                                </div>                                                                                           
+                                            </div>                                              
+                                        </td>                                        
+                                    </tr>                                    
                                 </table>
+                                <tr>
+                            		<td colspan="2" align="left" class="border9" style="line-height: 20px; padding: 0 20px 5px 20px">
+                                		<span id="lbMemo"><font size = 2>论坛实体设高手（小博士）分享的大黄蜂视频，采用实体设计2013直接建模技术，快速完成大黄蜂的建模及渲染。该作品获得第三届3D大赛一等奖，更多精彩内容请到论坛查看。http://top.caxa.com/showtopic-38887.aspx</font> </span>
+                            		</td>
+                        		</tr>   
                             </td>
-                        </tr>
-                       
+                        </tr>                       
                     </table>
                 </div>
             </div>
-     <link rel="stylesheet" href="./css/slist.css" type="text/css" />
+    <link rel="stylesheet" href="./css/slist.css" type="text/css" />
 	<div class="slist_l"  style="border:1px solid #CCC;">
 		<div class="divtitle">
 			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">热门下载</span>
