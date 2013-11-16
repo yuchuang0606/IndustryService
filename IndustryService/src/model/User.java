@@ -1,6 +1,6 @@
 /**
  * @authored by zhouyunbin
- * @createdate 2013-11-14
+ * @create date 2013-11-14
  */
 package model;
 import java.util.Date;
@@ -15,6 +15,12 @@ public class User {
 	private String userpic;
 	private Date regdate;
 	private String email;
+	private Date lastlogin;
+	private int logintimes;
+	private int uploadfilenumber;
+	private int downloadfilenumber;
+	private int credit;
+	private int coin;
 	/**
 	 * @return the userid
 	 */
@@ -134,6 +140,78 @@ public class User {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	/**
+	 * @return the lastlogin
+	 */
+	public Date getLastlogin() {
+		return lastlogin;
+	}
+	/**
+	 * @param lastlogin the lastlogin to set
+	 */
+	public void setLastlogin(Date lastlogin) {
+		this.lastlogin = lastlogin;
+	}
+	/**
+	 * @return the logintimes
+	 */
+	public int getLogintimes() {
+		return logintimes;
+	}
+	/**
+	 * @param logintimes the logintimes to set
+	 */
+	public void setLogintimes(int logintimes) {
+		this.logintimes = logintimes;
+	}
+	/**
+	 * @return the uploadfilenumber
+	 */
+	public int getUploadfilenumber() {
+		return uploadfilenumber;
+	}
+	/**
+	 * @param uploadfilenumber the uploadfilenumber to set
+	 */
+	public void setUploadfilenumber(int uploadfilenumber) {
+		this.uploadfilenumber = uploadfilenumber;
+	}
+	/**
+	 * @return the downloadfilenumber
+	 */
+	public int getDownloadfilenumber() {
+		return downloadfilenumber;
+	}
+	/**
+	 * @param downloadfilenumber the downloadfilenumber to set
+	 */
+	public void setDownloadfilenumber(int downloadfilenumber) {
+		this.downloadfilenumber = downloadfilenumber;
+	}
+	/**
+	 * @return the credit
+	 */
+	public int getCredit() {
+		return credit;
+	}
+	/**
+	 * @param credit the credit to set
+	 */
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+	/**
+	 * @return the coin
+	 */
+	public int getCoin() {
+		return coin;
+	}
+	/**
+	 * @param coin the coin to set
+	 */
+	public void setCoin(int coin) {
+		this.coin = coin;
 	}
 
 }

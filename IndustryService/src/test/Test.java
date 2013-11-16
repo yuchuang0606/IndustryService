@@ -9,19 +9,13 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		UserControl uc=new UserControl();
-		User u=new User();
-		u.setUsername("admin");
-		u.setPassword("fuck");
-		u.setAddress("admin");
-		u.setPhone("a123");
-		u.setQq("41654651");
-		u.setEmail("admin@admin.com");
-		u.setRegdate(new Date());
-		u.setUsergroup(1);
-		u.setUserid(2);
-		//uc.addUser(u);
-		List<User> my=uc.listUser("username", "admin");
-		System.out.print(my.size());
+		//User u=uc.getUser(1);
+		//u.setPassword("asdf");
+		//uc.updateUser(u);
+		//List<User> my=uc.listUser("username", "admin");
+		uc.addLoginTimes(1);
+		System.out.print(uc.verifyUser("fuck", "csdf"));
+		System.out.print(uc.getLastLogintime(1));
 		//uc.deleteUser(u);
 	}
 

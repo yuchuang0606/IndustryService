@@ -11,6 +11,11 @@ public class Software {
 	private int ispass;
 	private int downloadtimes;
 	private String version;
+	private String name;
+	private String softpic;
+	private String tag;
+	private int viewtimes;
+	private double size;
 	/**
 	 * @return the softwareid
 	 */
@@ -106,6 +111,66 @@ public class Software {
 	 */
 	public void setVersion(String version) {
 		this.version = version;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the softpic
+	 */
+	public String getSoftpic() {
+		return softpic;
+	}
+	/**
+	 * @param softpic the softpic to set
+	 */
+	public void setSoftpic(String softpic) {
+		this.softpic = softpic;
+	}
+	/**
+	 * @return the tag
+	 */
+	public String getTag() {
+		return tag;
+	}
+	/**
+	 * @param tag the tag to set
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	/**
+	 * @return the viewtimes
+	 */
+	public int getViewtimes() {
+		return viewtimes;
+	}
+	/**
+	 * @param viewtimes the viewtimes to set
+	 */
+	public void setViewtimes(int viewtimes) {
+		this.viewtimes = viewtimes;
+	}
+	/**
+	 * @return the size
+	 */
+	public double getSize() {
+		return size;
+	}
+	/**
+	 * @param size the size to set
+	 */
+	public void setSize(double size) {
+		this.size = size;
 	}
 
 }
