@@ -18,6 +18,7 @@ public  class  MySessionFactory {
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
 		.applySettings(cfg.getProperties()).buildServiceRegistry();
 		factory = cfg.buildSessionFactory(serviceRegistry);
+		isInit=true;
 	}
 	public static void executeAdd(Object o)
 	{
@@ -25,10 +26,10 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//开启事务
+			//寮�惎浜嬪姟
 			session.beginTransaction();
 			session.save(o);
-			//提交事务
+			//鎻愪氦浜嬪姟
 			session.getTransaction().commit();
 			} catch(HibernateException e) {
 			e.printStackTrace();
@@ -44,10 +45,10 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//开启事务
+			//寮�惎浜嬪姟
 			session.beginTransaction();
 			session.update(o);
-			//提交事务
+			//鎻愪氦浜嬪姟
 			session.getTransaction().commit();
 			} catch(HibernateException e) {
 			e.printStackTrace();
@@ -57,6 +58,7 @@ public  class  MySessionFactory {
 			if(session!=null) session.close();
 			}
 	}
+	@SuppressWarnings({ "finally", "unchecked" })
 	public static List<Object> getByprop(String cname,String prop,String value)
 	{
 		if(!isInit) initMySessionFactory();
@@ -64,10 +66,10 @@ public  class  MySessionFactory {
 		List<Object> result=null;
 		try{
 			session = factory.openSession();
-			//开启事务
+			//寮�惎浜嬪姟
 			session.beginTransaction();
 			result=session.createQuery("from "+cname+" where "+prop+"= :value").setString("value", value).list();
-			//提交事务
+			//鎻愪氦浜嬪姟
 			session.getTransaction().commit();
 			} catch(HibernateException e) {
 			e.printStackTrace();
@@ -84,10 +86,10 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//开启事务
+			//寮�惎浜嬪姟
 			session.beginTransaction();
 			session.delete(o);
-			//提交事务
+			//鎻愪氦浜嬪姟
 			session.getTransaction().commit();
 			} catch(HibernateException e) {
 			e.printStackTrace();

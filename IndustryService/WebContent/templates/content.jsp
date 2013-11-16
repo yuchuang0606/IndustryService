@@ -30,7 +30,7 @@
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">公告</span>
 				<div class="more">
-					<a href="#">更多》</a>
+					<a href="newslist.jsp">更多》</a>
 				</div>
 			</div>
 			<div class="blockdiv">
@@ -96,7 +96,7 @@
 				<div class="divtitle">
 					<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">新闻</span>
 					<div class="more">
-						<a href="#">更多》</a>
+						<a href="newslist.jsp">更多》</a>
 					</div>
 				</div>
 				<div class="blockdiv">
@@ -125,7 +125,7 @@
 		</div>
 		<div class="CADService">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">在线CAD服务</span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">CAD介绍</span>
 			</div>
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
@@ -133,7 +133,7 @@
 						<img src="./image/cad2d.png" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#" title="CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。">CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。</a>
+						<a href="./IntroduceHandler?configname=2dCAD" title="CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。">CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。</a>
 					</div> 
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
@@ -141,15 +141,15 @@
 						<img src="./image/cad3d.png" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#" title="CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。">CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。</a>
-					</div> 
+						<a href="./IntroduceHandler?configname=3dCAD" title="CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。">CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。</a>
+					</div>
 				</div>
 				<div class="servicediv">
 					<div class="serviceimage">	
 						<img src="./image/cam5.jpg" WIDTH="80" HEIGHT="80" ALT=""> 
 					</div>	
 					<div class="imageintroduction">
-						<a href="#" title="CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。">CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。</a>
+						<a href="./IntroduceHandler?configname=5CAM" title="CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。">CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。</a>
 					</div> 
 				</div>
 			</div>

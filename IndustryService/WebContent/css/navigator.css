@@ -46,6 +46,7 @@
 	height:30px;
 	line-height:30px;
 	background: #EAEBD8;
+	z-index:1;
 }
 
 #sddm div a

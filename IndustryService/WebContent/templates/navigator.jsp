@@ -7,17 +7,24 @@
 	<ul id="sddm">
 		<li><a href="index.jsp">首页</a>
 		</li>
-		<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">新闻公告</a>
+		<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">CAD介绍</a>
 			<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+			<a href="./IntroduceHandler?configname=2dCAD">二维CAD</a>
+			<a href="./IntroduceHandler?configname=3dCAD">三维CAD</a>
+			<a href="./IntroduceHandler?configname=5CAM">五轴CAD</a>
+			</div>
+		</li>
+		<li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">新闻公告</a>
+			<div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
 			<a href="#">新闻</a>
 			<a href="#">公告</a>
 			</div>
 		</li>
-		<li><a href="#">CAD在线服务</a>
-		</li>
 		<li><a href="softlist.jsp">软件下载</a>
 		</li>
 		<li><a href="#">在线视频</a>
+		</li>
+		<li><a href="#">服务流程</a>
 		</li>
 		<li><a href="#">联系我们</a>
 		</li>

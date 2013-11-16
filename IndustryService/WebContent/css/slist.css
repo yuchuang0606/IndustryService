@@ -1,8 +1,5 @@
 @CHARSET "UTF-8";
-@import "./DataTables/demo_page.css";
-@import "./DataTables/demo_table.css";
-@import "./DataTables/demo_table_jui.css";
-.slist {
+.main {
 	width:960px;
 	height:auto;
 	margin:5px auto;
@@ -12,16 +9,20 @@
 	float:left;
 	width:260px;
 	height:300px;
-	border-top:1px solid #999;
-	border-left:1px solid #999;
+	border-top:1px solid #AFEEEE;
+	border-left:1px solid #AFEEEE;
 }
-.slist_r {
+.content {
 	float:left;
-	width:697px;
-	height:800px;
-	border-top:1px solid #999;
-	border-left:1px solid #999;
-	border-right:1px solid #999;
+	width:717px;
+	height:auto;
+	border-top:1px solid #e5e5e5;
+	border-left:1px solid #e5e5e5;
+	border-right:1px solid #e5e5e5;
+	box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 0 9px 1px -moz-rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
+	zoom: 100%;
 }
 /*div标题*/
 .divtitle {
@@ -35,7 +36,7 @@
 .blockdiv {
 	width:100%;
 	height:205px;
-	background-color: #F1FDFE;
+	background-color: #fff;
 	font-size: 14px;
 	float:left;
 }
@@ -56,15 +57,22 @@
 .num8 {background-position:-4px -20px;}
 .num9 {background-position:-4px -20px;}
 
-.blockdiv a,.softtype span a,.sortoption span a,.softdetail span a{
-	text-decoration: none;
+.blockdiv a,.softtype span a,.sortoption span a{
 	transition: color .2s;
 	color:#3C3C3C;
+	text-decoration: none;
 }
-.blockdiv a:link,.softtype span a:link,,.sortoption span a:link,.softdetail span a:link {
-	color:#3C3C3C;
+.softdetail span a,.paging span a {
+	transition: color .2s;
+	color:blue;
+	text-decoration: none;
 }
-.blockdiv a:hover,.softtype span a:hover,,.sortoption span a:hover,.softdetail span a:hover {
+.blockdiv a:link,.softtype span a:link,
+.sortoption span a:link,.softdetail span a:link,.paging span a:link {
+	color:blue;
+}
+.blockdiv a:hover,.softtype span a:hover,
+.sortoption span a:hover,.softdetail span a:hover,.paging span a:hover {
 	color: #ea5e00;
 	cursor: pointer;
 }
@@ -79,7 +87,7 @@
 	list-style-type: none;
 	list-style-position: inside;
 }
-.softtype,.sortoption {
+.softtype,.sortoption{
 	width:100%;
 	height:36px;
 	line-height:36px;
@@ -117,10 +125,12 @@
 .softinfo {
 	height:80px;
 	width:100%;
-	border-bottom:1px solid #dddddd;
+	border-bottom:1px solid #eee;
 }
-.softimage {height:60px;width:60px;float:left;padding:10px 5px;}
-.softdetail {height:60px;width:520px;line-height:20px;float:left;padding:10px 10px;}
+.softimage {height:60px;width:60px;float:left;padding:10px 5px 10px 10px;;}
+.softdetail {height:60px;width:530px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
 .softdetail span,.softoption span{font-size:14px;}
 .softhandle {height:60px;width:60px;float:left;padding:10px 5px;}
 .softhandle span{height:30px;margin-top:10px;line-height:30px;}
+
+.paging {height:30px;line-height:30px;width:100%;text-align:center;padding-top:10px;}
