@@ -13,5 +13,10 @@
 <property name="ispass"/>
 <property name="downloadtimes"/>
 <property name="version"/>
+<property name="name" />
+<property name="softpic" />
+<property name="tag" />
+<property name="viewtimes" />
+<property name="size" />
 </class>
 </hibernate-mapping>

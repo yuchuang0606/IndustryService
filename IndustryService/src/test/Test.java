@@ -33,6 +33,11 @@ public class Test {
 		String condition = configList.get(0).getCondition();
 		System.out.println(configList.size());
 		System.out.println(condition);
+		//User u=uc.getUser(1);
+		//u.setPassword("asdf");
+		//uc.updateUser(u);
+		//List<User> my=uc.listUser("username", "admin");
+		//uc.deleteUser(u);
 	}
 
 }

@@ -2,5 +2,9 @@ eclipse.preferences.version=1
 encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/js/ui.core.js=UTF-8
 encoding//WebContent/softinfo.jsp=UTF-8
+<<<<<<< HEAD
 encoding//src/datacontrol/MySessionFactory.java=UTF-8
+=======
+encoding//WebContent/templates/software.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/yuchuang0606/IndustryService.git
 encoding/<project>=UTF-8
