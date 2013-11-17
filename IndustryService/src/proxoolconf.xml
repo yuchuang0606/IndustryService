@@ -34,5 +34,16 @@
 
 <house-keeping-test-sql>select now()</house-keeping-test-sql>
 <!-- 自动检查连接是否断的测试sql语句 -->
+<property name="autoReconnect" value="true"/>
+<house-keeping-sleep-time>90000</house-keeping-sleep-time>
+<maximum-new-connections>1</maximum-new-connections>
+<prototype-count>1</prototype-count>
+<maximum-connection-count>10</maximum-connection-count>
+<minimum-connection-count>5</minimum-connection-count>
+<maximum-active-time>900000</maximum-active-time>
+<maximum-connection-lifetime>14400000</maximum-connection-lifetime>
+<test-before-use>true</test-before-use>
+<house-keeping-test-sql>select now()</house-keeping-test-sql>
+>>>>>>> branch 'master' of https://github.com/yuchuang0606/IndustryService.git
 </proxool>
 </something-else-entirely>

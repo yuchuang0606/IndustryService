@@ -2,5 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="./css/logo.css" type="text/css" />
 <div class="logo">
-	<img src="./image/logo.png" />
+	<div class="logocontent">
+		<img src="./image/logo.jpg" width="960px" height="150px" />
+	</div>
 </div>

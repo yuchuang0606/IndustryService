@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package datacontrol;
 
 import java.security.MessageDigest;
@@ -5,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
+
+import com.mail.MailSenderInfo;
+import com.mail.SimpleMailSender;
 
 import model.User;
 
@@ -15,6 +22,7 @@ public class UserControl {
 		
 	}
 	
+	//将用户组设置为3，未激活用户
 	public void addUser(User u)
 	{
 		u.setPassword(MD5(u.getPassword()));
@@ -72,6 +80,36 @@ public class UserControl {
 		return "false";
 	}
 	
+	public void SendEmail(User u)
+	{
+		MailSenderInfo mailInfo = new MailSenderInfo();    
+	    mailInfo.setMailServerHost("smtp.163.com");    
+	    mailInfo.setMailServerPort("25");    
+	    mailInfo.setValidate(true);    
+	    mailInfo.setUserName("daliangysj@163.com");    
+	    mailInfo.setPassword("daliangysj123");//您的邮箱密码    
+	    mailInfo.setFromAddress("daliangysj@163.com");    
+	    mailInfo.setToAddress(u.getEmail());    
+	    mailInfo.setSubject("大连工业设计服务平台账户激活邮件");    
+	    mailInfo.setContent("http://ddd.bbb.com?token="+MD5(u.getRegdate().toString())+"&user="+u.getUsername());    
+	         //这个类主要来发送邮件   
+	    SimpleMailSender sms = new SimpleMailSender();   
+	    //sms.sendTextMail(mailInfo);//发送文体格式    
+	    sms.sendHtmlMail(mailInfo);//发送html格式   
+	}
+	public boolean ActiveUser(String token,String username)
+	{
+		List<User> li=listUser("username",username);
+		if(li.size()<1) return false;
+		User u=li.get(0);
+		if(MD5(u.getRegdate().toString()).equals(token)) 
+		{
+			u.setUsergroup(1);
+			updateUser(u);
+			return true;
+		}
+		else return false;
+	}
 	//MD5加密函数
 	public final static String MD5(String s) {
         char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};       

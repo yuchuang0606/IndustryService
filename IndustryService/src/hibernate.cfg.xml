@@ -21,6 +21,15 @@ org.hibernate.connection.ProxoolConnectionProvider
 <!-- 会自动完成类到数据表的转换 -->
 <property name="hibernate.hbm2ddl.auto">update</property>
 <mapping resource="model/User.hbm.xml" />
+<mapping resource="model/Configuration.hbm.xml" />
+<mapping resource="model/Authorization.hbm.xml" />
+<mapping resource="model/Group.hbm.xml" />
+<mapping resource="model/Groupitem.hbm.xml" />
+<mapping resource="model/Introduction.hbm.xml" />
+<mapping resource="model/News.hbm.xml" />
+<mapping resource="model/Software.hbm.xml" />
+<mapping resource="model/Video.hbm.xml" />
+
 </session-factory>
 
 </hibernate-configuration>

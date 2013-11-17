@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package model;
 
 import java.util.Date;
@@ -11,6 +15,7 @@ public class News {
 	private int accesstime;
 	private int ispass;
 	private int newstype;
+	private String title;
 	/**
 	 * @return the newsid
 	 */
@@ -96,16 +101,16 @@ public class News {
 		this.ispass = ispass;
 	}
 	/**
-	 * @return the newstype
+	 * @return the title
 	 */
-	public int getNewstype() {
-		return newstype;
+	public String getTitle() {
+		return title;
 	}
 	/**
-	 * @param newstype the newstype to set
+	 * @param title the title to set
 	 */
-	public void setNewstype(int newstype) {
-		this.newstype = newstype;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

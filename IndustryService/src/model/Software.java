@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package model;
 
 import java.util.Date;
@@ -16,6 +20,7 @@ public class Software {
 	private String tag;
 	private int viewtimes;
 	private double size;
+	private String title;
 	/**
 	 * @return the softwareid
 	 */
@@ -171,6 +176,18 @@ public class Software {
 	 */
 	public void setSize(double size) {
 		this.size = size;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

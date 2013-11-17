@@ -1,7 +1,12 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package datacontrol;
 
 import java.util.List;
 
+import model.News;
 import model.User;
 import model.Video;
 
@@ -35,5 +40,20 @@ public class VideoControl {
 		List<Video> li= (List<Video>)(Object)MySessionFactory.executeQuery("From Video u where u.videoid="+name);
 		if(li.size()>0) return li.get(0);
 		else return null;
+	}
+	
+	public int getVideoNumber()
+	{
+		return MySessionFactory.getItemNumber("Video");
+	}
+	
+	public List<Video> getListByColumn(int start,int size)
+	{
+		return getListByColumn(start,size,"createtime");
+	}
+	
+	public List<Video> getListByColumn(int start,int size,String column)
+	{
+		return (List<Video>)(Object)MySessionFactory.getByColumn("Video", column, start, size);
 	}
 }

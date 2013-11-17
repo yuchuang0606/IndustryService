@@ -18,5 +18,6 @@
 <property name="tag" />
 <property name="viewtimes" />
 <property name="size" />
+<property name="title"/>
 </class>
 </hibernate-mapping>

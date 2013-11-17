@@ -4,7 +4,8 @@
 	height:35px;
 	width:100%;
 	line-height:35px;
-	background-color:#F2F2F2;
+	background-color:#F5F5F5;
+	border-bottom:1px solid #dddddd;
 }
 .headcontent {
 	width:960px;
@@ -14,7 +15,7 @@
 .pipe {
 	float:left;
 	margin:0 5px;
-	color:#fff;
+	color:#000;
 }
 .contentleft {
 	float:left;
@@ -22,11 +23,30 @@
 .contentleft a {
 	float:left;
 	font-size:14px;
-	color:#000;
-}
-.contentleft a:hover {
-	text-decoration:none;
+	color:#3C3C3C;
 }
 .contentleft a:link {
 	text-decoration:none;
+}
+.contentleft a:hover {
+	color:#ea5e00;
+	text-decoration:underline;
+}
+.contentright {
+	height:35px;
+	width:60px;
+	float:right;
+	margin-right:5px;
+}
+.contentright a {
+	float:left;
+	font-size:14px;
+	color:#3C3C3C;
+}
+.contentright a:link {
+	text-decoration:none;
+}
+.contentright a:hover {
+	color:#ea5e00;
+	text-decoration:underline;
 }

@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package datacontrol;
 
 import java.util.List;
@@ -20,5 +24,20 @@ public class SoftwareControl {
 	public List<Software> listSoftware(String prop,String value)
 	{
 		return (List<Software>)(Object)MySessionFactory.getByprop("Software", prop, value);
+	}
+	
+	public int getSoftwareNumber()
+	{
+		return MySessionFactory.getItemNumber("Software");
+	}
+	
+	public List<Software> getListByColumn(int start,int size)
+	{
+		return getListByColumn(start,size,"createtime");
+	}
+	
+	public List<Software> getListByColumn(int start,int size,String column)
+	{
+		return (List<Software>)(Object)MySessionFactory.getByColumn("Software", column, start, size);
 	}
 }

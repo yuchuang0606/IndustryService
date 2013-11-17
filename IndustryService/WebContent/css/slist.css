@@ -1,0 +1,136 @@
+@CHARSET "UTF-8";
+.main {
+	width:960px;
+	height:auto;
+	margin:5px auto;
+	padding-bottom: 80px;
+}
+.slist_l {
+	float:left;
+	width:260px;
+	height:300px;
+	border-top:1px solid #AFEEEE;
+	border-left:1px solid #AFEEEE;
+}
+.content {
+	float:left;
+	width:717px;
+	height:auto;
+	border-top:1px solid #e5e5e5;
+	border-left:1px solid #e5e5e5;
+	border-right:1px solid #e5e5e5;
+	box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 0 9px 1px -moz-rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
+	zoom: 100%;
+}
+/*div标题*/
+.divtitle {
+	width:100%;
+	height:35px;
+	line-height:35px;
+	background-color:#C2FCF8;/*50d5dd*/
+	border-bottom:1px solid #dddddd;
+}
+/*条目*/
+.blockdiv {
+	width:100%;
+	height:205px;
+	background-color: #fff;
+	font-size: 14px;
+	float:left;
+}
+.texthidden li em {
+	width:18px;
+	height:18px;
+	float:left;
+	margin:3px 10px 0px 0px;
+	background: url(../image/listnum.png) no-repeat;
+}
+.num1 {background-position:-20px 0px;}
+.num2 {background-position:-50px 0px;}
+.num3 {background-position:-70px 0px;}
+.num4 {background-position:-90px 0px;}
+.num5 {background-position:-4px 0px;}
+.num6 {background-position:-4px 0px;}
+.num7 {background-position:-4px 0px;}
+.num8 {background-position:-4px -20px;}
+.num9 {background-position:-4px -20px;}
+
+.blockdiv a,.softtype span a,.sortoption span a{
+	transition: color .2s;
+	color:#3C3C3C;
+	text-decoration: none;
+}
+.softdetail span a,.paging span a {
+	transition: color .2s;
+	color:blue;
+	text-decoration: none;
+}
+.blockdiv a:link,.softtype span a:link,
+.sortoption span a:link,.softdetail span a:link,.paging span a:link {
+	color:blue;
+}
+.blockdiv a:hover,.softtype span a:hover,
+.sortoption span a:hover,.softdetail span a:hover,.paging span a:hover {
+	color: #ea5e00;
+	cursor: pointer;
+}
+.blockdiv ul {
+	padding:0px 10px;
+}
+.blockdiv ul li {
+	height:25px;
+	line-height:25px;
+	padding:2px 5px;
+	overflow:hidden;
+	list-style-type: none;
+	list-style-position: inside;
+}
+.softtype,.sortoption{
+	width:100%;
+	height:36px;
+	line-height:36px;
+	margin:0px auto;
+	border-bottom:1px solid #dddddd;
+}
+.softtype span,.searchsoft span,.sortoption span {font-size: 14px;margin-left:10px;}
+.searchsoft {
+	width:100%;
+	height:60px;
+	padding-top:5px;
+	border-bottom:1px solid #dddddd;
+}
+.opspan input {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+#submit {
+    margin:0px 0 0 30px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #EBFFFF;
+    background-color:#ea5e00;
+}
+.listinfo {
+	width:100%;
+	height:auto;
+}
+.softinfo {
+	height:80px;
+	width:100%;
+	border-bottom:1px solid #eee;
+}
+.softimage {height:60px;width:60px;float:left;padding:10px 5px 10px 10px;;}
+.softdetail {height:60px;width:530px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
+.softdetail span,.softoption span{font-size:14px;}
+.softhandle {height:60px;width:60px;float:left;padding:10px 5px;}
+.softhandle span{height:30px;margin-top:10px;line-height:30px;}
+
+.paging {height:30px;line-height:30px;width:100%;text-align:center;padding-top:10px;}

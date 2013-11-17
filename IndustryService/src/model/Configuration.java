@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package model;
 
 public class Configuration {

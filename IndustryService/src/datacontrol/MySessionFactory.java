@@ -1,3 +1,7 @@
+/**
+ * @authored by zhouyunbin
+ * @create date 2013-11-14
+ */
 package datacontrol;
 
 import java.util.List;
@@ -12,14 +16,17 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 public  class  MySessionFactory {
 
-	static SessionFactory factory;
+	static SessionFactory factory=null;
 	static boolean isInit=false;
 	
 	public static synchronized void initMySessionFactory() {
-		Configuration cfg = new Configuration().configure();
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-		.applySettings(cfg.getProperties()).buildServiceRegistry();
-		factory = cfg.buildSessionFactory(serviceRegistry);
+		if(factory==null)
+		{
+			Configuration cfg = new Configuration().configure();
+			ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
+			.applySettings(cfg.getProperties()).buildServiceRegistry();
+			factory = cfg.buildSessionFactory(serviceRegistry);
+		}
 	}
 	
 	public static List<Object> executeQuery(String s)
@@ -97,6 +104,35 @@ public  class  MySessionFactory {
 			}
 	}
 	
+	public static int getItemNumber(String cname)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		int count =0;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("from "+cname);
+			count = ((Number)q.uniqueResult()).intValue();  
+			
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return count;
+			}
+		
+	}
+	
 	public static List<Object> getByprop(String cname,String prop,String value)
 	{
 		if(!isInit) 
@@ -111,6 +147,64 @@ public  class  MySessionFactory {
 			//开启事务
 			session.beginTransaction();
 			result=session.createQuery("from "+cname+" where "+prop+"= :value").setString("value", value).list();
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return result;
+			}
+	}
+	
+	public static List<Object> getByPropAndColumn(String cname,String prop,String value,String column,int start,int size)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		List<Object> result=null;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("from "+cname+" x where "+prop+"= :value" + " order by x."+column).setString("value", value);
+			q.setMaxResults(size);
+			q.setFirstResult(start);
+			result=q.list();
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return result;
+			}
+	}
+	
+	public static List<Object> getByColumn(String cname,String column,int start,int size)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		List<Object> result=null;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("from "+cname+ " x order by x."+column+" desc");
+			q.setMaxResults(size);
+			q.setFirstResult(start);
+			result=q.list();
 			//提交事务
 			session.getTransaction().commit();
 			} catch(HibernateException e) {

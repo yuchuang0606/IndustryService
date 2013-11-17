@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Notification" table="tpf_notification">
+<id name="newsid">
+<generator class="native"/>
+</id>
+<property name="createtime"/>
+<property name="modifytime"/>
+<property name="author"/>
+<property name="content"/>
+<property name="accesstime"/>
+<property name="ispass"/>
+<property name="title"/>
+</class>
+</hibernate-mapping>

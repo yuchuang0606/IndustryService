@@ -12,6 +12,6 @@
 <property name="content"/>
 <property name="accesstime"/>
 <property name="ispass"/>
-<property name="newstype"/>
+<property name="title"/>
 </class>
 </hibernate-mapping>
