@@ -1,17 +1,17 @@
 @CHARSET "UTF-8";
 
 .logo {
-	height:120px;
+	height:150px;
 	width:100%;
-	line-height:120px;
-	background: linear-gradient(#50d5dd, #fff);
-	-ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50d5dd', endColorstr='#fff');
-	background: -moz-linear-gradient(top, #50d5dd, #fff); /* for firefox 3.6+ */
-	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#50d5dd), to(#fff));
-	filter:progid:DXImageTransform.microsoft.gradient(gradienttype=0,startColorStr=#50d5dd,endColorStr=#fff);
+	background:#99ccff;
+	background: linear-gradient(#99ccff, #fff);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99ccff', endColorstr='#fff');
+	background: -moz-linear-gradient(top, #99ccff, #fff); 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#99ccff), to(#fff));
+	filter:progid:DXImageTransform.microsoft.gradient(gradienttype=0,startColorStr=#99ccff,endColorStr=#fff);
 }
 .logocontent {
-	height:120px;
+	height:150px;
 	width:960px;
 	margin:auto;
 }

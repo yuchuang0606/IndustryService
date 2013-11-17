@@ -9,9 +9,9 @@
 		</li>
 		<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">CAD介绍</a>
 			<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-			<a href="./IntroduceHandler?configname=2dCAD">二维CAD</a>
-			<a href="./IntroduceHandler?configname=3dCAD">三维CAD</a>
-			<a href="./IntroduceHandler?configname=5CAM">五轴CAD</a>
+			<a href="./ConfigHandler?configname=2dCAD">二维CAD</a>
+			<a href="./ConfigHandler?configname=3dCAD">三维CAD</a>
+			<a href="./ConfigHandler?configname=5CAM">五轴CAD</a>
 			</div>
 		</li>
 		<li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">新闻公告</a>

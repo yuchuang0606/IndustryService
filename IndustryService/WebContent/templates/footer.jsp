@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="./css/footer.css" type="text/css" />
 <div class="foot">
-	<div class="blankrow" style="height:20px;width:100%;background-color:#F8F8FF;border-bottom:1px solid #F8F8FF">
+	<div class="blankrow" style="height:20px;width:100%;background-color:#fff;border-bottom:1px solid #F8F8FF">
 	</div>
 	<div class="footcontent">
 		<span style="font-size:13px;color:#3C3C3C;margin:0px 10px;">

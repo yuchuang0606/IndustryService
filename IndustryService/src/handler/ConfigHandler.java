@@ -15,7 +15,7 @@ import model.Configuration;
 /**
  * Servlet implementation class IntroduceHandler
  */
-@WebServlet("/IntroduceHandler")
+@WebServlet("/ConfigHandler")
 public class ConfigHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

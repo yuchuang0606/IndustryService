@@ -28,7 +28,8 @@
 	width:100%;
 	height:35px;
 	line-height:35px;
-	background-color:#C2FCF8;/*50d5dd*/
+	/*background:url(../image/title.jpg) no-repeat;*/
+	background-color:#C2FCF8;
 	border-bottom:1px solid #dddddd;
 }
 .more {float:right;width:40px;margin-right:10px;}
@@ -71,7 +72,13 @@
 /*在线服务*/
 .onlineservice {
 	width:100%;
-	height:145px;
+	height:235px;
+	background-color:#fff;
+}
+.friendlink
+{
+	width:100%;
+	height:140px;
 	background-color:#fff;
 }
 /*右侧主体*/
@@ -94,8 +101,12 @@
 	padding-left:10px;
 	backgroud-color:#fff;
 }
-.container {float:left;width:308px; height:240px;}
-.container img{width:308px; height:240px;border:0;vertical-align:top;}
+.container {
+	float:left;
+	width:312px;
+	height:240px;
+}
+.container img{width:312px; height:240px;border:0;vertical-align:top;}
 
 .newslist {
 	float:left;
