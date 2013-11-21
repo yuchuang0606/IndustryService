@@ -56,4 +56,30 @@ public class VideoControl {
 	{
 		return (List<Video>)(Object)MySessionFactory.getByColumn("Video", column, start, size);
 	}
+	public void addOpentime(int id)
+	{
+		Video n=getVideobyId(id);
+		n.setOpentimes(n.getOpentimes()+1);
+		updateVideo(n);
+	}
+	
+	public void addDownloadtime(int id)
+	{
+		Video n=getVideobyId(id);
+		n.setDownloadtimes(n.getDownloadtimes()+1);
+		updateVideo(n);
+	}
+	
+	public Video getVideobyId(int id)
+	{
+		List<Video> li=listVideo("videoid",String.valueOf(id));
+		if(li.size()>0) return li.get(0);
+		return null;
+	}
+	
+	public List<Video> SearchByColumn(String column,String value)
+	{
+		return (List<Video>)(Object)MySessionFactory.getBypropLike("Video", column, value);
+	}
+	
 }

@@ -3,6 +3,7 @@ package datacontrol;
 import java.util.List;
 
 import model.News;
+import model.Video;
 
 public class NewsControl {
 	
@@ -26,6 +27,11 @@ public class NewsControl {
 		return (List<News>)(Object)MySessionFactory.getByprop("News", prop, value);
 	}
 	
+	public List<News> SearchByColumn(String column,String value)
+	{
+		return (List<News>)(Object)MySessionFactory.getBypropLike("News", column, value);
+	}
+	
 	public int getNewsNumber()
 	{
 		return MySessionFactory.getItemNumber("News");
@@ -39,6 +45,21 @@ public class NewsControl {
 	public List<News> getListByColumn(int start,int size,String column)
 	{
 		return (List<News>)(Object)MySessionFactory.getByColumn("News", column, start, size);
+	}
+	
+	
+	public News getNewsbyId(int id)
+	{
+		List<News> li=listNews("newsid",String.valueOf(id));
+		if(li.size()>0) return li.get(0);
+		return null;
+	}
+	
+	public void addAccess(int id)
+	{
+		News n=getNewsbyId(id);
+		n.setAccesstime(n.getAccesstime()+1);
+		updateNews(n);
 	}
 	
 }

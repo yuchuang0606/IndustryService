@@ -6,6 +6,6 @@
 <id name="authorizationid">
 <generator class="native"/>
 </id>
-<property name="describe"/>
+<property name="sdescribe"/>
 </class>
 </hibernate-mapping>
