@@ -117,7 +117,7 @@ public  class  MySessionFactory {
 			session = factory.openSession();
 			//开启事务
 			session.beginTransaction();
-			Query q=session.createQuery("from "+cname);
+			Query q=session.createQuery("select count(u) from "+cname+" as u");
 			count = ((Number)q.uniqueResult()).intValue();  
 			
 			//提交事务

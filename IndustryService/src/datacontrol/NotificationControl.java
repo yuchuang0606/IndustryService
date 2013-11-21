@@ -2,7 +2,9 @@ package datacontrol;
 
 import java.util.List;
 
+import model.News;
 import model.Notification;
+import model.Video;
 
 public class NotificationControl {
 
@@ -39,6 +41,20 @@ public class NotificationControl {
 	public List<Notification> getListByColumn(int start,int size,String column)
 	{
 		return (List<Notification>)(Object)MySessionFactory.getByColumn("Notification", column, start, size);
+	}
+	
+	public Notification getNotificationbyId(int id)
+	{
+		List<Notification> li=listNotification("newsid",String.valueOf(id));
+		if(li.size()>0) return li.get(0);
+		return null;
+	}
+	
+	public void addAccess(int id)
+	{
+		Notification n=getNotificationbyId(id);
+		n.setAccesstime(n.getAccesstime()+1);
+		updateNotification(n);
 	}
 	
 }
