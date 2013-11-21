@@ -6,19 +6,9 @@ package model;
 
 public class Authorization {
 	private int authorizationid;
-	private String describe;
-	/**
-	 * @return the describe
-	 */
-	public String getDescribe() {
-		return describe;
-	}
-	/**
-	 * @param describe the describe to set
-	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
-	}
+	private String sdescribe;
+
+	
 	/**
 	 * @return the authorizationid
 	 */
@@ -30,5 +20,17 @@ public class Authorization {
 	 */
 	public void setAuthorizationid(int authorizationid) {
 		this.authorizationid = authorizationid;
+	}
+	/**
+	 * @return the sdescribe
+	 */
+	public String getSdescribe() {
+		return sdescribe;
+	}
+	/**
+	 * @param sdescribe the sdescribe to set
+	 */
+	public void setSdescribe(String sdescribe) {
+		this.sdescribe = sdescribe;
 	}
 }

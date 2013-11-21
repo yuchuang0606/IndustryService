@@ -8,13 +8,20 @@ import java.util.Date;
 
 public class Video {
 	private int videoid;
-	private String videoname;
+	private String title;
 	private Date createtime;
-	private String describe;
+	private String sdescribe;
 	private String link;
+	private String link2;
 	private int authorid;
 	private int ispass;
 	private int opentimes;
+	private int videotype;
+	private double videosize;
+	private int downloadtimes;
+	private String tag;
+	private String filename;
+	private String videopic;
 	/**
 	 * @return the videoid
 	 */
@@ -27,18 +34,7 @@ public class Video {
 	public void setVideoid(int videoid) {
 		this.videoid = videoid;
 	}
-	/**
-	 * @return the videoname
-	 */
-	public String getVideoname() {
-		return videoname;
-	}
-	/**
-	 * @param videoname the videoname to set
-	 */
-	public void setVideoname(String videoname) {
-		this.videoname = videoname;
-	}
+
 	/**
 	 * @return the createtime
 	 */
@@ -51,18 +47,7 @@ public class Video {
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
 	}
-	/**
-	 * @return the describe
-	 */
-	public String getDescribe() {
-		return describe;
-	}
-	/**
-	 * @param describe the describe to set
-	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
-	}
+
 	/**
 	 * @return the link
 	 */
@@ -110,5 +95,113 @@ public class Video {
 	 */
 	public void setOpentimes(int opentimes) {
 		this.opentimes = opentimes;
+	}
+	/**
+	 * @return the videotype
+	 */
+	public int getVideotype() {
+		return videotype;
+	}
+	/**
+	 * @param videotype the videotype to set
+	 */
+	public void setVideotype(int videotype) {
+		this.videotype = videotype;
+	}
+	/**
+	 * @return the link2
+	 */
+	public String getLink2() {
+		return link2;
+	}
+	/**
+	 * @param link2 the link2 to set
+	 */
+	public void setLink2(String link2) {
+		this.link2 = link2;
+	}
+	/**
+	 * @return the videosize
+	 */
+	public double getVideosize() {
+		return videosize;
+	}
+	/**
+	 * @param videosize the videosize to set
+	 */
+	public void setVideosize(double videosize) {
+		this.videosize = videosize;
+	}
+	/**
+	 * @return the downloadtimes
+	 */
+	public int getDownloadtimes() {
+		return downloadtimes;
+	}
+	/**
+	 * @param downloadtimes the downloadtimes to set
+	 */
+	public void setDownloadtimes(int downloadtimes) {
+		this.downloadtimes = downloadtimes;
+	}
+	/**
+	 * @return the tag
+	 */
+	public String getTag() {
+		return tag;
+	}
+	/**
+	 * @param tag the tag to set
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	/**
+	 * @return the filename
+	 */
+	public String getFilename() {
+		return filename;
+	}
+	/**
+	 * @param filename the filename to set
+	 */
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the videopic
+	 */
+	public String getVideopic() {
+		return videopic;
+	}
+	/**
+	 * @param videopic the videopic to set
+	 */
+	public void setVideopic(String videopic) {
+		this.videopic = videopic;
+	}
+	/**
+	 * @return the sdescribe
+	 */
+	public String getSdescribe() {
+		return sdescribe;
+	}
+	/**
+	 * @param sdescribe the sdescribe to set
+	 */
+	public void setSdescribe(String sdescribe) {
+		this.sdescribe = sdescribe;
 	}
 }
