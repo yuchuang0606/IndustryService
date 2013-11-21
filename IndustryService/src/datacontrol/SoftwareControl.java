@@ -6,6 +6,7 @@ package datacontrol;
 
 import java.util.List;
 
+import model.News;
 import model.Software;
 
 public class SoftwareControl {
@@ -40,4 +41,19 @@ public class SoftwareControl {
 	{
 		return (List<Software>)(Object)MySessionFactory.getByColumn("Software", column, start, size);
 	}
+	
+	public void addDownloadtime(int id)
+	{
+		Software n=getSoftwarebyId(id);
+		n.setDownloadtimes(n.getDownloadtimes()+1);
+		updateSoftware(n);
+	}
+	
+	public Software getSoftwarebyId(int id)
+	{
+		List<Software> li=listSoftware("softwareid",String.valueOf(id));
+		if(li.size()>0) return li.get(0);
+		return null;
+	}
+	
 }

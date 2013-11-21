@@ -21,6 +21,7 @@ public class Software {
 	private int viewtimes;
 	private double size;
 	private String title;
+	private int softwaretype;
 	/**
 	 * @return the softwareid
 	 */
@@ -188,6 +189,18 @@ public class Software {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	/**
+	 * @return the softwaretype
+	 */
+	public int getSoftwaretype() {
+		return softwaretype;
+	}
+	/**
+	 * @param softwaretype the softwaretype to set
+	 */
+	public void setSoftwaretype(int softwaretype) {
+		this.softwaretype = softwaretype;
 	}
 
 }
