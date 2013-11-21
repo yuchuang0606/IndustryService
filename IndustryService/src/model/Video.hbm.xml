@@ -10,8 +10,14 @@
 <property name="createtime"/>
 <property name="describe"/>
 <property name="link"/>
+<property name="link2"/>
 <property name="authorid"/>
 <property name="ispass"/>
 <property name="opentimes"/>
+<property name="videotype"/>
+<property name="videosize"/>
+<property name="downloadtimes"/>
+<property name="tag"/>
+<property name="filename"/>
 </class>
 </hibernate-mapping>
