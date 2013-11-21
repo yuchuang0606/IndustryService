@@ -21,5 +21,14 @@
 <property name="downloadfilenumber"/>
 <property name="credit"/>
 <property name="coin"/>
+<property name="gender"/>
+<property name="birthdate"/>
+<property name="company"/>
+<property name="industry"/>
+<property name="department"/>
+<property name="jobtitle"/>
+<property name="postcode"/>
+<property name="mailaddress"/>
+<property name="introduction"/>
 </class>
 </hibernate-mapping>

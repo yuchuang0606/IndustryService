@@ -117,7 +117,7 @@ public  class  MySessionFactory {
 			session = factory.openSession();
 			//开启事务
 			session.beginTransaction();
-			Query q=session.createQuery("from "+cname);
+			Query q=session.createQuery("select count(u) from "+cname+" as u");
 			count = ((Number)q.uniqueResult()).intValue();  
 			
 			//提交事务
@@ -147,6 +147,32 @@ public  class  MySessionFactory {
 			//开启事务
 			session.beginTransaction();
 			result=session.createQuery("from "+cname+" where "+prop+"= :value").setString("value", value).list();
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return result;
+			}
+	}
+	
+	public static List<Object> getBypropLike(String cname,String prop,String value)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		List<Object> result=null;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			result=session.createQuery("from "+cname+" where "+prop+" like ?").setString(0, '%'+value+'%').list();
 			//提交事务
 			session.getTransaction().commit();
 			} catch(HibernateException e) {
