@@ -1,6 +1,7 @@
 package handler;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,20 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datacontrol.ConfigurationControl;
-import model.Configuration;
+import model.News;
+import model.Notification;
+import datacontrol.NewsControl;
+import datacontrol.NotificationControl;
 
 /**
- * Servlet implementation class IntroduceHandler
+ * Servlet implementation class IndexHandler
  */
-@WebServlet("/ConfigHandler")
-public class ConfigHandler extends HttpServlet {
+@WebServlet("/IndexHandler")
+public class IndexHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConfigHandler() {
+    public IndexHandler() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,6 +34,7 @@ public class ConfigHandler extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		process(request,response);
 	}
 
@@ -38,34 +42,23 @@ public class ConfigHandler extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		process(request,response);
 	}
 	
 	private void process(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
-			String configname = request.getParameter("configname");
-			ConfigurationControl cc = new ConfigurationControl();
-			List<Configuration> configList = cc.listConfiguration("config_name", configname);
-			if (null == configList)
-				response.sendRedirect("./error.jsp");
-			String condition = configList.get(0).getCondition();
-			if ("2dCAD".equals(configname))
-				configname = "∂˛Œ¨CADΩÈ…‹";
-			else if ("3dCAD".equals(configname))
-				configname = "»˝Œ¨CADΩÈ…‹";
-			else if ("5CAM".equals(configname))
-				configname = "ŒÂ÷·CAMΩÈ…‹";
-			request.setAttribute("configname", configname);
-			request.setAttribute("condition", condition);
-			request.getRequestDispatcher("./introduce.jsp").forward(request, response);
+			NewsControl nc = new NewsControl();
+			NotificationControl nfc = new NotificationControl();
+			int rp = 5;
+			List<News> newsList = nc.getListByColumn(0, rp);
+			List<Notification> noticeList = nfc.getListByColumn(0, rp);
+			request.setAttribute("newsList", newsList);
+			request.setAttribute("noticeList", noticeList);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} catch (Exception e) {
-			try {
-				response.sendRedirect("./error.jsp");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			
 		}
 	}
 

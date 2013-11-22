@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,model.*,java.text.SimpleDateFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,25 @@
 <link rel="stylesheet" href="./css/newslist.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
-<body style="padding:0px;margin:0px;font-family:Verdana, Geneva, sans-serif;background-color:#fff;">
+<% 
+	String type = (String)request.getAttribute("type");
+	Integer culPage = (Integer)request.getAttribute("culPage");
+	Integer totalPage = (Integer)request.getAttribute("totalPage");
+	String newstype = "";
+	List<News> newsList = null;
+	List<Notification> noticeList = null;
+	if ("news".equals(type))
+	{
+		newstype = "新闻列表";
+		newsList = (List<News>)request.getAttribute("newsList");
+	}
+	if ("notice".equals(type))
+	{
+		newstype = "通知列表";
+		noticeList = (List<Notification>)request.getAttribute("noticeList");
+	}
+%>
+<body>
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
@@ -17,78 +36,45 @@
 		<%@ include file="/templates/leftmenu.jsp"%>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#C2FCF8">
-	        	<span style="font-size:20px;"><strong>新闻列表</strong></span>
+	        	<span style="font-size:20px;"><strong><%=newstype %></strong></span>
 	        </div>
 	        <div style="margin-top:10px;padding:0 10px;min-height:370px;">
 	            <table class="newstable" wclassth="720px" border="0" cellpadding="0" cellspacing="0" align="left">
+	            <%
+	            if ("news".equals(type)) {
+	            	for (News news:newsList) {
+	            %>
 	            	<tr>
 	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
+                        	<span><a href="newsinfo.jsp?type=news&newsid=<%=news.getNewsid() %>" title="<%=news.getTitle() %>" target="_blank"><%=news.getTitle() %></a></span>
                         </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
+	            		<td class="righttd" align="right">[<%=new SimpleDateFormat("yyyy-MM-dd").format(news.getModifytime()) %>]</td>
 	            	</tr>
+	            <% } 
+	            }
+	            else if ("notice".equals(type)) {
+	            	for (Notification notice:noticeList) {
+	            %>
 	            	<tr>
 	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
+                        	<span><a href="newsinfo.jsp?type=notice&newsid=<%=notice.getNewsid() %>" title="<%=notice.getTitle() %>" target="_blank"><%=notice.getTitle() %></a></span>
                         </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
+	            		<td class="righttd" align="right">[<%=new SimpleDateFormat("yyyy-MM-dd").format(notice.getModifytime()) %>]</td>
 	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
-	            	<tr>
-	            		<td class="lefttd" align="left">
-                        	<span>[工业资讯]&nbsp;<a href="#" title="祝贺大连市工业设计服务平台上线" target="_blank">祝贺大连市工业设计服务平台上线</a></span>
-                        </td>
-	            		<td class="righttd" align="right">[2013-11-16]</td>
-	            	</tr>
+	            <% } 
+	            }%>
 				</table>
 	        </div>
 	        <div class="paging">
-				<span>第1页/共1页</span>
-				<span><a href="#">[首页]</a></span>
-				<span><a href="#">[上一页]</a></span>
-				<span><a href="#">[下一页]</a></span>
-				<span><a href="#">[尾页]</a></span>
+				<span>第<%=culPage %>页/共<%=totalPage %>页</span>
+				<%if (culPage != 1) {%>
+				<span><a href="./NewsHandler?type=<%=type%>&page=1&rp=10">[首页]</a></span>
+				<span><a href="./NewsHandler?type=<%=type%>&page=<%=culPage-1%>&rp=10">[上一页]</a></span>
+				<%}%>
+				<%if (culPage != totalPage) {%>
+				<span><a href="./NewsHandler?type=<%=type%>&page=<%=culPage+1%>&rp=10">[下一页]</a></span>
+				<span><a href="./NewsHandler?type=<%=type%>&page=<%=totalPage%>&rp=10">[尾页]</a></span>
+				<%} %>
 			</div>
 		</div>
 	</div>

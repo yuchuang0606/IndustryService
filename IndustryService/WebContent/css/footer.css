@@ -1,12 +1,20 @@
 @CHARSET "UTF-8";
 .foot {
 	width:100%;
-	height:110px;
+	height:80px;
 	position:relative;
+	margin-top:20px;
 	margin-bottom:0px;
-	margin-top: -110px; /* footer高度的负值 */
+	/*margin-top: -110px;  footer高度的负值 */
 	clear:both;
 	background-color:#F5F5F5;
+}
+.footmain {
+	width:100%;
+	border-top:1px solid #dddddd;
+	box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 0 9px 1px -moz-rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0 9px 1px rgba(0,0,0,.2);
 }
 .footcontent {
 	width:960px;

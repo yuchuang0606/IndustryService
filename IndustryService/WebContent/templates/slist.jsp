@@ -1,55 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,model.*,datacontrol.*,java.text.SimpleDateFormat" %>
+<%
+	
+%>
 <link rel="stylesheet" href="./css/slist.css" type="text/css" />
 <div id="main" class="main">
 	<%@ include file="/templates/leftmenu.jsp"%>
-	<!--
-	<div class="slist_l">
-		<div class="divtitle">
-			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">热门下载</span>
-		</div>
-		<div class="blockdiv">
-			<ul class="texthidden">
-				<li>
-					<em class="num1"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台">[平台公告] 祝贺诸城市工业设计服务平台</a>
-				</li>
-				<li>
-					<em class="num2"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<em class="num3"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<em class="num4"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num5"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num6"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num7"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num8"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num9"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	 -->
 	<div id="content" class="content">
 		<div class="divtitle">
 			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件列表</span>
@@ -62,6 +19,7 @@
 			<span><a href="#">实体设计</a></span>
 			<span><a href="#">图文档</a></span>
 		</div>
+		<!--  
 		<div class="searchsoft">
 			<form>
 				<span>产品搜索：</span>
@@ -74,6 +32,7 @@
 				<span class="opspan"><input name="option" type="radio" value="author" />作者</span>
 			</form>
 		</div>
+		-->
 		<div class="sortoption">
 			<span>排序方式：</span>
 			<span><a href="#">更新时间</a></span>
@@ -284,4 +243,51 @@
 		document.getElementById("main").style.height=document.getElementById("content").offsetHeight+"px";
 	</script>
 	</div>
+	<!--
+	<div class="slist_l">
+		<div class="divtitle">
+			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">热门下载</span>
+		</div>
+		<div class="blockdiv">
+			<ul class="texthidden">
+				<li>
+					<em class="num1"></em>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台">[平台公告] 祝贺诸城市工业设计服务平台</a>
+				</li>
+				<li>
+					<em class="num2"></em>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<em class="num3"></em>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<em class="num4"></em>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<span class="num5"></span>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<span class="num6"></span>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<span class="num7"></span>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<span class="num8"></span>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+				<li>
+					<span class="num9"></span>
+					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	 -->
 </div>

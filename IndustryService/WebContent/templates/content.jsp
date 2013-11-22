@@ -1,16 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,model.*,datacontrol.*" %>
 <link rel="stylesheet" href="./css/content.css" type="text/css"/>
 <link rel="stylesheet" href="./css/loginform.css" type="text/css" />
 <script type="text/javascript" src="./js/SlideTrans.js"></script>
-<div class="content">
+<%
+	NewsControl nc = new NewsControl();
+	NotificationControl nfc = new NotificationControl();
+	int rp = 6;
+	List<News> newsList = nc.getListByColumn(0, rp);
+	List<Notification> noticeList = nfc.getListByColumn(0, rp);
+%>
+<div id="content" class="content">
 	<div class="mainleft">
 		<div class="memberlogin">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">用户登录</span>
+				<span style="font-size:16px;color:#3c3c3c;font-weight:bold;margin:0px 10px;">会员登录</span>
 			</div>
 			<div class="loginform">
-				<form action="/people/login?" method="post">
+				<form action="#" method="post">
 				<div class="row">
 					<label>用户名：</label>
 					<input type="text" name="username" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}"/><br>
@@ -20,39 +28,26 @@
 					<input type="text" name="pwd" size="20" value="请输入密码" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.type='password';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.type='text',this.style.color='gray'}"/>
 				</div>
 				<div class="row">
-					<input type="submit" value="登  录" id="submit" style="font-weight:bold"/>
-					<a href="/people/forgetpwd" >忘记密码？</a>
+					<input type="submit" value="登  录" id="submit" style="font-weight:bold;margin-left:100px;"/>
+					<input type="submit" value="注  册 " id="submit" style="font-weight:bold;"/>
 				</div>
 				</form>
 			</div>
 		</div>
 		<div class="notice">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">公告</span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">通知</span>
 				<div class="more">
-					<a href="newslist.jsp">更多》</a>
+					<a href="./NewsHandler?type=notice&page=1&rp=10">更多》</a>
 				</div>
 			</div>
 			<div class="blockdiv">
 				<ul class="texthidden">
+				<% for (Notification notice:noticeList) {%>
 					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台</a>
+						<a href="./newsinfo.jsp?type=notice&newsid=<%=notice.getNewsid() %>" title="<%=notice.getTitle()%>"><%=notice.getTitle()%></a>
 					</li>
-					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-					</li>
-					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-					</li>
-					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-					</li>
-					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-					</li>
-					<li>
-						<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-					</li>
+				<%} %>
 				</ul>
 			</div>
 		</div>
@@ -96,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="mainright">
+	<div id="mainright" class="mainright">
 		<div class="news">
 			<div class="container" id="idContainer">
 				<table id="idSlider" border="0"  cellspacing="0">
@@ -114,57 +109,77 @@
 				<div class="divtitle">
 					<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">新闻</span>
 					<div class="more">
-						<a href="newslist.jsp">更多》</a>
+						<a href="./NewsHandler?type=news&page=1&rp=10">更多》</a>
 					</div>
 				</div>
 				<div class="blockdiv">
 					<ul class="texthidden">
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台">[平台公告] 祝贺诸城市工业设计服务平台</a>
-						</li>
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-						</li>
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-						</li>
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-						</li>
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-						</li>
-						<li>
-							<a href="./newsinfo.jsp" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-						</li>
+						<% for (News news:newsList) {%>
+							<li>
+								<a href="./newsinfo.jsp?type=news&newsid=<%=news.getNewsid() %>" title="<%=news.getTitle()%>"><%=news.getTitle()%></a>
+							</li>
+						<%} %>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="CADService">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">CAD介绍</span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">套餐购买</span>
 			</div>
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
-					<div class="serviceimage">	
+					<div class="serviceimage">
+						<div style="float:left">
 						<img src="./image/cad2d.png" WIDTH="80" HEIGHT="80" ALT=""> 
+						</div>
+						<div style="float:left;padding:5px 10px;text-align:left;">
+	                        <div style="height:30px;color: blue;font-size:14px;">
+	                        	<span style="color:#cc0000;">&nbsp;360</span>元/年<br/>
+	                        </div>
+	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
+		                        <a href="#">
+		                        <img src="./image/djxz.jpg"/></a>
+		                    </div>
+                    	</div>
 					</div>	
 					<div class="imageintroduction">
 						<a href="./ConfigHandler?configname=2dCAD" title="CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。">CAXA电子图板是具有完全自主知识产权、拥有30万正版用户、经过大规模应用验证、稳定高效性能优越的二维CAD软件。</a>
 					</div> 
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
-					<div class="serviceimage">	
+					<div class="serviceimage">
+						<div style="float:left">
 						<img src="./image/cad3d.png" WIDTH="80" HEIGHT="80" ALT=""> 
+						</div>
+						<div style="float:left;padding:5px 10px;text-align:left;">
+	                        <div style="height:30px;color: blue;font-size:14px;">
+	                        	<span style="color:#cc0000;">&nbsp;1800</span>元/年<br/>
+	                        </div>
+	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
+		                        <a href="#">
+		                        <img src="./image/djxz.jpg"/></a>
+		                    </div>
+                    	</div>
 					</div>	
 					<div class="imageintroduction">
 						<a href="./ConfigHandler?configname=3dCAD" title="CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。">CAXA实体设计是一套 既支持全参数化的工程建模方式，又具备独特的创新模式，并且无缝集成了专业二维工程图模块的 功能全面的CAD软件。</a>
 					</div>
 				</div>
 				<div class="servicediv">
-					<div class="serviceimage">	
+					<div class="serviceimage">
+						<div style="float:left">
 						<img src="./image/cam5.jpg" WIDTH="80" HEIGHT="80" ALT=""> 
+						</div>
+						<div style="float:left;padding:5px 10px;text-align:left;">
+	                        <div style="height:30px;color: blue;font-size:14px;">
+	                        	<span style="color:#cc0000;">&nbsp;2000</span>元/年<br/>
+	                        </div>
+	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
+		                        <a href="#">
+		                        <img src="./image/djxz.jpg"/></a>
+		                    </div>
+                    	</div>
 					</div>	
 					<div class="imageintroduction">
 						<a href="./ConfigHandler?configname=5CAM" title="CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。">CAXA制造工程师是具有卓越工艺性的2-5轴数控编程CAM软件，它能为数控加工提供从造型、设计到加工代码生成、加工仿真、代码校验以及实体仿真等全面数控加工解决方案，具有支持多CPU硬件平台、多任务轨迹计算及管理、多加工参数选择、多轴加工功能、多刀具类型支持、多轴实体仿真等六大先进综合性能。</a>
@@ -174,7 +189,7 @@
 		</div>
 		<div class="software">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件下载</span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件服务</span>
 				<div class="more">
 					<a href="softlist.jsp">更多》</a>
 				</div>
@@ -307,3 +322,6 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	document.getElementById("content").style.height=document.getElementById("mainright").offsetHeight+"px";
+</script>

@@ -1,7 +1,8 @@
 @CHARSET "UTF-8";
 .loginform {
     width:100%;
-    margin:10px auto;
+    margin:0px auto;
+    padding-top:10px;
     height:200px;
     display:block;
 }
@@ -33,14 +34,21 @@
     font-size: 14px;
     color: #333;
 }
-#submit {
-    margin:0px 0 0 100px;
+#submit,.register {
+    margin:0px 0 0 25px;
     font-size: 14px;
     cursor: pointer;
-    width: 100px;
-    height: 36px;
-    color: #EBFFFF;
-    background-color:#ea5e00;
+    width: 76px;
+    height: 32px;
+    font-weight:bold;
+    color: #fff;
+    text-align:center;
+ /*   background-color:#0066cc;*/
+ 	background: url(../image/nav_bg.png) repeat-x;
+ 	box-shadow: 0 0px 9px 1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 0px 9px 1px -moz-rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 0px 9px 1px rgba(0,0,0,.2);
+	zoom: 100%;
 }
 .loginform form a{
     margin-left:30px;

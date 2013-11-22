@@ -3,7 +3,7 @@
 	width:960px;
 	height:auto;
 	margin:5px auto;
-	padding-bottom: 80px;
+	background:#fff;
 }
 .slist_l {
 	float:left;
@@ -14,7 +14,7 @@
 }
 .content {
 	float:left;
-	width:717px;
+	width:737px;
 	height:auto;
 	border-top:1px solid #e5e5e5;
 	border-left:1px solid #e5e5e5;
@@ -128,7 +128,7 @@
 	border-bottom:1px solid #eee;
 }
 .softimage {height:60px;width:60px;float:left;padding:10px 5px 10px 10px;;}
-.softdetail {height:60px;width:530px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
+.softdetail {height:60px;width:560px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
 .softdetail span,.softoption span{font-size:14px;}
 .softhandle {height:60px;width:60px;float:left;padding:10px 5px;}
 .softhandle span{height:30px;margin-top:10px;line-height:30px;}
