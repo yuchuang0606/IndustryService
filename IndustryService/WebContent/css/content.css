@@ -159,7 +159,7 @@
 .softinfo label {font-size:13px;color:#3c3c3c;}
 .softinfo a {font-size:13px;color:blue;text-decoration:none;}
 .softinfo a:link {color: blue}
-.softinfo a:hover {color:#ea5e00;text-decoration:none;}
+.softinfo a:hover {text-decoration:none;}
 
 .video {height:235px;width:100%;margin-top:0px;}
 .videoimage {height:120px;padding-left:20px;}
@@ -170,6 +170,6 @@
 .videoinfo img {width:12px;height:12px;}
 .videoinfo a {font-size:13px;color:blue;text-decoration:none;}
 .videoinfo a:link {color: blue}
-.videoinfo a:hover {color:#ea5e00;text-decoration:none;}
+.videoinfo a:hover {text-decoration:none;}
 
 

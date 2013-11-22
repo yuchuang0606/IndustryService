@@ -1,11 +1,14 @@
 package handler;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import datacontrol.SoftwareControl;
 import datacontrol.VideoControl;
 import model.Software;
@@ -44,8 +47,45 @@ public class ResourceHandler extends HttpServlet {
 	
 	private void process(HttpServletRequest request, HttpServletResponse response)
 	{
-		SoftwareControl sc = new SoftwareControl();
-		
+		try {
+			String type = request.getParameter("type");
+			String orderby = request.getParameter("orderby");
+			int page = Integer.parseInt(request.getParameter("page"));
+			int rp = Integer.parseInt(request.getParameter("rp"));
+			
+			SoftwareControl sc = new SoftwareControl();
+			VideoControl vc = new VideoControl();
+			int count = 0;
+			if ("software".equals(type))
+				count = sc.getSoftwareNumber();
+			if ("video".equals(type))
+				count = vc.getVideoNumber();
+			int totalPage= count/rp;
+			if (totalPage ==0)
+				totalPage = 1;
+			else if (count%rp != 0)
+				totalPage = totalPage + 1;
+			int start = (page-1)*rp;
+			List<Software> softList = null;
+			List<Video> videoList = null;
+			if ("software".equals(type))
+			{
+				softList = sc.getListByColumn(start, rp, orderby);
+				request.setAttribute("softList", softList);
+			}
+			else if ("video".equals(type))
+			{
+				videoList = vc.getListByColumn(start, rp, orderby);
+				request.setAttribute("videoList", videoList);
+			}
+			request.setAttribute("type", type);
+			request.setAttribute("orderby", orderby);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("culPage", page);
+			request.getRequestDispatcher("softlist.jsp").forward(request, response);
+		} catch (Exception e) {
+			
+		}
 	}
 
 }

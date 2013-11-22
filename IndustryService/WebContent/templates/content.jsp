@@ -191,7 +191,7 @@
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件服务</span>
 				<div class="more">
-					<a href="softlist.jsp">更多》</a>
+					<a href="ResourceHandler?type=software&orderby=createtime&page=1&rp=10">更多》</a>
 				</div>
 			</div>
 			<div class="softrows">

@@ -77,7 +77,6 @@ public class NewsHandler extends HttpServlet {
 				request.setAttribute("noticeList", noticeList);
 			}
 			request.setAttribute("type", type);
-			request.setAttribute("newsList", newsList);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("culPage", page);
 			request.getRequestDispatcher("newslist.jsp").forward(request, response);
