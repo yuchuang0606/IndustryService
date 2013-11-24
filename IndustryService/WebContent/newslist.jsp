@@ -35,8 +35,8 @@
 	<div id="main" class="main">
 		<%@ include file="/templates/leftmenu.jsp"%>
 		<div id="content" class="content">
-			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#C2FCF8">
-	        	<span style="font-size:20px;"><strong><%=newstype %></strong></span>
+			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
+	        	<span style="font-size:16px;"><strong><%=newstype %></strong></span>
 	        </div>
 	        <div style="margin-top:10px;padding:0 10px;min-height:370px;">
 	            <table class="newstable" wclassth="720px" border="0" cellpadding="0" cellspacing="0" align="left">
@@ -68,12 +68,12 @@
 	        <div class="paging">
 				<span>第<%=culPage %>页/共<%=totalPage %>页</span>
 				<%if (culPage != 1) {%>
-				<span><a href="./NewsHandler?type=<%=type%>&page=1&rp=10">[首页]</a></span>
-				<span><a href="./NewsHandler?type=<%=type%>&page=<%=culPage-1%>&rp=10">[上一页]</a></span>
+				<span><a href="./news?type=<%=type%>&page=1&rp=10">[首页]</a></span>
+				<span><a href="./news?type=<%=type%>&page=<%=culPage-1%>&rp=10">[上一页]</a></span>
 				<%}%>
 				<%if (culPage != totalPage) {%>
-				<span><a href="./NewsHandler?type=<%=type%>&page=<%=culPage+1%>&rp=10">[下一页]</a></span>
-				<span><a href="./NewsHandler?type=<%=type%>&page=<%=totalPage%>&rp=10">[尾页]</a></span>
+				<span><a href="./news?type=<%=type%>&page=<%=culPage+1%>&rp=10">[下一页]</a></span>
+				<span><a href="./news?type=<%=type%>&page=<%=totalPage%>&rp=10">[尾页]</a></span>
 				<%} %>
 			</div>
 		</div>

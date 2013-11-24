@@ -18,7 +18,7 @@
 	height:35px;
 	line-height:35px;
 	text-align:center;
-	background-color:#C2FCF8;/*50d5dd*/
+	background-color:#50d5dd;/*50d5dd*/
 	border-bottom:1px solid #dddddd;
 }
 .sidebar ul{
@@ -42,7 +42,7 @@
 	font-size: 14px;
 	font-weight:bold;
 	position: relative;
-	background-color:#C2FCF8;/*EBFFFF*/
+	background-color:#50d5dd;/*EBFFFF*/
 }
 .li_inner a{
 	display:none;

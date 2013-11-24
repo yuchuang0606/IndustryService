@@ -17,7 +17,7 @@ import model.Video;
 /**
  * Servlet implementation class ResourceHandler
  */
-@WebServlet("/ResourceHandler")
+@WebServlet("/resource")
 public class ResourceHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -82,7 +82,7 @@ public class ResourceHandler extends HttpServlet {
 			request.setAttribute("orderby", orderby);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("culPage", page);
-			request.getRequestDispatcher("softlist.jsp").forward(request, response);
+			request.getRequestDispatcher("reslist.jsp").forward(request, response);
 		} catch (Exception e) {
 			
 		}

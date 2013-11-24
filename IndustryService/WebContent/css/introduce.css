@@ -4,12 +4,13 @@
 	height:auto;
 	margin:5px auto;
 	background:#fff;
+	min-height:500px;
 }
 .content {
 	width:737px;
 	height:auto;
-	min-height:500px;
 	float:left;
+	min-height:500px;
 	text-align:left;
 	border-top:1px solid #e5e5e5;
 	border-left:1px solid #e5e5e5;

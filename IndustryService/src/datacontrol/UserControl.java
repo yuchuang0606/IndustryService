@@ -70,6 +70,7 @@ public class UserControl {
 	//返回值为 “true”表示登录成功
 	public String verifyUser(String name,String password)
 	{
+		System.out.println(MD5(password));
 		List<User> li= (List<User>)(Object)MySessionFactory.executeQuery("From User u where u.username='"+name+"'");
 		if(li.size() == 0) return "不存在该用户";
 		else if(li.get(0).getPassword().equals(MD5(password)))
@@ -112,7 +113,7 @@ public class UserControl {
 	}
 	//MD5加密函数
 	public final static String MD5(String s) {
-        char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};       
+        char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};       
         try {
             byte[] btInput = s.getBytes();
             // 获得MD5摘要算法的 MessageDigest 对象

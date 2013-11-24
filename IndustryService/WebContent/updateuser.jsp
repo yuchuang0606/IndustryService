@@ -12,7 +12,7 @@
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
-	<%@ include file="/templates/user.jsp" %>
+	<%@ include file="/templates/update.jsp" %>
 	<%@ include file="/templates/footer.jsp" %>
 </body>
 </html>

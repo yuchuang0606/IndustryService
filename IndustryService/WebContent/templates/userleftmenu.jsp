@@ -14,40 +14,43 @@
 <div id="sidebar" class="sidebar" style="top:0px;">
 	<ul>
 		<li class="li_out">
-			<a href="./index.jsp">首页</a>
+			<a href="#">我的账户</a>
 		</li>
 		<li class="li_out">
-			<a href="#">信息中心</a>
+			<a href="#">账户信息</a>
 		</li>
 		<li class="li_inner">
-			<a href="#" >新闻</a>
+			<a href="#" >个人信息</a>
 		</li>
 		<li class="li_inner">
-			<a href="#" >公告</a>
-		</li>
-		<li class="li_out">
-			<a href="#">CAD介绍</a>
+			<a href="#" >在线CAD服务卡</a>
 		</li>
 		<li class="li_inner">
-			<a href="./config?configname=2dCAD" >二维CAD</a>
+			<a href="#" >授权证书</a>
+		</li>
+		<li class="li_out">
+			<a href="#">订单管理</a>
 		</li>
 		<li class="li_inner">
-			<a href="./config?configname=3dCAD" >三维CAD</a>
+			<a href="#" >订单管理</a>
+		</li>
+		<li class="li_out">
+			<a href="#">资源管理</a>
 		</li>
 		<li class="li_inner">
-			<a href="./config?configname=5CAM" >五轴CAM</a>
+			<a href="#" >上传资源</a>
 		</li>
-		<li class="li_out">
-			<a href="./softlist.jsp">软件下载</a>
+		<li class="li_inner">
+			<a href="#" >我的上传</a>
 		</li>
-		<li class="li_out">
-			<a href="">视频下载</a>
+		<li class="li_inner">
+			<a href="#" >我的下载</a>
+		</li> 
+		<li class="li_inner">
+			<a href="#" >我的收藏</a>
 		</li>
-		<li class="li_out">
-			<a href="">服务流程</a>
-		</li>
-		<li class="li_out">
-			<a href="">联系我们</a>
+		<li class="li_inner">
+			<a href="#" >我的报名</a>
 		</li>
 	</ul>
 </div>

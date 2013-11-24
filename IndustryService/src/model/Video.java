@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Video {
 	private int videoid;
-	private String videoname;
+	private String title;
 	private Date createtime;
 	private String describe;
 	private String link;
@@ -18,6 +18,10 @@ public class Video {
 	private int opentimes;
 	private int videotype;
 	private double videosize;
+	private int downloadtimes;
+	private String tag;
+	private String filename;
+	private String videopic;
 	/**
 	 * @return the videoid
 	 */
@@ -30,18 +34,7 @@ public class Video {
 	public void setVideoid(int videoid) {
 		this.videoid = videoid;
 	}
-	/**
-	 * @return the videoname
-	 */
-	public String getVideoname() {
-		return videoname;
-	}
-	/**
-	 * @param videoname the videoname to set
-	 */
-	public void setVideoname(String videoname) {
-		this.videoname = videoname;
-	}
+
 	/**
 	 * @return the createtime
 	 */
@@ -149,5 +142,65 @@ public class Video {
 	 */
 	public void setVideosize(double videosize) {
 		this.videosize = videosize;
+	}
+	/**
+	 * @return the downloadtimes
+	 */
+	public int getDownloadtimes() {
+		return downloadtimes;
+	}
+	/**
+	 * @param downloadtimes the downloadtimes to set
+	 */
+	public void setDownloadtimes(int downloadtimes) {
+		this.downloadtimes = downloadtimes;
+	}
+	/**
+	 * @return the tag
+	 */
+	public String getTag() {
+		return tag;
+	}
+	/**
+	 * @param tag the tag to set
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	/**
+	 * @return the filename
+	 */
+	public String getFilename() {
+		return filename;
+	}
+	/**
+	 * @param filename the filename to set
+	 */
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the videopic
+	 */
+	public String getVideopic() {
+		return videopic;
+	}
+	/**
+	 * @param videopic the videopic to set
+	 */
+	public void setVideopic(String videopic) {
+		this.videopic = videopic;
 	}
 }

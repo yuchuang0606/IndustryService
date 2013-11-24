@@ -86,7 +86,6 @@
 	width:636px;
 	float:left;
 	background-color:#fff;
-	border-left: 1px solid #eee;
 	border-right: 1px solid #eee;
     border-top: 1px solid #eee;
     box-shadow: 0 -3px 9px 1px rgba(0,0,0,.2);
@@ -134,7 +133,7 @@
 	float:left;height:190px;width:191px;padding:10px 10px 0 10px;
 }
 .serviceimage {height:80px;width:100%;padding-left:10px;}
-.imageintroduction {height:96px;padding-top:10px;overflow:hidden;}
+.imageintroduction {height:54px;padding-top:10px;overflow:hidden;}
 .imageintroduction a {
 	font-size:13px;
 	color:#3c3c3c;
@@ -155,7 +154,7 @@
 .softimage {float:left;height:40px;width:40px;padding:25px 10px;}
 .softimage img{width:40px;height:40px;}
 .softinfo {float:left;height:70px;width:120px;text-align:left;padding:10px 0px;overflow:hidden;}
-.softname {height:43px;overflow:hidden;}
+.softname {height:auto;max-height:56px;overflow:hidden;}
 .softinfo label {font-size:13px;color:#3c3c3c;}
 .softinfo a {font-size:13px;color:blue;text-decoration:none;}
 .softinfo a:link {color: blue}
@@ -165,7 +164,7 @@
 .videoimage {height:120px;padding-left:20px;}
 .videoimage img {width:150px;height:100px;}
 .videoinfo {height:70px;padding-left:20px;overflow:hidden;}
-.videoname {height:40px;overflow:hidden;}
+.videoname {height:auto;max-height:38px;overflow:hidden;}
 .video label {font-size:13px;color:#3c3c3c;}
 .videoinfo img {width:12px;height:12px;}
 .videoinfo a {font-size:13px;color:blue;text-decoration:none;}

@@ -25,14 +25,14 @@
 <div id="main" class="main">
 	<%@ include file="/templates/leftmenu.jsp"%>
 	<div id="content" class="content">
-		<div class="divtitle">
+		<div class="divtitle" style="background-color:#f5f5f5;">
 			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;"><%=restype %></span>
 		</div>
 		<div style="padding:0 5px;">
 		<div class="softtype">
 			<span>产品类型：</span>
 			<span style="background-color:#39F;color:#fff"><a href="#">全部</a></span>
-			<span><a href="#">电子图版</a></span>
+			<span><a href="#">电子图板</a></span>
 			<span><a href="#">实体设计</a></span>
 			<span><a href="#">图文档</a></span>
 		</div>
@@ -52,9 +52,24 @@
 		-->
 		<div class="sortoption">
 			<span>排序方式：</span>
-			<span><a href="#">更新时间</a></span>
-			<span><a href="#">下载次数</a></span>
-			<span><a href="#">浏览次数</a></span>
+			<span>
+			<%if ("createtime".equals(orderby)) {%>
+				<font style="font-weight:bold;background-color:#39F;color:#fff">更新时间</font>
+			<%} else {%><a href="resource?type=<%=type%>&orderby=createtime&page=1&rp=10">更新时间</a>
+			<%} %>
+			</span>
+			<span>
+			<%if ("downloadtimes".equals(orderby)) {%>
+				<font style="font-weight:bold;background-color:#39F;color:#fff">下载次数</font>
+			<%} else {%><a href="resource?type=<%=type%>&orderby=downloadtimes&page=1&rp=10">下载次数</a>
+			<%} %>
+			</span>
+			<span>
+			<%if ("viewtimes".equals(orderby)) {%>
+				<font style="font-weight:bold;background-color:#39F;color:#fff">浏览次数</font>
+			<%} else {%><a href="resource?type=<%=type%>&orderby=viewtimes&page=1&rp=10">浏览次数</a>
+			<%} %>
+			</span>
 			<span style="float:right;height:36px;line-height:36px;margin:0px 10px;">
 				<span>每页显示条数：</span>
 				<select name="selection" style="height:20px">
@@ -69,42 +84,48 @@
 				for (Software soft:softList) 
 				{
 					String author = ((new UserControl()).getUser(soft.getAuthorid())).getUsername();
-					String createtime = new SimpleDateFormat("yyyy-MM-dd").format(soft.getCreatetime());
+					String createtime = new SimpleDateFormat("yyyy/MM/dd").format(soft.getCreatetime());
 				%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href=""><img src="<%=soft.getSoftpic() %>" height="60" width="60"></img></a>
+			    	<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="<%=soft.getSoftpic() %>" height="60" width="60"></img></a>
 			    </div>
 			    <div class="softdetail">
-	    			<span>名称：<a href="#" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
+	    			<span>名称：<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
 	    			<span>标签：<%=soft.getTag() %></span><br/>
 	    			<span>作者：<a href="#" title=""><%=author %></a>&nbsp;&nbsp;</span>
 	    			<span>时间：<%=createtime %></span>
+	    		</div>
+	    		<div class="softext">
+	    			<span>浏览：<%=soft.getViewtimes() %></span><br/>
+	    			<span>下载：<%=soft.getDownloadtimes() %></span><br/>
 	    			<span>大小：<%=soft.getSize() %>KB</span>
-	    			<span>浏览：<%=soft.getViewtimes() %></span>
-	    			<span>下载：<%=soft.getDownloadtimes() %></span>
 	    		</div>
 	    		<div class="softhandle">
 	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-	    			<span><a href="#"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+	    			<span><a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
 	    		</div>
 			</div>
 			<% } 
 			} else if ("video".equals(type)) {
 				for (Video video:videoList) {
+					String author = ((new UserControl()).getUser(video.getAuthorid())).getUsername();
+					String createtime = new SimpleDateFormat("yyyy/MM/dd").format(video.getCreatetime());
 			%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href=""><img src="./image/cad2d.png" height="60" width="60"></img></a>
+			    	<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/cad2d.png" height="60" width="60"></img></a>
 			    </div>
 			    <div class="softdetail">
-	    			<span>名称：<a href="#">变形金刚大黄蜂</a></span><br/>
-	    			<span>标签：变形金刚 实体设计</span><br/>
-	    			<span>作者：<a href="#" title="">aaaaaaa</a>&nbsp;&nbsp;</span>
-	    			<span>时间：2013/10/15</span>
-	    			<span>金币：0</span>
-	    			<span>浏览:434</span>
-	    			<span>下载:20</span>
+	    			<span>名称：<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><%=video.getVideoname() %></a></span><br/>
+	    			<span>标签：<%=video.getTag() %></span><br/>
+	    			<span>作者：<a href="#" title="<%=author%>"><%=author%></a>&nbsp;&nbsp;</span>
+	    			<span>时间：<%=createtime %></span>
+	    		</div>
+	    		<div class="softext">
+	    			<span>浏览：<%=video.getOpentimes() %></span><br/>
+	    			<span>下载：<%=video.getOpentimes() %></span><br/>
+	    			<span>大小：<%=video.getVideosize() %>KB</span>
 	    		</div>
 	    		<div class="softhandle">
 	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
@@ -154,12 +175,12 @@
 		<div class="paging">
 			<span>第<%=culPage %>页/共<%=totalPage %>页</span>
 			<%if (culPage != 1) {%>
-			<span><a href="./ResourceHandler?type=<%=type%>&orderby=<%=orderby%>&page=1&rp=10">[首页]</a></span>
-			<span><a href="./ResourceHandler?type=<%=type%>&orderby=<%=orderby%>&page=<%=culPage-1%>&rp=10">[上一页]</a></span>
+			<span><a href="./resource?type=<%=type%>&orderby=<%=orderby%>&page=1&rp=10">[首页]</a></span>
+			<span><a href="./resource?type=<%=type%>&orderby=<%=orderby%>&page=<%=culPage-1%>&rp=10">[上一页]</a></span>
 			<%}%>
 			<%if (culPage != totalPage) {%>
-			<span><a href="./ResourceHandler?type=<%=type%>&orderby=<%=orderby%>&page=<%=culPage+1%>&rp=10">[下一页]</a></span>
-			<span><a href="./ResourceHandler?type=<%=type%>&orderby=<%=orderby%>&page=<%=totalPage%>&rp=10">[尾页]</a></span>
+			<span><a href="./resource?type=<%=type%>&orderby=<%=orderby%>&page=<%=culPage+1%>&rp=10">[下一页]</a></span>
+			<span><a href="./resource?type=<%=type%>&orderby=<%=orderby%>&page=<%=totalPage%>&rp=10">[尾页]</a></span>
 			<%} %>
 		</div>
 	</div>

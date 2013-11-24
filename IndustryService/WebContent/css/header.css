@@ -5,6 +5,7 @@ body {
 	width:100%;
 	height:700px;
 	font-family: "微软雅黑", verdana;
+	font-size:14px;
 	background: url(../image/background.png) repeat-x;
 	/*background: linear-gradient(#3d7faf, #fff) no-repeat;
 	-ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3d7faf', endColorstr='#fff') no-repeat;
