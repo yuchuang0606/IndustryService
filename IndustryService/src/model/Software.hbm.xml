@@ -19,5 +19,6 @@
 <property name="viewtimes" />
 <property name="size" />
 <property name="title"/>
+<property name="softwaretype"/>
 </class>
 </hibernate-mapping>
