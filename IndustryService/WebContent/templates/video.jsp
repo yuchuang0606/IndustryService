@@ -17,7 +17,7 @@
 <div style='width:960px;height:auto;min-height:500px;clear:both;text-align:left;margin: 5px auto;background:#fff;'>
     <div style="width: 698px; float: left;"> 
     	<div style="width:100%;height:36px;line-height:36px;text-align:center;background:#f5f5f5;">
-    		<span style="font-size:16px;font-weight:bold;"><%=video.getVideoname() %></span>
+    		<span style="font-size:16px;font-weight:bold;"><%=video.getTitle() %></span>
     	</div>               
         <div style="width: 670px;float:left;padding:5px 10px;">
             <table cellpadding="0" cellspacing="0" align="center">
@@ -32,7 +32,7 @@
                     <td width="300px" height="260px" valign="middle">
                         <div id="source" style="width:300px;height:240px;padding-left:20px;">
                             <a href='#%>' title="">
-                                <img src='./image/cad3d.png' alt="" border="0" width="240px" height="240px"/>
+                                <img src='<%=video.getVideopic() %>' alt="" border="0" width="240px" height="240px"/>
                             </a>
                         </div>
                     </td>
@@ -193,7 +193,7 @@
 				<%for (Video v:videoList) {%>
 				<li>
 					<em class="num1"></em>
-					<a href="videoinfo.jsp?id=<%=v.getVideoid() %>" title="<%=v.getVideoname()%>"><%=v.getVideoname()%></a>
+					<a href="videoinfo.jsp?id=<%=v.getVideoid() %>" title="<%=v.getTitle()%>"><%=v.getTitle()%></a>
 				</li>
 				<%} %>
 			</ul>

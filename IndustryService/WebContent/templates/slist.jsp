@@ -117,19 +117,19 @@
 			    	<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/cad2d.png" height="60" width="60"></img></a>
 			    </div>
 			    <div class="softdetail">
-	    			<span>名称：<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><%=video.getVideoname() %></a></span><br/>
+	    			<span>名称：<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><%=video.getTitle() %></a></span><br/>
 	    			<span>标签：<%=video.getTag() %></span><br/>
 	    			<span>作者：<a href="#" title="<%=author%>"><%=author%></a>&nbsp;&nbsp;</span>
 	    			<span>时间：<%=createtime %></span>
 	    		</div>
 	    		<div class="softext">
 	    			<span>浏览：<%=video.getOpentimes() %></span><br/>
-	    			<span>下载：<%=video.getOpentimes() %></span><br/>
+	    			<span>下载：<%=video.getDownloadtimes() %></span><br/>
 	    			<span>大小：<%=video.getVideosize() %>KB</span>
 	    		</div>
 	    		<div class="softhandle">
 	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-	    			<span><a href="#"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+	    			<span><a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
 	    		</div>
 			</div>
 			<%} } %>

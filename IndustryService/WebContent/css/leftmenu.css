@@ -42,7 +42,7 @@
 	font-size: 14px;
 	font-weight:bold;
 	position: relative;
-	background-color:#50d5dd;/*EBFFFF*/
+	background-color:#90bfee;/*EBFFFF*/
 }
 .li_inner a{
 	display:none;
@@ -63,7 +63,7 @@
     text-decoration: none;
 }
 .sidebar ul li a:hover{
-	background: #ea5e00;
+	background: #33CCFF;
 	color: white;
 	font-weight: bold;
 }

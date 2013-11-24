@@ -17,37 +17,43 @@
 			<a href="./index.jsp">首页</a>
 		</li>
 		<li class="li_out">
+			<a href="#">软件服务</a>
+		</li>
+		<li class="li_inner">
+			<a href="./config?configname=2dCAD" >CAXA 2d套餐</a>
+		</li>
+		<li class="li_inner">
+			<a href="./config?configname=3dCAD" >CAXA 3d套餐</a>
+		</li>
+		<li class="li_inner">
+			<a href="./config?configname=5CAM" >CAXA管理套餐</a>
+		</li>
+		<li class="li_out">
+			<a href="./softlist.jsp">资源下载</a>
+		</li>
+		<li class="li_inner">
+			<a href="resource?type=software&orderby=createtime&page=1&rp=10">软件下载</a>
+		</li>
+		<li class="li_inner">
+			<a href="resource?type=video&orderby=createtime&page=1&rp=10">在线视频</a>
+		</li>
+		<li class="li_out">
+			<a href="">人才服务</a>
+		</li>
+		<li class="li_out">
+			<a href="">社区交流</a>
+		</li>
+		<li class="li_out">
 			<a href="#">信息中心</a>
 		</li>
 		<li class="li_inner">
-			<a href="#" >新闻</a>
+			<a href="./news?type=news&page=1&rp=10" >新闻</a>
 		</li>
 		<li class="li_inner">
-			<a href="#" >公告</a>
+			<a href="./news?type=notice&page=1&rp=10" >通知</a>
 		</li>
 		<li class="li_out">
-			<a href="#">CAD介绍</a>
-		</li>
-		<li class="li_inner">
-			<a href="./config?configname=2dCAD" >二维CAD</a>
-		</li>
-		<li class="li_inner">
-			<a href="./config?configname=3dCAD" >三维CAD</a>
-		</li>
-		<li class="li_inner">
-			<a href="./config?configname=5CAM" >五轴CAM</a>
-		</li>
-		<li class="li_out">
-			<a href="./softlist.jsp">软件下载</a>
-		</li>
-		<li class="li_out">
-			<a href="">视频下载</a>
-		</li>
-		<li class="li_out">
-			<a href="">服务流程</a>
-		</li>
-		<li class="li_out">
-			<a href="">联系我们</a>
+			<a href="">政策法规</a>
 		</li>
 	</ul>
 </div>

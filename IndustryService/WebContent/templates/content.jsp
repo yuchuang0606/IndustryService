@@ -302,12 +302,12 @@
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<img src="./image/video1.jpg"> 
+						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><img src="<%=videoList.get(0).getVideopic()%>"> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getVideoname()%>"><%=videoList.get(0).getVideoname()%></a>
+						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
@@ -315,24 +315,24 @@
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<img src="./image/video2.jpg"> 
+						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><img src="<%=videoList.get(1).getVideopic()%>"> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getVideoname()%>"><%=videoList.get(1).getVideoname()%></a>
+						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
 				</div>
 				<div class="servicediv">
 					<div class="videoimage">	
-						<img src="./image/video3.jpg"> 
+						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><img src="<%=videoList.get(2).getVideopic()%>"></a> 
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getVideoname()%>"><%=videoList.get(2).getVideoname()%></a>
+						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><%=videoList.get(2).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
