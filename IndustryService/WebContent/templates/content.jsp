@@ -16,6 +16,7 @@
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
 	List<Software> softList = sc.getListByColumn(0, rp, "downloadtimes");
+	System.out.println(softList.size());
 	List<Video> videoList = vc.getListByColumn(0, rp, "opentimes");
 %>
 <div id="content" class="content">
