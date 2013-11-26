@@ -30,11 +30,16 @@ body {
 	padding-left:7px;
 }
 .pipe {
-	float:left;
-	margin:0 5px;
+	float:right;
+	margin:0 10px;
 	color:#000;
 }
 .contentleft {
+	width:500px;
+	text-align:right;
+	float:right;
+}
+.contentleft span {
 	float:right;
 }
 .contentleft a {

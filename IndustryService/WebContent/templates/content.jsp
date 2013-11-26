@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="./css/loginform.css" type="text/css" />
 <script type="text/javascript" src="./js/SlideTrans.js"></script>
 <%
+	User ucontent = (User)request.getSession().getAttribute("user");
 	String tip = (String)request.getAttribute("tip");
 	if (null==tip)
 		tip = "";
@@ -16,7 +17,6 @@
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
 	List<Software> softList = sc.getListByColumn(0, rp, "downloadtimes");
-	System.out.println(softList.size());
 	List<Video> videoList = vc.getListByColumn(0, rp, "opentimes");
 %>
 <div id="content" class="content">
@@ -25,6 +25,34 @@
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3c3c3c;font-weight:bold;margin:0px 10px;">会员登录</span>
 			</div>
+			<% if (null != ucontent) {%>
+			<div style="width:280px;height:165px;padding:20px 20px;background:#">
+				<div style="height:120px;width:120px;float:left;padding-top:30px;">
+					<img src="<%=ucontent.getUserpic()%>" width="100" height="100"/>
+				</div>
+				<div style="height:120px;width:120px;float:left;padding-top:20px;">
+					<table style="height:120px;width:150px;">
+						<tr height="25">
+							<td width="50">欢迎：</td>
+							<td><%=ucontent.getUsername() %></td>
+						</tr>
+						<tr>
+							<td width="50">单位：</td>
+							<td>*</td>
+						</tr>
+						<tr>
+							<td width="50">金币：</td>
+							<td><%=ucontent.getCoin() %></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<font style="color:#0099FF;"><a href="#">[立即充值]</a></font>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<%} else { %>
 			<div class="tips">
 				<label style="margin-left:100px;"><%=tip%></label>
 			</div>
@@ -44,6 +72,7 @@
 				</div>
 				</form>
 			</div>
+			<%} %>
 		</div>
 		<div class="notice">
 			<div class="divtitle">
@@ -69,8 +98,7 @@
 			<div class="blockdiv" style="height:200px;">
 				<ul class="texthidden">
 					<li style="list-style:none;">
-						<img src="./image/qq.png"></img>
-						<a href="http://wpa.qq.com/msgrd?V=1&Uin=85561093&Exe=QQ&Site=./index.jsp&Menu=No">QQ:85561093</a>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1346158517&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1346158517:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
 					</li>
 					<li style="list-style:none;">
 						<img src="./image/email.jpg"></img>
@@ -153,7 +181,7 @@
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
 		                        <a href="#">
-		                        <img src="./image/djxz.jpg"/></a>
+		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>
 					</div>	
@@ -175,7 +203,7 @@
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
 		                        <a href="#">
-		                        <img src="./image/djxz.jpg"/></a>
+		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>
 					</div>	
@@ -197,7 +225,7 @@
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
 		                        <a href="#">
-		                        <img src="./image/djxz.jpg"/></a>
+		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>
 					</div>	
@@ -218,7 +246,7 @@
 				<div class="softtop" style="border-bottom:1px solid #eee;">
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(0).getSoftpic()%>"></img>
+							<img src="<%=softList.get(0).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -230,7 +258,7 @@
 					</div>
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(1).getSoftpic()%>"></img>
+							<img src="<%=softList.get(1).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -242,7 +270,7 @@
 					</div>
 					<div class="softlist">
 						<div class="softimage">
-							<img src="<%=softList.get(2).getSoftpic()%>"></img>
+							<img src="<%=softList.get(2).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -256,7 +284,7 @@
 				<div class="softbottom" style="border-bottom:1px solid #eee;">
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(3).getSoftpic()%>"></img>
+							<img src="<%=softList.get(3).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -268,7 +296,7 @@
 					</div>
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(4).getSoftpic()%>"></img>
+							<img src="<%=softList.get(4).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -280,7 +308,7 @@
 					</div>
 					<div class="softlist">
 						<div class="softimage">
-							<img src="<%=softList.get(5).getSoftpic()%>"></img>
+							<img src="<%=softList.get(5).getSoftpic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
@@ -303,11 +331,12 @@
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><img src="<%=videoList.get(0).getVideopic()%>"> </a>
+						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>">
+						<img src="<%=videoList.get(0).getVideopic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
-						<img src="./image/play.jpg" width="15" height="15"/>
+						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
 						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
@@ -316,11 +345,12 @@
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><img src="<%=videoList.get(1).getVideopic()%>"> </a>
+						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>">
+						<img src="<%=videoList.get(1).getVideopic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
-						<img src="./image/play.jpg" width="15" height="15"/>
+						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
 						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
@@ -328,7 +358,8 @@
 				</div>
 				<div class="servicediv">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><img src="<%=videoList.get(2).getVideopic()%>"></a> 
+						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>">
+						<img src="<%=videoList.get(2).getVideopic()%>" style="border-width:0px;"/></a> 
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">

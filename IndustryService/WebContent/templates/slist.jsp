@@ -19,10 +19,11 @@
 		restype = "视频列表";
 		videoList = (List<Video>)request.getAttribute("videoList");
 	}
-	System.out.println("aaa");
 %>
 <link rel="stylesheet" href="./css/slist.css" type="text/css" />
-<div id="main" class="main">
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/callback.js"></script>
+<div id="main" class="main" onload="chdefault()">
 	<%@ include file="/templates/leftmenu.jsp"%>
 	<div id="content" class="content">
 		<div class="divtitle" style="background-color:#f5f5f5;">
@@ -50,7 +51,7 @@
 			</form>
 		</div>
 		-->
-		<div class="sortoption">
+		<div class="sortoption" >
 			<span>排序方式：</span>
 			<span>
 			<%if ("createtime".equals(orderby)) {%>
@@ -72,10 +73,10 @@
 			</span>
 			<span style="float:right;height:36px;line-height:36px;margin:0px 10px;">
 				<span>每页显示条数：</span>
-				<select name="selection" style="height:20px">
-					<option value ="op_10">10</option>
-					<option value ="op_30">30</option>
-					<option value ="op_50">50</option>
+				<select id="s" name="selection" style="height:20px;">
+					<option value ="10">10</option>
+					<option value ="20">20</option>
+					<option value ="40">40</option>
 				</select>
 			</span>
 		</div>
@@ -88,7 +89,8 @@
 				%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="<%=soft.getSoftpic() %>" height="60" width="60"></img></a>
+			    	<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>">
+			    	<img src="<%=soft.getSoftpic() %>" height="60" width="60" style="border-width:0px;"></img></a>
 			    </div>
 			    <div class="softdetail">
 	    			<span>名称：<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
@@ -102,8 +104,8 @@
 	    			<span>大小：<%=soft.getSize() %>KB</span>
 	    		</div>
 	    		<div class="softhandle">
-	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-	    			<span><a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
+	    			<span><a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>
 			<% } 
@@ -114,7 +116,8 @@
 			%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/cad2d.png" height="60" width="60"></img></a>
+			    	<a href="videoinfo.jsp?id=<%=video.getVideoid()%>">
+			    	<img src="./image/cad2d.png" height="60" width="60" style="border-width:0px;"></img></a>
 			    </div>
 			    <div class="softdetail">
 	    			<span>名称：<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><%=video.getTitle() %></a></span><br/>
@@ -128,8 +131,8 @@
 	    			<span>大小：<%=video.getVideosize() %>KB</span>
 	    		</div>
 	    		<div class="softhandle">
-	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-	    			<span><a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
+	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
+	    			<span><a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>
 			<%} } %>

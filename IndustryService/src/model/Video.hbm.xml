@@ -8,7 +8,7 @@
 </id>
 <property name="title"/>
 <property name="createtime"/>
-<property name="describe"/>
+<property name="sdescribe"/>
 <property name="link"/>
 <property name="link2"/>
 <property name="authorid"/>

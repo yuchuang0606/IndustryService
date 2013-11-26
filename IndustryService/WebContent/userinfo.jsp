@@ -7,8 +7,8 @@
 <link rel="shortcut icon" href="./image/c.png" type="image/x-icon" />
 <title>大连工业设计服务平台</title>
 </head>
-<body style="padding:0px;margin:0px;font-family:Verdana, Geneva, sans-serif;background-color:#F1FDFE;">
-	<%@ include file="/templates/userheader.jsp" %>
+<body>
+	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>

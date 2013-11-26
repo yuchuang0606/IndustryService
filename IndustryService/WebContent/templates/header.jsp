@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.*" %>
+<%
+	User u = (User)request.getSession().getAttribute("user");
+%>
 <link rel="stylesheet" href="./css/header.css" type="text/css" />
 <script>
 function AddFavorite(title, url) {
@@ -19,9 +23,22 @@ function AddFavorite(title, url) {
 <div class="header">
 	<div class="headcontent">
 		<div class="contentleft">
-			<a  onClick="AddFavorite('http://dl.caxa.com','大连工业设计服务平台')" href="#">收藏本站</a>
+		<% if (null == u) {%>
+			<span><a  onClick="AddFavorite('http://dl.caxa.com','大连工业设计服务平台')" href="#">收藏本站</a></span>
 		<!--  	<span class="pipe">|</span>
 			<a href="http://www.caxa.com">CAXA首页</a>-->
+		<%} else { %>
+			<span><a href="./logout">退出</a></span>
+			<span class="pipe">|</span>
+			<span><a href="#">授权证书</a></span>
+			<span class="pipe">|</span>
+			<span><a href="#">CAD服务卡</a></span>
+			<span class="pipe">|</span>
+			<span><a href="#">用户中心</a></span>
+			<span class="pipe">|</span>
+			<span><%=u.getUsername()%>，欢迎您</span>
+
+		<%} %>
 		</div>
 		<!--  
 		<div class="contentright">

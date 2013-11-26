@@ -151,23 +151,28 @@
                                     </font></span>
                                 </td>
 							</tr>
-							<%if (video.getVideotype()==1 || video.getVideotype()==3) {%>
 							<tr id="tr34">
 								<td width="80" align="left" valign="baseline">
                                        <font size = 2>文件下载：</font>
                                    </td>
 								<td valign="top" align="left">
-                                       <a id="lbWp" href="javascript:__doPostBack(&#39;lbWp&#39;,&#39;&#39;)" style="color:#614DB3;font-weight:bold;text-decoration:underline;"><font size = 2>网盘下载(推荐)</font></a>
-                                       <div style="float: left; width: 255px;">
-                                           <div style="float: left; width: 255px; padding-top: 3px">
-                                               <a href="#" onclick="highDownClick();"><span style="color: #614db3; font-weight: bold;
-                                                   text-decoration: underline; line-height: 20px;"><font size = 2>高速下载</font></span>
-                                               </a>
-                                           </div>
-                                       </div>
+                                     <div style="float:left;width:255px;">
+                                         <div style="float: left; width: 255px;">
+                                         	 <%if (video.getVideotype()==1 || video.getVideotype()==3) {%>
+                                             <a href="<%=video.getLink2()%>" onclick="highDownClick();">
+                                              <span style="color: #614db3; font-weight: bold;text-decoration: underline; line-height: 20px;">
+                                                  <font size = 2>高速下载</font>
+                                              </span>
+                                             </a>
+                                             <%} else {%>
+                                             	<span style="color: #614db3; font-weight: bold;line-height: 20px;">
+                                             	<font size = 2>该视频暂不提供下载</font>
+                                             	</span>
+                                             <%}%>
+                                         </div>
+                                     </div>
                                  </td>
 							</tr>
-							<%} %>
 						</table>
 					</td>
 				</tr>
@@ -177,7 +182,7 @@
 	          					 <font size = 2; FACE = 标楷体; color = #424242>详细信息:</font>
 	       				</div>
 	   					<div style="line-height: 20px; padding: 0 20px 5px 20px">
-	           				<span><font size = 2><%=video.getDescribe() %></font> </span>
+	           				<span><font size = 2><%=video.getSdescribe() %></font> </span>
 	   					</div>
    					</td>
 				</tr>

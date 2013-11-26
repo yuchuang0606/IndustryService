@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Software {
 	private int softwareid;
-	private String describe;
+	private String sdescribe;
 	private Date createtime;
 	private String link;
 	private int authorid;
@@ -33,18 +33,6 @@ public class Software {
 	 */
 	public void setSoftwareid(int softwareid) {
 		this.softwareid = softwareid;
-	}
-	/**
-	 * @return the describe
-	 */
-	public String getDescribe() {
-		return describe;
-	}
-	/**
-	 * @param describe the describe to set
-	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
 	}
 	/**
 	 * @return the createtime
@@ -201,6 +189,18 @@ public class Software {
 	 */
 	public void setSoftwaretype(int softwaretype) {
 		this.softwaretype = softwaretype;
+	}
+	/**
+	 * @return the sdescribe
+	 */
+	public String getSdescribe() {
+		return sdescribe;
+	}
+	/**
+	 * @param sdescribe the sdescribe to set
+	 */
+	public void setSdescribe(String sdescribe) {
+		this.sdescribe = sdescribe;
 	}
 
 }

@@ -10,7 +10,7 @@ public class Video {
 	private int videoid;
 	private String title;
 	private Date createtime;
-	private String describe;
+	private String sdescribe;
 	private String link;
 	private String link2;
 	private int authorid;
@@ -47,18 +47,7 @@ public class Video {
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
 	}
-	/**
-	 * @return the describe
-	 */
-	public String getDescribe() {
-		return describe;
-	}
-	/**
-	 * @param describe the describe to set
-	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
-	}
+
 	/**
 	 * @return the link
 	 */
@@ -202,5 +191,17 @@ public class Video {
 	 */
 	public void setVideopic(String videopic) {
 		this.videopic = videopic;
+	}
+	/**
+	 * @return the sdescribe
+	 */
+	public String getSdescribe() {
+		return sdescribe;
+	}
+	/**
+	 * @param sdescribe the sdescribe to set
+	 */
+	public void setSdescribe(String sdescribe) {
+		this.sdescribe = sdescribe;
 	}
 }

@@ -21,6 +21,15 @@ public class User {
 	private int downloadfilenumber;
 	private int credit;
 	private int coin;
+	private String gender;
+	private Date birthdate;
+	private String company;
+	private String industry;
+	private String department;
+	private String jobtitle;
+	private String postcode;
+	private String mailaddress;
+	private String introduction;
 	/**
 	 * @return the userid
 	 */
@@ -212,6 +221,114 @@ public class User {
 	 */
 	public void setCoin(int coin) {
 		this.coin = coin;
+	}
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	/**
+	 * @return the birthdate
+	 */
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	/**
+	 * @param birthdate the birthdate to set
+	 */
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	/**
+	 * @return the industry
+	 */
+	public String getIndustry() {
+		return industry;
+	}
+	/**
+	 * @param industry the industry to set
+	 */
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+	/**
+	 * @return the company
+	 */
+	public String getCompany() {
+		return company;
+	}
+	/**
+	 * @param company the company to set
+	 */
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	/**
+	 * @return the jobtitle
+	 */
+	public String getJobtitle() {
+		return jobtitle;
+	}
+	/**
+	 * @param jobtitle the jobtitle to set
+	 */
+	public void setJobtitle(String jobtitle) {
+		this.jobtitle = jobtitle;
+	}
+	/**
+	 * @return the postcode
+	 */
+	public String getPostcode() {
+		return postcode;
+	}
+	/**
+	 * @param postcode the postcode to set
+	 */
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	/**
+	 * @return the mailaddress
+	 */
+	public String getMailaddress() {
+		return mailaddress;
+	}
+	/**
+	 * @param mailaddress the mailaddress to set
+	 */
+	public void setMailaddress(String mailaddress) {
+		this.mailaddress = mailaddress;
+	}
+	/**
+	 * @return the introduction
+	 */
+	public String getIntroduction() {
+		return introduction;
+	}
+	/**
+	 * @param introduction the introduction to set
+	 */
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
 
 }

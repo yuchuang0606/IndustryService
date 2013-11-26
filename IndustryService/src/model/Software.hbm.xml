@@ -6,7 +6,7 @@
 <id name="softwareid">
 <generator class="native"/>
 </id>
-<property name="describe"/>
+<property name="sdescribe"/>
 <property name="createtime"/>
 <property name="link"/>
 <property name="authorid"/>
