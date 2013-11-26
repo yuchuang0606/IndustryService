@@ -159,6 +159,32 @@ public  class  MySessionFactory {
 			}
 	}
 	
+	public static List<Object> getBypropLike(String cname,String prop,String value)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		List<Object> result=null;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			result=session.createQuery("from "+cname+" where "+prop+" like ?").setString(0, '%'+value+'%').list();
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return result;
+			}
+	}
+	
 	public static List<Object> getByPropAndColumn(String cname,String prop,String value,String column,int start,int size)
 	{
 		if(!isInit) 

@@ -56,4 +56,9 @@ public class SoftwareControl {
 		return null;
 	}
 	
+	public List<Software> SearchByColumn(String column,String value)
+	{
+		return (List<Software>)(Object)MySessionFactory.getBypropLike("Software", column, value);
+	}
+	
 }

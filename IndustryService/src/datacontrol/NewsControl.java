@@ -27,6 +27,11 @@ public class NewsControl {
 		return (List<News>)(Object)MySessionFactory.getByprop("News", prop, value);
 	}
 	
+	public List<News> SearchByColumn(String column,String value)
+	{
+		return (List<News>)(Object)MySessionFactory.getBypropLike("News", column, value);
+	}
+	
 	public int getNewsNumber()
 	{
 		return MySessionFactory.getItemNumber("News");
@@ -41,6 +46,8 @@ public class NewsControl {
 	{
 		return (List<News>)(Object)MySessionFactory.getByColumn("News", column, start, size);
 	}
+	
+	
 	public News getNewsbyId(int id)
 	{
 		List<News> li=listNews("newsid",String.valueOf(id));

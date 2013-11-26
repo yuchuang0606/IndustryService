@@ -57,4 +57,10 @@ public class NotificationControl {
 		updateNotification(n);
 	}
 	
+	public List<Notification> SearchByColumn(String column,String value)
+	{
+		return (List<Notification>)(Object)MySessionFactory.getBypropLike("Notification", column, value);
+	}
+	
+	
 }
