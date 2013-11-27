@@ -36,6 +36,11 @@ public class UserControl {
 	
 	public void updateUser(User u)
 	{
+		MySessionFactory.executeUpdate(u);
+	}
+	
+	public void updatePassword(User u)
+	{
 		u.setPassword(MD5(u.getPassword()));
 		MySessionFactory.executeUpdate(u);
 	}
