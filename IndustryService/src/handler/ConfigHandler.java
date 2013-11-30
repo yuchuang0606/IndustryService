@@ -48,7 +48,7 @@ public class ConfigHandler extends HttpServlet {
 			ConfigurationControl cc = new ConfigurationControl();
 			List<Configuration> configList = cc.listConfiguration("config_name", configname);
 			if (null == configList)
-				response.sendRedirect("./error.jsp");
+				response.sendRedirect("error.jsp");
 			String condition = configList.get(0).getCondition();
 			if ("2dCAD".equals(configname))
 				configname = "二维CAD介绍";
@@ -62,10 +62,10 @@ public class ConfigHandler extends HttpServlet {
 				configname = "《大连市工业云平台注册条款》";
 			request.setAttribute("configname", configname);
 			request.setAttribute("condition", condition);
-			request.getRequestDispatcher("./introduce.jsp").forward(request, response);
+			request.getRequestDispatcher("introduce.jsp").forward(request, response);
 		} catch (Exception e) {
 			try {
-				response.sendRedirect("./error.jsp");
+				response.sendRedirect("error.jsp");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

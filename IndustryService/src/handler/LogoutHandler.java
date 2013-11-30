@@ -42,7 +42,7 @@ public class LogoutHandler extends HttpServlet {
 	{
 		try {
 			request.getSession().invalidate();
-			response.sendRedirect("./index.jsp");
+			response.sendRedirect("index.jsp");
 		} catch (Exception e) {
 			
 		}

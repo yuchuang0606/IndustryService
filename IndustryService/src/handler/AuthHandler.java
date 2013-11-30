@@ -1,6 +1,7 @@
 package handler;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,21 +55,28 @@ public class AuthHandler extends HttpServlet {
 			if ("不存在该用户".equals(info)) {
 				System.out.println("用户不存在");
 				request.setAttribute("tip", "用户名不存在");
-				request.getRequestDispatcher("./index.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			else if ("false".equals(info)) {
 				System.out.println("密码错误");
 				request.setAttribute("tip", "密码错误");
-				request.getRequestDispatcher("./index.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			else if ("true".equals(info)) {
 				User user = null;
 				user = uc.listUser("username", username).get(0);
+				user.setLastlogin(uc.getLastLogintime(user.getUserid()));
+				// 登录次数+1
+				uc.addLoginTimes(user.getUserid());
 				HttpSession session = request.getSession(true);
+				// 更新到最新的登录时间
+				//user.setLastlogin(new Date());
+				//uc.updateUser(user);
+				// 添加到session
 				session.setAttribute("user", user);
-				request.getRequestDispatcher("userinfo.jsp").forward(request, response);
+				response.sendRedirect("user/user.jsp");
 			} else {
-				response.sendRedirect("./index.jsp");
+				response.sendRedirect("index.jsp");
 			}
 		} catch (Exception e) {
 			

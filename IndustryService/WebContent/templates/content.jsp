@@ -17,7 +17,7 @@
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
 	List<Software> softList = sc.getListByColumn(0, rp, "downloadtimes");
-	List<Video> videoList = vc.getListByColumn(0, rp, "opentimes");
+	List<Video> videoList = vc.getListByColumn(0, rp, "viewtimes");
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -38,7 +38,7 @@
 						</tr>
 						<tr>
 							<td width="50">单位：</td>
-							<td>*</td>
+							<td><%=ucontent.getCompany() %></td>
 						</tr>
 						<tr>
 							<td width="50">金币：</td>
@@ -251,7 +251,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(0).getSoftwareid()%>" title="<%=softList.get(0).getTitle()%>"><%=softList.get(0).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(0).getSoftwareid()%>" title="<%=softList.get(0).getTitle()%>"><%=softList.get(0).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -263,7 +263,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(1).getSoftwareid()%>" title="<%=softList.get(1).getTitle()%>"><%=softList.get(1).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(1).getSoftwareid()%>" title="<%=softList.get(1).getTitle()%>"><%=softList.get(1).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -275,7 +275,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(2).getSoftwareid()%>" title="<%=softList.get(2).getTitle()%>"><%=softList.get(2).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(2).getSoftwareid()%>" title="<%=softList.get(2).getTitle()%>"><%=softList.get(2).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -289,7 +289,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(3).getSoftwareid()%>" title="<%=softList.get(3).getTitle()%>"><%=softList.get(3).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(3).getSoftwareid()%>" title="<%=softList.get(3).getTitle()%>"><%=softList.get(3).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -301,7 +301,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(4).getSoftwareid()%>" title="<%=softList.get(4).getTitle()%>"><%=softList.get(4).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(4).getSoftwareid()%>" title="<%=softList.get(4).getTitle()%>"><%=softList.get(4).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -313,7 +313,7 @@
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./softinfo.jsp?id=<%=softList.get(5).getSoftwareid()%>" title="<%=softList.get(5).getTitle()%>"><%=softList.get(5).getTitle()%></a>
+							<a href="./software.jsp?id=<%=softList.get(5).getSoftwareid()%>" title="<%=softList.get(5).getTitle()%>"><%=softList.get(5).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -331,13 +331,13 @@
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>">
+						<a href="./video.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>">
 						<img src="<%=videoList.get(0).getVideopic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
+						<a href="./video.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
@@ -345,26 +345,26 @@
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>">
+						<a href="./video.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>">
 						<img src="<%=videoList.get(1).getVideopic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
+						<a href="./video.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
 				</div>
 				<div class="servicediv">
 					<div class="videoimage">	
-						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>">
+						<a href="./video.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>">
 						<img src="<%=videoList.get(2).getVideopic()%>" style="border-width:0px;"/></a> 
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="./videoinfo.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><%=videoList.get(2).getTitle()%></a>
+						<a href="./video.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><%=videoList.get(2).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 

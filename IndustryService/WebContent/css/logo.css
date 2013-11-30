@@ -26,15 +26,14 @@
 	vertical-align:left;
 }
 .top-search {
-	margin: 65px 0 0 100px;
+	margin: 65px 0 0 0px;
+	width:442px;
+	height:37px;
 	color: #666;
 	float: right;
-	display: inline;
 }
 .top-search .sim-select {
 	float: left;
-	display: inline;
-	position: relative;
 	width: 75px;
 	height: 33px;
 	overflow:hidden;
@@ -44,7 +43,7 @@
 	margin-top: 3px;
 	background:#fff;
 }
-.top-search .sim-select h3 {
+.top-search .sim-select label {
 	line-height: 33px;
 	font-weight: normal;
 	font-size: 14px;
@@ -53,15 +52,23 @@
 	margin-top:0px;
 	cursor: pointer;
 	float: left;
-	display: inline;
 	width: 70px;
 }
-.top-search .sim-select .sim-ul-flt {
-	margin-top: -1px;
-	position: absolute;
-	left: -1px;
-	top: 34px;
-	z-index: 1000;
+.simtype {
+	display:none;
+	height:33px;
+	margin-left:1px;
+	width:75px;
+	line-height:33px;
+	text-align:center;
+	border-bottom:1px solid #eee;
+	background:#fff;
+	z-index:1000;
+}
+.simtype label {
+	cursor:pointer;
+	height:33px;
+	width:75px;
 }
 .inp-txt-wrap {
 	border: 1px solid #c1c1c1;

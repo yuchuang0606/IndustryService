@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="./image/c.png" type="image/x-icon" />
+<link rel="shortcut icon" href="<%=request.getContextPath() %>/image/c.png" type="image/x-icon" />
 <title>大连工业设计服务平台</title>
 </head>
 <body>
-	<%@ include file="/templates/userheader.jsp" %>
+	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
-	<%@ include file="/templates/upload.jsp" %>
+	<%@ include file="/user/chpwd.jsp" %>
 	<%@ include file="/templates/footer.jsp" %>
 </body>
 </html>

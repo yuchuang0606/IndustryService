@@ -4,10 +4,16 @@
 <%
 	User user = (User)request.getSession().getAttribute("user");
 	String logintime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(user.getLastlogin());
+	String birthday = "";
+	if (null != user.getBirthdate())
+		birthday = new SimpleDateFormat("yyyy-MM-dd").format(user.getBirthdate());
 %>
-<link rel="stylesheet" href="./css/slist.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/WdatePicker.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/reg.css" type="text/css"/>
 <div id="main" class="main">
-	<%@ include file="/templates/userleftmenu.jsp"%>
+	<%@ include file="/user/userleftmenu.jsp"%>
 	<div id="content" class="content">
 		<div style="height:30px;width:717px;line-height:30px;padding-left:20px;background:#f5f5f5;">
        		<font style="font-weight:800;color: #265f9d;">用户信息</font>
@@ -17,7 +23,7 @@
 	            <table border="0" cellpadding="0" cellspacing="1" class="table">
 	                <tr>
 	                    <td width="200px" rowspan="6" valign="middle" align="center">
-	                        <img src="<%=user.getUserpic() %>" style="width:100px;height:100px;border-width:0px;" />
+	                        <img src="<%=request.getContextPath()%><%=user.getUserpic() %>" style="width:100px;height:100px;border-width:0px;" />
 	                    </td>
 	                    <td width="100" height="25">
 	                       <font size = 2>用户帐号：</font>
@@ -36,7 +42,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCredit() %></font></span>&nbsp;&nbsp;
-	                        <a href="config?configname=coindeclare"><font size = 2>[金币、积分使用说明]</font></a>
+	                        <a href="<%=request.getContextPath() %>/config?configname=coindeclare"><font size = 2>[金币、积分使用说明]</font></a>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -78,9 +84,18 @@
 	                </tr>
 	                <tr>
 	                    <td height="25" >
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[修改头像]</font></a>
+	                        <input type="button" onclick="displayForm()" value="修改头像" style="color:#0099FF;font-size:2"/>
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
+	                    	<div id="updatepic" style="display:none">
+	                    		<form id="headform" method="post" 
+									enctype="MULTIPART/FORM-DATA" 
+        							action="upload">
+								<input type="file" name="imgfile" id="imgfile" value="浏览">
+								<input type="button" value="上传" onclick="if(checkImg()==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
+								<input type="button" value="取消" onclick="hiddenForm()">
+								</form>
+							</div><!-- onsubmit="checkImg();updateHeadpic();return false;" -->
 	                        <span style="color:Red;"></span>
 	                    </td>
 	                </tr>
@@ -88,121 +103,43 @@
 	        </div>
 	    </div>
 	    <div style="height:30px;width:717px;line-height:30px;padding-left:20px;background:#f5f5f5;">
-	    	<div style="float:left;width:60px;">
-       			<font style="font-weight:800;color:#265f9d;">个人信息</font>
+	    	<div style="float:left;width:100%;margin:0 auto;">
+       			<font style="font-weight:800;color:#265f9d;">修改密码</font>
        		</div>
-       		<div style="float:left;font-size: 12px; padding-right: 30px; font-weight: 800; color: #265f9d; float: right; width: 80px; height: 20px;">
-	            <a href="#" onclick="UpdatePass(event);" style="color: #0099ff; display: block; text-align: center;">[修改密码]</a>
-	        </div>
-	        <div style="font-size: 12px; padding-left: 20px; font-weight: 800; color: #265f9d;
-	            float: right; width: 100px; height: 20px; text-align: center;">
-	            <a href="#" style="color:#0099FF;">[完善个人信息]</a>
-	       	</div>
 		</div>
-        <div style="padding:10px 20px;" >
-			<table width="697px" border="0" cellpadding="0" cellspacing="0" class="table">
-				<tr>
-					<td width="80" height="29" align="left">
-						<font size = 2>&nbsp;真实姓名：</font>
-					</td>
-					<td width="267" align="left">
-						<span><font size = 2>***</font></span>
-					</td>
-					<td width="80" align="left">
-						<font size = 2> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</font>
-					</td>
-					<td width="267" align="left">
-						<span><font size = 2><%=user.getEmail() %></font></span>
-					</td>
-				</tr>
-				<tr>
-					<td height="30" align="left">
-						<font size = 2>&nbsp;性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</font>
-					</td>
+        <div class="chpwd" style="padding:20px 150px;">
+		    <table id="" width="380px" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr  height="50">
+					<td width="95" height="30" align="right" class="border15">
+		 				<font size = 2>*&nbsp;原&nbsp;密&nbsp;码：</font>
+		            </td>
 					<td align="left">
-						<span><font size = 2>*</font></span>
-					</td>
-					<td align="left">
-						<font size = 2> 出生日期：</font>
-					</td>
-					<td align="left">
-						<span><font size = 2>*</font></span>
+						<input name="oldpwd" type="password" id="oldpwd" style="width: 180px;height:22px;" />
 					</td>
 				</tr>
-				<tr>
-					<td height="30" align="left">
-						<font size = 2>&nbsp;所在地区：</font>
-					</td>
-					<td colspan="3" align="left">
-						<span><font size = 2><%=user.getAddress() %></font></span>
-					</td>
+				<tr height="50">
+					<td><font size="2">*&nbsp;新&nbsp;密&nbsp;码：</font></td>
+		            <td align="left">
+		                <input name="pwd1" type="password" id="pwd1" onfocus="clearPwdMsg()" onblur="checkPwdLength(this.value)" style="width: 180px;height:22px;"/>
+		                <label id="msg_password" style="font-size:12px;color:red;"></label>
+		            </td>
+		        </tr>
+		        <tr height="50">
+		        	<td style="text-align:right;"><font size="2">*&nbsp;确认密码：</font></td>
+		            <td align="left">
+		                <input name="pwd2" type="password" id="pwd2" onfocus="clearPwdMsg1(this.value)" onblur="checkPwdSame(this.value)" style="width: 180px;height:22px;"/>
+		                <label id="msg_password1" style="font-size:12px;color:red;"></label>
+		                <img id="pwd_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
+		            </td>
 				</tr>
-				<tr>
-					<td height="30" align="left">
-						<font size = 2>&nbsp;单位名称：</font>
-					</td>
-					<td colspan="3" align="left">
-						<span><font size = 2>*</font></span>
-					</td>
-				</tr>
-				<tr>
-					<td height="30" align="left">
-					    <font size = 2>&nbsp;行业类别：</font>
-					</td>
-					<td align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-					<td class="table_td6" align="left">
-					    <font size = 2>产业规模：</font>
-					</td>
-					<td align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-				</tr>
-				<tr>
-					<td height="30" align="left">
-					    <font size = 2>&nbsp;所在部门：</font>
-					</td>
-					<td align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-					<td  align="left">
-					    <font size = 2>职&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
-					</td>
-					<td align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-				</tr>
-				<tr>
-					<td width="80" height="29"  align="left">
-					    <font size = 2>&nbsp;联系电话：</font>
-					</td>
-					<td width="267" align="left">
-					    <span><font size = 2><%=user.getPhone() %></font></span>
-					</td>
-					<td width="80"  align="left">
-					   <font size = 2> 联系邮编：</font>
-					</td>
-					<td width="267" align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-				</tr>
-				<tr>
-					<td height="30" align="left">
-					    <font size = 2>&nbsp;邮寄地址：</font>
-					</td>
-					<td colspan="3" align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-				</tr>
-				<tr>
-					<td height="30"  align="left">
-					    <font size = 2>&nbsp;个人介绍</font>
-					</td>
-					<td colspan="3" align="left">
-					    <span><font size = 2>*</font></span>
-					</td>
-				</tr>
+				<tr height="50">
+	                <td align="center" height="30" colspan="2">
+	                	<div style="text-align:center;margin:10px auto;">
+	                    <input type="submit" name="btSubmit" value="确   认" onclick="updatepwd(<%=user.getUserid() %>,'<%=request.getContextPath()%>')" id="btSubmit" style="cursor:pointer;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                    <input type="submit" value="取   消" onclick="cancel()" style="cursor:pointer;margin-left:20px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                	</div>
+	                </td>
+            	</tr>
 			</table>
 		</div>
 	</div>

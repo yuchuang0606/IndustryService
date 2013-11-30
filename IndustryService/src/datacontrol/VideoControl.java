@@ -56,10 +56,10 @@ public class VideoControl {
 	{
 		return (List<Video>)(Object)MySessionFactory.getByColumn("Video", column, start, size);
 	}
-	public void addOpentime(int id)
+	public void addViewtimes(int id)
 	{
 		Video n=getVideobyId(id);
-		n.setOpentimes(n.getOpentimes()+1);
+		n.setViewtimes(n.getViewtimes()+1);
 		updateVideo(n);
 	}
 	

@@ -13,7 +13,7 @@
 <property name="link2"/>
 <property name="authorid"/>
 <property name="ispass"/>
-<property name="opentimes"/>
+<property name="viewtimes"/>
 <property name="videotype"/>
 <property name="videosize"/>
 <property name="downloadtimes"/>

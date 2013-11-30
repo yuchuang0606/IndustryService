@@ -4,7 +4,7 @@
 <%
 	User u = (User)request.getSession().getAttribute("user");
 %>
-<link rel="stylesheet" href="./css/header.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css" type="text/css" />
 <script>
 function AddFavorite(title, url) {
 	try {
@@ -28,13 +28,13 @@ function AddFavorite(title, url) {
 		<!--  	<span class="pipe">|</span>
 			<a href="http://www.caxa.com">CAXA首页</a>-->
 		<%} else { %>
-			<span><a href="./logout">退出</a></span>
+			<span><a href="<%=request.getContextPath() %>/logout">退出</a></span>
 			<span class="pipe">|</span>
-			<span><a href="#">授权证书</a></span>
+			<span><a href="<%=request.getContextPath() %>/user/authcert.jsp">授权证书</a></span>
 			<span class="pipe">|</span>
 			<span><a href="#">CAD服务卡</a></span>
 			<span class="pipe">|</span>
-			<span><a href="#">用户中心</a></span>
+			<span><a href="<%=request.getContextPath() %>/user/user.jsp">用户中心</a></span>
 			<span class="pipe">|</span>
 			<span><%=u.getUsername()%>，欢迎您</span>
 

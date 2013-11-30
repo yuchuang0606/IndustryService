@@ -22,7 +22,7 @@
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
 		<% if (null != user) {%>
-			<%@ include file="/templates/userleftmenu.jsp"%>
+			<%@ include file="/user/userleftmenu.jsp"%>
 		<%} else {%>
 			<%@ include file="/templates/leftmenu.jsp"%>
 		<%} %>

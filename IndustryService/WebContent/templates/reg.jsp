@@ -24,12 +24,12 @@
 	        <tr>
 	            <td><font size="2">*&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</font></td>
 	            <td>
-	                <input name="txtPass" type="password" id="txtPass" onfocus="clearPwdMsg()" onblur="checkPwdLength(this.value)" />
+	                <input name="pwd1" type="password" id="pwd1" onfocus="clearPwdMsg()" onblur="checkPwdLength(this.value)" />
 	                <label id="msg_password" style="font-size:12px;color:red;"></label>
 	            </td>
 	            <td style="text-align:right;padding-right:30px;"><font size="2">*&nbsp;确认密码：</font></td>
 	            <td style="width:240px;">
-	                <input name="txtPass1" type="password" id="txtPass1" onfocus="clearPwdMsg1(this.value)" onblur="checkPwdSame(this.value)" />
+	                <input name="pwd2" type="password" id="pwd2" onfocus="clearPwdMsg1(this.value)" onblur="checkPwdSame(this.value)" />
 	                <label id="msg_password1" style="font-size:12px;color:red;"></label>
 	                <img id="pwd_img" src="./image/gou.png" style="display:none"/>
 	            </td>
@@ -63,22 +63,22 @@
 				</td>
 				<td style="text-align:right;padding-right:30px;"><font size="2">&nbsp;&nbsp;出生日期：</font></td>
 				<td align="left">
-                 	<input name="txtbDay" type="text" class="Wdate" onClick="WdatePicker()" style="height:24px;"/>
+                 	<input id="birthday" type="text" onClick="WdatePicker()" style="height:24px;"/>
 				</td>
 			</tr>
 			<tr>
              	<td><font size="2">*&nbsp;所在地区：</font></td>
              	<td colspan="3">
-        			<select name="list1" id="list1" disabled="disabled" style="width:90px;height:28px;">
+        			<select name="province" id="province" disabled="disabled" style="width:90px;height:28px;">
 						<option value="0">--请选择--</option>
 						<option selected="selected" value="1">辽宁省</option>
 					</select>
 
-                    <select name="list2"  id="list2" disabled="disabled" style="width:90px;height:28px;">
+                    <select name="city"  id="city" disabled="disabled" style="width:90px;height:28px;">
 						<option value="0">--请选择--</option>
 						<option selected="selected" value="1">大连市</option>
 					</select>
-                    <select name="list3" id="list3"  style="width:90px;height:28px;">
+                    <select name="area" id="area"  style="width:90px;height:28px;">
 						<option value="0">--请选择--</option>
 						<option value="3253">中山区</option>
 						<option value="3254">西岗区</option>
@@ -99,7 +99,9 @@
                     <font size="2">*&nbsp;单位名称：</font>
                 </td>
                 <td align="left" colspan="3">
-                    <input name="CompanyName" type="text" id="CompanyName" style="width: 416px;" />
+                    <input name="cpname" type="text" id="cpname" style="width: 416px;" onfocus="clearCpnameMsg()" onblur="isCpnameNull(this.value)"/>
+                    <label id="cpname_msg" style="font-size:12px;color:red;"></label>
+	                <img id="cpname_img" src="./image/gou.png" style="display:none"/>
                 </td>
             </tr>
             <tr>
@@ -107,7 +109,7 @@
                     <font size="2">&nbsp;&nbsp;行业类别：</font>
                 </td>
                 <td align="left">
-                    <select name="listIndustry" id="listIndustry" style="width:184px;height:28px">
+                    <select name="industry" id="industry" style="width:184px;height:28px">
 						<option selected="selected" value="1">装备行业</option>
 						<option value="2">电子电器行业</option>
 						<option value="3">国防军工行业</option>
@@ -125,7 +127,7 @@
                     <font size="2">&nbsp;&nbsp;产值规模：</font>
                 </td>
                 <td>
-                    <select name="listSize" id="listSize" style="width:184px;height:28px">
+                    <select name="size" id="size" style="width:184px;height:28px">
 						<option selected="selected" value="1">3000万以下</option>
 						<option value="2">3000万-3亿</option>
 						<option value="3">3亿以上</option>
@@ -137,13 +139,17 @@
                     <font size="2">*&nbsp;所在部门：</font>
                 </td>
                 <td>
-                    <input name="Inwhichpart" type="text" id="Inwhichpart" />
+                    <input name="depart" type="text" id="depart" onfocus="clearDepartMsg()" onblur="isDepartNull(this.value)"/>
+                    <label id="depart_msg" style="font-size:12px;color:red;"></label>
+	                <img id="depart_img" src="./image/gou.png" style="display:none"/>
                 </td>
                 <td style="text-align:right;padding-right:30px;">
                     <font size="2">&nbsp;*&nbsp;职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
                 </td>
                 <td>
-                    <input name="UserDuty" type="text" id="UserDuty" />
+                    <input name="duty" type="text" id="duty" onfocus="clearDutyMsg()" onblur="isDutyNull(this.value)"/>
+                    <label id="duty_msg" style="font-size:12px;color:red;"></label>
+	                <img id="duty_img" src="./image/gou.png" style="display:none"/>
                 </td>
             </tr>
             <tr>
@@ -151,13 +157,15 @@
                     <font size="2">*&nbsp;联系电话：</font>
                 </td>
                 <td>
-                    <input name="mobilNumber" type="text" id="mobilNumber" />
+                    <input name="mobile" type="text" id="mobile" onfocus="clearMobileMsg()" onblur="isValidMobile(this.value)"/>
+                    <label id="mobile_msg" style="font-size:12px;color:red;"></label>
+	                <img id="mobile_img" src="./image/gou.png" style="display:none"/>
                 </td>
                 <td style="text-align:right;padding-right:30px;">
                     <font size="2">&nbsp;&nbsp;邮政邮编：</font>
                 </td>
                 <td>
-                    <input name="PostCode" type="text" id="PostCode"/>
+                    <input name="postcode" type="text" id="postcode"/>
                 </td>
             </tr>
             <tr>
@@ -165,20 +173,21 @@
                     <font size="2">&nbsp;&nbsp;邮寄地址：</font>
                 </td>
                 <td align="left" colspan="3">
-                    <input name="PostCodeAddress" type="text" style="width: 416px;" />
+                    <input name="postaddress" id="postaddress" type="text" style="width: 416px;" />
                 </td>
             </tr>
             <tr>
                 <td colspan="4" >
-                	<div style="height:100%;line-height:40px;width:400px;margin:0px auto;">
+                	<div style="height:100%;line-height:40px;width:500px;margin:0px auto;">
                 	<div style="float:left;height:30px;line-height:30px;">
-                    	<input id="Tongyitiaokuan" type="checkbox" onclick="tongyitiaokuan(this)" checked="checked" style="height:30px;width:15px;"/>
+                    	<input name="regright" type="checkbox" checked="checked" value="1" style="height:30px;width:15px;"/>
                     </div>
                     <div style="float:left;height:30px;line-height:30px;">
-	                    <label for="Tongyitiaokuan"><font size="2">我已仔细阅读并接受</font>
+	                    <label for="regright"><font size="2">我已仔细阅读并接受</font>
 	                        <a href="config?configname=regright" target="_blank">
 	                        <font size="2">《大连市工业云平台注册条款》</font></a>
 	                    </label>
+	                    <label id="agree_msg" style="font-size:12px;color:red;"></label>
                     </div>
                     </div>
                 </td>
@@ -186,9 +195,8 @@
             <tr>
                 <td align="center" height="40" colspan="4" >
                 	<div style="text-align:center;margin:0px auto;">
-                    <input type="submit" name="btSubmit" value="注   册" onclick="javascript:return ISInformationRight();" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
-                    <input name="hidEmailFlag" type="hidden" id="hidEmailFlag" value="0" />
-                    <input type="submit" name="btUpdate" value="取   消" id="btUpdate" style="margin-left:50px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
+                    <input type="submit" name="btSubmit" value="注   册" onclick="register()" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
+                    <input type="submit" name="btUpdate" value="取   消" onclick="cancelReg()" id="btUpdate" style="margin-left:50px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
                 	</div>
                 </td>
             </tr>

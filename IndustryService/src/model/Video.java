@@ -15,7 +15,7 @@ public class Video {
 	private String link2;
 	private int authorid;
 	private int ispass;
-	private int opentimes;
+	private int viewtimes;
 	private int videotype;
 	private double videosize;
 	private int downloadtimes;
@@ -87,14 +87,14 @@ public class Video {
 	/**
 	 * @return the opentimes
 	 */
-	public int getOpentimes() {
-		return opentimes;
+	public int getViewtimes() {
+		return viewtimes;
 	}
 	/**
 	 * @param opentimes the opentimes to set
 	 */
-	public void setOpentimes(int opentimes) {
-		this.opentimes = opentimes;
+	public void setViewtimes(int viewtimes) {
+		this.viewtimes = viewtimes;
 	}
 	/**
 	 * @return the videotype

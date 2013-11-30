@@ -89,11 +89,11 @@
 				%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>">
+			    	<a href="software.jsp?id=<%=soft.getSoftwareid()%>">
 			    	<img src="<%=soft.getSoftpic() %>" height="60" width="60" style="border-width:0px;"></img></a>
 			    </div>
 			    <div class="softdetail">
-	    			<span>名称：<a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
+	    			<span>名称：<a href="software.jsp?id=<%=soft.getSoftwareid()%>" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
 	    			<span>标签：<%=soft.getTag() %></span><br/>
 	    			<span>作者：<a href="#" title=""><%=author %></a>&nbsp;&nbsp;</span>
 	    			<span>时间：<%=createtime %></span>
@@ -101,11 +101,11 @@
 	    		<div class="softext">
 	    			<span>浏览：<%=soft.getViewtimes() %></span><br/>
 	    			<span>下载：<%=soft.getDownloadtimes() %></span><br/>
-	    			<span>大小：<%=soft.getSize() %>KB</span>
+	    			<span>大小：<%=soft.getSize() %>M</span>
 	    		</div>
 	    		<div class="softhandle">
 	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
-	    			<span><a href="softinfo.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
+	    			<span><a href="software.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>
 			<% } 
@@ -116,23 +116,23 @@
 			%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href="videoinfo.jsp?id=<%=video.getVideoid()%>">
+			    	<a href="video.jsp?id=<%=video.getVideoid()%>">
 			    	<img src="./image/cad2d.png" height="60" width="60" style="border-width:0px;"></img></a>
 			    </div>
 			    <div class="softdetail">
-	    			<span>名称：<a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><%=video.getTitle() %></a></span><br/>
+	    			<span>名称：<a href="video.jsp?id=<%=video.getVideoid()%>"><%=video.getTitle() %></a></span><br/>
 	    			<span>标签：<%=video.getTag() %></span><br/>
 	    			<span>作者：<a href="#" title="<%=author%>"><%=author%></a>&nbsp;&nbsp;</span>
 	    			<span>时间：<%=createtime %></span>
 	    		</div>
 	    		<div class="softext">
-	    			<span>浏览：<%=video.getOpentimes() %></span><br/>
+	    			<span>浏览：<%=video.getViewtimes() %></span><br/>
 	    			<span>下载：<%=video.getDownloadtimes() %></span><br/>
-	    			<span>大小：<%=video.getVideosize() %>KB</span>
+	    			<span>大小：<%=video.getVideosize() %>M</span>
 	    		</div>
 	    		<div class="softhandle">
 	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
-	    			<span><a href="videoinfo.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
+	    			<span><a href="video.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>
 			<%} } %>
@@ -191,51 +191,4 @@
 		document.getElementById("main").style.height=document.getElementById("content").offsetHeight+"px";
 	</script>
 	</div>
-	<!--
-	<div class="slist_l">
-		<div class="divtitle">
-			<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">热门下载</span>
-		</div>
-		<div class="blockdiv">
-			<ul class="texthidden">
-				<li>
-					<em class="num1"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台">[平台公告] 祝贺诸城市工业设计服务平台</a>
-				</li>
-				<li>
-					<em class="num2"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<em class="num3"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<em class="num4"></em>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num5"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num6"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num7"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num8"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-				<li>
-					<span class="num9"></span>
-					<a href="#" title="[平台公告] 祝贺诸城市工业设计服务平台上线">[平台公告] 祝贺诸城市工业设计服务平台上线</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	 -->
 </div>

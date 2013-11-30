@@ -6,4 +6,16 @@
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <filter>
+    <filter-name>UserFilter</filter-name>
+    <filter-class>handler.UserFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserFilter</filter-name>
+    <servlet-name>userinfo.jsp</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>UserFilter</filter-name>
+    <servlet-name>upload.jsp</servlet-name>
+  </filter-mapping>
 </web-app>
