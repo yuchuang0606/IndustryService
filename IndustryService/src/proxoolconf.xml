@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <something-else-entirely>
 <proxool>
-<alias>DBPool</alias>
-<driver-url>
-   jdbc:mysql://192.168.1.200:3306/TPF
-</driver-url>
-<driver-class>com.mysql.jdbc.Driver</driver-class>
-<driver-properties>
-<property name="user" value="root"/>
-<property name="password" value="105105"/>
-<property name="schema"  value="TPF"/>
-<property name="autoReconnect" value="true"/>
-</driver-properties>
-<house-keeping-sleep-time>90000</house-keeping-sleep-time>
-<maximum-new-connections>1</maximum-new-connections>
-<prototype-count>1</prototype-count>
-<maximum-connection-count>10</maximum-connection-count>
-<minimum-connection-count>5</minimum-connection-count>
-<maximum-active-time>900000</maximum-active-time>
-<maximum-connection-lifetime>14400000</maximum-connection-lifetime>
-<test-before-use>true</test-before-use>
-<house-keeping-test-sql>select now()</house-keeping-test-sql>
-<property name="autoReconnect" value="true"/>
-<house-keeping-sleep-time>90000</house-keeping-sleep-time>
-<maximum-new-connections>1</maximum-new-connections>
-<prototype-count>1</prototype-count>
-<maximum-connection-count>10</maximum-connection-count>
-<minimum-connection-count>5</minimum-connection-count>
-<maximum-active-time>900000</maximum-active-time>
-<maximum-connection-lifetime>14400000</maximum-connection-lifetime>
-<test-before-use>true</test-before-use>
-<house-keeping-test-sql>select now()</house-keeping-test-sql>
+	<alias>DBPool</alias>
+	<driver-url>jdbc:mysql://192.168.1.200:3306/TPF</driver-url>
+	<driver-class>com.mysql.jdbc.Driver</driver-class>
+	<driver-properties>
+	<property name="user" value="root"/>
+	<property name="password" value="105105"/>
+	<property name="schema"  value="TPF"/>
+	<property name="autoReconnect" value="true"/>
+	</driver-properties>
+	<house-keeping-sleep-time>90000</house-keeping-sleep-time>
+	<maximum-new-connections>1</maximum-new-connections>
+	<prototype-count>1</prototype-count>
+	<maximum-connection-count>10</maximum-connection-count>
+	<minimum-connection-count>5</minimum-connection-count>
+	<maximum-active-time>900000</maximum-active-time>
+	<maximum-connection-lifetime>14400000</maximum-connection-lifetime>
+	<test-before-use>true</test-before-use>
+	<house-keeping-test-sql>select now()</house-keeping-test-sql>
+	<property name="autoReconnect" value="true"/>
+	<house-keeping-sleep-time>90000</house-keeping-sleep-time>
+	<maximum-new-connections>1</maximum-new-connections>
+	<prototype-count>1</prototype-count>
+	<maximum-connection-count>10</maximum-connection-count>
+	<minimum-connection-count>5</minimum-connection-count>
+	<maximum-active-time>900000</maximum-active-time>
+	<maximum-connection-lifetime>14400000</maximum-connection-lifetime>
+	<test-before-use>true</test-before-use>
+	<house-keeping-test-sql>select now()</house-keeping-test-sql>
 </proxool>
 </something-else-entirely>

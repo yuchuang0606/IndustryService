@@ -136,44 +136,6 @@
 	    		</div>
 			</div>
 			<%} } %>
-			<!--
-			<input type="button" id="btnTest" value="刷新" />
-			<table id="myDataTable" class="display" cellpadding="0" cellspacing="0" border="0">
-			    <thead>
-			        <tr>
-			            <th style="width:100px;" class="sorting_disabled">缩略图</th>
-			            <th style="width:100px;" class="sorting_disabled">详细信息</th>
-			            <th style="width:60px;" class="sorting_disabled">操作</th>
-			        </tr>
-			    </thead>
-			    <tbody>
-			    	<tr class="softinfo">
-			    	<td>
-			    		<div class="softimage">
-			    			<img src="./image/cad2d.png" height="60" width="60"></img>
-			    		</div>
-			    	</td>
-			    	<td>
-			    		<div class="softdetail">
-		    			<span>名称：<a href="#">变形金刚大黄蜂</a></span><br/>
-		    			<span>标签：变形金刚 实体设计</span><br/>
-		    			<span><a href="#" title="">作者：aaaaaaa</a>&nbsp;&nbsp;</span>
-		    			<span>时间：2013/10/15</span>
-		    			<span>金币：0</span>
-		    			<span>浏览:434</span>
-		    			<span>下载:20</span>
-		    			</div>
-			    	</td>
-			    	<td>
-			    		<div class="softhandle">
-			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;"></img></a></span>
-			    			<span><a href="#"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;"></img></a></span>
-			    		</div>
-			    	</td>
-			    	</tr>
-			    </tbody>
-			</table>
-			 -->
 		</div>
 		<div class="paging">
 			<span>第<%=culPage %>页/共<%=totalPage %>页</span>

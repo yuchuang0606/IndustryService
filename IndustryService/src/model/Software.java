@@ -21,7 +21,7 @@ public class Software {
 	private int viewtimes;
 	private double size;
 	private String title;
-	private int softwaretype;
+	private String softwaretype;
 	/**
 	 * @return the softwareid
 	 */
@@ -181,13 +181,13 @@ public class Software {
 	/**
 	 * @return the softwaretype
 	 */
-	public int getSoftwaretype() {
+	public String getSoftwaretype() {
 		return softwaretype;
 	}
 	/**
 	 * @param softwaretype the softwaretype to set
 	 */
-	public void setSoftwaretype(int softwaretype) {
+	public void setSoftwaretype(String softwaretype) {
 		this.softwaretype = softwaretype;
 	}
 	/**

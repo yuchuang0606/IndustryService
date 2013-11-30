@@ -3,11 +3,9 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 <session-factory>
-<!-- hibernate的方言，用来确定连接的数据库 -->
 <property name="hibernate.dialect">
 org.hibernate.dialect.MySQLDialect
 </property>
-<!-- 数据库的连接类 -->
 <property name="hibernate.connection.driver_class">
 com.mysql.jdbc.Driver
 </property>
@@ -16,9 +14,7 @@ org.hibernate.connection.ProxoolConnectionProvider
 </property> 
 <property name="hibernate.proxool.pool_alias">DBPool</property> 
 <property name="hibernate.proxool.xml">proxoolconf.xml</property>  
-<!-- 在使用hibernate时会显示相应的SQL -->
 <property name="show_sql">true</property>
-<!-- 会自动完成类到数据表的转换 -->
 <property name="hibernate.hbm2ddl.auto">update</property>
 <mapping resource="model/User.hbm.xml" />
 <mapping resource="model/Configuration.hbm.xml" />
@@ -30,7 +26,6 @@ org.hibernate.connection.ProxoolConnectionProvider
 <mapping resource="model/Software.hbm.xml" />
 <mapping resource="model/Video.hbm.xml" />
 <mapping resource="model/Notification.hbm.xml" />
-
 </session-factory>
 
 </hibernate-configuration>

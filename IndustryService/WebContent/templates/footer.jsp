@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,model.*,datacontrol.*" %>
 <%
-	ConfigurationControl cc = new ConfigurationControl();
-	Configuration cf = cc.listConfiguration("config_name", "footer").get(0);
+	ConfigurationControl ccfooter = new ConfigurationControl();
+	Configuration cf = ccfooter.listConfiguration("config_name", "footer").get(0);
 	String content = cf.getCondition();
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/footer.css" type="text/css" />
