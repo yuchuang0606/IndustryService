@@ -5,7 +5,7 @@
 <div class="navigator">
 	<div class="navicontent">
 	<ul id="sddm">
-		<li><a href="index.jsp">首页</a>
+		<li><a href="<%=request.getContextPath() %>/index.jsp">首页</a>
 		</li>
 		<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">软件服务</a>
 			<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">

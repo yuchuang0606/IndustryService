@@ -4,19 +4,15 @@
   <description>大连工业云平台</description>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
+  <!--  
   <filter>
     <filter-name>UserFilter</filter-name>
     <filter-class>filter.UserFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>UserFilter</filter-name>
-    <servlet-name>userinfo.jsp</servlet-name>
+    <url-pattern>/user/*</url-pattern>
   </filter-mapping>
-  <filter-mapping>
-    <filter-name>UserFilter</filter-name>
-    <servlet-name>upload.jsp</servlet-name>
-  </filter-mapping>
+  -->
 </web-app>

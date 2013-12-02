@@ -321,7 +321,6 @@ function updateinfo(id,contextPath)
 						"&postcode=" + postcode +
 						"&postaddress=" + postaddress +
 						"&introduction=" + introduction;
-	alert(url);
     //指定服务端的地址
     http.open("POST", url, true); 
     //请求状态变化时的处理函数
@@ -421,7 +420,6 @@ function updateHeadpic(uid, contextPath)
 //    formdata.append("imgfile", fileObj);
  // post the request
 	var url = contextPath + "/upload";
-	alert(url);
     //指定服务端的地址
     http.open("POST", url, true); 
     //请求状态变化时的处理函数

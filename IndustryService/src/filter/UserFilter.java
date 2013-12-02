@@ -18,7 +18,6 @@ import model.User;
 /**
  * Servlet Filter implementation class UserFilter
  */
-@WebFilter("/userinfo.jsp")
 public class UserFilter implements Filter {
 
     /**
@@ -46,10 +45,14 @@ public class UserFilter implements Filter {
 			HttpServletResponse res = (HttpServletResponse)response;
 			PrintWriter pw = res.getWriter();
 			User user = (User)req.getSession().getAttribute("user");
+			//System.out.println(request.getServletContext().getRealPath(""));
+			//System.out.println(request.getServletContext().getContextPath());
 			if (null == user) {
-				pw.write("<script> alert('登录已超时，请重新登录');");
-				pw.write("<script>");
-				res.sendRedirect("index.jsp");
+				//System.out.println(req.getContextPath());
+				//response.setContentType("text/html;charset=utf-8");
+				//res.setCharacterEncoding("utf-8");
+				pw.write("<script>location.href='"+req.getContextPath()+"/index.jsp"+"';</script>");
+				//res.sendRedirect(request.getServletContext()+"/index.jsp");
 			}
 			// pass the request along the filter chain
 			else

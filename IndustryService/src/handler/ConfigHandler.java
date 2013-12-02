@@ -57,7 +57,13 @@ public class ConfigHandler extends HttpServlet {
 			else if ("5CAM".equals(configname))
 				configname = "五轴CAM介绍";
 			else if ("coindeclare".equals(configname))
+			{
 				configname = "金币、积分使用说明";
+				request.setAttribute("configname", configname);
+				request.setAttribute("condition", condition);
+				request.getRequestDispatcher("/user/coinexplain.jsp").forward(request, response);
+				return;
+			}
 			else if ("regright".equals(configname))
 				configname = "《大连市工业云平台注册条款》";
 			request.setAttribute("configname", configname);

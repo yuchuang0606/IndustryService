@@ -40,7 +40,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCredit() %></font></span>&nbsp;&nbsp;
-	                        <a href="config?configname=coindeclare"><font size = 2>[金币、积分使用说明]</font></a>
+	                        <a href="<%=request.getContextPath() %>/config?configname=coindeclare"><font size = 2>[金币、积分使用说明]</font></a>
 	                    </td>
 	                </tr>
 	                <tr>

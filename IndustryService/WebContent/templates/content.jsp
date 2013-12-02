@@ -28,7 +28,7 @@
 			<% if (null != ucontent) {%>
 			<div style="width:280px;height:165px;padding:20px 20px;background:#">
 				<div style="height:120px;width:120px;float:left;padding-top:30px;">
-					<img src="<%=ucontent.getUserpic()%>" width="100" height="100"/>
+					<img src="<%=request.getContextPath() %><%=ucontent.getUserpic()%>" width="100" height="100"/>
 				</div>
 				<div style="height:120px;width:120px;float:left;padding-top:20px;">
 					<table style="height:120px;width:150px;">

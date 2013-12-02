@@ -1,24 +1,25 @@
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="model">
-<class name="Software" table="tpf_software">
-<id name="softwareid">
-<generator class="native"/>
-</id>
-<property name="sdescribe"/>
-<property name="createtime"/>
-<property name="link"/>
-<property name="authorid"/>
-<property name="ispass"/>
-<property name="downloadtimes"/>
-<property name="version"/>
-<property name="name" />
-<property name="softpic" />
-<property name="tag" />
-<property name="viewtimes" />
-<property name="size" />
-<property name="title"/>
-<property name="softwaretype"/>
-</class>
+ <class name="Software" table="tpf_software">
+  <id name="softwareid">
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="sdescribe"/>
+  <property generated="never" lazy="false" name="createtime"/>
+  <property generated="never" lazy="false" name="link"/>
+  <property generated="never" lazy="false" name="authorid"/>
+  <property generated="never" lazy="false" name="ispass"/>
+  <property generated="never" lazy="false" name="downloadtimes"/>
+  <property generated="never" lazy="false" name="version"/>
+  <property generated="never" lazy="false" name="name"/>
+  <property generated="never" lazy="false" name="softpic"/>
+  <property generated="never" lazy="false" name="tag"/>
+  <property generated="never" lazy="false" name="viewtimes"/>
+  <property generated="never" lazy="false" name="size"/>
+  <property generated="never" lazy="false" name="title"/>
+  <property generated="never" lazy="false" name="softwaretype"/>
+  <property name="ispublic" not-null="true" type="integer"/>
+ </class>
 </hibernate-mapping>

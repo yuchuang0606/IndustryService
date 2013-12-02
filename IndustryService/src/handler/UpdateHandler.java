@@ -52,9 +52,10 @@ public class UpdateHandler extends HttpServlet {
 			String type = request.getParameter("type");
 			Integer userid = Integer.parseInt(request.getParameter("userid"));
 			PrintWriter pw = response.getWriter();
-			
+			User user = (User)request.getSession().getAttribute("user");
 			UserControl uc = new UserControl();
-			User user = uc.getUser(userid);
+			if (null == user)
+				user = uc.getUser(userid);
 			if ("info".equals(type))	// update user information
 			{
 				String realname = new String(request.getParameter("realname").getBytes("iso8859-1"),"utf-8");
@@ -105,7 +106,10 @@ public class UpdateHandler extends HttpServlet {
 				user.setUserpic(userpic);
 				uc.updateUser(user);
 				pw.write("true");
-			} else {
+			} else if ("active".equals(type)) {
+				
+			}
+			else {
 				pw.write("false");
 			}
 		} catch (Exception e) {

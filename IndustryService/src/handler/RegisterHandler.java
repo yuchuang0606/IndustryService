@@ -74,7 +74,7 @@ public class RegisterHandler extends HttpServlet {
 			user.setGender(sex);
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			user.setBirthdate(df.parse(birthday));
-			user.setUserpic("./image/userhead/user.png");	// set default user head picture
+			user.setUserpic("/image/userhead/user.png");	// set default user head picture
 			user.setAddress(address);
 			user.setCompany(cpname);
 			user.setIndustry(industry);
@@ -89,7 +89,7 @@ public class RegisterHandler extends HttpServlet {
 			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
-			response.sendRedirect("user.jsp");
+			response.sendRedirect("./user/user.jsp");
 		} catch (Exception e) {
 			
 		}

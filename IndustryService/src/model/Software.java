@@ -22,6 +22,7 @@ public class Software {
 	private double size;
 	private String title;
 	private String softwaretype;
+	private int ispublic;
 	/**
 	 * @return the softwareid
 	 */
@@ -201,6 +202,14 @@ public class Software {
 	 */
 	public void setSdescribe(String sdescribe) {
 		this.sdescribe = sdescribe;
+	}
+
+	public int getIspublic() {
+		return ispublic;
+	}
+
+	public void setIspublic(int ispublic) {
+		this.ispublic = ispublic;
 	}
 
 }

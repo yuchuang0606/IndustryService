@@ -20,7 +20,7 @@
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
-		<%@ include file="/templates/leftmenu.jsp"%>
+		<%@ include file="/user/userleftmenu.jsp"%>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;width:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
 	        	<span style="font-size:18px;"><strong><%=configname%></strong></span>

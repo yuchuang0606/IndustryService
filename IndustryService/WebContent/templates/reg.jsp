@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="./js/WdatePicker.js"></script>
-<script type="text/javascript" src="./js/util.js"></script>
-<link rel="stylesheet" href="./css/reg.css" type="text/css"/>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/WdatePicker.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/reg.css" type="text/css"/>
 <div class="main">
 	<div class="regtitle">
   		<font style="font-size:16px;font-weight:800;color:#265f9d;">大连市工业云平台账号注册</font>
