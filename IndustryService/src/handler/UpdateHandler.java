@@ -49,6 +49,8 @@ public class UpdateHandler extends HttpServlet {
 	{
 		try {
 			//request.setCharacterEncoding("utf-8");
+			//System.out.println(request.getCharacterEncoding());
+			//System.out.println(request.getParameter("cpname"));
 			String type = request.getParameter("type");
 			Integer userid = Integer.parseInt(request.getParameter("userid"));
 			PrintWriter pw = response.getWriter();

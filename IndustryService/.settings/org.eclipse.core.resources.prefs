@@ -4,5 +4,6 @@ encoding//WebContent/js/util.js=UTF-8
 encoding//WebContent/user/chpwd.jsp=UTF-8
 encoding//src/datacontrol/MySessionFactory.java=UTF-8
 encoding//src/datacontrol/UserControl.java=UTF-8
+encoding//src/filter/UserFilter.java=UTF-8
 encoding//src/handler/UploadFileHandler.java=UTF-8
 encoding/<project>=UTF-8

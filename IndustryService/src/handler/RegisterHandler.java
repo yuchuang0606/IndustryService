@@ -49,7 +49,9 @@ public class RegisterHandler extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
+			System.out.println(request.getCharacterEncoding());
 			request.setCharacterEncoding("utf-8");
+			System.out.println(request.getCharacterEncoding());
 			String username = request.getParameter("username");
 			String realname = request.getParameter("realname");
 			String password = request.getParameter("pwd1");

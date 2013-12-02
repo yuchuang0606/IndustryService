@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/upload.css" type="text/css" />
 <div id="main" class="main">
 	<%@ include file="/user/userleftmenu.jsp"%>
 	<div id="content" class="content"> 
@@ -8,8 +8,8 @@
        		<font style="font-weight:800;color: #265f9d;">上传资源</font>
        	</div>      
 		<div style="padding:10px 20px;text-align:center">
-   			<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-           		<tr style="border-bottom:1px solid #eee;">
+   			<table class="uptb" width="100%" border="0" cellpadding="0" cellspacing="0" align="center" >
+           		<tr>
            			<td height="25" align="left" width = "100px" valign = "top" style =" padding-top:8px;">
                		<font size = 2>类型：</font>
                		</td>
@@ -170,7 +170,7 @@
                	</tr>
                 <tr id="ViewFlag">
 					<td height="25" align="left">
-                        <font size = 2>是否公开：
+                        <font size = 2>是否公开：</font>
                     </td>
 					<td valign="top" align="left">
                         <table id="view" border="0">
@@ -196,7 +196,7 @@
 									<input id="size0" type="radio" name="size" value="0" checked="checked" /><label for="size0"><font size = 2>小于等于10M</font></label>
 								</td>
 								<td>
-									<input id="size1" type="radio" name="size" value="1" onclick="" /><label for="size1"><font size = 2>大于10M(如果大于10M的文件需要上传，请联系QQ:)</font></label>
+									<input id="size1" type="radio" name="size" value="1" onclick="" /><label for="size1"><font size = 2>大于10M(如果大于10M的文件需要上传，请联系QQ:1346158517)</font></label>
 								</td>
 							</tr>
 						</table>
@@ -208,7 +208,7 @@
                         <font size = 2>下载金币：</font>
                     </td>
                     <td valign="middle" align="left">
-                        <input name="coin" type="text" id="coin" value="0" onblur="checkright();" />
+                        <input name="coin" type="text" id="coin" value="0" onblur="checkright();" style="width:150px;margin-left:5px;" />
                         <font size = 2>（每次下载将收取30%平台维护费）</font>
                     </td>
                 </tr>
@@ -216,8 +216,8 @@
                     <td width="100" height="25" align="left">
                         <font size = 2>资源名称：</font>
                     </td>
-                    <td width="654" align="left">
-                        <input name="name" type="text" id="name" maxlength="150" style="width:370px" />
+                    <td width="630" align="left">
+                        <input name="name" type="text" id="name" maxlength="150" style="width:370px;margin-left:5px;" />
                         <font size = 2>（150个字之内）</font>
                     </td>
                 </tr>
@@ -226,7 +226,7 @@
                         <font size = 2>标签：</font>
                     </td>
                     <td valign="middle" align="left">
-                        <input name="tag" type="text" id="tag" maxlength="1024" style="width:370px" />
+                        <input name="tag" type="text" id="tag" maxlength="1024" style="width:370px;margin-left:5px;" />
                         <font size = 2>（如果是多个标签请用空格隔开）</font>
                     </td>
                 </tr>
@@ -236,14 +236,14 @@
                         <font size = 2>(1024个字符)</font>
                     </td>
                     <td align="left">
-                        <textarea name="tips" id="tips" rows="10" cols="86"></textarea>
+                        <textarea name="tips" id="tips" rows="10" cols="85" style="margin-left:5px;"></textarea>
                     </td>
                 </tr>
             </table>
             <table id="" border="0" cellpadding="0" cellspacing="0" align="left">
 				<tr>
-					<td align="left" width="100px" height="25px">
-                       <font size = 2> 预览图片1：</font>
+					<td align="left" width="80px" height="25px">
+                       <font size = 2> 封面图片：</font>
                     </td>
 					<td align="left" style="width:120px; height:25px; vertical-align:top;">
                         <input type="file" name="" id="" style="width:460px;" />
@@ -255,6 +255,7 @@
 									<input id="file0" type="radio" name="file" value="1" checked="checked" /><label for="file0"><font size = 2>设为封面图</font></label>
 								</td>
 							</tr>
+							<!-- 
 							<tr>
 								<td>
 									<input id="file1" type="radio" name="file" value="2" /><label for="file1"><font size = 2>设为封面图</font></label>
@@ -264,12 +265,11 @@
 								<td>
 									<input id="file2" type="radio" name="file" value="3" /><label for="file2"><font size = 2>设为封面图</font></label>
 								</td>
-							</tr>
+							</tr> -->
 						</table>&nbsp;
                     </td>
-					<td rowspan="11">
-                    </td>
 				</tr>
+				<!-- 
 				<tr>
 					<td align="left" width="100px" height="25px">
                     	<font size = 2>预览图片2：</font>
@@ -301,9 +301,9 @@
 					<td align="left">
                         <input type="file" name="" id="" style="width:460px;" />
                     </td>
-				</tr>
+				</tr> -->
 				<tr>
-					<td width="100px" height="25" align="left">
+					<td width="80px" height="25" align="left">
                         &nbsp;
                     </td>
 					<td align="left">

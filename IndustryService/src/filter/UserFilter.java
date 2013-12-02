@@ -41,22 +41,24 @@ public class UserFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		try {
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
 			HttpServletRequest req = (HttpServletRequest)request;
 			HttpServletResponse res = (HttpServletResponse)response;
-			PrintWriter pw = res.getWriter();
 			User user = (User)req.getSession().getAttribute("user");
 			//System.out.println(request.getServletContext().getRealPath(""));
 			//System.out.println(request.getServletContext().getContextPath());
 			if (null == user) {
+				PrintWriter pw = res.getWriter();
+				
 				//System.out.println(req.getContextPath());
 				//response.setContentType("text/html;charset=utf-8");
 				//res.setCharacterEncoding("utf-8");
-				pw.write("<script>location.href='"+req.getContextPath()+"/index.jsp"+"';</script>");
+				pw.write("<html><script> alert('用户不存在或登录已超时');location.href='"+req.getContextPath()+"/index.jsp"+"';</script></html>");
 				//res.sendRedirect(request.getServletContext()+"/index.jsp");
 			}
 			// pass the request along the filter chain
-			else
-				chain.doFilter(request, response);
+			chain.doFilter(request, response);
 		} catch (Exception e) {
 			
 		}

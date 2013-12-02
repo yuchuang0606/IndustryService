@@ -75,7 +75,6 @@ public class UserControl {
 	//返回值为 “true”表示登录成功
 	public String verifyUser(String name,String password)
 	{
-		System.out.println(MD5(password));
 		List<User> li= (List<User>)(Object)MySessionFactory.executeQuery("From User u where u.username='"+name+"'");
 		if(li.size() == 0) return "不存在该用户";
 		else if(li.get(0).getPassword().equals(MD5(password)))

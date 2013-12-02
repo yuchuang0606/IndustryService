@@ -14,9 +14,9 @@
 			    <td style="width:180px;">
 			    	<input name="txtName" type="text" id="txtName" onfocus="clearNameMsg()" onblur="CheckUserName()" />
 			    	<label id="msg_username" style="font-size:12px;color:red;"></label>
-			    	<img id="name_img" src="./image/gou.png" style="display:none"/>
+			    	<img id="name_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 				</td>
-				<td style="width:80px;text-align:right;padding-right:30px;"><font size="2">*&nbsp;真实姓名：</font></td>
+				<td style="width:80px;text-align:right;padding-right:30px;"><font size="2">&nbsp;真实姓名：</font></td>
 				<td style="width:180px;">
 					<input name="realname" type="text" id="realname" />
 			    </td>
@@ -31,7 +31,7 @@
 	            <td style="width:240px;">
 	                <input name="pwd2" type="password" id="pwd2" onfocus="clearPwdMsg1(this.value)" onblur="checkPwdSame(this.value)" />
 	                <label id="msg_password1" style="font-size:12px;color:red;"></label>
-	                <img id="pwd_img" src="./image/gou.png" style="display:none"/>
+	                <img id="pwd_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 	            </td>
 	        </tr>
 	        <tr>
@@ -39,7 +39,7 @@
 	            <td style="width:260px;">
 	                <input name="txtMail" type="text" id="txtMail" onfocus="clearMsg()" onblur="CheckMail(this.value)" />
 	                <label id="email_msg" style="font-size:12px;color:red;"></label>
-	                <img id="email_img" src="./image/gou.png" style="display:none"/>
+	                <img id="email_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 	            </td>
 	            <td style="text-align:right;padding-right:30px;"><font size="2">&nbsp;&nbsp;自动登录：</font></td>
 	            <td>
@@ -101,7 +101,7 @@
                 <td align="left" colspan="3">
                     <input name="cpname" type="text" id="cpname" style="width: 416px;" onfocus="clearCpnameMsg()" onblur="isCpnameNull(this.value)"/>
                     <label id="cpname_msg" style="font-size:12px;color:red;"></label>
-	                <img id="cpname_img" src="./image/gou.png" style="display:none"/>
+	                <img id="cpname_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
             </tr>
             <tr>
@@ -141,7 +141,7 @@
                 <td>
                     <input name="depart" type="text" id="depart" onfocus="clearDepartMsg()" onblur="isDepartNull(this.value)"/>
                     <label id="depart_msg" style="font-size:12px;color:red;"></label>
-	                <img id="depart_img" src="./image/gou.png" style="display:none"/>
+	                <img id="depart_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
                 <td style="text-align:right;padding-right:30px;">
                     <font size="2">&nbsp;*&nbsp;职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
@@ -149,7 +149,7 @@
                 <td>
                     <input name="duty" type="text" id="duty" onfocus="clearDutyMsg()" onblur="isDutyNull(this.value)"/>
                     <label id="duty_msg" style="font-size:12px;color:red;"></label>
-	                <img id="duty_img" src="./image/gou.png" style="display:none"/>
+	                <img id="duty_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
             </tr>
             <tr>
@@ -159,7 +159,7 @@
                 <td>
                     <input name="mobile" type="text" id="mobile" onfocus="clearMobileMsg()" onblur="isValidMobile(this.value)"/>
                     <label id="mobile_msg" style="font-size:12px;color:red;"></label>
-	                <img id="mobile_img" src="./image/gou.png" style="display:none"/>
+	                <img id="mobile_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
                 <td style="text-align:right;padding-right:30px;">
                     <font size="2">&nbsp;&nbsp;邮政邮编：</font>
