@@ -92,7 +92,7 @@
 									enctype="MULTIPART/FORM-DATA" 
         							action="upload">
 								<input type="file" name="imgfile" id="imgfile" value="浏览">
-								<input type="button" value="上传" onclick="if(checkImg()==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
+								<input type="button" value="上传" onclick="if(checkImg(this.value)==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
 								<input type="button" value="取消" onclick="hiddenForm()">
 								</form>
 							</div><!-- onsubmit="checkImg();updateHeadpic();return false;" -->

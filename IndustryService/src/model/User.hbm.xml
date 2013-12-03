@@ -30,5 +30,6 @@
 <property name="postcode"/>
 <property name="mailaddress"/>
 <property name="introduction"/>
+<property name="uploadsize"/>
 </class>
 </hibernate-mapping>

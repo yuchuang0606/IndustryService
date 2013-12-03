@@ -23,7 +23,7 @@
             <table cellpadding="0" cellspacing="0" align="center">
             	<%if(video.getVideotype()==1 || video.getVideotype()==2) {%>
                 <tr align="center">
-                    <td colspan="2" height="500px">
+                    <td colspan="2" height="500px;padding:10px 10px;">
                     	<script src='http://union.bokecc.com/player?vid=8352E53A661FD5DC9C33DC5901307461&siteid=470E510AC82C1D91&autoStart=true&width=640&height=481&playerid=3B585756AB7400D2&playertype=2' type="text/javascript"></script>
                     </td>
                 </tr>
@@ -75,7 +75,7 @@
                                     	<font size = 2>作者：</font>
                                 </td>
                                 <td valign="top">
-                                    <a id="btOpName" title='<%=author %>' href="#" target="_blank">
+                                    <!-- <a id="btOpName" title='<%=author %>' href="#" target="_blank"> -->
                           			<font size = 2><%=author %></font></a>
                   				</td>
                             </tr>
@@ -149,7 +149,7 @@
                                      <div style="float:left;width:255px;">
                                          <div style="float: left; width: 255px;">
                                          	 <%if (video.getVideotype()==1 || video.getVideotype()==3) {%>
-                                             <a href="<%=video.getLink2()%>" onclick="highDownClick();">
+                                             <a href="<%=request.getContextPath() %>/download?type=video&id=<%=video.getVideoid() %>" target="_blank">
                                               <span style="color: #614db3; font-weight: bold;text-decoration: underline; line-height: 20px;">
                                                   <font size = 2>高速下载</font>
                                               </span>

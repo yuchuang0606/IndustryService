@@ -10,36 +10,36 @@
  * Author: Yu Chuang
  */
 
-//Éú³ÉHttpÇëÇó¶ÔÏó£¬ÓÃÓÚ¿Í»§¶ËÏò·şÎñ/¶Ë·¢ËÍÒì²½µÄhttpÇëÇó
+//ï¿½ï¿½ï¿½Httpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ì²½ï¿½ï¿½httpï¿½ï¿½ï¿½ï¿½
 function getHttpObject() 
 { 
     var _http;
     var browser = navigator.appName;
     if(browser == "Microsoft Internet Explorer") 
     {
-        //Èç¹ûÓÃ»§Ê¹ÓÃIE£¬¾Í·µ»ØXMLHTTPµÄActiveX¶ÔÏó
+        //ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ê¹ï¿½ï¿½IEï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½XMLHTTPï¿½ï¿½ActiveXï¿½ï¿½ï¿½ï¿½
         _http = new ActiveXObject("MSXML2.XMLHTTP.3.0"); 
     }
-    else//·ÇIE
+    else//ï¿½ï¿½IE
     {
-        //·ñÔò·µ»ØÒ»¸öXMLHttpRequest¶ÔÏó
+        //ï¿½ï¿½ï¿½ò·µ»ï¿½Ò»ï¿½ï¿½XMLHttpRequestï¿½ï¿½ï¿½ï¿½
         _http = new XMLHttpRequest(); 
     }
     return _http;
 }
-//»ñÈ¡È«¾ÖµÄHTTPÇëÇó¶ÔÏó
-var http = getHttpObject();//Ò²¿ÉÒÔÔÚ¶¥¶ËÉùÃ÷
-//´¦ÀíÇëÇó×´Ì¬±ä»¯
+//ï¿½ï¿½È¡È«ï¿½Öµï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+var http = getHttpObject();//Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ä»¯
 function getHello() 
 { 
-    //4±íÊ¾ÇëÇóÒÑÍê³É
-    if (http.readyState == 4) //ÕâÀïµÄhttpÊÇÈ«¾Ö±äÁ¿
+    //4ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (http.readyState == 4) //ï¿½ï¿½ï¿½ï¿½ï¿½httpï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½
     {
-        //»ñÈ¡·şÎñ¶ÎµÄÏìÓ¦ÎÄ±¾
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Ó¦ï¿½Ä±ï¿½
         var helloStr = http.responseText; 
-        if(helloStr == "true")//±íÊ¾ÒÑ¾­´æÔÚ
-            {document.getElementById("msg_username").innerHTML="ÓÃ»§Ãû²»´æÔÚ";}
-        else//Ã»ÓĞ´æÔÚ
+        if(helloStr == "true")//ï¿½ï¿½Ê¾ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+            {document.getElementById("msg_username").innerHTML="ç”¨æˆ·åä¸æ­£ç¡®";}
+        else//Ã»ï¿½Ğ´ï¿½ï¿½ï¿½
             {document.getElementById("name_img").style.display = "inline";}
     }
 }
@@ -49,17 +49,17 @@ function CheckUserName()
     if(document.getElementById("txtName").value != "")
     {
         var url = "./ckname?username="+document.getElementById("txtName").value;
-        //Ö¸¶¨·şÎñ¶ËµÄµØÖ·
+        //Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ËµÄµï¿½Ö·
         http.open("GET", url, true); 
-        //ÇëÇó×´Ì¬±ä»¯Ê±µÄ´¦Àíº¯Êı
+        //ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ä»¯Ê±ï¿½Ä´ï¿½ï¿½?ï¿½ï¿½
         http.onreadystatechange = getHello; 
-        //·¢ËÍÇëÇó
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         http.send(null);
         return true;
     }
     else
     {
-         document.getElementById("msg_username").innerHTML="ÇëÊäÈëÓÃ»§Ãû";
+         document.getElementById("msg_username").innerHTML="å¯†ç ä¸æ­£ç¡®";
          return false;
     }
 }

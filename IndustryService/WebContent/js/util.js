@@ -30,7 +30,7 @@ function checkPwdSame(pwd) {
 	else
 		document.getElementById("msg_password1").innerHTML = "两次密码不一致";
 }
-
+/* 清除提示信息*/
 function clearPwdMsg1(pwd) {
 	var passwd = document.getElementById("pwd1").value;
 	if (passwd == pwd && pwd.length >= 8)
@@ -53,7 +53,7 @@ function CheckMail(mail) {
 		 return false;
 	 }
 }
-
+/* 清除提示信息*/
 function clearMsg() {
 	document.getElementById("email_img").style.display = "none";
 	document.getElementById("email_msg").innerHTML = "";
@@ -113,6 +113,7 @@ function CheckUserName()
          return false;
     }
 }
+/* 清除提示信息*/
 function clearNameMsg()
 {
 	document.getElementById("msg_username").innerHTML="";
@@ -130,6 +131,7 @@ function isValidMobile(str) {
     	return true;
     }
 }
+/* 清除提示信息*/
 function clearMobileMsg()
 {
 	document.getElementById("mobile_msg").innerHTML="";
@@ -143,11 +145,13 @@ function isCpnameNull(value)
 	else
 		document.getElementById("cpname_img").style.display = "inline";
 }
+/* 清除提示信息*/
 function clearCpnameMsg()
 {
 	document.getElementById("cpname_msg").innerHTML="";
 	document.getElementById("cpname_img").style.display = "none";
 }
+/* 判断部门名称是否为空 */
 function isDepartNull(value)
 {
 	if (value.length == 0)
@@ -155,11 +159,13 @@ function isDepartNull(value)
 	else
 		document.getElementById("depart_img").style.display = "inline";
 }
+/* 清除提示信息*/
 function clearDepartMsg()
 {
 	document.getElementById("depart_msg").innerHTML="";
 	document.getElementById("depart_img").style.display = "none";
 }
+/* 判断职务是否为空 */
 function isDutyNull(value)
 {
 	if (value.length == 0)
@@ -167,11 +173,13 @@ function isDutyNull(value)
 	else
 		document.getElementById("duty_img").style.display = "inline";
 }
+/* 清除提示信息*/
 function clearDutyMsg()
 {
 	document.getElementById("duty_msg").innerHTML="";
 	document.getElementById("duty_img").style.display = "none";
 }
+/* 用户注册 */
 function register()
 {
 	var username = document.getElementById("txtName").value;
@@ -386,9 +394,9 @@ function cancelReg()
 }
 
 /* 判断是否是图片 */
-function checkImg() 
+function checkImg(file) 
 {	
-	var file = document.getElementById("imgfile").value;
+//	var file = document.getElementById("imgfile").value;
 	if(file == "")
 	{
 	    alert('图片不能为空！');
@@ -408,6 +416,7 @@ function checkImg()
 		}
 	}
 }
+/* 修改头像 */
 var userid = null;
 var ctxPath = null;
 function updateHeadpic(uid, contextPath)
@@ -482,4 +491,155 @@ function SearchSubmit()
 	if ("请输入关键字" == keyword ||  keyword == "")
 		return ;
 	post('./search', {option:option,keyword:keyword});
+}
+/* 点击视频选项，显示视频链接输入框*/
+function dispVideoLink()
+{
+	document.getElementById("videolink").style.display = "block";
+	//document.getElementById("videolink1").style.display = "block";
+}
+function hiddenVideoLink()
+{
+	document.getElementById("videolink").style.display = "none";
+	//document.getElementById("videolink1").style.display = "none";
+}
+/* 判断资源标题是不是空*/
+function isTitleNull(value)
+{
+	if (value.length == 0) {
+		document.getElementById("msg_resname").style.color = 'red';
+		document.getElementById("msg_resname").innerHTML="不能为空";
+		return false;
+	} else {
+		document.getElementById("msg_resname").style.color = 'black';
+		document.getElementById("msg_resname").innerHTML="（150个字之内）";
+		return true;
+	}
+}
+/* 判断视频链接是不是空 */
+function isVideolinkNull(value)
+{
+	if (value.length == 0) {
+		document.getElementById("msg_videolink").style.color = 'red';
+		document.getElementById("msg_videolink").innerHTML="不能为空";
+		return false;
+	} else {
+		document.getElementById("msg_videolink").style.color = 'black';
+		document.getElementById("msg_videolink").innerHTML="（请填写可播放的地址）";
+		return true;
+	}
+}
+/* 判断标签是不是空 */
+function isTagNull(value)
+{
+	if (value.length == 0) {
+		document.getElementById("msg_restag").style.color = 'red';
+		document.getElementById("msg_restag").innerHTML="不能为空";
+		return false;
+	} else {
+		document.getElementById("msg_restag").style.color = 'black';
+		document.getElementById("msg_restag").innerHTML="（如果是多个标签请用空格隔开）";
+		return true;
+	}
+}
+/* 判断资源描述是否为空 */
+function isDescriptionNull(value)
+{
+	if (value.length < 50) {
+		document.getElementById("msg_description").style.color = 'red';
+		document.getElementById("msg_description").innerHTML="不得少于50个字符";
+		return false;
+	} else {
+		document.getElementById("msg_description").style.color = 'black';
+		document.getElementById("msg_description").innerHTML="（不得少于50个字符）";
+		return true;
+	}
+}
+/* 判断是否是正整数 */
+function isNum(ss){
+	var re = /^[\d]+$/;
+	return re.test(ss);
+}
+/* 判断数字范围 */
+function checkNumscope()
+{
+	var value = document.getElementById("rescoin").value;
+	if (isNum(value)) {
+		if (value<0 || value>50) {
+			document.getElementById("msg_rescoin").style.color = 'red';
+			document.getElementById("msg_rescoin").innerHTML="金币大小应在0~50之间的整数";
+			return false;
+		} else {
+			document.getElementById("msg_rescoin").style.color = 'black';
+			document.getElementById("msg_rescoin").innerHTML="（0~50之间，每次下载将收取30%平台维护费，此功能暂不开放）";
+			return true;
+		}
+	} else {
+		document.getElementById("msg_rescoin").style.color = 'red';
+		document.getElementById("msg_rescoin").innerHTML="金币大小应在0~50之间的整数";
+		return false;
+	}
+}
+/* 上传资源*/
+function uploadResource()
+{
+	var typegroup = document.getElementsByName("restype");
+	var restype = null;		// get the resource type
+	for (var i = 0; i < typegroup.length; i++)
+	{
+		if (typegroup[i].checked)
+		{
+			restype = typegroup[i].value;
+			break;
+		}
+	}
+	alert(restype);
+	var publicgroup = document.getElementsByName("ispublic");
+	var ispublic = null;		// if public or not
+	for (var i = 0; i < publicgroup.length; i++)
+	{
+		if (publicgroup[i].checked)
+		{
+			ispublic = publicgroup[i].value;
+			break;
+		}
+	}
+	alert(ispublic);
+	var sizegroup = document.getElementsByName("ressize");
+	var ressize = null;		// if public or not
+	for (var i = 0; i < sizegroup.length; i++)
+	{
+		if (sizegroup[i].checked)
+		{
+			ressize = sizegroup[i].value;
+			break;
+		}
+	}
+	alert(ressize);
+	var rescoin = document.getElementById("rescoin").value;	// get the coin
+	if (!checkNumscope())
+		return ;
+	var resname = document.getElementById("resname").value;	// get the title of resource
+	if (isTitleNull(resname))
+		return ;
+	if (restype == 2) {	// 资源类型为视频
+		var videolink = document.getElementById("videolink").value;	// get the link of video
+		if (isVideolinkNull(videolink))
+			return;
+	}
+	var restag = document.getElementById("restag").value;	// get the tag of resource
+	if (isTagNull(restag))
+		return;
+	var description = document.getElementById("description").value;
+	if (isDescriptionNull(description))
+		return;
+	var imgfile = document.getElementById("imgfile").value;
+	if (!checkImg(imgfile))
+		return;
+	var resfile = document.getElementById("resfile").value;
+	if (resfile.length == 0) {
+		alert("请选择资源文件");
+		return;
+	}
+	
 }

@@ -30,6 +30,7 @@ public class User {
 	private String postcode;
 	private String mailaddress;
 	private String introduction;
+	private double uploadsize;
 	/**
 	 * @return the userid
 	 */
@@ -329,6 +330,18 @@ public class User {
 	 */
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
+	}
+	/**
+	 * @return the uploadsize
+	 */
+	public double getUploadsize() {
+		return uploadsize;
+	}
+	/**
+	 * @param introduction the introduction to set
+	 */
+	public void setUploadsize(double uploadsize) {
+		this.uploadsize = uploadsize;
 	}
 
 }

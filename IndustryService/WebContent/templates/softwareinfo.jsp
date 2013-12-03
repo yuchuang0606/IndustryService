@@ -9,7 +9,7 @@
 	String createtime = new SimpleDateFormat("yyyy/MM/dd").format(soft.getCreatetime());
 	soft.setViewtimes(soft.getViewtimes()+1);
 	sc.updateSoftware(soft);
-	
+	User user = (User)request.getSession().getAttribute("user");
 	int rp = 8;
 	List<Software> softList = sc.getListByColumn(0, rp, "downloadtimes");
 %>
@@ -81,7 +81,7 @@
                                     	<font size = 2>作者：</font>
                                 </td>
                                 <td valign="top">
-                                    <a id="btOpName" title='<%=author %>' href="#" target="_blank">
+                                    <!-- <a id="btOpName" title='<%=author %>' href="#" target="_blank"> -->
                           			<font size = 2><%=author %></font></a>
                   				</td>
                             </tr>
@@ -149,7 +149,7 @@
 								<td valign="top" align="left">
                                      <div style="float:left;width:255px;">
                                          <div style="float: left; width: 255px;">
-                                             <a href="<%=soft.getLink()%>" onclick="highDownClick();">
+                                             <a href="<%=request.getContextPath() %>/download?type=software&id=<%=soft.getSoftwareid() %>" target="_blank">
                                               <span style="color: #614db3; font-weight: bold;text-decoration: underline; line-height: 20px;">
                                                   <font size = 2>高速下载</font>
                                               </span>
