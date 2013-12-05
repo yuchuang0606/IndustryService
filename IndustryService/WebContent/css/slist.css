@@ -129,9 +129,9 @@
 	border-bottom:1px solid #eee;
 }
 .softimage {height:60px;width:60px;float:left;padding:10px 5px 10px 10px;;}
-.softdetail {height:60px;width:440px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
+.softdetail {height:60px;width:400px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
 .softdetail span,.softoption span,.softext span{font-size:14px;}
-.softext {height:60px;width:100px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
+.softext {height:60px;width:140px;line-height:20px;float:left;padding:10px 10px;overflow:hidden;}
 .softhandle {height:60px;width:60px;float:left;padding:10px 5px;}
 .softhandle span{height:30px;margin-top:10px;line-height:30px;}
 

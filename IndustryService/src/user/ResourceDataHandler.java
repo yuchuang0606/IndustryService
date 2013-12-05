@@ -58,19 +58,19 @@ public class ResourceDataHandler extends HttpServlet {
 				int page = Integer.parseInt(request.getParameter("page"));
 				int rp = Integer.parseInt(request.getParameter("rp"));
 				ResourceControl rc = new ResourceControl();
-				int count = rc.getNumberByProp("authorid", String.valueOf(user.getUserid()));
+				int count = rc.getNumberByProps("authorid", String.valueOf(user.getUserid()), "restype", type);
 				int totalPage= count/rp;
 				if (totalPage ==0)
 					totalPage = 1;
 				else if (count%rp != 0)
 					totalPage = totalPage + 1;
 				int start = (page-1)*rp;
-				List<Resource> ureslist = rc.getByPropAndColumn("authorid", String.valueOf(user.getUserid()), orderby, start, rp);
-				request.getSession().setAttribute("ureslist", ureslist);
-				request.getSession().setAttribute("type", type);
-				request.getSession().setAttribute("orderby", orderby);
-				request.getSession().setAttribute("totalPage", totalPage);
-				request.getSession().setAttribute("culPage", page);
+				List<Resource> ureslist = rc.getByPropAndColumns("authorid", String.valueOf(user.getUserid()), "restype", type, orderby, start, rp);
+				request.setAttribute("userlist", ureslist);
+				request.setAttribute("type", type);
+				request.setAttribute("orderby", orderby);
+				request.setAttribute("totalPage", totalPage);
+				request.setAttribute("culPage", page);
 				request.getRequestDispatcher("myupload.jsp").forward(request, response);
 			} else if ("add".equals(command)) {
 				/*

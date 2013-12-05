@@ -40,7 +40,7 @@
 			<a href="<%=request.getContextPath() %>/user/upload.jsp" >上传资源</a>
 		</li>
 		<li class="li_inner">
-			<a href="#" >我的上传</a>
+			<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=software&orderby=createtime&page=1&rp=10" >我的上传</a>
 		</li>
 		<li class="li_inner">
 			<a href="#" >我的下载</a>

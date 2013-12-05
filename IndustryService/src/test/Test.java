@@ -30,7 +30,7 @@ public class Test {
 		System.out.println(reslist.size());
 		System.out.println(rc.getResourceNumber());
 		System.out.println(nc.listNews("author", "1").size());
-		System.out.println(rc.listResource("restype", "software"));
+		System.out.println(rc.getByPropAndColumn("authorid", "1", "createtime", 0, 5));
 	}
 
 }

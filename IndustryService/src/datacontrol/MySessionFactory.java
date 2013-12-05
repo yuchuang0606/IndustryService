@@ -162,6 +162,35 @@ public  class  MySessionFactory {
 		
 	}
 	
+	public static int getItemNumberByProps(String cname, String prop, String value, String prop1, String value1)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		int count =0;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("select count(*) from "+cname+" where "+prop+"= :value and " + prop1 + "= :value1").setString("value", value).setString("value1", value1);
+			count = ((Number)q.uniqueResult()).intValue();  
+			
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return count;
+			}
+		
+	}
+	
 	public static List<Object> getByprop(String cname,String prop,String value)
 	{
 		if(!isInit) 
@@ -228,7 +257,35 @@ public  class  MySessionFactory {
 			//开启事务
 			session.beginTransaction();
 			Query q=session.createQuery("from "+cname+" x where x."+prop+"= :value" + " order by x."+column).setString("value", value);
-			System.out.println(q.getQueryString());
+			q.setMaxResults(size);
+			q.setFirstResult(start);
+			result=q.list();
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return result;
+			}
+	}
+	
+	public static List<Object> getByPropAndColumns(String cname,String prop,String value, String prop1, String value1,String column,int start,int size)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		List<Object> result=null;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("from "+cname+" x where x."+prop+"= :value and " + prop1+"= :value1 " + " order by x."+column).setString("value", value).setString("value1", value1);
 			q.setMaxResults(size);
 			q.setFirstResult(start);
 			result=q.list();
