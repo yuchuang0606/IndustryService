@@ -49,15 +49,21 @@
 	float:left;
 }
 .blockdiv a {
+	margin-left:0px;
 	text-decoration: none;
 	transition: color .2s;
 	color:#3C3C3C;
+}
+.blockdiv a:link {
+	color:#3C3C3C;
+	cursor: pointer;
 }
 .blockdiv a:hover {
 	color: blue;
 	cursor: pointer;
 }
 .blockdiv ul {
+	margin-left:0px;
 	padding:0px 10px;
 }
 .blockdiv ul li {

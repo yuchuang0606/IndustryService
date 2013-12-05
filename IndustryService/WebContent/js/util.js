@@ -9,7 +9,29 @@
  * File Name: call background api 
  * Author: Yu Chuang
  */
-
+function focusPassword()
+{
+	var pwd = document.getElementById("pwd");
+	if(pwd.value== pwd.defaultValue) {
+		pwd.value='';
+		pwd.style.color='black';
+	}
+	pwd.type='password';
+}
+function checkLogin()
+{
+	var username = document.getElementById("un");
+	var password = document.getElementById("pwd");
+	if( username.value == username.defaultValue) {
+		document.getElementById("msg_login").innerHTML = "请输入用户名";
+		return false;
+	}
+	if( password.value == password.defaultValue) {
+		document.getElementById("msg_login").innerHTML = "请输入密码";
+		return false;
+	}
+	return true;
+}
 /* 检查密码长度是否合理 */
 function checkPwdLength(pwd) {
 	if (pwd.length < 8)
@@ -268,7 +290,7 @@ function post(URL, PARAMS) {
 }
 
 /* 修改个人信息*/
-function updateinfo(id,contextPath)
+function updateinfo(contextPath)
 {
 	var realname = document.getElementById("realname").value;
 	var email = document.getElementById("txtMail").value;
@@ -313,8 +335,7 @@ function updateinfo(id,contextPath)
 	var postaddress = document.getElementById("postaddress").value;
 	var introduction = document.getElementById("introduction").value;
 	// post the request
-	var url = contextPath + "/update?type=info" +
-						"&userid=" + id +
+	var url = contextPath + "/user/update?type=info" +
 						"&realname=" + realname +
 						"&email="+ email +
 						"&sex=" + sex +
@@ -355,7 +376,7 @@ function updateResult()
     }
 }
 /* 修改密码 */
-function updatepwd(id,contextPath)
+function updatepwd(contextPath)
 {
 	var oldpwd = document.getElementById("oldpwd").value;
 	var newpwd1 = document.getElementById("pwd1").value;
@@ -370,8 +391,7 @@ function updatepwd(id,contextPath)
 		document.getElementById("msg_password1").innerHTML="两次密码不一致";return;
 	}
 	// post the request
-	var url = contextPath + "/update?type=pwd" +
-						"&userid=" + id +
+	var url = contextPath + "/user/update?type=pwd" +
 						"&oldpwd=" + oldpwd +
 						"&newpwd="+ newpwd1;
     //指定服务端的地址
@@ -417,11 +437,9 @@ function checkImg(file)
 	}
 }
 /* 修改头像 */
-var userid = null;
 var ctxPath = null;
-function updateHeadpic(uid, contextPath)
+function updateHeadpic(contextPath)
 {
-	userid = uid;
 	ctxPath = contextPath;
 	var form = document.getElementById("headform");
 //    var fileObj = document.getElementById("imgfile").files;
@@ -448,8 +466,7 @@ function uploadResult()
         	alert("头像上传失败");
             return false;
         } else {
-        	var url = ctxPath + "/update?type=headpic& + " +
-        				"&userid=" + userid +
+        	var url = ctxPath + "/user/update?type=headpic& + " +
         				"&userpic=" + resStr;
             //指定服务端的地址
             http.open("POST", url, true); 
@@ -509,37 +526,37 @@ function isTitleNull(value)
 	if (value.length == 0) {
 		document.getElementById("msg_resname").style.color = 'red';
 		document.getElementById("msg_resname").innerHTML="不能为空";
-		return false;
+		return true;
 	} else {
 		document.getElementById("msg_resname").style.color = 'black';
 		document.getElementById("msg_resname").innerHTML="（150个字之内）";
-		return true;
+		return false;
 	}
 }
-/* 判断视频链接是不是空 */
+/* 判断视频链接是不是空 
 function isVideolinkNull(value)
 {
 	if (value.length == 0) {
 		document.getElementById("msg_videolink").style.color = 'red';
 		document.getElementById("msg_videolink").innerHTML="不能为空";
-		return false;
+		return true;
 	} else {
 		document.getElementById("msg_videolink").style.color = 'black';
 		document.getElementById("msg_videolink").innerHTML="（请填写可播放的地址）";
-		return true;
+		return false;
 	}
-}
+}*/
 /* 判断标签是不是空 */
 function isTagNull(value)
 {
 	if (value.length == 0) {
 		document.getElementById("msg_restag").style.color = 'red';
 		document.getElementById("msg_restag").innerHTML="不能为空";
-		return false;
+		return true;
 	} else {
 		document.getElementById("msg_restag").style.color = 'black';
 		document.getElementById("msg_restag").innerHTML="（如果是多个标签请用空格隔开）";
-		return true;
+		return false;
 	}
 }
 /* 判断资源描述是否为空 */
@@ -548,11 +565,11 @@ function isDescriptionNull(value)
 	if (value.length < 50) {
 		document.getElementById("msg_description").style.color = 'red';
 		document.getElementById("msg_description").innerHTML="不得少于50个字符";
-		return false;
+		return true;
 	} else {
 		document.getElementById("msg_description").style.color = 'black';
 		document.getElementById("msg_description").innerHTML="（不得少于50个字符）";
-		return true;
+		return false;
 	}
 }
 /* 判断是否是正整数 */
@@ -580,6 +597,11 @@ function checkNumscope()
 		return false;
 	}
 }
+
+var filename = null;
+var filepath = null;
+var filesize = null;
+
 /* 上传资源*/
 function uploadResource()
 {
@@ -593,40 +615,12 @@ function uploadResource()
 			break;
 		}
 	}
-	alert(restype);
-	var publicgroup = document.getElementsByName("ispublic");
-	var ispublic = null;		// if public or not
-	for (var i = 0; i < publicgroup.length; i++)
-	{
-		if (publicgroup[i].checked)
-		{
-			ispublic = publicgroup[i].value;
-			break;
-		}
-	}
-	alert(ispublic);
-	var sizegroup = document.getElementsByName("ressize");
-	var ressize = null;		// if public or not
-	for (var i = 0; i < sizegroup.length; i++)
-	{
-		if (sizegroup[i].checked)
-		{
-			ressize = sizegroup[i].value;
-			break;
-		}
-	}
-	alert(ressize);
 	var rescoin = document.getElementById("rescoin").value;	// get the coin
 	if (!checkNumscope())
 		return ;
 	var resname = document.getElementById("resname").value;	// get the title of resource
 	if (isTitleNull(resname))
 		return ;
-	if (restype == 2) {	// 资源类型为视频
-		var videolink = document.getElementById("videolink").value;	// get the link of video
-		if (isVideolinkNull(videolink))
-			return;
-	}
 	var restag = document.getElementById("restag").value;	// get the tag of resource
 	if (isTagNull(restag))
 		return;
@@ -636,10 +630,116 @@ function uploadResource()
 	var imgfile = document.getElementById("imgfile").value;
 	if (!checkImg(imgfile))
 		return;
-	var resfile = document.getElementById("resfile").value;
-	if (resfile.length == 0) {
-		alert("请选择资源文件");
-		return;
+	var videolink = null;
+	if (restype == "video") {	// 资源类型为视频
+		videolink = document.getElementById("videolink").value;	// get the link of video
+		if (videolink == null && filepath == null) {
+			alert("视频链接和资源文件至少选择一个"); return;
+		}
+	} else {
+		if (filename == null || filepath==null) {
+			alert("请选择资源文件");
+			return;
+		}
 	}
-	
+	var form = document.getElementById("respic");
+	var formdata = new FormData(form);
+//  formdata.append("imgfile", fileObj);
+// post the request
+	var url = "../upload";
+  //指定服务端的地址
+	http.open("POST", url, true); 
+  //请求状态变化时的处理函数
+	http.onreadystatechange = uploadPicResult;
+  //发送请求
+	http.send(formdata);
+}
+function uploadPicResult()
+{
+	//4表示请求已完成
+    if (http.readyState == 4) //这里的http是全局变量
+    {
+        //获取服务段的响应文本
+        var respic = http.responseText;
+        alert(respic);
+        if (respic.substring(0, 8) != "/uploads") {
+        	alert("封面图片上传失败");
+            return false;
+        } else {
+        	var typegroup = document.getElementsByName("restype");
+        	var restype = null;		// get the resource type
+        	for (var i = 0; i < typegroup.length; i++)
+        	{
+        		if (typegroup[i].checked)
+        		{
+        			restype = typegroup[i].value;
+        			break;
+        		}
+        	}
+        	var publicgroup = document.getElementsByName("ispublic");
+        	var ispublic = null;		// if public or not
+        	for (var i = 0; i < publicgroup.length; i++)
+        	{
+        		if (publicgroup[i].checked)
+        		{
+        			ispublic = publicgroup[i].value;
+        			break;
+        		}
+        	}
+        	var sizegroup = document.getElementsByName("ressize");
+        	var ressize = null;		// 
+        	for (var i = 0; i < sizegroup.length; i++)
+        	{
+        		if (sizegroup[i].checked)
+        		{
+        			ressize = sizegroup[i].value;
+        			break;
+        		}
+        	}
+        	var rescoin = document.getElementById("rescoin").value;	// get the coin
+        	var resname = document.getElementById("resname").value;	// get the title of resource
+        	var videolink = null;
+        	if (restype == 3) {	// 资源类型为视频
+        		videolink = document.getElementById("videolink").value;	// get the link of video
+        	}
+        	var restag = document.getElementById("restag").value;	// get the tag of resource
+        	var description = document.getElementById("description").value;
+        	alert(restype + ispublic + ressize + rescoin + resname + restag + description + videolink + respic + filename + filepath);
+        	var url = "../user/resourcedata?command=add" +
+        				"&restype=" + restype +
+        				"&ispublic=" + ispublic +
+        				"&ressize=" + filesize + 
+        				"&rescoin=" + rescoin + 
+        				"&resname=" + resname +
+        				"&restag=" + restag +
+        				"&videolink=" + videolink +
+        				"&respic=" + respic +
+        				"&filename=" + filename +
+        				"&path=" + filepath +
+        				"&description=" + description;
+            //指定服务端的地址
+            http.open("POST", url, true);
+            //请求状态变化时的处理函数
+            http.onreadystatechange = uploadResResult;
+            //发送请求
+            http.send(null);
+        }
+    }
+}
+
+function uploadResResult()
+{
+	//4表示请求已完成
+    if (http.readyState == 4) //这里的http是全局变量
+    {
+    	//获取服务段的响应文本
+        var resStr = http.responseText;
+        if (resStr == "big") {
+        	alert("文件大小超过您的最大限制，请联系QQ:1346158517");
+        } else if (resStr == "true") {
+        	alert("资源上传成功，等待管理员审核");
+        } else if (resStr == "false") {
+        	alert("资源上传发生未知错误，请联系管理员");
+        }
+    }
 }

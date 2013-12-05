@@ -49,7 +49,6 @@ public class RegisterHandler extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
-			System.out.println(request.getCharacterEncoding());
 			request.setCharacterEncoding("utf-8");
 			System.out.println(request.getCharacterEncoding());
 			String username = request.getParameter("username");
@@ -85,6 +84,9 @@ public class RegisterHandler extends HttpServlet {
 			user.setPhone(mobile);
 			user.setPostcode(postcode);
 			user.setMailaddress(postaddress);
+			user.setUploadsize(10);
+			user.setRealname(realname);
+			user.setScale(size);
 			
 			UserControl uc = new UserControl();
 			uc.addUser(user);

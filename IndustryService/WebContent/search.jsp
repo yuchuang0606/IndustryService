@@ -58,7 +58,7 @@
 			    		<div class="softext">
 			    			<span>浏览：<%=soft.getViewtimes() %></span><br/>
 			    			<span>下载：<%=soft.getDownloadtimes() %></span><br/>
-			    			<span>大小：<%=soft.getSize() %>KB</span>
+			    			<span>大小：<%=soft.getSize() %>M</span>
 			    		</div>
 			    		<div class="softhandle">
 			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
@@ -85,7 +85,7 @@
 			    		<div class="softext">
 			    			<span>浏览：<%=video.getViewtimes() %></span><br/>
 			    			<span>下载：<%=video.getDownloadtimes() %></span><br/>
-			    			<span>大小：<%=video.getVideosize() %>KB</span>
+			    			<span>大小：<%=video.getVideosize() %>M</span>
 			    		</div>
 			    		<div class="softhandle">
 			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>

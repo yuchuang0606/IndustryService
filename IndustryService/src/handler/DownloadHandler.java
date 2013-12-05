@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datacontrol.SoftwareControl;
-import datacontrol.VideoControl;
+import datacontrol.ResourceControl;
 import model.User;
 
 /**
@@ -55,10 +54,13 @@ public class DownloadHandler extends HttpServlet {
 				String type = request.getParameter("type");
 				String resid = request.getParameter("id");
 				String link = "";
+				ResourceControl rc = new ResourceControl();
+				link = (new ResourceControl()).listResource("softwareid", resid).get(0).getLink();
+				/*
 				if ("software".equals(type))
 					link = (new SoftwareControl()).listSoftware("softwareid", resid).get(0).getLink();
 				else if ("video".equals(type))
-					link = (new VideoControl()).listVideo("videoid", resid).get(0).getLink2();
+					link = (new VideoControl()).listVideo("videoid", resid).get(0).getLink2();*/
 				pw.write("<html><script>location.href='"+request.getContextPath()+link+"';</script></html>");
 			}
 		} catch (Exception e) {

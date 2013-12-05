@@ -23,7 +23,7 @@ org.hibernate.connection.ProxoolConnectionProvider
 <mapping resource="model/Groupitem.hbm.xml" />
 <mapping resource="model/Introduction.hbm.xml" />
 <mapping resource="model/News.hbm.xml" />
-<mapping resource="model/Software.hbm.xml" />
+<mapping resource="model/Resource.hbm.xml" />
 <mapping resource="model/Video.hbm.xml" />
 <mapping resource="model/Notification.hbm.xml" />
 </session-factory>

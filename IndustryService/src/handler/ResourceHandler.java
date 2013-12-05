@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datacontrol.SoftwareControl;
-import datacontrol.VideoControl;
-import model.Software;
-import model.Video;
+import datacontrol.ResourceControl;
+import model.Resource;
 
 /**
  * Servlet implementation class ResourceHandler
@@ -53,21 +51,22 @@ public class ResourceHandler extends HttpServlet {
 			int page = Integer.parseInt(request.getParameter("page"));
 			int rp = Integer.parseInt(request.getParameter("rp"));
 			
-			SoftwareControl sc = new SoftwareControl();
-			VideoControl vc = new VideoControl();
+			//SoftwareControl sc = new SoftwareControl();
+			//VideoControl vc = new VideoControl();
+			ResourceControl rc = new ResourceControl();
 			int count = 0;
-			if ("software".equals(type))
-				count = sc.getSoftwareNumber();
-			if ("video".equals(type))
-				count = vc.getVideoNumber();
+			count = rc.getNumberByProp("restype", type);
 			int totalPage= count/rp;
 			if (totalPage ==0)
 				totalPage = 1;
 			else if (count%rp != 0)
 				totalPage = totalPage + 1;
 			int start = (page-1)*rp;
-			List<Software> softList = null;
-			List<Video> videoList = null;
+			//List<Software> softList = null;
+			//List<Video> videoList = null;
+			List<Resource> reslist = rc.getByPropAndColumn("restype", type, "createtime", start, rp);
+			request.setAttribute("reslist", reslist);
+			/*
 			if ("software".equals(type))
 			{
 				softList = sc.getListByColumn(start, rp, orderby);
@@ -77,7 +76,7 @@ public class ResourceHandler extends HttpServlet {
 			{
 				videoList = vc.getListByColumn(start, rp, orderby);
 				request.setAttribute("videoList", videoList);
-			}
+			}*/
 			request.setAttribute("type", type);
 			request.setAttribute("orderby", orderby);
 			request.setAttribute("totalPage", totalPage);

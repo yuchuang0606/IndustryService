@@ -31,5 +31,7 @@
 <property name="mailaddress"/>
 <property name="introduction"/>
 <property name="uploadsize"/>
+<property name="realname"/>
+<property name="scale"/>
 </class>
 </hibernate-mapping>

@@ -92,7 +92,7 @@
 									enctype="MULTIPART/FORM-DATA" 
         							action="upload">
 								<input type="file" name="imgfile" id="imgfile" value="浏览">
-								<input type="button" value="上传" onclick="if(checkImg(this.value)==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
+								<input type="button" value="上传" onclick="if(checkImg(document.getElementById('imgfile').value)==false)return;updateHeadpic('<%=request.getContextPath()%>')"/>
 								<input type="button" value="取消" onclick="hiddenForm()">
 								</form>
 							</div><!-- onsubmit="checkImg();updateHeadpic();return false;" -->
@@ -114,7 +114,7 @@
 						<font size = 2>&nbsp;真实姓名：</font>
 					</td>
 					<td width="257" align="left">
-						<input name="realname" type="text" id="realname" style="width:150px;"/>
+						<input name="realname" type="text" id="realname" value="<%=user.getRealname() %>" style="width:150px;"/>
 					</td>
 					<td width="70" align="left">
 						<font size = 2> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</font>
@@ -269,7 +269,7 @@
 				<tr>
 	                <td align="center" height="30" colspan="4" >
 	                	<div style="text-align:center;margin:10px auto;">
-	                    <input type="submit" name="btSubmit" value="提   交" onclick="updateinfo(<%=user.getUserid() %>,'<%=request.getContextPath()%>')" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                    <input type="submit" name="btSubmit" value="提   交" onclick="updateinfo('<%=request.getContextPath()%>')" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
 	                    <input type="submit" value="取   消" onclick="cancel()" style="cursor:pointer;margin-left:20px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
 	                	</div>
 	                </td>

@@ -51,21 +51,21 @@ public class ConfigHandler extends HttpServlet {
 				response.sendRedirect("error.jsp");
 			String condition = configList.get(0).getCondition();
 			if ("2dCAD".equals(configname))
-				configname = "¶şÎ¬CAD½éÉÜ";
+				configname = "äºŒç»´CADä»‹ç»";
 			else if ("3dCAD".equals(configname))
-				configname = "ÈıÎ¬CAD½éÉÜ";
+				configname = "ä¸‰ç»´CADä»‹ç»";
 			else if ("5CAM".equals(configname))
-				configname = "ÎåÖáCAM½éÉÜ";
+				configname = "äº”è½´CAMä»‹ç»";
 			else if ("coindeclare".equals(configname))
 			{
-				configname = "½ğ±Ò¡¢»ı·ÖÊ¹ÓÃËµÃ÷";
+				configname = "é‡‘å¸ã€ç§¯åˆ†ä»‹ç»";
 				request.setAttribute("configname", configname);
 				request.setAttribute("condition", condition);
 				request.getRequestDispatcher("/user/coinexplain.jsp").forward(request, response);
 				return;
 			}
 			else if ("regright".equals(configname))
-				configname = "¡¶´óÁ¬ÊĞ¹¤ÒµÔÆÆ½Ì¨×¢²áÌõ¿î¡·";
+				configname = "å¤§è¿å·¥ä¸šäº‘å¹³å°æ³¨å†Œé¡»çŸ¥";
 			request.setAttribute("configname", configname);
 			request.setAttribute("condition", condition);
 			request.getRequestDispatcher("introduce.jsp").forward(request, response);

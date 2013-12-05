@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/leftmenu.css" type="text/css" />
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.2.6.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/ui.core.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.scroll-follow.js"></script>
 <script type="text/javascript">

@@ -17,11 +17,13 @@ public class Video {
 	private int ispass;
 	private int viewtimes;
 	private int videotype;
-	private double videosize;
+	private double size;
 	private int downloadtimes;
 	private String tag;
 	private String filename;
 	private String videopic;
+	private int ispublic;
+	private int coin;
 	/**
 	 * @return the videoid
 	 */
@@ -121,16 +123,16 @@ public class Video {
 		this.link2 = link2;
 	}
 	/**
-	 * @return the videosize
+	 * @return the size
 	 */
-	public double getVideosize() {
-		return videosize;
+	public double getSize() {
+		return size;
 	}
 	/**
-	 * @param videosize the videosize to set
+	 * @param size the size to set
 	 */
-	public void setVideosize(double videosize) {
-		this.videosize = videosize;
+	public void setSize(double size) {
+		this.size = size;
 	}
 	/**
 	 * @return the downloadtimes
@@ -203,5 +205,21 @@ public class Video {
 	 */
 	public void setSdescribe(String sdescribe) {
 		this.sdescribe = sdescribe;
+	}
+	
+	public int getIspublic() {
+		return ispublic;
+	}
+
+	public void setIspublic(int ispublic) {
+		this.ispublic = ispublic;
+	}
+	
+	public int getCoin() {
+		return coin;
+	}
+
+	public void setCoin(int coin) {
+		this.coin = coin;
 	}
 }

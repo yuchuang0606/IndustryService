@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.*" %>
+<%
+	User userupload = (User)request.getSession().getAttribute("user");
+	double uploadsize = userupload.getUploadsize();
+%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/upload.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
-<script src="<%=request.getContextPath() %>/js/jquery-1.9.1.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/js/uploadify/uploadify.css">
 <div id="main" class="main">
 	<%@ include file="/user/userleftmenu.jsp"%>
+	<script src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.js"></script>
+	<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>
+	<link rel="stylesheet"  href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" type="text/css"/>
 	<div id="content" class="content"> 
     	<div style="height:30px;width:717px;line-height:30px;text-align:center;background:#f5f5f5;">
        		<font style="font-weight:800;color: #265f9d;">上传资源</font>
@@ -20,10 +26,10 @@
                		<td valign="middle" align="left" valign = "top">
                		<table id="ty" border="0">
 						<tr>
-							<td><input type="radio" name="restype" value="1" checked="checked" onclick="hiddenVideoLink()"/><label><font size = 2>软件</font></label></td>
-							<td><input type="radio" name="restype" value="2" onclick="dispVideoLink()"/><label><font size = 2>视频</font></label></td>
-							<td><input type="radio" name="restype" value="3" onclick="hiddenVideoLink()"/><label><font size = 2>文档</font></label></td>
-							<td><input type="radio" name="restype" value="4" onclick="hiddenVideoLink()"/><label><font size = 2>模型</font></label></td>
+							<td><input type="radio" name="restype" value="software" checked="checked" onclick="hiddenVideoLink()"/><label><font size = 2>软件</font></label></td>
+							<td><input type="radio" name="restype" value="model" onclick="hiddenVideoLink()"/><label><font size = 2>模型</font></label></td>
+							<td><input type="radio" name="restype" value="doc" onclick="hiddenVideoLink()"/><label><font size = 2>文档</font></label></td>
+							<td><input type="radio" name="restype" value="video" onclick="dispVideoLink()"/><label><font size = 2>视频</font></label></td>
 						</tr>
 					</table>
                    	</td>
@@ -134,8 +140,8 @@
 					<td valign="top" align="left">
                         <table id="view" border="0">
 							<tr>
-								<td><input type="radio" name="ispublic" value="0" checked="checked" /><label><font size = 2>公开</font></label></td>
-								<td><input type="radio" name="ispublic" value="1" /><label><font size = 2>不公开（仅自己可见）</font></label></td>
+								<td><input type="radio" name="ispublic" value="1" checked="checked" /><label><font size = 2>公开</font></label></td>
+								<td><input type="radio" name="ispublic" value="0" /><label><font size = 2>不公开（仅自己可见）</font></label></td>
 							</tr>
 						</table>
                     </td>
@@ -168,7 +174,7 @@
                         <font size = 2>资源名称：</font>
                     </td>
                     <td width="630" align="left">
-                        <input id="resname" name="resname" type="text" id="name" maxlength="150" style="width:370px;margin-left:5px;" onblur="isTitleNull(this.value)"/>
+                        <input id="resname" name="resname" type="text" maxlength="150" style="width:370px;margin-left:5px;" onblur="isTitleNull(this.value)"/>
                         <label id="msg_resname" style="font-size:12px;">（150个字之内）</label>
                     </td>
                 </tr>
@@ -210,99 +216,100 @@
 					<td align="left" width="80px" height="25px">
                        <font size = 2> 封面图片：</font>
                     </td>
-					<td align="left" style="width:120px; height:25px; vertical-align:top;">
-                        <input type="file" name="imgfile" id="imgfile" style="width:460px;" />
+					<td align="left" style="width:120px; height:25px; ">
+						<form id="respic" method="post" 
+									enctype="MULTIPART/FORM-DATA" 
+        							action="upload">
+                        	<input type="file" name="imgfile" id="imgfile" style="width:460px;" onblur="checkImg(this.value)"/>
+                        </form>
                     </td>
-					<td rowspan="11" align="left" height="75px" valign="top" width="110px">
-                        <table id="file" cellspacing="0" cellpadding="1" border="0" style="border-width:0px;border-collapse:collapse;">
-							<tr>
-								<td>
-									<input id="file0" type="radio" name="file" value="1" checked="checked" /><label for="file0"><font size = 2>设为封面图</font></label>
-								</td>
-							</tr>
-							<!-- 
-							<tr>
-								<td>
-									<input id="file1" type="radio" name="file" value="2" /><label for="file1"><font size = 2>设为封面图</font></label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input id="file2" type="radio" name="file" value="3" /><label for="file2"><font size = 2>设为封面图</font></label>
-								</td>
-							</tr> -->
-						</table>&nbsp;
+					<td align="left" height="25px" width="110px">
+                        <input id="file0" type="radio" name="file" value="1" checked="checked" /><label for="file0"><font size = 2>设为封面图</font></label>
                     </td>
 				</tr>
-				<!-- 
-				<tr>
-					<td align="left" width="100px" height="25px">
-                    	<font size = 2>预览图片2：</font>
-                    </td>
-					<td align="left" style="width:120px; height:25px; vertical-align:top;">
-                        <input type="file" name="file4" id="file4" style="width:460px;" />
-                    </td>
-				</tr>
-				<tr>
-					<td align="left" width="100px" height="25px">
-                        <font size = 2>预览图片3：</font>
-                    </td>
-					<td align="left" style="width:120px; height:25px; vertical-align:top;">
-                        <input type="file" name="file5" id="file5" style="width:460px;" />
-                    </td>
-				</tr> 
-				<tr id="">
-					<td width="100px" height="25" align="left">
-                       <font size = 2> 选择文件</font><span id=""><font size = 2>(txt)</font></span>：
-                    </td>
-					<td align="left" colspan="1">
-                    	<input type="file" name="" id="" onchange="" style="width:460px;" /><br />                    
-                    </td>
-				</tr> -->
-				<tr id="">
+				<tr height="40px;">
 					<td width="100px" height="25" align="left">
                         <font size = 2>资源文件</font>：
                     </td>
 					<td align="left">
-						<p></p>
-						<div id="file_upload_1" class="uploadify" style="height: 30px; width: 120px;">
-						<object id="SWFUpload_0" type="application/x-shockwave-flash" data="/uploadify/uploadify.swf?preventswfcaching=1386054933621" width="120" height="30" class="swfupload" style="position: absolute; z-index: 1;">
-						<param name="wmode" value="transparent">
-						<param name="movie" value="/uploadify/uploadify.swf?preventswfcaching=1386054933621">
-						<param name="quality" value="high">
-						<param name="menu" value="false">
-						<param name="allowScriptAccess" value="always">
-						<param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2Fuploadify%2Fuploadify.php&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=&amp;filePostName=Filedata&amp;fileTypes=*.*&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=%2Fdemos%2F&amp;buttonWidth=120&amp;buttonHeight=30&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-110&amp;buttonDisabled=false&amp;buttonCursor=-2">
-						</object>
-						<div id="file_upload_1-button" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
-						<span class="uploadify-button-text">SELECT FILES</span>
-						</div>
-						</div>
-						<div id="file_upload_1-queue" class="uploadify-queue"></div>
+						<div style="width:100%;height:23px;">
+						    <div style="float:left;width:300px;height:23px;"><input type="file" name="uploadify" id="uploadify"  /></div>
+				            
+				        </div>
+				        <div id="fileQueue" style="float:right"></div>
                        <!--  <input type="file" name="resfile" id="resfile" style="width:460px;" /> -->
                     </td>
+                    <td align="left">
+                    <a href="javascript:$('#uploadify').uploadify('cancel')" style="margin-left:20px">取消上传</a>
+                    </td>
 				</tr>
-				<tr>
+				<tr height="50px">
 					<td width="80px" height="25" align="left">&nbsp;</td>
-					<td align="left">
-                        <input type="submit" name="Submit" value="上传" onclick="uploadResource()" />
-                        <br />
+					<td align="right">
+						<input id="resname" value="" style="display:none"></input>
+                    </td>
+                    <td align="left">
+                    	<div style="margin-left:10px;">
+                        <input type="submit" name="Submit" value="确定上传" onclick="uploadResource()" style="cursor:pointer;color:#fff;font-weight:bold;height:30px;width:80px;background:url(../image/nav_bg.png) repeat-x"/>
+                        </div>
                     </td>
 				</tr>
 			</table>
         </div>            
     </div>
 </div>
-<script type="text/javascript">
-	
-$(function() {
-	$('#file_upload').uploadify({
-		'formData'     : {
-			'timestamp' : '<?php echo $timestamp;?>',
-			'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
-		},
-		'swf'      : 'uploadify.swf',
-		'uploader' : 'uploadify.php'
-	});
-});
-</script>   
+ <script>
+ $(function () {
+     $("#uploadify").uploadify({
+         //指定swf文件
+         'swf': '../js/uploadify/uploadify.swf',
+         //后台处理的页面
+         'uploader': '../upload',
+         //按钮显示的文字
+         'buttonText': '上传文件',
+         //显示的高度和宽度，默认 height 30；width 120
+         'height': 23,
+         'width': 75,
+         //上传文件的类型  默认为所有文件    'All Files'  ;  '*.*'
+         //在浏览窗口底部的文件类型下拉菜单中显示的文本
+         'fileTypeDesc': '*',
+         //允许上传的文件后缀
+         'fileTypeExts': '*.*',
+         //发送给后台的其他参数通过formData指定
+         //'formData': { 'someKey': 'someValue', 'someOtherKey': 1 },
+         //上传文件页面中，你想要用来作为文件队列的元素的id, 默认为false  自动生成,  不带#
+         //'queueID': 'fileQueue',
+         //选择文件后自动上传
+         'auto': true,
+         //设置为true将允许多文件上传
+         'multi': false,
+         // Set to false to keep files that have completed uploading in the queue.
+         'removeCompleted' : false,
+         // The maximum number of files you are allowed to upload. 
+         'uploadLimit' : 1,
+         'onUploadStart' : function(file) {
+        	 /*if (file.size*1.0/1000000 > 10) {
+        		 alert("文件超过10M，请联系QQ:1346158517");
+              	$("#uploadify").uploadify('cancel');
+        	 }*/
+        	 if (file.size*1.0/1000000 > 3000) {
+             	alert("文件不能超过3G，不能上传");
+             	$("#uploadify").uploadify('cancel');
+        	 }
+         },
+         'onUploadSuccess': function (file, data, response) {//当上传完成后的回调函数，ajax方式哦~~
+        	 filename = file.name;
+         	 filesize = file.size*1.0/1000000;
+         	 filepath = data;
+     	 },
+     	'onDestroy' : function() {
+            alert('I am getting destroyed!');
+            filename = null;
+            filepath = null;
+        },
+        'onClearQueue' : function(queueItemCount) {
+            alert(queueItemCount + ' file(s) were removed from the queue');
+        }
+     });
+ });
+</script>

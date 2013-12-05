@@ -90,7 +90,7 @@
 									enctype="MULTIPART/FORM-DATA" 
         							action="upload">
 								<input type="file" name="imgfile" id="imgfile" value="浏览">
-								<input type="button" value="上传" onclick="if(checkImg(this.value)==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
+								<input type="button" value="上传" onclick="if(checkImg(document.getElementById('imgfile').value)==false)return;updateHeadpic('<%=request.getContextPath()%>')"/>
 								<input type="button" value="取消" onclick="hiddenForm()">
 								</form>
 							</div><!-- onsubmit="checkImg();updateHeadpic();return false;" -->
@@ -119,7 +119,7 @@
 						<font size = 2>&nbsp;真实姓名：</font>
 					</td>
 					<td width="267" align="left">
-						<span><font size = 2>***</font></span>
+						<span><font size = 2><%=user.getRealname() %></font></span>
 					</td>
 					<td width="80" align="left">
 						<font size = 2> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</font>
@@ -169,7 +169,7 @@
 					    <font size = 2>产业规模：</font>
 					</td>
 					<td align="left">
-					    <span><font size = 2>*</font></span>
+					    <span><font size = 2><%=user.getScale() %></font></span>
 					</td>
 				</tr>
 				<tr>

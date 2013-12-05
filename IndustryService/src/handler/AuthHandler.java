@@ -52,31 +52,33 @@ public class AuthHandler extends HttpServlet {
 			
 			UserControl uc = new UserControl();
 			String info = uc.verifyUser(username, password);
-			if ("不存在该用户".equals(info)) {
-				System.out.println("用户不存在");
-				request.setAttribute("tip", "用户名不存在");
+			if ("涓嶅瓨鍦ㄨ鐢ㄦ埛".equals(info)) {
+				request.setAttribute("tip", "鐢ㄦ埛鍚嶄笉瀛樺湪");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
+				return ;
 			}
 			else if ("false".equals(info)) {
-				System.out.println("密码错误");
-				request.setAttribute("tip", "密码错误");
+				request.setAttribute("tip", "瀵嗙爜閿欒");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
+				return ;
 			}
 			else if ("true".equals(info)) {
 				User user = null;
 				user = uc.listUser("username", username).get(0);
 				user.setLastlogin(uc.getLastLogintime(user.getUserid()));
-				// 登录次数+1
+				// 鐧诲綍娆℃暟+1
 				uc.addLoginTimes(user.getUserid());
 				HttpSession session = request.getSession(true);
-				// 更新到最新的登录时间
+				// 鏇存柊鐧诲綍鏃堕棿
 				//user.setLastlogin(new Date());
 				//uc.updateUser(user);
-				// 添加到session
+				// 灏嗙敤鎴锋坊鍔犲埌session
 				session.setAttribute("user", user);
 				response.sendRedirect("user/user.jsp");
+				return ;
 			} else {
 				response.sendRedirect("index.jsp");
+				return ;
 			}
 		} catch (Exception e) {
 			

@@ -20,12 +20,13 @@
 .reg {
 	float:right;
 	margin-right:45px;
+	margin-top:0px;
     font-size: 14px;
     font-weight:bold;
     cursor: pointer;
     width: 76px;
-    height: 30px;
-    line-height:30px;
+    height: 32px;
+    line-height:32px;
     color: #fff;
     text-align:center;
  	background: url(../image/nav_bg.png) repeat-x;
@@ -53,6 +54,7 @@
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     height: 30px;
+    line-height:30px;
     font-size: 14px;
     color: #333;
 }
@@ -85,5 +87,5 @@
 }
 .loginform form a:hover{
     color:#ea5e00;
-    text-decoration:underline;
+    text-decoration:none;
 }

@@ -92,7 +92,7 @@
                                     	<font size = 2>文件大小：</font>
                                 </td>
                                 <td valign="top">
-                                    <span id="rpZyDesc_ctl00_lbZySize"><font size = 2><%=video.getVideosize() %></font></span>
+                                    <span id="rpZyDesc_ctl00_lbZySize"><font size = 2><%=video.getSize() %></font></span>
                                     <font size = 2>M</font>
                                 </td>
                             </tr>

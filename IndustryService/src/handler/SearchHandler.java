@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Software;
 import model.Video;
-import datacontrol.SoftwareControl;
 import datacontrol.VideoControl;
 
 /**
@@ -51,19 +49,15 @@ public class SearchHandler extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			String option = request.getParameter("option");
 			String keyword = request.getParameter("keyword");
-			System.out.println(option);
-			System.out.println(keyword);
 
-			if ("Èí¼þ".equals(option))
+			if ("è½¯ä»¶".equals(option))
 			{
-				System.out.println("aaa1");
-				SoftwareControl sc = new SoftwareControl();
-				List<Software> softList= sc.SearchByColumn("title", keyword);
-				request.setAttribute("type", "software");
-				request.setAttribute("softList", softList);
-				System.out.println("aaa");
+				//SoftwareControl sc = new SoftwareControl();
+				//List<Software> softList= sc.SearchByColumn("title", keyword);
+				//request.setAttribute("type", "software");
+				//request.setAttribute("softList", softList);
 			}
-			else if ("ÊÓÆµ".equals(option))
+			else if ("è§†é¢‘".equals(option))
 			{
 				VideoControl vc = new VideoControl();
 				List<Video> videoList= vc.SearchByColumn("title", keyword);

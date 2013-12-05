@@ -128,7 +128,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					width           : 120,                // The width of the browse button
 					
 					// Events
-					overrideEvents  : []             // (Array) A list of default event handlers to skip
+					overrideEvents: []             // (Array) A list of default event handlers to skip
 					/*
 					onCancel         // Triggered when a file is cancelled from the queue
 					onClearQueue     // Triggered during the 'clear queue' method
@@ -966,7 +966,8 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			}
 
 			// Call the user-defined event handler
-			if (settings.onUploadSuccess) settings.onUploadSuccess.call(this, file, data, response); 
+			if (settings.onUploadSuccess) settings.onUploadSuccess.call(this, file, data, response);
+		    
 		}
 
 	}

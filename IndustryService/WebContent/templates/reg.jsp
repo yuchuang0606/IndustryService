@@ -7,17 +7,17 @@
 	<div class="regtitle">
   		<font style="font-size:16px;font-weight:800;color:#265f9d;">大连市工业云平台账号注册</font>
   	</div>
-  	<div id="list" style="width:800px;padding:0px 80px;margin:30px auto;text-align:center;">
-		<table width="800" border="0" cellpadding="0" cellspacing="0">
+  	<div id="list" style="width:900px;margin:0px 30px;margin:30px auto;text-align:center;">
+		<table width="900" border="0" cellpadding="0" cellspacing="0" style="margin-left:30px;">
 			<tr>
-			    <td style="width:80px;"><font size="2">*&nbsp;登录账号：</font></td>
-			    <td style="width:180px;">
+			    <td width="80px"><font size="2">*&nbsp;登录账号：</font></td>
+			    <td width="360px">
 			    	<input name="txtName" type="text" id="txtName" onfocus="clearNameMsg()" onblur="CheckUserName()" />
 			    	<label id="msg_username" style="font-size:12px;color:red;"></label>
 			    	<img id="name_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 				</td>
-				<td style="width:80px;text-align:right;padding-right:30px;"><font size="2">&nbsp;真实姓名：</font></td>
-				<td style="width:180px;">
+				<td width="80px" style="text-align:right;padding-right:5px;"><font size="2">&nbsp;真实姓名：</font></td>
+				<td width="360px">
 					<input name="realname" type="text" id="realname" />
 			    </td>
 			</tr>
@@ -27,8 +27,8 @@
 	                <input name="pwd1" type="password" id="pwd1" onfocus="clearPwdMsg()" onblur="checkPwdLength(this.value)" />
 	                <label id="msg_password" style="font-size:12px;color:red;"></label>
 	            </td>
-	            <td style="text-align:right;padding-right:30px;"><font size="2">*&nbsp;确认密码：</font></td>
-	            <td style="width:240px;">
+	            <td style="text-align:right;padding-right:5px;"><font size="2">*&nbsp;确认密码：</font></td>
+	            <td>
 	                <input name="pwd2" type="password" id="pwd2" onfocus="clearPwdMsg1(this.value)" onblur="checkPwdSame(this.value)" />
 	                <label id="msg_password1" style="font-size:12px;color:red;"></label>
 	                <img id="pwd_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
@@ -41,7 +41,7 @@
 	                <label id="email_msg" style="font-size:12px;color:red;"></label>
 	                <img id="email_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 	            </td>
-	            <td style="text-align:right;padding-right:30px;"><font size="2">&nbsp;&nbsp;自动登录：</font></td>
+	            <td style="text-align:right;padding-right:5px;"><font size="2">&nbsp;&nbsp;自动登录：</font></td>
 	            <td>
 	                <div style="float:left;height:28px;padding:6px 0px;">
 	                	<input name="cbExpires" type="checkbox" id="cbExpires" checked="checked" style="width:15px"/>
@@ -61,7 +61,7 @@
 						<div style="float:left;height:30px;line-height:30px;"><label for="Sex_1"><font size="2">女</font></label></div>
 					</div>
 				</td>
-				<td style="text-align:right;padding-right:30px;"><font size="2">&nbsp;&nbsp;出生日期：</font></td>
+				<td style="text-align:right;padding-right:5px;"><font size="2">&nbsp;&nbsp;出生日期：</font></td>
 				<td align="left">
                  	<input id="birthday" type="text" onClick="WdatePicker()" style="height:24px;"/>
 				</td>
@@ -99,7 +99,7 @@
                     <font size="2">*&nbsp;单位名称：</font>
                 </td>
                 <td align="left" colspan="3">
-                    <input name="cpname" type="text" id="cpname" style="width: 416px;" onfocus="clearCpnameMsg()" onblur="isCpnameNull(this.value)"/>
+                    <input name="cpname" type="text" id="cpname" style="width:275px;" onfocus="clearCpnameMsg()" onblur="isCpnameNull(this.value)"/>
                     <label id="cpname_msg" style="font-size:12px;color:red;"></label>
 	                <img id="cpname_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
@@ -109,7 +109,7 @@
                     <font size="2">&nbsp;&nbsp;行业类别：</font>
                 </td>
                 <td align="left">
-                    <select name="industry" id="industry" style="width:184px;height:28px">
+                    <select name="industry" id="industry" style="width:164px;height:28px">
 						<option selected="selected" value="1">装备行业</option>
 						<option value="2">电子电器行业</option>
 						<option value="3">国防军工行业</option>
@@ -123,11 +123,11 @@
 						<option value="13">家电厨卫</option>
 					</select>
                 </td>
-                <td style="text-align:right;padding-right:30px;">
+                <td style="text-align:right;padding-right:5px;">
                     <font size="2">&nbsp;&nbsp;产值规模：</font>
                 </td>
                 <td>
-                    <select name="size" id="size" style="width:184px;height:28px">
+                    <select name="size" id="size" style="width:164px;height:28px">
 						<option selected="selected" value="1">3000万以下</option>
 						<option value="2">3000万-3亿</option>
 						<option value="3">3亿以上</option>
@@ -143,7 +143,7 @@
                     <label id="depart_msg" style="font-size:12px;color:red;"></label>
 	                <img id="depart_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
-                <td style="text-align:right;padding-right:30px;">
+                <td style="text-align:right;padding-right:5px;">
                     <font size="2">&nbsp;*&nbsp;职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
                 </td>
                 <td>
@@ -161,7 +161,7 @@
                     <label id="mobile_msg" style="font-size:12px;color:red;"></label>
 	                <img id="mobile_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
                 </td>
-                <td style="text-align:right;padding-right:30px;">
+                <td style="text-align:right;padding-right:5px;">
                     <font size="2">&nbsp;&nbsp;邮政邮编：</font>
                 </td>
                 <td>
@@ -173,12 +173,12 @@
                     <font size="2">&nbsp;&nbsp;邮寄地址：</font>
                 </td>
                 <td align="left" colspan="3">
-                    <input name="postaddress" id="postaddress" type="text" style="width: 416px;" />
+                    <input name="postaddress" id="postaddress" type="text" style="width:380px;" />
                 </td>
             </tr>
             <tr>
                 <td colspan="4" >
-                	<div style="height:100%;line-height:40px;width:500px;margin:0px auto;">
+                	<div style="height:100%;line-height:40px;width:340px;margin:0px auto;">
                 	<div style="float:left;height:30px;line-height:30px;">
                     	<input name="regright" type="checkbox" checked="checked" value="1" style="height:30px;width:15px;"/>
                     </div>
@@ -195,8 +195,8 @@
             <tr>
                 <td align="center" height="40" colspan="4" >
                 	<div style="text-align:center;margin:0px auto;">
-                    <input type="submit" name="btSubmit" value="注   册" onclick="register()" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
-                    <input type="submit" name="btUpdate" value="取   消" onclick="cancelReg()" id="btUpdate" style="margin-left:50px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
+                    <input type="submit" name="btSubmit" value="注   册" onclick="register()" id="btSubmit" style="border-width:0px;cursor:pointer;color:#fff;font-weight:bold;height:30px;line-height:30px;width:80px;background:url(./image/nav_bg.png) repeat-x" />
+                    <input type="submit" name="btUpdate" value="取   消" onclick="cancelReg()" id="btUpdate" style="border-width:0px;margin-left:50px;color:#fff;font-weight:bold;height:30px;width:80px;line-height:30px;background:url(./image/nav_bg.png) repeat-x" />
                 	</div>
                 </td>
             </tr>

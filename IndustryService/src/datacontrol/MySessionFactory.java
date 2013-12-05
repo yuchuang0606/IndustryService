@@ -133,6 +133,35 @@ public  class  MySessionFactory {
 		
 	}
 	
+	public static int getItemNumberByProp(String cname, String prop, String value)
+	{
+		if(!isInit) 
+		{
+			initMySessionFactory();
+			isInit=true;
+		}
+		Session session=null;
+		int count =0;
+		try{
+			session = factory.openSession();
+			//开启事务
+			session.beginTransaction();
+			Query q=session.createQuery("select count(*) from "+cname+" where "+prop+"= :value").setString("value", value);
+			count = ((Number)q.uniqueResult()).intValue();  
+			
+			//提交事务
+			session.getTransaction().commit();
+			} catch(HibernateException e) {
+			e.printStackTrace();
+			if(session!=null)
+			session.getTransaction().rollback();
+			} finally{
+			if(session!=null) session.close();
+			return count;
+			}
+		
+	}
+	
 	public static List<Object> getByprop(String cname,String prop,String value)
 	{
 		if(!isInit) 
@@ -198,7 +227,8 @@ public  class  MySessionFactory {
 			session = factory.openSession();
 			//开启事务
 			session.beginTransaction();
-			Query q=session.createQuery("from "+cname+" x where "+prop+"= :value" + " order by x."+column).setString("value", value);
+			Query q=session.createQuery("from "+cname+" x where x."+prop+"= :value" + " order by x."+column).setString("value", value);
+			System.out.println(q.getQueryString());
 			q.setMaxResults(size);
 			q.setFirstResult(start);
 			result=q.list();

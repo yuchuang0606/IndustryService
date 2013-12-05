@@ -92,7 +92,7 @@
 									enctype="MULTIPART/FORM-DATA" 
         							action="upload">
 								<input type="file" name="imgfile" id="imgfile" value="浏览">
-								<input type="button" value="上传" onclick="if(checkImg(this.value)==false)return;updateHeadpic(<%=user.getUserid()%>,'<%=request.getContextPath()%>')"/>
+								<input type="button" value="上传" onclick="if(checkImg(document.getElementById('imgfile').value)==false)return;updateHeadpic('<%=request.getContextPath()%>')"/>
 								<input type="button" value="取消" onclick="hiddenForm()">
 								</form>
 							</div><!-- onsubmit="checkImg();updateHeadpic();return false;" -->
@@ -135,7 +135,7 @@
 				<tr height="50">
 	                <td align="center" height="30" colspan="2">
 	                	<div style="text-align:center;margin:10px auto;">
-	                    <input type="submit" name="btSubmit" value="确   认" onclick="updatepwd(<%=user.getUserid() %>,'<%=request.getContextPath()%>')" id="btSubmit" style="cursor:pointer;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                    <input type="submit" name="btSubmit" value="确   认" onclick="updatepwd('<%=request.getContextPath()%>')" id="btSubmit" style="cursor:pointer;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
 	                    <input type="submit" value="取   消" onclick="cancel()" style="cursor:pointer;margin-left:20px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
 	                	</div>
 	                </td>

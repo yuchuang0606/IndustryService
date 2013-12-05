@@ -31,6 +31,8 @@ public class User {
 	private String mailaddress;
 	private String introduction;
 	private double uploadsize;
+	private String realname;
+	private String scale;
 	/**
 	 * @return the userid
 	 */
@@ -338,10 +340,34 @@ public class User {
 		return uploadsize;
 	}
 	/**
-	 * @param introduction the introduction to set
+	 * @param uploadsize the uploadsize to set
 	 */
 	public void setUploadsize(double uploadsize) {
 		this.uploadsize = uploadsize;
+	}
+	/**
+	 * @return the realname
+	 */
+	public String getRealname() {
+		return realname;
+	}
+	/**
+	 * @param realname the realname to set
+	 */
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+	/**
+	 * @return the scale
+	 */
+	public String getScale() {
+		return scale;
+	}
+	/**
+	 * @param scale the scale to set
+	 */
+	public void setScale(String scale) {
+		this.scale = scale;
 	}
 
 }

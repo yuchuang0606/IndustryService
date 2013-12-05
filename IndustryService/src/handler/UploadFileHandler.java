@@ -81,7 +81,7 @@ public class UploadFileHandler extends HttpServlet {
 	        	response.getWriter().print("/uploads/"+name+extName); 
 	        }
 	        else
-	        	response.getWriter().print("<a href=/uploads/"+name+extName+">"+realname+"</a>");
+	        	response.getWriter().print("/uploads/"+name+extName);
 		} catch (Exception ex) { 
 			
         } 

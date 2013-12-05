@@ -15,10 +15,12 @@
 <property name="ispass"/>
 <property name="viewtimes"/>
 <property name="videotype"/>
-<property name="videosize"/>
+<property name="size"/>
 <property name="downloadtimes"/>
 <property name="tag"/>
 <property name="filename"/>
 <property name="videopic"/>
+<property name="ispublic"/>
+<property name="coin"/>
 </class>
 </hibernate-mapping>

@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="./css/content.css" type="text/css"/>
 <link rel="stylesheet" href="./css/loginform.css" type="text/css" />
 <script type="text/javascript" src="./js/SlideTrans.js"></script>
+<script type="text/javascript" src="./js/util.js"></script>
 <%
 	User ucontent = (User)request.getSession().getAttribute("user");
 	String tip = (String)request.getAttribute("tip");
@@ -11,13 +12,17 @@
 		tip = "";
 	NewsControl nc = new NewsControl();
 	NotificationControl nfc = new NotificationControl();
-	SoftwareControl sc = new SoftwareControl();
-	VideoControl vc = new VideoControl();
+	ResourceControl rc = new ResourceControl();
+	//SoftwareControl sc = new SoftwareControl();
+	//VideoControl vc = new VideoControl();
+	System.out.println(0);
 	int rp = 6;
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
-	List<Software> softList = sc.getListByColumn(0, rp, "downloadtimes");
-	List<Video> videoList = vc.getListByColumn(0, rp, "viewtimes");
+	System.out.println(1);
+	List<Resource> softList = rc.getByPropAndColumn("restype", "software", "downloadtimes", 0, rp);
+	List<Resource> videoList = rc.getByPropAndColumn("restype", "video", "downloadtimes", 0, rp);
+	System.out.println(2);
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -54,21 +59,21 @@
 			</div>
 			<%} else { %>
 			<div class="tips">
-				<label style="margin-left:100px;"><%=tip%></label>
+				<label id="msg_login" style="margin-left:100px;"><%=tip%></label>
 			</div>
 			<div class="loginform">
-				<form action="./auth?" method="post">
+				<form action="./auth?" method="post" onsubmit="return checkLogin();">
 				<div class="row">
 					<label>用户名：</label>
-					<input type="text" name="un" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}"/><br>
+					<input id="un" type="text" name="un" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black';}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}"/><br>
 				</div>
 				<div class="row">
 					<label>密&nbsp;&nbsp;码：</label>
-					<input type="text" name="pwd" size="20" value="请输入密码" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.type='password';this.style.color='black'}" onblur="if(!value){this.value=defaultValue;this.type='text',this.style.color='gray'}"/>
+					<input id="pwd" type="text" name="pwd" size="20" value="请输入密码" style="color:gray" onfocus="this.type='password';if(this.value==defaultValue){this.value='';this.style.color='black';}" onblur="if(!value){this.value=defaultValue;this.type='text',this.style.color='gray'}"/>
 				</div>
 				<div class="row">
-					<input type="submit" value="登  录" id="submit" style="font-weight:bold;margin-left:100px;"/>
-					<a href="register.jsp"><div class="reg">注&nbsp;&nbsp;册</div></a>
+					<input type="submit" value="登  录" id="submit" style="font-weight:bold;margin-left:100px;border-width:0px;"/>
+					<div class="reg"><a href="register.jsp" style="color:#fff;margin-left:0px;">&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;册&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 				</div>
 				</form>
 			</div>
@@ -246,36 +251,36 @@
 				<div class="softtop" style="border-bottom:1px solid #eee;">
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(0).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(0).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(0).getSoftwareid()%>" title="<%=softList.get(0).getTitle()%>"><%=softList.get(0).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(0).getRestype() %>&id=<%=softList.get(0).getResourceid()%>" title="<%=softList.get(0).getTitle()%>"><%=softList.get(0).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
 					</div>
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(1).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(1).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(1).getSoftwareid()%>" title="<%=softList.get(1).getTitle()%>"><%=softList.get(1).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(1).getRestype() %>&id=<%=softList.get(1).getResourceid()%>" title="<%=softList.get(1).getTitle()%>"><%=softList.get(1).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
 					</div>
 					<div class="softlist">
 						<div class="softimage">
-							<img src="<%=softList.get(2).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(2).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(2).getSoftwareid()%>" title="<%=softList.get(2).getTitle()%>"><%=softList.get(2).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(2).getRestype() %>&id=<%=softList.get(2).getResourceid()%>" title="<%=softList.get(2).getTitle()%>"><%=softList.get(2).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -284,36 +289,36 @@
 				<div class="softbottom" style="border-bottom:1px solid #eee;">
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(3).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(3).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(3).getSoftwareid()%>" title="<%=softList.get(3).getTitle()%>"><%=softList.get(3).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(3).getRestype() %>&id=<%=softList.get(3).getResourceid()%>" title="<%=softList.get(3).getTitle()%>"><%=softList.get(3).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
 					</div>
 					<div class="softlist" style="border-right:1px solid #eee">
 						<div class="softimage">
-							<img src="<%=softList.get(4).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(4).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(4).getSoftwareid()%>" title="<%=softList.get(4).getTitle()%>"><%=softList.get(4).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(4).getRestype() %>&id=<%=softList.get(4).getResourceid()%>" title="<%=softList.get(4).getTitle()%>"><%=softList.get(4).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
 					</div>
 					<div class="softlist">
 						<div class="softimage">
-							<img src="<%=softList.get(5).getSoftpic()%>" style="border-width:0px;"></img>
+							<img src="<%=request.getContextPath() %><%=softList.get(5).getRespic()%>" style="border-width:0px;"></img>
 						</div>
 						<div class="softinfo">
 							<div class="softname">
 							<label>名称：</label>
-							<a href="./software.jsp?id=<%=softList.get(5).getSoftwareid()%>" title="<%=softList.get(5).getTitle()%>"><%=softList.get(5).getTitle()%></a>
+							<a href="./resinfo.jsp?type=<%=softList.get(5).getRestype() %>&id=<%=softList.get(5).getResourceid()%>" title="<%=softList.get(5).getTitle()%>"><%=softList.get(5).getTitle()%></a>
 							</div>
 							<label>时间：2013/11/13</label>
 						</div>
@@ -331,13 +336,13 @@
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./video.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>">
-						<img src="<%=videoList.get(0).getVideopic()%>" style="border-width:0px;"/> </a>
+						<a href="./resinfo.jsp?type=<%=videoList.get(0).getRestype() %>&id=<%=videoList.get(0).getResourceid()%>" title="<%=videoList.get(0).getTitle()%>">
+						<img src="<%=request.getContextPath() %><%=videoList.get(0).getRespic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
-						<a href="./video.jsp?id=<%=videoList.get(0).getVideoid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
+						<a href="./resinfo.jsp?type=<%=videoList.get(0).getRestype() %>&id=<%=videoList.get(0).getResourceid()%>" title="<%=videoList.get(0).getTitle()%>"><%=videoList.get(0).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
@@ -345,26 +350,26 @@
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div class="videoimage">	
-						<a href="./video.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>">
-						<img src="<%=videoList.get(1).getVideopic()%>" style="border-width:0px;"/> </a>
+						<a href="./resinfo.jsp?type=<%=videoList.get(1).getRestype() %>&id=<%=videoList.get(1).getResourceid()%>" title="<%=videoList.get(1).getTitle()%>">
+						<img src="<%=request.getContextPath() %><%=videoList.get(1).getRespic()%>" style="border-width:0px;"/> </a>
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15" style="border-width:0px;"/>
-						<a href="./video.jsp?id=<%=videoList.get(1).getVideoid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
+						<a href="./resinfo.jsp?type=<%=videoList.get(1).getRestype() %>&id=<%=videoList.get(1).getResourceid()%>" title="<%=videoList.get(1).getTitle()%>"><%=videoList.get(1).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
 				</div>
 				<div class="servicediv">
 					<div class="videoimage">	
-						<a href="./video.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>">
-						<img src="<%=videoList.get(2).getVideopic()%>" style="border-width:0px;"/></a> 
+						<a href="./resinfo.jsp?type=<%=videoList.get(2).getRestype() %>&id=<%=videoList.get(2).getResourceid()%>" title="<%=videoList.get(2).getTitle()%>">
+						<img src="<%=request.getContextPath() %><%=videoList.get(2).getRespic()%>" style="border-width:0px;"/></a> 
 					</div>	
 					<div class="videoinfo">
 						<div class="videoname">
 						<img src="./image/play.jpg" width="15" height="15"/>
-						<a href="./video.jsp?id=<%=videoList.get(2).getVideoid()%>" title="<%=videoList.get(2).getTitle()%>"><%=videoList.get(2).getTitle()%></a>
+						<a href="./resinfo.jsp?type=<%=videoList.get(2).getRestype() %>&id=<%=videoList.get(2).getResourceid()%>" title="<%=videoList.get(2).getTitle()%>"><%=videoList.get(2).getTitle()%></a>
 						</div>
 						<div><label>上传时间：2013/5/10</label></div>
 					</div> 
