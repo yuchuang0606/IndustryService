@@ -7,12 +7,12 @@
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/upload.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
+<link rel="stylesheet"  href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" type="text/css"/>
 <div id="main" class="main">
 	<%@ include file="/user/userleftmenu.jsp"%>
 	<script src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.js"></script>
 	<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>
-	<link rel="stylesheet"  href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" type="text/css"/>
 	<div id="content" class="content"> 
     	<div style="height:30px;width:717px;line-height:30px;text-align:center;background:#f5f5f5;">
        		<font style="font-weight:800;color: #265f9d;">上传资源</font>

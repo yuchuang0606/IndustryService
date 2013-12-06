@@ -50,6 +50,20 @@ public class UserControl {
 		return (List<User>)(Object)MySessionFactory.getByprop("User", prop, value);
 	}
 	
+	public int getUserNumber()
+	{
+		return MySessionFactory.getItemNumber("User");
+	}
+	
+	public List<User> getListByColumn(int start,int size)
+	{
+		return getListByColumn(start,size,"createtime");
+	}
+	
+	public List<User> getListByColumn(int start,int size,String column)
+	{
+		return (List<User>)(Object)MySessionFactory.getByColumn("User", column, start, size);
+	}
 	
 	//在登录次数增加前查询 !important
 	public Date getLastLogintime(int userid)

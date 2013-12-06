@@ -13,16 +13,14 @@
 	NewsControl nc = new NewsControl();
 	NotificationControl nfc = new NotificationControl();
 	ResourceControl rc = new ResourceControl();
-	//SoftwareControl sc = new SoftwareControl();
-	//VideoControl vc = new VideoControl();
-	System.out.println(0);
+	ConfigurationControl cclink = new ConfigurationControl();
+
 	int rp = 6;
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
-	System.out.println(1);
 	List<Resource> softList = rc.getByPropAndColumn("restype", "software", "downloadtimes", 0, rp);
 	List<Resource> videoList = rc.getByPropAndColumn("restype", "video", "downloadtimes", 0, rp);
-	System.out.println(2);
+	List<Configuration> linkList = cclink.listConfiguration("config_name", "link");
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -122,15 +120,11 @@
 			</div>
 			<div class="blockdiv" style="height:200px;">
 				<ul class="texthidden">
+					<% for (Configuration link:linkList) {%>
 					<li>
-						<a href="http://www.dl.gov.cn/gov/" title="大连市政府网" target=_blank;>大连市政府网</a>
+						<a href="<%=link.getConfig_path() %>" title="<%=link.getConfig_path() %>" target=_blank;><%=link.getCondition() %></a>
 					</li>
-					<li>
-						<a href="http://sei.dlut.edu.cn" title="大连理工大学软件工程研究院" target=_blank;>大连理工大学软件工程研究院</a>
-					</li>
-					<li>
-						<a href="http://www.caxa.com" title="CAXA官网" target=_blank;>CAXA官网</a>
-					</li>
+					<% }%>
 				</ul>
 			</div>
 		</div>

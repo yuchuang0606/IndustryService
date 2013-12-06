@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/leftmenu.css" type="text/css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-1.2.6.js"></script>
 <script type="text/javascript" src="../js/ui.core.js"></script>
 <script type="text/javascript" src="../js/jquery.scroll-follow.js"></script>
 <script type="text/javascript">
@@ -35,9 +35,15 @@
 			<a href="./User.jsp">用户管理</a>
 		</li>
 		<li class="li_out">
+			<a href="#">信息管理</a>
+		</li>
+		<li class="li_inner">
+			<a href="./publish.jsp">信息发布</a>
+		</li>
+		<li class="li_inner">
 			<a href="./news.jsp">新闻管理</a>
 		</li>
-		<li class="li_out">
+		<li class="li_inner">
 			<a href="./news.jsp">通知管理</a>
 		</li>
 		<li class="li_out">

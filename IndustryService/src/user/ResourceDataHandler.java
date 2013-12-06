@@ -1,6 +1,7 @@
 package user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
@@ -12,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import datacontrol.ResourceControl;
+import datacontrol.VideoControl;
 import model.Resource;
 import model.User;
+import model.Video;
 
 /**
  * Servlet implementation class ResourceAdminHandler
@@ -126,6 +129,33 @@ public class ResourceDataHandler extends HttpServlet {
 				rc.addResource(res);
 				response.getWriter().write("true");
 				return ;
+			} else if ("jsonlist".equals(command)) {
+				Integer page = Integer.parseInt(request.getParameter("page"));
+				Integer rp = Integer.parseInt(request.getParameter("rp")); // rp is the size of a page
+				ResourceControl rc = new ResourceControl();
+				int resTotal = rc.getNumberByProp("userid", String.valueOf(user.getUserid()));
+				int start = (page - 1) * rp;
+				List<Resource> resList = rc.getByPropAndColumn("userid", String.valueOf(user.getUserid()), "createtime", start, rp);
+				StringBuffer sb = new StringBuffer();
+				sb.append("{\"total\":" + resTotal + ",");
+				sb.append("\"page\":" + page + ",");
+				sb.append("\"rows\":[");
+				int i = 0;
+				for (Resource res : resList) {
+					sb.append("{\"id\":" + res.getResourceid() + ",");
+					sb.append("\"cell\":[" + res.getResourceid() + ","
+							+ res.getFilename() + "," + res.getAuthorid() + ","
+							+ res.getSize() + "," + res.getLink() + ","
+							+ res.getRestype()  + ","
+							+ res.getIspass() +  "]}");
+					if (i != resList.size() - 1)
+						sb.append(",");
+					i++;
+				}
+				sb.append("]}");
+				String result = new String(sb);
+				PrintWriter pw = response.getWriter();
+				pw.write(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -50,13 +50,16 @@ public class RegisterHandler extends HttpServlet {
 	{
 		try {
 			request.setCharacterEncoding("utf-8");
-			System.out.println(request.getCharacterEncoding());
 			String username = request.getParameter("username");
 			String realname = request.getParameter("realname");
 			String password = request.getParameter("pwd1");
 			String email = request.getParameter("email");
 			String sex = request.getParameter("sex");
+			System.out.println(request.getParameter("birthday"));
 			String birthday = request.getParameter("birthday");
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+			if (birthday == null || "".equals(birthday))
+				birthday = df.format(new Date());	// new Date()为获取当前系统时间
 			String address = request.getParameter("address");
 			String cpname = request.getParameter("cpname");
 			String industry = request.getParameter("industry");
@@ -66,6 +69,7 @@ public class RegisterHandler extends HttpServlet {
 			String mobile = request.getParameter("mobile");
 			String postcode = request.getParameter("postcode");
 			String postaddress = request.getParameter("postaddress");
+
 			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
@@ -73,7 +77,6 @@ public class RegisterHandler extends HttpServlet {
 			user.setLastlogin(new Date());	// set system time as the first login time
 			user.setEmail(email);
 			user.setGender(sex);
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			user.setBirthdate(df.parse(birthday));
 			user.setUserpic("/image/userhead/user.png");	// set default user head picture
 			user.setAddress(address);
@@ -95,7 +98,13 @@ public class RegisterHandler extends HttpServlet {
 			session.setAttribute("user", user);
 			response.sendRedirect("./user/user.jsp");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+			try {
+				response.sendRedirect("./index.jsp");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

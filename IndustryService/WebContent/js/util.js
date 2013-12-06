@@ -335,7 +335,7 @@ function updateinfo(contextPath)
 	var postaddress = document.getElementById("postaddress").value;
 	var introduction = document.getElementById("introduction").value;
 	// post the request
-	var url = contextPath + "/user/update?type=info" +
+	var url = contextPath + "/user/userdata?type=info" +
 						"&realname=" + realname +
 						"&email="+ email +
 						"&sex=" + sex +
@@ -391,7 +391,7 @@ function updatepwd(contextPath)
 		document.getElementById("msg_password1").innerHTML="两次密码不一致";return;
 	}
 	// post the request
-	var url = contextPath + "/user/update?type=pwd" +
+	var url = contextPath + "/user/userdata?type=pwd" +
 						"&oldpwd=" + oldpwd +
 						"&newpwd="+ newpwd1;
     //指定服务端的地址
@@ -466,7 +466,7 @@ function uploadResult()
         	alert("头像上传失败");
             return false;
         } else {
-        	var url = ctxPath + "/user/update?type=headpic& + " +
+        	var url = ctxPath + "/user/userdata?type=headpic& + " +
         				"&userpic=" + resStr;
             //指定服务端的地址
             http.open("POST", url, true); 
@@ -741,5 +741,48 @@ function uploadResResult()
         } else if (resStr == "false") {
         	alert("资源上传发生未知错误，请联系管理员");
         }
+    }
+}
+/* 发布新闻 */
+function publish()
+{
+	var title = document.getElementById("title").value;
+	if (title.length==0)
+		alert("标题不能为空");
+	var typegroup = document.getElementsByName("ispublic");
+	var type = null;		// new type
+	for (var i = 0; i < typegroup.length; i++)
+	{
+		if (typegroup[i].checked)
+		{
+			type = typegroup[i].value;
+			break;
+		}
+	}
+	var content = document.getElementById("editor1").value;
+	if (content.length == 0)
+		alert("信息内容未填写");
+	var url = "../user/news?command=add" +
+				"&title=" + title +
+				"&type=" + type +
+				"&content=" + content;
+	//指定服务端的地址
+	http.open("POST", url, true);
+	//请求状态变化时的处理函数
+	http.onreadystatechange = addNewsResult;
+	//发送请求
+	http.send(null);
+}
+function addNewsResult()
+{
+	//4表示请求已完成
+    if (http.readyState == 4) //这里的http是全局变量
+    {
+    	//获取服务段的响应文本
+        var resStr = http.responseText;
+        if (resStr == "true")
+        	alert("发布成功，等待信息管理员审核");
+        else 
+        	alert("发布失败！");
     }
 }
