@@ -13,14 +13,24 @@
 	NewsControl nc = new NewsControl();
 	NotificationControl nfc = new NotificationControl();
 	ResourceControl rc = new ResourceControl();
-	ConfigurationControl cclink = new ConfigurationControl();
+	ConfigurationControl cc = new ConfigurationControl();
 
 	int rp = 6;
 	List<News> newsList = nc.getListByColumn(0, rp);
 	List<Notification> noticeList = nfc.getListByColumn(0, rp);
 	List<Resource> softList = rc.getByPropAndColumn("restype", "software", "downloadtimes", 0, rp);
 	List<Resource> videoList = rc.getByPropAndColumn("restype", "video", "downloadtimes", 0, rp);
-	List<Configuration> linkList = cclink.listConfiguration("config_name", "link");
+	List<Configuration> linkList = cc.listConfiguration("config_name", "link");
+	
+	Configuration cf_qq = cc.listConfiguration("config_name", "contect_qq").get(0);
+	Configuration cf_email = cc.listConfiguration("config_name", "contect_email").get(0);
+	Configuration cf_forum = cc.listConfiguration("config_name", "contect_forum").get(0);
+	String qq_p = cf_qq.getConfig_path();
+	String qq_c = cf_qq.getCondition();
+	String email_p = cf_email.getConfig_path();
+	String email_c = cf_email.getCondition();
+	String forum_p = cf_forum.getConfig_path();
+	String forum_c = cf_forum.getCondition();
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -101,15 +111,15 @@
 			<div class="blockdiv" style="height:200px;">
 				<ul class="texthidden">
 					<li style="list-style:none;">
-						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1346158517&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1346158517:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<%=qq_p%>&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:<%=qq_c%>:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
 					</li>
 					<li style="list-style:none;">
 						<img src="./image/email.jpg"></img>
-						<a href="mailto:liuwj@dlut.edu.cn">邮箱：liuwj@dlut.edu.cn</a>
+						<a href="mailto:<%=email_p%>">邮箱：<%=email_c%></a>
 					</li>
 					<li style="list-style:none;">
 						<img src="./image/luntan.jpg"></img>
-						<a href="http://top.caxa.com">技术论坛</a>
+						<a href="<%=forum_p%>"><%=forum_c%></a>
 					</li>
 				</ul>
 			</div>
