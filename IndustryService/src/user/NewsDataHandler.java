@@ -2,9 +2,9 @@ package user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,8 +18,9 @@ import datacontrol.NotificationControl;
 import datacontrol.UserControl;
 import model.News;
 import model.Notification;
-import model.Resource;
 import model.User;
+
+import org.json.*;
 
 /**
  * Servlet implementation class NewsDataHandler
@@ -108,7 +109,26 @@ public class NewsDataHandler extends HttpServlet {
 				else if ("notice".equals(type))
 				{
 					noticeList = nfc.getListByColumn(start, rp);
-					StringBuffer sb = new StringBuffer();
+			        JSONObject joo = new JSONObject();
+			        JSONArray jao = new JSONArray();
+			        for (Notification notice : noticeList) {
+			        	String author = ((new UserControl()).getUser(notice.getAuthor())).getUsername();
+						String createtime = new SimpleDateFormat("yyyy/MM/dd").format(notice.getCreatetime());
+						String modifytime = new SimpleDateFormat("yyyy/MM/dd").format(notice.getModifytime());
+						String []verifyState = {"未审核","已审核"};
+						JSONObject joi = new JSONObject();
+						joi.put("id", notice.getNewsid());
+						JSONArray jai = new JSONArray();
+						jai.put(notice.getTitle()).put(author).put(createtime)
+							.put(modifytime).put(notice.getAccesstime()).put(verifyState[notice.getIspass()]);
+						joi.put("cell", jai);
+						jao.put(joi);
+			        }
+			        joo.put("rows", jao);
+			        joo.put("page", page);
+			        joo.put("total", count);
+			        response.getWriter().write(joo.toString());
+					/*StringBuffer sb = new StringBuffer();
 					sb.append("{\"total\":" + count + ",");
 					sb.append("\"page\":" + page + ",");
 					sb.append("\"rows\":[");
@@ -131,7 +151,7 @@ public class NewsDataHandler extends HttpServlet {
 					String result = new String(sb);
 					response.setCharacterEncoding("utf-8");
 					PrintWriter pw = response.getWriter();
-					pw.write(result);
+					pw.write(result);*/
 				}
 			} else if ("add".equals(command)) {
 				String title = request.getParameter("title");
@@ -205,14 +225,14 @@ public class NewsDataHandler extends HttpServlet {
 				if ("news".equals(type)) {
 					NewsControl nc = new NewsControl();
 					News news = nc.getNewsbyId(id);
-					StringBuffer sb = new StringBuffer();
-					sb.append("{\"id\":" + news.getNewsid() + ","
-							+ "\"title\":\"" + news.getTitle() + "\","
-							+ "\"content\":\"" + news.getContent() + "\"}"
-							);
-					String result = new String(sb);
-					//response.setCharacterEncoding("utf-8");
-					response.getWriter().write(result);
+					//JSONArray array = new JSONArray();
+					JSONObject obj = new JSONObject();
+					obj.put("id", news.getNewsid());
+					obj.put("title", news.getTitle());
+					obj.put("content", news.getContent());
+					//array.put(obj);
+					response.setCharacterEncoding("utf-8");
+					response.getWriter().write(obj.toString());
 				} else if ("notice".equals(type)) {
 					NotificationControl nfc = new NotificationControl();
 					Notification notice = nfc.getNotificationbyId(id);
@@ -222,7 +242,7 @@ public class NewsDataHandler extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 

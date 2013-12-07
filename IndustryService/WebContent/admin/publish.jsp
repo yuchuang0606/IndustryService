@@ -100,9 +100,14 @@ $(function () {
        	 }
         },
         'onUploadSuccess': function (file, data, response) {//当上传完成后的回调函数，ajax方式哦~~
+        	var editor = CKEDITOR.instances.editor1;
+    		var url = window.location.href;
+    		var index = url.indexOf("/",7);
+    		var urlbef = url.substring(0, index);
     		var editor = CKEDITOR.instances.editor1;
     		if (editor.mode == 'wysiwyg') {
-    			editor.insertHtml('<a href=\'.'+ data + '\'>' + file.name + '</a>');
+    			alert('<a href=\''+ urlbef + ctxpath + data + '\'>' + file.name + '</a>');
+    			editor.insertHtml('<a href=\''+ urlbef + ctxpath + data + '\'>' + file.name + '</a>');
     		} else {
     			alert('必须处于编辑模式');
     		}

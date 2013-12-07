@@ -142,8 +142,6 @@ $("#flex1").flexigrid({
               function (result) {
                   var json = JSON.parse(result);
                   temp = json;
-                  alert(json.title);
-                  alert(json.content);
                   $("#title").val(json.title);
                   if (CKEDITOR.instances.editor1) {
                       CKEDITOR.instances.editor1.destroy();
