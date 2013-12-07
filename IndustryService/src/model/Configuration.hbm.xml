@@ -8,6 +8,6 @@
 </id>
 <property name="config_name"/>
 <property name="config_path"/>
-<property name="condition"/>
+<property name="description"/>
 </class>
 </hibernate-mapping>

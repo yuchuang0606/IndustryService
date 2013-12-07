@@ -41,10 +41,10 @@
 			<a href="./publish.jsp">信息发布</a>
 		</li>
 		<li class="li_inner">
-			<a href="./news.jsp">新闻管理</a>
+			<a href="./news.jsp?type=news">新闻管理</a>
 		</li>
 		<li class="li_inner">
-			<a href="./news.jsp">通知管理</a>
+			<a href="./news.jsp?type=notice">通知管理</a>
 		</li>
 		<li class="li_out">
 			<a href="./software.jsp">软件管理</a>
@@ -60,9 +60,6 @@
 		</li>
 		<li class="li_out">
 			<a href="./contectus.jsp">联系我们</a>
-		</li>
-		<li class="li_out">
-			<a href="#">退出登录</a>
 		</li>
 	</ul>
 </div>

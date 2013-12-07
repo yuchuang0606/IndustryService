@@ -49,7 +49,7 @@ public class ConfigHandler extends HttpServlet {
 			List<Configuration> configList = cc.listConfiguration("config_name", configname);
 			if (null == configList)
 				response.sendRedirect("error.jsp");
-			String condition = configList.get(0).getCondition();
+			String condition = configList.get(0).getDescription();
 			if ("2dCAD".equals(configname))
 				configname = "二维CAD介绍";
 			else if ("3dCAD".equals(configname))

@@ -8,7 +8,7 @@ public class Configuration {
 	private int configid;
 	private String config_name;
 	private String config_path;
-	private String condition;
+	private String description;
 	/**
 	 * @return the configid
 	 */
@@ -46,15 +46,15 @@ public class Configuration {
 		this.config_path = config_path;
 	}
 	/**
-	 * @return the condition
+	 * @return the description
 	 */
-	public String getCondition() {
-		return condition;
+	public String getDescription() {
+		return description;
 	}
 	/**
-	 * @param condition the condition to set
+	 * @param description the description to set
 	 */
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

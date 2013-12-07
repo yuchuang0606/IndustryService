@@ -74,7 +74,10 @@ public class AuthHandler extends HttpServlet {
 				//uc.updateUser(user);
 				// 将用户添加到session
 				session.setAttribute("user", user);
-				response.sendRedirect("user/user.jsp");
+				if (user.getUsergroup() == 1)
+					response.sendRedirect("admin/index.jsp");
+				else
+					response.sendRedirect("user/user.jsp");
 				return ;
 			} else {
 				response.sendRedirect("index.jsp");

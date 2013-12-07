@@ -51,9 +51,6 @@ public class UserFilter implements Filter {
 			if (null == user) {
 				PrintWriter pw = res.getWriter();
 				
-				//System.out.println(req.getContextPath());
-				//response.setContentType("text/html;charset=utf-8");
-				//res.setCharacterEncoding("utf-8");
 				pw.write("<html><script> alert('用户不存在或登录已超时');location.href='"+req.getContextPath()+"/index.jsp"+"';</script></html>");
 				//res.sendRedirect(request.getServletContext()+"/index.jsp");
 			}

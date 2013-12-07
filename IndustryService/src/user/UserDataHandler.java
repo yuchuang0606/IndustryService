@@ -91,7 +91,6 @@ public class UserDataHandler extends HttpServlet {
 				// update the user
 				uc.updateUser(user);
 				response.getWriter().write("true");
-				System.out.println("4");
 				return ;
 			} else if ("pwd".equals(type)) {	// update user password
 				String oldpwd = new String(request.getParameter("oldpwd").getBytes("iso8859-1"),"utf-8");

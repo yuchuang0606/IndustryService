@@ -746,32 +746,32 @@ function uploadResResult()
 /* 发布新闻 */
 function publish()
 {
+	var content = CKEDITOR.instances.editor1.getData();
+	//alert(content);
 	var title = document.getElementById("title").value;
-	if (title.length==0)
-		alert("标题不能为空");
-	var typegroup = document.getElementsByName("ispublic");
-	var type = null;		// new type
-	for (var i = 0; i < typegroup.length; i++)
-	{
-		if (typegroup[i].checked)
-		{
-			type = typegroup[i].value;
-			break;
-		}
+	if (title.length==0) {
+		alert("标题不能为空"); return ;
 	}
-	var content = document.getElementById("editor1").value;
-	if (content.length == 0)
-		alert("信息内容未填写");
-	var url = "../user/news?command=add" +
+	var type = document.getElementById("type").options[document.getElementById("type").selectedIndex].value;
+	
+	if (content.length == 0) {
+		alert("信息内容未填写"); return ;
+	}
+	//content.replace('&','%26');
+	alert(encodeURI(content));
+	alert(encodeURIComponent(content));
+	alert(escape(content));
+	var url = "../newsdata?command=add" +
 				"&title=" + title +
 				"&type=" + type +
-				"&content=" + content;
+				"&fds8e8iewofdsnfoaoer293402432fd=" + content;
+	
 	//指定服务端的地址
 	http.open("POST", url, true);
 	//请求状态变化时的处理函数
 	http.onreadystatechange = addNewsResult;
 	//发送请求
-	http.send(null);
+	http.send();
 }
 function addNewsResult()
 {
@@ -785,4 +785,36 @@ function addNewsResult()
         else 
         	alert("发布失败！");
     }
+}
+function checkNews()
+{
+	var content = CKEDITOR.instances.editor1.getData();
+	//alert(content);
+	var title = document.getElementById("title").value;
+	if (title.length==0) {
+		alert("标题不能为空"); return false;
+	}
+	//var type = document.getElementById("type").options[document.getElementById("type").selectedIndex].value;
+	if (content.length == 0) {
+		alert("信息内容未填写"); return false;
+	}
+	return true;
+}
+function getParamValue(arg) {
+    var url = document.location.href;
+    var arrStr = url.substring(url.indexOf("?") + 1).split("&");
+    for (var i = 0; i < arrStr.length; i++) {
+        var index = arrStr[i].indexOf(arg + "=");
+        if (index != -1) {
+            return arrStr[i].replace(arg + "=", "").replace("?", "");
+        }
+    }
+    return "";
+}
+function getStrtype(type)
+{
+	 if (type == "news")
+		 return "新闻";
+	 else if (type == "notice")
+		 return "通知";
 }

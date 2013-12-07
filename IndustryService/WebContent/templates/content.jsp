@@ -122,7 +122,7 @@
 				<ul class="texthidden">
 					<% for (Configuration link:linkList) {%>
 					<li>
-						<a href="<%=link.getConfig_path() %>" title="<%=link.getConfig_path() %>" target=_blank;><%=link.getCondition() %></a>
+						<a href="<%=link.getConfig_path() %>" title="<%=link.getConfig_path() %>" target=_blank;><%=link.getDescription() %></a>
 					</li>
 					<% }%>
 				</ul>
