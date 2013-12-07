@@ -7,10 +7,16 @@
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/c.png" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <link href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/layer/skin/layer.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/Flexigrid-master/css/flexigrid.pack.css" />
 <title>大连工业设计服务平台</title>
+<script>
+	var ctxpath = null;
+	function initContextPath(path)
+	{ctxpath = path;}
+</script>
 </head>
-<body>
+<body onload="initContextPath('<%=request.getContextPath()%>')">
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
@@ -19,6 +25,9 @@
 		<%@ include file="/admin/leftindex.jsp"%>
 		<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/admin/Flexigrid-master/js/flexigrid.pack.js"></script> 
+		<script src="<%=request.getContextPath() %>/js/ckeditor/ckeditor.js"></script>
+		<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>
+    	<script type="text/javascript" src="<%=request.getContextPath() %>/admin/layer/layer.js"></script>
 		<script src="<%=request.getContextPath() %>/js/util.js"></script>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
@@ -107,58 +116,199 @@ $("#flex1").flexigrid({
       width : 718,
       height : 330
       });
-
+      
+	  var layerindex;
       function handle(com, grid) {
+    	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
               var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 吗?')
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
-                          $.get('../newsdata?command=delete&type=' + getParamValue(type) + '&id=' + id,
+                          $.get('../newsdata?command=delete&type=' + getParamValue("type") + '&id=' + id,
                         	function(result){
                               	if (result=="true")
                               		alert("删除成功！");
+                              	else 
+                              		alert("删除失败");
                                   // when ajax returns (callback), update the grid to refresh the data
                                   $("#flex1").flexReload();
                           });
                   });    
               }
           } else if (com == '修改') {
-              var conf = confirm('修改第 ' + $('.trSelected', grid).length + ' 条记录?')
-              if(conf){
-                  $.each($('.trSelected', grid),
-                      function(key, value){
-                          // collect the data
-                          var userID = value.children[0].innerText; // in case we're changing the key
-                          var username = prompt("请输入用户名",value.children[1].innerText);
-                          var group = prompt("用户组属性",value.children[2].innerText);
-                          var email = prompt("邮箱",value.children[3].innerText);
-                          var phoneNum = prompt("联系电话",value.children[4].innerText);
-                          var company = prompt("所属公司",value.children[5].innerText);
-                          
-                          // call the ajax to save the data to the session
-                          $.get('../userdata?type=update&id=' + userID 
-                          		+ '&username=' + username + '&group='
-                          		+ group + '&email=' + email 
-                          		+ '&phoneNum=' + phoneNum 
-                          		+ '&company=' + company , 
-                              { Edit: true
-                                  , userID: userID
-                                  , username: username
-                                  , group: group
-                                  , email: email
-                                  , phoneNum: phoneNum
-                                  , company: company   }
-                              , function(){
-                              	if (result=="true")
-                              		alert("修改成功！");
-                                  // when ajax returns (callback), update the grid to refresh the data
-                                  $("#flex1").flexReload();
-                          });
-                  });    
-              }
+        	  $("#id").attr("value", id);
+              $.get('../newsdata?command=get&type=' + getParamValue("type") + "&id=" + id,
+              function (result) {
+                  var json = JSON.parse(result);
+                  temp = json;
+                  alert(json.title);
+                  alert(json.content);
+                  $("#title").val(json.title);
+                  if (CKEDITOR.instances.editor1) {
+                      CKEDITOR.instances.editor1.destroy();
+                  }
+                  CKEDITOR.replace('editor1',
+                  {
+                      height: 400
+                  });
+                   CKEDITOR.instances.editor1.setData(json.content, function (){});
+                   var i = $.layer({
+                       type: 1,
+                       title: false,
+                       shade: [0.5, '#000', true],
+                       shadeClose: false,
+                       fix: false,
+                       move: ['.xubox_title', false],
+                       closeBtn: [1, true],
+                       border: [5, 0.5, '#666', true],
+                       loading: { type: 0 },
+                       offset: ['20px', ''],
+                       area: ['740px', '740px'],
+                       page: { dom: '#newsdiv' },
+                       close: function (index) {
+                           if (CKEDITOR.instances.editor1) {
+                               CKEDITOR.instances.editor1.destroy();
+                           }
+                           layer.close(i);
+                       }
+                   });
+                   layerindex = i;
+               });
           }      
       }
-  
+      function saveNews()
+      {
+    	  var title = $("#title").val();
+          var id = $("#id").val();
+          var content = CKEDITOR.instances.editor1.getData();
+          if (CKEDITOR.instances.editor1) {
+              CKEDITOR.instances.editor1.destroy();
+          }
+          $.post('/userdata?command=update&type=' + getParamValue("type"),
+              {title:title,id:id,content:content},
+              function (data) {
+                  $("#flex1").flexReload();
+                  layer.close(layerindex);
+                  if (data == "true") {
+                      alert("修改成功！");
+                  }
+                  else {
+                      alert("修改失败！");
+                  }
+                  //layer.close(layerindex);
+              }
+              );
+      }
 </script>
+  	<div id="newsdiv" style="height:820px;width:720px;padding:10px 10px;display:none">
+  		<div style="height:40px;line-height:40px;">
+    		<div style="float:left;">标题：<input id="title" name="title" size="80" style="margin:2px;height:22px;" /></div>
+    		<div style="float:right;">
+    			<input type="submit" name="publish" value="保   存" id="publish" onclick="saveNews()" style="border-width:0px;margin-top:5px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+    		</div>
+   		</div>
+   		<input id="id" name="id" style="display:none"/>
+   		<textarea id="editor1" class="ckeditor" name="editor1" style=""></textarea>
+	   	<div style="float:left;margin-top:10px;width:360px;">
+	   		<!-- <a href="javascript:$('#uploadify').uploadify('cancel')" style="margin-left:20px">取消上传</a> -->
+	   		<input type="file" name="uploadify" id="uploadify"  />
+	   		<div id="fileQueue" style="float:right"></div>
+		</div>
+		<div style="float:right;margin-top:10px;width:360px;">
+	   		<input type="file" name="uploadpic" id="uploadpic"  />
+	   		<div id="fileQueue" style="float:right"></div>
+		</div>
+	</div>
+<script>
+$(function () {
+	$("#uploadify").uploadify({
+		//指定swf文件
+        'swf': '../js/uploadify/uploadify.swf',
+        //后台处理的页面
+        'uploader': '../upload',
+        //按钮显示的文字
+        'buttonText': '上传附件',
+        //显示的高度和宽度，默认 height 30；width 120
+        'height': 23,
+        'width': 75,
+        //上传文件的类型  默认为所有文件    'All Files'  ;  '*.*'
+        //在浏览窗口底部的文件类型下拉菜单中显示的文本
+        'fileTypeDesc': '*',
+        //允许上传的文件后缀
+        'fileTypeExts': '*.*',
+        //发送给后台的其他参数通过formData指定
+        //'formData': { 'someKey': 'someValue', 'someOtherKey': 1 },
+        //上传文件页面中，你想要用来作为文件队列的元素的id, 默认为false  自动生成,  不带#
+        //'queueID': 'fileQueue',
+        //选择文件后自动上传
+        'auto': true,
+        //设置为true将允许多文件上传
+        'multi': true,
+        // Set to false to keep files that have completed uploading in the queue.
+        'removeCompleted' : true,
+        'onUploadStart' : function(file) {
+       	 if (file.size*1.0/1000000 > 50) {
+            	alert("文件不能超过50M，不能上传");
+            	$("#uploadify").uploadify('cancel');
+       	 }
+        },
+        'onUploadSuccess': function (file, data, response) {//当上传完成后的回调函数，ajax方式哦~~
+    		var editor = CKEDITOR.instances.editor1;
+    		if (editor.mode == 'wysiwyg') {
+    			editor.insertHtml('<a href=\'.'+ data + '\'>' + file.name + '</a>');
+    		} else {
+    			alert('必须处于编辑模式');
+    		}
+		}
+	});
+	$("#uploadpic").uploadify({
+		//指定swf文件
+        'swf': '../js/uploadify/uploadify.swf',
+        //后台处理的页面
+        'uploader': '../upload',
+        //按钮显示的文字
+        'buttonText': '插入图片',
+        //显示的高度和宽度，默认 height 30；width 120
+        'height': 23,
+        'width': 75,
+        //上传文件的类型  默认为所有文件    'All Files'  ;  '*.*'
+        //在浏览窗口底部的文件类型下拉菜单中显示的文本
+        'fileTypeDesc': '*',
+        //允许上传的文件后缀
+        'fileTypeExts': '*.*',
+        //发送给后台的其他参数通过formData指定
+        //'formData': { 'someKey': 'someValue', 'someOtherKey': 1 },
+        //上传文件页面中，你想要用来作为文件队列的元素的id, 默认为false  自动生成,  不带#
+        //'queueID': 'fileQueue',
+        //选择文件后自动上传
+        'auto': true,
+        //设置为true将允许多文件上传
+        'multi': true,
+        // Set to false to keep files that have completed uploading in the queue.
+        'removeCompleted' : true,
+        'onUploadStart' : function(file) {
+        	if (!checkImg(file.name)) {
+            	$("#uploadpic").uploadify('cancel');
+        	}
+       	 	if (file.size*1.0/1000000 > 50) {
+            	alert("图片不能超过50M，不能上传");
+            	$("#uploadpic").uploadify('cancel');
+       	 	}
+        },
+        'onUploadSuccess': function (file, data, response) {//当上传完成后的回调函数，ajax方式哦~~
+    		var editor = CKEDITOR.instances.editor1;
+    		var url = window.location.href;
+    		var index = url.indexOf("/",7);
+    		var urlbef = url.substring(0, index);
+    		if (editor.mode == 'wysiwyg') {
+    			editor.insertHtml('<img src=\'' + urlbef + ctxpath + data + '\'/>');
+    		} else {
+    			alert('必须处于编辑模式');
+    		}
+		}
+	});
+});
+</script>
+
 </html>

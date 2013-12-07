@@ -46,7 +46,7 @@
 			        			<!-- <option value="3">政策</option> -->
 			        		</select>
 		        		</div>
-		        		<textarea id="editor1" class="ckeditor" name="editor1" style=""></textarea>
+		        		<textarea id="editor1" class="ckeditor" name="content" style=""></textarea>
 	        		</form>
 		        	<div style="float:left;margin-top:10px;width:360px;">
 		        		<!-- <a href="javascript:$('#uploadify').uploadify('cancel')" style="margin-left:20px">取消上传</a> -->

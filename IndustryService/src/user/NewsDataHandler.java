@@ -134,19 +134,9 @@ public class NewsDataHandler extends HttpServlet {
 					pw.write(result);
 				}
 			} else if ("add".equals(command)) {
-				//System.out.println(request.getParameter("fds8e8iewofdsnfoaoer293402432fd"));
-				//String qs =  java.net.URLDecoder.decode(request.getQueryString(),"utf-8");
-				//System.out.println(qs);
-				//int index = qs.indexOf("fds8e8iewofdsnfoaoer293402432fd=", 0);
-				//System.out.println(index);
-				//String content = qs.substring(index+32, qs.length());
-				//System.out.println(content);
-				//System.out.println(request.getParameter("title"));
-				//System.out.println(request.getParameter("type"));
-				//System.out.println(request.getParameter("editor1"));
 				String title = request.getParameter("title");
 				String type = request.getParameter("type");
-				String content = request.getParameter("editor1");
+				String content = request.getParameter("content");
 				int authorid = user.getUserid();
 				
 				if ("news".equals(type)) {
@@ -177,7 +167,24 @@ public class NewsDataHandler extends HttpServlet {
 					return ;
 				}
 			} else if ("update".equals(command)) {
-				
+				String type = request.getParameter("type");
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				if ("news".equals(type)) {
+					NewsControl nc = new NewsControl();
+					News news = nc.getNewsbyId(id);
+					news.setTitle(title);
+					news.setContent(content);
+					nc.updateNews(news);
+					response.getWriter().write("true");
+				} else if ("notice".equals(type)) {
+					NotificationControl nfc = new NotificationControl();
+					Notification notice = nfc.getNotificationbyId(id);
+					notice.setTitle(title);
+					notice.setContent(content);
+					response.getWriter().write("true");
+				}
 			} else if ("delete".equals(command)) {
 				String type = request.getParameter("type");
 				Integer id = Integer.parseInt(request.getParameter("id"));
@@ -185,6 +192,31 @@ public class NewsDataHandler extends HttpServlet {
 					NewsControl nc = new NewsControl();
 					News news = nc.getNewsbyId(id);
 					nc.deleteNews(news);
+					response.getWriter().write("true");
+				} else if ("notice".equals(type)) {
+					NotificationControl nfc = new NotificationControl();
+					Notification notice = nfc.getNotificationbyId(id);
+					nfc.deleteNotification(notice);
+					response.getWriter().write("true");
+				}
+			} else if ("get".equals(command)) {
+				String type = request.getParameter("type");
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				if ("news".equals(type)) {
+					NewsControl nc = new NewsControl();
+					News news = nc.getNewsbyId(id);
+					StringBuffer sb = new StringBuffer();
+					sb.append("{\"id\":" + news.getNewsid() + ","
+							+ "\"title\":\"" + news.getTitle() + "\","
+							+ "\"content\":\"" + news.getContent() + "\"}"
+							);
+					String result = new String(sb);
+					//response.setCharacterEncoding("utf-8");
+					response.getWriter().write(result);
+				} else if ("notice".equals(type)) {
+					NotificationControl nfc = new NotificationControl();
+					Notification notice = nfc.getNotificationbyId(id);
+					nfc.deleteNotification(notice);
 					response.getWriter().write("true");
 				}
 			}

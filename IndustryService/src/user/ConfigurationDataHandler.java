@@ -80,9 +80,8 @@ public class ConfigurationDataHandler extends HttpServlet {
 				if (name[j] != null) {
 					Configuration cf = new Configuration();
 					cf.setConfigid(id[j]);
-					cf.setCondition((name[j]));
+					cf.setDescription((name[j]));
 					cf.setConfig_path(link[j]);
-					cf.setConfig_path("link");
 
 					cc.updateConfiguration(cf);
 				}
