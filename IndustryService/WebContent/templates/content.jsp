@@ -26,11 +26,11 @@
 	Configuration cf_email = cc.listConfiguration("config_name", "contect_email").get(0);
 	Configuration cf_forum = cc.listConfiguration("config_name", "contect_forum").get(0);
 	String qq_p = cf_qq.getConfig_path();
-	String qq_c = cf_qq.getCondition();
+	String qq_c = cf_qq.getDescription();
 	String email_p = cf_email.getConfig_path();
-	String email_c = cf_email.getCondition();
+	String email_c = cf_email.getDescription();
 	String forum_p = cf_forum.getConfig_path();
-	String forum_c = cf_forum.getCondition();
+	String forum_c = cf_forum.getDescription();
 %>
 <div id="content" class="content">
 	<div class="mainleft">
