@@ -24,7 +24,7 @@
 	</div>		
 	<%@ include file="../templates/navigator.jsp" %>	
 	<div  id="main" class="main">		
-		<%@ include file="./leftindex.jsp" %>		
+		<%@ include file="./siderbar.jsp" %>		
 	</div>	
 	
 	<br><br><br>	

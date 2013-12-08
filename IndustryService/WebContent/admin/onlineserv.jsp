@@ -25,12 +25,11 @@
 	</div>	
 	<%@ include file="../templates/navigator.jsp" %>
 	<div  id="main" class="main">	
-		<%@ include file="./leftindex.jsp" %>
+		<%@ include file="./siderbar.jsp" %>
 		<%
-			ConfigurationControl cc = new ConfigurationControl();
-			Configuration cf_qq = cc.listConfiguration("config_name", "contect_qq").get(0);
-			Configuration cf_email = cc.listConfiguration("config_name", "contect_email").get(0);
-			Configuration cf_forum = cc.listConfiguration("config_name", "contect_forum").get(0);
+		ConfigurationControl cc = new ConfigurationControl();
+		List<Configuration> contectlist= cc.listConfiguration("config_name", "contect");
+		String title[] = {"QQ号：","邮箱：","技术论坛："};
 		%>
 		<div  style="width:739px;float: right; ">
 		<form action="<%=request.getContextPath() %>/user/configdata?type=online" method="post">
@@ -38,37 +37,20 @@
                     <tr>
 						<td height="44" colspan="4">
                                 <div align="left"><strong>在线服务</strong></div>
-                                <br><br><br><br>
+                                <br><br>
                         </td>
 					</tr>
 					
-						<tr>
-							<td height="30" align="right">
-                                <font size = 2>&nbsp;&nbsp;QQ号：</font>
-                            </td>
-							<td align="left">
-								<input name="id0" value="<%=cf_qq.getConfigid() %>" style="display:none">
-                                <input name="contect_qq" type="text" style="width: 200px" value="<%=cf_qq.getConfig_path() %>"/>
-                            </td>
-                        </tr>
-                        <tr>
-							<td height="30" align="right">
-                                <font size = 2>&nbsp;&nbsp;邮箱：</font>
-                            </td>
-							<td align="left">
-								<input name="id1" value="<%=cf_email.getConfigid() %>" style="display:none">
-                                <input name="contect_email" type="text" style="width: 200px" value="<%=cf_email.getConfig_path() %>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height="30" align="right">
-                                <font size = 2>&nbsp;&nbsp;技术论坛：</font>
-                            </td>
-							<td align="left">
-								<input name="id2" value="<%=cf_forum.getConfigid() %>" style="display:none">
-                                <input name="contect_forum" type="text" style="width: 200px" value="<%=cf_forum.getConfig_path() %>" />
-                            </td>
-						</tr>				
+						<% int i=0; for (Configuration contect:contectlist) { %>
+							<tr>
+								<td height="30" align="right">
+	                                <font size = 2>&nbsp;&nbsp;<%=title[i] %></font>
+	                            </td>
+								<td align="left">							                         
+	                               	<input name="link<%=i %>" type="text" style="width: 200px" value="<%=contect.getConfig_path() %>"/>
+	                            </td>
+	                        </tr>
+	                       <%i++;} %>			
 						<tr>
                         	<td align="center" height="30" colspan="4" style="padding-bottom: 10px;">
                         		<input type="submit" name="Submit" value="提交" onclick="" id="Submit" style="border-style:Groove;width:60px;" />   
@@ -80,7 +62,7 @@
 		</div>
 	</div>
 	
-	<br><br><br>
+	<br><br><br><br>
 	
 	<%@ include file="../templates/footer.jsp" %>
 </body>

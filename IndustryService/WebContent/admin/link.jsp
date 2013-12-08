@@ -26,7 +26,7 @@
 	</div>	
 	<%@ include file="../templates/navigator.jsp" %>
 	<div  id="main" class="main">	
-		<%@ include file="./leftindex.jsp" %>
+		<%@ include file="./siderbar.jsp" %>
 		<%
 			ConfigurationControl cclink = new ConfigurationControl();
 			List<Configuration> linklist= cclink.listConfiguration("config_name", "link");
@@ -38,7 +38,7 @@
                     <tr>
 						<td height="44" colspan="4">
                                 <div align="left"><strong>友情链接</strong></div>
-                                <br><br><br><br>
+                                <br><br>
                         </td>
 					</tr>					
 						<% int i=0; for (Configuration link:linklist) { %>
