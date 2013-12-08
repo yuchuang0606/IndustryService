@@ -48,7 +48,7 @@
 	                            </td>
 								<td align="left">
 									<input name="id<%=i%>" value="<%=link.getConfigid()%>" style="display:none">
-	                               	名称：<input name="name<%=i %>" type="text" style="width: 200px" value="<%=link.getCondition() %>"/>
+	                               	名称：<input name="name<%=i %>" type="text" style="width: 200px" value="<%=link.getDescription() %>"/>
 	                               	网址：<input name="link<%=i %>" type="text" style="width: 200px" value="<%=link.getConfig_path() %>"/>
 	                            </td>
 	                        </tr>
