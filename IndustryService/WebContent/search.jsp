@@ -3,9 +3,8 @@
 <%@ page import="java.util.List,model.*,datacontrol.*,java.text.SimpleDateFormat" %>
 <%
 	String type = (String)request.getAttribute("type");
-	String restype = "";
-	List<Resource> resList = null;
-	List<Video> videoList = null;
+	//String restype = "";
+	List<Resource> resList = (List<Resource>)request.getAttribute("resList");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,33 +27,32 @@
 			</div>
 			<div style="padding:0 5px;">
 				<div class="listinfo">
-					<% if ("video".equals(type)) {
-						for (Video video:videoList) {
-							String author = ((new UserControl()).getUser(video.getAuthorid())).getUsername();
-							String createtime = new SimpleDateFormat("yyyy/MM/dd").format(video.getCreatetime());
+					<% for (Resource res:resList) {
+							String author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
+							String createtime = new SimpleDateFormat("yyyy/MM/dd").format(res.getCreatetime());
 					%>
 					<div class="softinfo">
 						<div class="softimage">
-					    	<a href="video.jsp?id=<%=video.getVideoid()%>">
+					    	<a href="video.jsp?id=<%=res.getResourceid()%>">
 					    	<img src="./image/cad2d.png" height="60" width="60" style="border-width:0px;"></img></a>
 					    </div>
 					    <div class="softdetail">
-			    			<span>名称：<a href="video.jsp?id=<%=video.getVideoid()%>"><%=video.getTitle() %></a></span><br/>
-			    			<span>标签：<%=video.getTag() %></span><br/>
+			    			<span>名称：<a href="video.jsp?id=<%=res.getResourceid()%>"><%=res.getTitle() %></a></span><br/>
+			    			<span>标签：<%=res.getTag() %></span><br/>
 			    			<span>作者：<a href="#" title="<%=author%>"><%=author%></a>&nbsp;&nbsp;</span>
 			    			<span>时间：<%=createtime %></span>
 			    		</div>
 			    		<div class="softext">
-			    			<span>浏览：<%=video.getViewtimes() %></span><br/>
-			    			<span>下载：<%=video.getDownloadtimes() %></span><br/>
-			    			<span>大小：<%=video.getSize() %>M</span>
+			    			<span>浏览：<%=res.getViewtimes() %></span><br/>
+			    			<span>下载：<%=res.getDownloadtimes() %></span><br/>
+			    			<span>大小：<%=res.getSize() %>M</span>
 			    		</div>
 			    		<div class="softhandle">
-			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
-			    			<span><a href="video.jsp?id=<%=video.getVideoid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
+			    			<!-- <span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span> -->
+			    			<span><a href="video.jsp?id=<%=res.getResourceid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 			    		</div>
 					</div>
-					<%} } %>
+					<%} %>
 				</div>
 			</div>
 		<script type="text/javascript">

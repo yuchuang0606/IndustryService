@@ -490,7 +490,9 @@ function hiddenForm()
 function displayOpt()
 {
 	document.getElementById("simtype1").style.display = "block";
+	document.getElementById("simtype1").style.zindex = 1000;
 	document.getElementById("simtype2").style.display = "block";
+	document.getElementById("simtype2").style.zindex = 1000;
 	//document.getElementById("simtype3").style.display = "block";
 }
 function hiddenOpt(value)
@@ -503,11 +505,13 @@ function hiddenOpt(value)
 /* 搜索资源 */
 function SearchSubmit()
 {
-	var option = document.getElementById("opt1").innerHTML;
+	//var option = document.getElementById("opt1").innerHTML;
 	var keyword = document.getElementById("searchkey").value;
-	if ("请输入关键字" == keyword ||  keyword == "")
+	if ("请输入关键字" == keyword ||  keyword == "") {
+		alert("请输入关键字");
 		return ;
-	post('./search', {option:option,keyword:keyword});
+	}
+	post('./search', {keyword:keyword});
 }
 /* 点击视频选项，显示视频链接输入框*/
 function dispVideoLink()
@@ -661,7 +665,6 @@ function uploadPicResult()
     {
         //获取服务段的响应文本
         var respic = http.responseText;
-        alert(respic);
         if (respic.substring(0, 8) != "/uploads") {
         	alert("封面图片上传失败");
             return false;
@@ -704,7 +707,7 @@ function uploadPicResult()
         	}
         	var restag = document.getElementById("restag").value;	// get the tag of resource
         	var description = document.getElementById("description").value;
-        	alert(restype + ispublic + ressize + rescoin + resname + restag + description + videolink + respic + filename + filepath);
+        	//alert(restype + ispublic + ressize + rescoin + resname + restag + description + videolink + respic + filename + filepath);
         	var url = "../user/resourcedata?command=add" +
         				"&restype=" + restype +
         				"&ispublic=" + ispublic +

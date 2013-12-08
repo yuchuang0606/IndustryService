@@ -48,9 +48,9 @@
 	font-weight: normal;
 	font-size: 14px;
 	text-align:center;
-	background: url(../image/pulldown.png) right 50% no-repeat;
+	/*background: url(../image/pulldown.png) right 50% no-repeat;*/
 	margin-top:0px;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	float: left;
 	width: 70px;
 }

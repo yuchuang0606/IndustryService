@@ -9,7 +9,11 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
 <link rel="stylesheet"  href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" type="text/css"/>
 <div id="main" class="main">
+	<%if (userupload.getUsergroup() ==1) {%>
+	<%@ include file="../admin/siderbar.jsp" %>
+	<%} else { %>
 	<%@ include file="/user/userleftmenu.jsp"%>
+	<%} %>
 	<script src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.js"></script>
 	<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>

@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
 <div id="main" class="main">
+	<%if (user.getUsergroup() ==1) {%>
+	<%@ include file="../admin/siderbar.jsp" %>
+	<%} else { %>
 	<%@ include file="/user/userleftmenu.jsp"%>
+	<%} %>
 	<div id="content" class="content">
 		<div style="height:30px;width:717px;line-height:30px;padding-left:20px;background:#f5f5f5;">
        		<font style="font-weight:800;color: #265f9d;">用户信息</font>

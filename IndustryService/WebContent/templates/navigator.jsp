@@ -20,8 +20,8 @@
 			<a href="<%=request.getContextPath() %>/resource?type=video&orderby=createtime&page=1&rp=10">在线视频</a>
 			</div>
 		</li>
-		<li><a href="#">人才服务</a>
-		<li><a href="#">社区交流</a>
+		<li><a href="<%=request.getContextPath() %>/build.jsp">人才服务</a>
+		<li><a href="<%=request.getContextPath() %>/build.jsp">社区交流</a>
 		</li>
 		<li><a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">新闻通知</a>
 			<div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
@@ -29,7 +29,7 @@
 			<a href="<%=request.getContextPath() %>/news?type=notice&page=1&rp=10">通知</a>
 			</div>
 		</li>
-		<li><a href="#">政策法规</a>
+		<li><a href="<%=request.getContextPath() %>/build.jsp">政策法规</a>
 		</li>
 	</ul>
 	<div style="clear:both"></div>

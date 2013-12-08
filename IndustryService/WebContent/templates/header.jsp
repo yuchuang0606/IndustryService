@@ -32,6 +32,8 @@ function AddFavorite(title, url) {
 			<span class="pipe">|</span>
 			<span><a href="<%=request.getContextPath() %>/admin/index.jsp">管理首页</a></span>
 			<span class="pipe">|</span>
+			<span><a href="<%=request.getContextPath() %>/user/user.jsp">个人中心</a></span>
+			<span class="pipe">|</span>
 			<span><%=u.getUsername()%>管理员，欢迎您</span>
 		<%} else { %>
 			<span><a href="<%=request.getContextPath() %>/logout">退出</a></span>

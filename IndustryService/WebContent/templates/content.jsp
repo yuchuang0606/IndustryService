@@ -119,12 +119,12 @@
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">友情链接</span>
 			</div>
 			<div class="blockdiv" style="height:200px;">
-				<ul class="texthidden">
+				<ul class="texthidden" >
 					<% for (Configuration link:linkList) {%>
-					<li>
+					<li style="list-style:none;">
 						<a href="<%=link.getConfig_path() %>" title="<%=link.getConfig_path() %>" target=_blank;><%=link.getDescription() %></a>
 					</li>
-					<% }%>
+					<%}%>
 				</ul>
 			</div>
 		</div>

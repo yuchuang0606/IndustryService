@@ -1,6 +1,7 @@
 package user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,72 +48,76 @@ public class ConfigurationDataHandler extends HttpServlet {
 
 	}
 
-	@SuppressWarnings("null")
 	private void process(HttpServletRequest request,
 			HttpServletResponse response) {
-		String type = request.getParameter("type");
-		if ("link".equals(type)) {
-			String name0 = request.getParameter("name0");
-			String link0 = request.getParameter("link0");
-			int id0 = Integer.parseInt(request.getParameter("id0"));
-			String name1 = request.getParameter("name1");
-			String link1 = request.getParameter("link1");
-			int id1 = Integer.parseInt(request.getParameter("id1"));
-			String name2 = request.getParameter("name2");
-			String link2 = request.getParameter("link2");
-			int id2 = Integer.parseInt(request.getParameter("id2"));
-			String name3 = request.getParameter("name3");
-			String link3 = request.getParameter("link3");
-			int id3 = Integer.parseInt(request.getParameter("id3"));
-			String name4 = request.getParameter("name4");
-			String link4 = request.getParameter("link4");
-			int id4 = Integer.parseInt(request.getParameter("id4"));
-			String name5 = request.getParameter("name5");
-			String link5 = request.getParameter("link5");
-			int id5 = Integer.parseInt(request.getParameter("id5"));
-
-			String name[] = { name0, name1, name2, name3, name4, name5 };
-			String link[] = { link0, link1, link2, link3, link4, link5 };
-			int id[] = { id0, id1, id2, id3, id4, id5 };
-			ConfigurationControl cc = new ConfigurationControl();
-
-			for (int j = 0; j < 6; j++) {
-				if (name[j] != null) {
-					Configuration cf = new Configuration();
-					cf.setConfigid(id[j]);
-					cf.setDescription((name[j]));
-					cf.setConfig_path(link[j]);
-
-					cc.updateConfiguration(cf);
+		try {
+			String type = request.getParameter("type");
+			if ("link".equals(type)) {
+				String name0 = request.getParameter("name0");
+				String link0 = request.getParameter("link0");
+				//int id0 = Integer.parseInt(request.getParameter("id0"));
+				String name1 = request.getParameter("name1");
+				String link1 = request.getParameter("link1");
+				//int id1 = Integer.parseInt(request.getParameter("id1"));
+				String name2 = request.getParameter("name2");
+				String link2 = request.getParameter("link2");
+				//int id2 = Integer.parseInt(request.getParameter("id2"));
+				String name3 = request.getParameter("name3");
+				String link3 = request.getParameter("link3");
+				//int id3 = Integer.parseInt(request.getParameter("id3"));
+				String name4 = request.getParameter("name4");
+				String link4 = request.getParameter("link4");
+				//int id4 = Integer.parseInt(request.getParameter("id4"));
+				String name5 = request.getParameter("name5");
+				String link5 = request.getParameter("link5");
+				//int id5 = Integer.parseInt(request.getParameter("id5"));
+	
+				String name[] = { name0, name1, name2, name3, name4, name5 };
+				String link[] = { link0, link1, link2, link3, link4, link5 };
+				//int id[] = { id0, id1, id2, id3, id4, id5 };
+				ConfigurationControl cc = new ConfigurationControl();
+				List<Configuration> linkList = cc.listConfiguration("config_name", "link");
+				int j = 0;
+				for (Configuration ll:linkList) {
+					if (name[j] != null && link[j] != null) {
+						ll.setDescription((name[j]));
+						ll.setConfig_path(link[j]);
+						cc.updateConfiguration(ll);
+						System.out.println(j);
+					}
+					j++;
 				}
+				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
+			} else if ("online".equals(type)) {
+	
+				String link0 = request.getParameter("contect_qq");
+				int id0 = Integer.parseInt(request.getParameter("id0"));
+	
+				String link1 = request.getParameter("contect_email");
+				int id1 = Integer.parseInt(request.getParameter("id1"));
+	
+				String link2 = request.getParameter("contect_forum");
+				int id2 = Integer.parseInt(request.getParameter("id2"));
+	
+				ConfigurationControl cc = new ConfigurationControl();
+				String link[] = { link0, link1, link2 };
+				int id[] = { id0, id1, id2 };
+				Configuration cf[] = null;
+				for (int i = 0; i < 3; i++) {
+					cf[i] = new Configuration();
+					cf[i].setConfigid(id[i]);
+					cf[i].setConfig_path(link[i]);
+				}
+	
+				cf[0].setConfig_name("contect_qq");
+				cf[1].setConfig_name("contect_eamil");
+				cf[2].setConfig_name("contect_forum");
+	
+				for (int j = 0; j < 3; j++)
+					cc.updateConfiguration(cf[j]);
 			}
-		} else if ("online".equals(type)) {
-
-			String link0 = request.getParameter("contect_qq");
-			int id0 = Integer.parseInt(request.getParameter("id0"));
-
-			String link1 = request.getParameter("contect_email");
-			int id1 = Integer.parseInt(request.getParameter("id1"));
-
-			String link2 = request.getParameter("contect_forum");
-			int id2 = Integer.parseInt(request.getParameter("id2"));
-
-			ConfigurationControl cc = new ConfigurationControl();
-			String link[] = { link0, link1, link2 };
-			int id[] = { id0, id1, id2 };
-			Configuration cf[] = null;
-			for (int i = 0; i < 3; i++) {
-				cf[i] = new Configuration();
-				cf[i].setConfigid(id[i]);
-				cf[i].setConfig_path(link[i]);
-			}
-
-			cf[0].setConfig_name("contect_qq");
-			cf[1].setConfig_name("contect_eamil");
-			cf[2].setConfig_name("contect_forum");
-
-			for (int j = 0; j < 3; j++)
-				cc.updateConfiguration(cf[j]);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

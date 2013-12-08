@@ -9,8 +9,53 @@
 	List<Resource> reslist = (List<Resource>)request.getAttribute("reslist");
 %>
 <link rel="stylesheet" href="./css/slist.css" type="text/css" />
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/callback.js"></script>
+<script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#s").change(function(){
+		var url = window.location.href;
+		var index = url.indexOf("?");
+		var urlbef = url.substring(0, index+1);
+	    var paramStr = url.substring(url.indexOf("?") + 1);
+	    var params = paramStr.split("&");
+	    var type = null, orderby = null, page = null, rp = null;
+	    for (var i = 0; i < params.length; i++)
+	    {
+	    	var p = params[i].split("=");
+	    	if (p[0] == "type")
+	    		type = p[1];
+	    	else if (p[0] == "orderby")
+	    		orderby = p[1];
+	    	else if (p[0] == "page")
+	    		page = p[1];
+	    	else if (p[0] == "rp")
+	    		rp = p[1];
+	    }
+	    var nrp = $("#s").val();
+	    if (nrp != rp && null != type && null != orderby && null != page && null != rp)
+	    {
+	    	var urltemp = urlbef+"type={type}&orderby={orderby}&page={page}&rp={rp}";  
+	        var url = urltemp.replace("{type}", type).replace("{orderby}", orderby).replace("{page}", page).replace("{rp}", nrp);
+	        window.location.href = url;
+	    } 
+	});
+});
+
+window.onload=function()
+{
+	var url = window.location.href;
+	var paramStr = url.substring(url.indexOf("?") + 1);
+    var params = paramStr.split("&");
+    var rp = null;
+    for (var i = 0; i < params.length; i++)
+    {
+    	var p = params[i].split("=");
+    	if (p[0] == "rp")
+    		rp = p[1];
+    }
+    document.getElementById("s").value=rp;
+}
+</script>
 <div id="main" class="main" onload="chdefault()">
 	<%@ include file="/templates/leftmenu.jsp"%>
 	<div id="content" class="content">
@@ -72,7 +117,7 @@
 			<span style="float:right;height:36px;line-height:36px;margin:0px 10px;">
 				<span>每页显示条数：</span>
 				<select id="s" name="selection" style="height:20px;">
-					<option value ="10">10</option>
+					<option value ="10" selected="selected">10</option>
 					<option value ="20">20</option>
 					<option value ="40">40</option>
 				</select>
@@ -92,16 +137,16 @@
 			    <div class="softdetail">
 	    			<span>名称：<a href="resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>" title="<%=res.getTitle() %>"><%=res.getTitle() %></a></span><br/>
 	    			<span>标签：<%=res.getTag() %></span><br/>
-	    			<span>作者：<a href="#" title=""><%=author %></a>&nbsp;&nbsp;</span>
-	    			<span>时间：<%=createtime %></span>
+	    			<span>作者：<%=author %>&nbsp;&nbsp;</span>
+	    			<span>大小：<%=res.getSize() %>M</span>
 	    		</div>
 	    		<div class="softext">
 	    			<span>浏览：<%=res.getViewtimes() %></span><br/>
 	    			<span>下载：<%=res.getDownloadtimes() %></span><br/>
-	    			<span>大小：<%=res.getSize() %>M</span>
+	    			<span>时间：<%=createtime %></span>
 	    		</div>
 	    		<div class="softhandle">
-	    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
+	    			<!-- <span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span> -->
 	    			<span><a href="resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>

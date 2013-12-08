@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Resource;
 import model.Video;
+import datacontrol.ResourceControl;
 import datacontrol.VideoControl;
 
 /**
@@ -47,23 +49,16 @@ public class SearchHandler extends HttpServlet {
 	{
 		try {
 			request.setCharacterEncoding("utf-8");
-			String option = request.getParameter("option");
+			//String option = request.getParameter("option");
 			String keyword = request.getParameter("keyword");
-
-			if ("软件".equals(option))
-			{
-				//SoftwareControl sc = new SoftwareControl();
-				//List<Software> softList= sc.SearchByColumn("title", keyword);
-				//request.setAttribute("type", "software");
-				//request.setAttribute("softList", softList);
-			}
+			//String type = "";
+			/*if ("软件".equals(option))
+				type = "software";
 			else if ("视频".equals(option))
-			{
-				VideoControl vc = new VideoControl();
-				List<Video> videoList= vc.SearchByColumn("title", keyword);
-				request.setAttribute("type", "video");
-				request.setAttribute("videoList", videoList);
-			}
+				type = "video";*/
+			ResourceControl vc = new ResourceControl();
+			List<Resource> resList= vc.SearchByColumn("title", keyword);
+			request.setAttribute("resList", resList);
 			request.getRequestDispatcher("search.jsp").forward(request, response);
 		} catch (Exception e) {
 			

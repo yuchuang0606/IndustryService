@@ -64,7 +64,7 @@ public class ResourceHandler extends HttpServlet {
 			int start = (page-1)*rp;
 			//List<Software> softList = null;
 			//List<Video> videoList = null;
-			List<Resource> reslist = rc.getByPropAndColumn("restype", type, "createtime", start, rp);
+			List<Resource> reslist = rc.getByPropAndColumn("restype", type, orderby, start, rp);
 			request.setAttribute("reslist", reslist);
 			/*
 			if ("software".equals(type))

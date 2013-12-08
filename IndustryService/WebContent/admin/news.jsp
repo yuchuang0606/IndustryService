@@ -133,7 +133,7 @@ $("#flex1").flexigrid({
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
-                          $.get('../newsdata?command=delete&type=' + getParamValue("type") + '&id=' + id,
+                          $.get('../user/newsdata?command=delete&type=' + getParamValue("type") + '&id=' + id,
                         	function(result){
                               	if (result=="true")
                               		alert("删除成功！");
