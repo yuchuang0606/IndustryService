@@ -104,7 +104,7 @@
 		<a href="./setbuy.jsp"><img src="../image/c1.PNG" style="border-width:0"/></a>&nbsp;&nbsp;
 		<a href="./onlineserv.jsp"><img src="../image/c2.PNG" style="border-width:0"/></a>&nbsp;&nbsp;	
 		<a href="./link.jsp"><img src="../image/c3.PNG" style="border-width:0"/></a>&nbsp;&nbsp;
-		<a href="./User.jsp"><img src="../image/c4.PNG" style="border-width:0"/></a>
+		<a href="./user.jsp"><img src="../image/c4.PNG" style="border-width:0"/></a>
 		<br><br>					
 		<a href="./news.jsp"><img src="../image/c5.PNG" style="border-width:0"/></a>&nbsp;&nbsp;	
 		<a href="./news.jsp"><img src="../image/c6.PNG" style="border-width:0"/></a>&nbsp;&nbsp;

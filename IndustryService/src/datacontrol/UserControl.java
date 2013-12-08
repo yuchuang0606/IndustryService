@@ -57,7 +57,7 @@ public class UserControl {
 	
 	public List<User> getListByColumn(int start,int size)
 	{
-		return getListByColumn(start,size,"createtime");
+		return getListByColumn(start,size,"regdate");
 	}
 	
 	public List<User> getListByColumn(int start,int size,String column)

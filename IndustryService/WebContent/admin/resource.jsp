@@ -29,7 +29,7 @@
 		<script src="<%=request.getContextPath() %>/js/util.js"></script>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
-	        	<span style="font-size:16px;"><strong>用户管理</strong></span>
+	        	<span style="font-size:16px;"><strong>资源管理</strong></span>
 	        </div>
 	        <div style="margin-top:5px;padding:0 10px;min-height:500px;">
 	        	<table id="flex1" class="flexigrid" style="width:700px;display:none"></table>
@@ -43,20 +43,38 @@
 </body>
 <script>
 $("#flex1").flexigrid({
-      url : '../user/userdata?type=jsonlist',
+      url : '../user/resourcedata?command=jsonlist&type=' + getParamValue("type"),
       dataType : 'json',
       colModel : [ {
-      	display : '用户名',
-          name : 'username',
-          width : 50,
+      	display : '资源名称',
+          name : 'title',
+          width : 203,
           sortable : true,
           align : 'left'
       	},{
-          display : '用户组',
-          name : 'usergroup',
-          width : 45,
+          display : '作者',
+          name : 'author',
+          width : 50,
           sortable : true,
           align : 'center'
+        },{
+            display : '类型',
+            name : 'restype',
+            width : 25,
+            sortable : true,
+            align : 'left'
+        },{
+            display : '创建时间',
+            name : 'createtime',
+            width : 60,
+            sortable : true,
+            align : 'left'
+        },{
+            display : '大小',
+            name : 'ressize',
+            width : 50,
+            sortable : true,
+            align : 'left'
         },{
             display : '金币',
             name : 'coin',
@@ -64,115 +82,27 @@ $("#flex1").flexigrid({
             sortable : true,
             align : 'left'
         },{
-            display : '上传限制',
-            name : 'uploadsize',
-            width : 45,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '下载数量',
-            name : 'downloadnumber',
-            width : 45,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '上传数量',
-            name : 'uploadnumber',
-            width : 45,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '上次登录',
-            name : 'lastlogin',
-            width : 58,
+            display : '关注度',
+            name : 'viewtimes',
+            width : 40,
             sortable : true,
             align : 'left'
             //hide : true
         },{
-            display : '登录次数',
-            name : 'logintimes',
-            width : 45,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '注册时间',
-            name : 'regtime',
-            width : 58,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '邮箱',
-            name : 'email',
-            width : 80,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '手机号',
-            name : 'phonenumber',
+            display : '下载次数',
+            name : 'downloadtimes',
             width : 50,
             sortable : true,
             align : 'left'
-            //hide : true
         },{
-            display : '所属公司',
-            name : 'company',
+            display : '是否公开',
+            name : 'ispublic',
             width : 50,
             sortable : true,
             align : 'left'
-            //hide : true
         },{
-            display : '部门',
-            name : 'department',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '职位',
-            name : 'jobtitle',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '地址',
-            name : 'address',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '邮寄地址',
-            name : 'mailaddress',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '邮编',
-            name : 'postcode',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '姓名',
-            name : 'realname',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '生日',
-            name : 'birthday',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '性别',
-            name : 'gender',
+            display : '审核状态',
+            name : 'ispass',
             width : 50,
             sortable : true,
             align : 'left'
@@ -183,22 +113,25 @@ $("#flex1").flexigrid({
           bclass : 'delete',
           onpress : handle
       },{
-          name : '激活',
+          name : '审核',
           bclass : 'verify',
           onpress : handle
       },{
           separator : true
       }],
       searchitems:[{
-       	  display : '用户名',
+       	  display : '标题',
        	  name : 'title',
        	  isdefault : true
+      },{
+          display : '标签',
+          name : 'tag',
       }],
-      sortname : "regtime",
-      sortorder : "asc",
+      sortname : "createtime",
+      sortorder : "desc",
       usepager : true,
       singleSelect: true,
-      title : '用户管理',
+      title : getStrtype(getParamValue("type"))+'管理',
       useRp : true,
       rp : 12,
       showTableToggleBtn : true,
@@ -210,36 +143,40 @@ $("#flex1").flexigrid({
       function handle(com, grid) {
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
-              var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 用户吗?');
+        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
+        	  var index1 = title.indexOf("title=\"");
+        	  var index2 = title.indexOf("\">");
+        	  var tt = title.substring(index1+7,index2);
+              var conf = confirm('删除 ' + tt + ' 吗?');
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
-                          $.get('../user/userdata?type=delete' + '&id=' + id,
+                          $.get('../user/resourcedata?command=delete&type=' + getParamValue("type") + '&id=' + id,
                         	function(result){
                               	if (result=="true")
                               		alert("删除成功！");
-                              	else if (result == "reject")
-                              		alert("管理员组用户不能被删除");
-                              	else
+                              	else 
                               		alert("删除失败");
                                   // when ajax returns (callback), update the grid to refresh the data
                                   $("#flex1").flexReload();
                           });
                   });    
               }
-          } else if (com == '激活') {
-        	  var conf = confirm('激活 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 用户吗?');
+          } else if (com == '审核') {
+        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
+        	  var index1 = title.indexOf("title=\"");
+        	  var index2 = title.indexOf("\">");
+        	  var tt = title.substring(index1+7,index2);
+        	  var conf = confirm('将 ' + tt + ' 通过审核吗?');
         	  if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
-                          $.get('../user/userdata?type=active' + '&id=' + id,
+                          $.get('../user/resourcedata?command=verify&type=' + getParamValue("type") + '&id=' + id,
                         	function(result){
                               	if (result=="true")
-                              		alert("激活成功");
-                              	else if (result == "reject")
-                              		alert("管理员组用户不用激活");
+                              		alert("审核通过");
                               	else 
-                              		alert("激活失败");
+                              		alert("审核失败");
                                   // when ajax returns (callback), update the grid to refresh the data
                                   $("#flex1").flexReload();
                           });

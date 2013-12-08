@@ -4,18 +4,8 @@
 <%
 	String type = (String)request.getAttribute("type");
 	String restype = "";
-	List<Software> softList = null;
+	List<Resource> resList = null;
 	List<Video> videoList = null;
-	if ("software".equals(type))
-	{
-		restype = "软件搜索结果";
-		softList = (List<Software>)request.getAttribute("softList");
-	}
-	if ("video".equals(type))
-	{
-		restype = "视频搜索结果";
-		videoList = (List<Video>)request.getAttribute("videoList");
-	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,39 +24,11 @@
 		<%@ include file="/templates/leftmenu.jsp"%>
 		<div id="content" class="content">
 			<div class="divtitle" style="background-color:#f5f5f5;">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;"><%=restype %></span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">搜索结果</span>
 			</div>
 			<div style="padding:0 5px;">
 				<div class="listinfo">
-					<% if ("software".equals(type)) {
-						for (Software soft:softList) 
-						{
-							String author = ((new UserControl()).getUser(soft.getAuthorid())).getUsername();
-							String createtime = new SimpleDateFormat("yyyy/MM/dd").format(soft.getCreatetime());
-						%>
-					<div class="softinfo">
-						<div class="softimage">
-					    	<a href="software.jsp?id=<%=soft.getSoftwareid()%>">
-					    	<img src="<%=soft.getSoftpic() %>" height="60" width="60" style="border-width:0px;"></img></a>
-					    </div>
-					    <div class="softdetail">
-			    			<span>名称：<a href="software.jsp?id=<%=soft.getSoftwareid()%>" title="<%=soft.getTitle() %>"><%=soft.getTitle() %></a></span><br/>
-			    			<span>标签：<%=soft.getTag() %></span><br/>
-			    			<span>作者：<a href="#" title=""><%=author %></a>&nbsp;&nbsp;</span>
-			    			<span>时间：<%=createtime %></span>
-			    		</div>
-			    		<div class="softext">
-			    			<span>浏览：<%=soft.getViewtimes() %></span><br/>
-			    			<span>下载：<%=soft.getDownloadtimes() %></span><br/>
-			    			<span>大小：<%=soft.getSize() %>M</span>
-			    		</div>
-			    		<div class="softhandle">
-			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
-			    			<span><a href="software.jsp?id=<%=soft.getSoftwareid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
-			    		</div>
-					</div>
-					<% } 
-					} else if ("video".equals(type)) {
+					<% if ("video".equals(type)) {
 						for (Video video:videoList) {
 							String author = ((new UserControl()).getUser(video.getAuthorid())).getUsername();
 							String createtime = new SimpleDateFormat("yyyy/MM/dd").format(video.getCreatetime());
@@ -85,7 +47,7 @@
 			    		<div class="softext">
 			    			<span>浏览：<%=video.getViewtimes() %></span><br/>
 			    			<span>下载：<%=video.getDownloadtimes() %></span><br/>
-			    			<span>大小：<%=video.getVideosize() %>M</span>
+			    			<span>大小：<%=video.getSize() %>M</span>
 			    		</div>
 			    		<div class="softhandle">
 			    			<span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>

@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+div.box_main {
+	width:220px;
+	height: auto;
+	background-color: #90bfee;
+	float: left;
+}
+/*Start drop down menu*/
+ul#menu, ul#menu ul {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+	width: 15em;
+	width: 220px;
+}
+
+ul#menu a {
+	display: block;
+	text-decoration: none;
+}
+ul#menu li {
+	width: 220px;
+	text-align:center;
+	font-weight:bold;
+	min-height:32px;
+	line-height:32px;
+	height:auto;
+}
+
+ul#menu li a {
+	color: #333;
+	
+	background-color: #90bfee;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #f5f5f5;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+ul#menu li a:link {
+	color: #000;
+    text-decoration: none;
+}
+ul#menu li a:hover {
+	background: #33CCFF;
+	color: white;
+	font-weight: bold;
+}
+ul#menu li ul li { font-size:14px;height:36px;}
+ul#menu li ul li a {
+	color: #333;
+	font-weight:normal;
+	background-color: #fff;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #f5f5f5;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}

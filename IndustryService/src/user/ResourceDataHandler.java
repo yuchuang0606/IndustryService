@@ -3,7 +3,9 @@ package user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,8 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import datacontrol.ResourceControl;
+import datacontrol.UserControl;
 import datacontrol.VideoControl;
+import model.Notification;
 import model.Resource;
 import model.User;
 import model.Video;
@@ -130,32 +137,54 @@ public class ResourceDataHandler extends HttpServlet {
 				response.getWriter().write("true");
 				return ;
 			} else if ("jsonlist".equals(command)) {
+				String type = request.getParameter("type");
 				Integer page = Integer.parseInt(request.getParameter("page"));
 				Integer rp = Integer.parseInt(request.getParameter("rp")); // rp is the size of a page
 				ResourceControl rc = new ResourceControl();
-				int resTotal = rc.getNumberByProp("userid", String.valueOf(user.getUserid()));
+				int count = rc.getNumberByProp("restype", type);
 				int start = (page - 1) * rp;
-				List<Resource> resList = rc.getByPropAndColumn("userid", String.valueOf(user.getUserid()), "createtime", start, rp);
-				StringBuffer sb = new StringBuffer();
-				sb.append("{\"total\":" + resTotal + ",");
-				sb.append("\"page\":" + page + ",");
-				sb.append("\"rows\":[");
-				int i = 0;
-				for (Resource res : resList) {
-					sb.append("{\"id\":" + res.getResourceid() + ",");
-					sb.append("\"cell\":[" + res.getResourceid() + ","
-							+ res.getFilename() + "," + res.getAuthorid() + ","
-							+ res.getSize() + "," + res.getLink() + ","
-							+ res.getRestype()  + ","
-							+ res.getIspass() +  "]}");
-					if (i != resList.size() - 1)
-						sb.append(",");
-					i++;
-				}
-				sb.append("]}");
-				String result = new String(sb);
-				PrintWriter pw = response.getWriter();
-				pw.write(result);
+				List<Resource> resList = rc.getByPropAndColumn("restype", type, "createtime", start, rp);
+				String []verifyState = {"未审核","已审核"};
+				String []publicState = {"公开","不公开"};
+				HashMap<String,String> typemap = new HashMap<String,String>();
+				typemap.put("software", "软件");
+				typemap.put("model", "模型");
+				typemap.put("doc", "文档");
+				typemap.put("video", "视频");
+				JSONObject joo = new JSONObject();
+		        JSONArray jao = new JSONArray();
+		        for (Resource res : resList) {
+		        	String author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
+					String createtime = new SimpleDateFormat("yyyy/MM/dd").format(res.getCreatetime());
+					JSONObject joi = new JSONObject();
+					joi.put("id", res.getResourceid());
+					JSONArray jai = new JSONArray();
+					jai.put("<a href=\"../resinfo.jsp?type="+res.getRestype()+"&id="+res.getResourceid()+"\" title=\""+res.getTitle() + "\">" + res.getTitle() + "</a>")
+						.put(author).put(typemap.get(res.getRestype()))
+						.put(createtime).put(res.getSize()+"M").put(res.getCoin())
+						.put(res.getViewtimes()).put(res.getDownloadtimes())
+						.put(publicState[res.getIspublic()]).put(verifyState[res.getIspass()]);
+					joi.put("cell", jai);
+					jao.put(joi);
+		        }
+		        joo.put("rows", jao);
+		        joo.put("page", page);
+		        joo.put("total", count);
+		        response.setCharacterEncoding("utf-8");
+		        response.getWriter().write(joo.toString());
+			} else if ("delete".equals(command)) {
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				ResourceControl rc = new ResourceControl();
+				Resource res = rc.getResourcebyId(id);
+				rc.deleteResource(res);
+				response.getWriter().write("true");
+			} else if ("verify".equals(command)) {
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				ResourceControl rc = new ResourceControl();
+				Resource res = rc.getResourcebyId(id);
+				res.setIspass(1);
+				rc.updateResource(res);
+				response.getWriter().write("true");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

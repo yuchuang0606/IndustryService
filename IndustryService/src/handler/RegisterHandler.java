@@ -88,6 +88,7 @@ public class RegisterHandler extends HttpServlet {
 			user.setPostcode(postcode);
 			user.setMailaddress(postaddress);
 			user.setUploadsize(10);
+			user.setUsergroup(3); 	// set usergroup to 3
 			user.setRealname(realname);
 			user.setScale(size);
 			

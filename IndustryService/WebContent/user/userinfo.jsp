@@ -28,7 +28,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                    	<span><font size = 2><%=user.getUsername() %></font></span>
-	                    	<% if (user.getUsergroup() == 0) {%>
+	                    	<% if (user.getUsergroup() == 3) {%>
 	                        <span><font size = 2>&nbsp;&nbsp;[未激活]</font></span>&nbsp;&nbsp;
 	                        <a href="#" style="color:#0099FF;"><font size = 2>[立即激活]</font></a>
 	                        <%} %>

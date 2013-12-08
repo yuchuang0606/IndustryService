@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <link href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/layer/skin/layer.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/Flexigrid-master/css/flexigrid.pack.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/Flexigrid-master/css/flexigrid.css" />
 <title>大连工业设计服务平台</title>
 <script>
 	var ctxpath = null;
@@ -22,7 +22,7 @@
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
-		<%@ include file="/admin/leftindex.jsp"%>
+		<%@ include file="/admin/siderbar.jsp"%>
 		<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/admin/Flexigrid-master/js/flexigrid.pack.js"></script> 
 		<script src="<%=request.getContextPath() %>/js/ckeditor/ckeditor.js"></script>
@@ -45,7 +45,7 @@
 </body>
 <script>
 $("#flex1").flexigrid({
-      url : '../newsdata?command=jsonlist&type=' + getParamValue("type"),
+      url : '../user/newsdata?command=jsonlist&type=' + getParamValue("type"),
       dataType : 'json',
       colModel : [ {
       	display : '标题',
@@ -95,6 +95,10 @@ $("#flex1").flexigrid({
           bclass : 'delete',
           onpress : handle
       },{
+          name : '审核',
+          bclass : 'verify',
+          onpress : handle
+      },{
           separator : true
       }],
       searchitems:[{
@@ -114,14 +118,18 @@ $("#flex1").flexigrid({
       rp : 12,
       showTableToggleBtn : true,
       width : 718,
-      height : 330
+      height : 330,
       });
       
 	  var layerindex;
       function handle(com, grid) {
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
-              var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 吗?')
+        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
+        	  var index1 = title.indexOf("title=\"");
+        	  var index2 = title.indexOf("\">");
+        	  var tt = title.substring(index1+7,index2);
+              var conf = confirm('删除 ' + tt + ' 吗?');
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
@@ -138,7 +146,7 @@ $("#flex1").flexigrid({
               }
           } else if (com == '修改') {
         	  $("#id").attr("value", id);
-              $.get('../newsdata?command=get&type=' + getParamValue("type") + "&id=" + id,
+              $.get('../user/newsdata?command=get&type=' + getParamValue("type") + "&id=" + id,
               function (result) {
                   var json = JSON.parse(result);
                   temp = json;
@@ -173,7 +181,27 @@ $("#flex1").flexigrid({
                    });
                    layerindex = i;
                });
-          }      
+          } else if (com == '审核') {
+        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
+        	  var index1 = title.indexOf("title=\"");
+        	  var index2 = title.indexOf("\">");
+        	  var tt = title.substring(index1+7,index2);
+        	  var conf = confirm('将 ' + tt + ' 通过审核吗?');
+        	  if(conf){
+                  $.each($('.trSelected', grid),
+                      function(key, value){
+                          $.get('../user/newsdata?command=verify&type=' + getParamValue("type") + '&id=' + id,
+                        	function(result){
+                              	if (result=="true")
+                              		alert("审核通过");
+                              	else 
+                              		alert("审核失败");
+                                  // when ajax returns (callback), update the grid to refresh the data
+                                  $("#flex1").flexReload();
+                          });
+                  });    
+              }
+          }
       }
       function saveNews()
       {
@@ -183,7 +211,7 @@ $("#flex1").flexigrid({
           if (CKEDITOR.instances.editor1) {
               CKEDITOR.instances.editor1.destroy();
           }
-          $.post('/userdata?command=update&type=' + getParamValue("type"),
+          $.post('../user/newsdata?command=update&type=' + getParamValue("type") + "&id=" + id,
               {title:title,id:id,content:content},
               function (data) {
                   $("#flex1").flexReload();

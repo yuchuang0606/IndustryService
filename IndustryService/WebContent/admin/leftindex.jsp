@@ -32,7 +32,7 @@
 			<a href="./link.jsp">友情链接</a>
 		</li>
 		<li class="li_out">
-			<a href="./User.jsp">用户管理</a>
+			<a href="./user.jsp">用户管理</a>
 		</li>
 		<li class="li_out">
 			<a href="#">信息管理</a>
@@ -47,7 +47,19 @@
 			<a href="./news.jsp?type=notice">通知管理</a>
 		</li>
 		<li class="li_out">
-			<a href="./software.jsp">软件管理</a>
+			<a href="#">资源管理</a>
+		</li>
+		<li class="li_inner">
+			<a href="./resource.jsp?type=software">软件管理</a>
+		</li>
+		<li class="li_inner">
+			<a href="./resource.jsp?type=video">视频管理</a>
+		</li>
+		<li class="li_inner">
+			<a href="./resource.jsp?type=model">模型管理</a>
+		</li>
+		<li class="li_inner">
+			<a href="./resource.jsp?type=doc">文档管理</a>
 		</li>
 		<li class="li_out">
 			<a href="./video.jsp">视频管理</a>

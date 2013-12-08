@@ -20,7 +20,7 @@
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
-		<%@ include file="/admin/leftindex.jsp"%>
+		<%@ include file="/admin/siderbar.jsp"%>
 		<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 		<script src="<%=request.getContextPath() %>/js/ckeditor/ckeditor.js"></script>
 		<script src="<%=request.getContextPath() %>/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>

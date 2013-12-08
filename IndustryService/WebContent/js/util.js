@@ -817,4 +817,12 @@ function getStrtype(type)
 		 return "新闻";
 	 else if (type == "notice")
 		 return "通知";
+	 else if (type == "software")
+		 return "软件";
+	 else if (type == "model")
+		 return "模型";
+	 else if (type == "doc")
+		 return "文档";
+	 else if (type == "video")
+		 return "视频";
 }

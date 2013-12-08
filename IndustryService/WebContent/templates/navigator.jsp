@@ -30,7 +30,6 @@
 			</div>
 		</li>
 		<li><a href="#">政策法规</a>
-		<li><a href="#">联系我们</a>
 		</li>
 	</ul>
 	<div style="clear:both"></div>

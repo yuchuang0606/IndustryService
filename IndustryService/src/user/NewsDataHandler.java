@@ -25,7 +25,7 @@ import org.json.*;
 /**
  * Servlet implementation class NewsDataHandler
  */
-@WebServlet("/newsdata")
+@WebServlet("/user/newsdata")
 public class NewsDataHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -81,30 +81,27 @@ public class NewsDataHandler extends HttpServlet {
 				if ("news".equals(type))
 				{
 					newsList = nc.getListByColumn(start, rp);
-					StringBuffer sb = new StringBuffer();
-					sb.append("{\"total\":" + count + ",");
-					sb.append("\"page\":" + page + ",");
-					sb.append("\"rows\":[");
-					int i = 0;
-					for (News news : newsList) {
-						String author = ((new UserControl()).getUser(news.getAuthor())).getUsername();
+					JSONObject joo = new JSONObject();
+			        JSONArray jao = new JSONArray();
+			        for (News news : newsList) {
+			        	String author = ((new UserControl()).getUser(news.getAuthor())).getUsername();
 						String createtime = new SimpleDateFormat("yyyy/MM/dd").format(news.getCreatetime());
 						String modifytime = new SimpleDateFormat("yyyy/MM/dd").format(news.getModifytime());
 						String []verifyState = {"未审核","已审核"};
-						sb.append("{\"id\":" + news.getNewsid() + ",");
-						sb.append("\"cell\":[\"" + news.getTitle() + "\",\""
-								+ author + "\",\"" + createtime + "\",\""
-								+ modifytime + "\",\"" + news.getAccesstime() + "\",\""
-								+ verifyState[news.getIspass()] + "\"]}");
-						if (i != newsList.size() - 1)
-							sb.append(",");
-						i++;
-					}
-					sb.append("]}");
-					String result = new String(sb);
-					response.setCharacterEncoding("utf-8");
-					PrintWriter pw = response.getWriter();
-					pw.write(result);
+						JSONObject joi = new JSONObject();
+						joi.put("id", news.getNewsid());
+						JSONArray jai = new JSONArray();
+						jai.put("<a href=\"../newsinfo.jsp?type=news&newsid="+news.getNewsid()+"\" title=\""+news.getTitle() + "\">" + news.getTitle() + "</a>")
+							.put(author).put(createtime)
+							.put(modifytime).put(news.getAccesstime()).put(verifyState[news.getIspass()]);
+						joi.put("cell", jai);
+						jao.put(joi);
+			        }
+			        joo.put("rows", jao);
+			        joo.put("page", page);
+			        joo.put("total", count);
+			        response.setCharacterEncoding("utf-8");
+			        response.getWriter().write(joo.toString());
 				}
 				else if ("notice".equals(type))
 				{
@@ -119,14 +116,16 @@ public class NewsDataHandler extends HttpServlet {
 						JSONObject joi = new JSONObject();
 						joi.put("id", notice.getNewsid());
 						JSONArray jai = new JSONArray();
-						jai.put(notice.getTitle()).put(author).put(createtime)
-							.put(modifytime).put(notice.getAccesstime()).put(verifyState[notice.getIspass()]);
+						jai.put("<a href=\"../newsinfo.jsp?type=notice&newsid="+notice.getNewsid()+"\" title=\""+notice.getTitle() + "\">" + notice.getTitle() + "</a>")
+						.put(author).put(createtime).put(modifytime).put(notice.getAccesstime())
+						.put(verifyState[notice.getIspass()]);
 						joi.put("cell", jai);
 						jao.put(joi);
 			        }
 			        joo.put("rows", jao);
 			        joo.put("page", page);
 			        joo.put("total", count);
+			        response.setCharacterEncoding("utf-8");
 			        response.getWriter().write(joo.toString());
 					/*StringBuffer sb = new StringBuffer();
 					sb.append("{\"total\":" + count + ",");
@@ -236,7 +235,28 @@ public class NewsDataHandler extends HttpServlet {
 				} else if ("notice".equals(type)) {
 					NotificationControl nfc = new NotificationControl();
 					Notification notice = nfc.getNotificationbyId(id);
-					nfc.deleteNotification(notice);
+					JSONObject obj = new JSONObject();
+					obj.put("id", notice.getNewsid());
+					obj.put("title", notice.getTitle());
+					obj.put("content", notice.getContent());
+					//array.put(obj);
+					response.setCharacterEncoding("utf-8");
+					response.getWriter().write(obj.toString());
+				}
+			} else if ("verify".equals(command)) {
+				String type = request.getParameter("type");
+				Integer id = Integer.parseInt(request.getParameter("id"));
+				if ("news".equals(type)) {
+					NewsControl nc = new NewsControl();
+					News news = nc.getNewsbyId(id);
+					news.setIspass(1);
+					nc.updateNews(news);
+					response.getWriter().write("true");
+				} else if ("notice".equals(type)) {
+					NotificationControl nfc = new NotificationControl();
+					Notification notice = nfc.getNotificationbyId(id);
+					notice.setIspass(1);
+					nfc.updateNotification(notice);
 					response.getWriter().write("true");
 				}
 			}

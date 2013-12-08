@@ -1,4 +1,19 @@
 @charset "UTF-8";
+.edit{background:url(images/edit.png) no-repeat;background-position:2px;}
+.delete{background:url(images/close.png) no-repeat;background-position:2px;}
+.verify{background:url(images/accept.png) no-repeat;background-position:2px;}
+.flexigrid div.bDiv table a{
+	color:#3c3c3c;
+	text-decoration:none;
+}
+.flexigrid div.bDiv table a:link{
+	color:blue;
+	text-decoration:none;
+}
+.flexigrid div.bDiv table a:hover{
+	color:blue;
+	text-decoration:none;
+}
 /* CSS Document */
 .flexigrid {
 	font-family: Arial, Helvetica, sans-serif;

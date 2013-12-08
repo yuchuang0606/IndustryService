@@ -27,6 +27,12 @@ function AddFavorite(title, url) {
 			<span><a  onClick="AddFavorite('http://dl.caxa.com','大连工业设计服务平台')" href="#">收藏本站</a></span>
 		<!--  	<span class="pipe">|</span>
 			<a href="http://www.caxa.com">CAXA首页</a>-->
+		<%} else if (u.getUsergroup() == 1){ %>
+			<span><a href="<%=request.getContextPath() %>/logout">退出</a></span>
+			<span class="pipe">|</span>
+			<span><a href="<%=request.getContextPath() %>/admin/index.jsp">管理首页</a></span>
+			<span class="pipe">|</span>
+			<span><%=u.getUsername()%>管理员，欢迎您</span>
 		<%} else { %>
 			<span><a href="<%=request.getContextPath() %>/logout">退出</a></span>
 			<span class="pipe">|</span>
@@ -37,7 +43,6 @@ function AddFavorite(title, url) {
 			<span><a href="<%=request.getContextPath() %>/user/user.jsp">用户中心</a></span>
 			<span class="pipe">|</span>
 			<span><%=u.getUsername()%>，欢迎您</span>
-
 		<%} %>
 		</div>
 		<!--  
