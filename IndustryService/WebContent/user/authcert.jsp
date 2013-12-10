@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/authcert.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>

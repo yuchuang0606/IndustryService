@@ -22,14 +22,14 @@
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
 		<%@ include file="/admin/siderbar.jsp"%>
-		<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery-1.9.1.js" type="text/javascript"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/admin/Flexigrid-master/js/flexigrid.pack.js"></script> 
 		<script src="<%=request.getContextPath() %>/js/ckeditor/ckeditor.js"></script>
     	<script type="text/javascript" src="<%=request.getContextPath() %>/admin/layer/layer.js"></script>
 		<script src="<%=request.getContextPath() %>/js/util.js"></script>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
-	        	<span style="font-size:16px;"><strong>资源管理</strong></span>
+	        	<span style="font-size:16px;"><strong>下载记录管理</strong></span>
 	        </div>
 	        <div style="margin-top:5px;padding:0 10px;min-height:500px;">
 	        	<table id="flex1" class="flexigrid" style="width:700px;display:none"></table>
@@ -43,95 +43,54 @@
 </body>
 <script>
 $("#flex1").flexigrid({
-      url : '../user/resourcedata?command=jsonlist&type=' + getParamValue("type"),
+      url : '../user/dlrecorddata?command=jsonlist',
       dataType : 'json',
       colModel : [ {
-      	display : '资源名称',
-          name : 'title',
-          width : 203,
+      	display : '用户名',
+          name : 'username',
+          width : 100,
           sortable : true,
           align : 'left'
       	},{
-          display : '作者',
-          name : 'author',
-          width : 50,
+          display : '资源名称',
+          name : 'restitle',
+          width : 400,
           sortable : true,
-          align : 'center'
+          align : 'left'
         },{
             display : '类型',
             name : 'restype',
-            width : 25,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '创建时间',
-            name : 'createtime',
-            width : 60,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '大小',
-            name : 'ressize',
-            width : 50,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '金币',
-            name : 'coin',
-            width : 25,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '关注度',
-            name : 'viewtimes',
             width : 40,
             sortable : true,
-            align : 'left'
-            //hide : true
-        },{
-            display : '下载次数',
-            name : 'downloadtimes',
-            width : 50,
+            align : 'center'
+         },{
+            display : '下载时间',
+            name : 'downloadtime',
+            width : 128,
             sortable : true,
-            align : 'left'
-        },{
-            display : '是否公开',
-            name : 'ispublic',
-            width : 50,
-            sortable : true,
-            align : 'left'
-        },{
-            display : '审核状态',
-            name : 'ispass',
-            width : 50,
-            sortable : true,
-            align : 'left'
-            //hide : true
-        } ],
+            align : 'center'
+        }],
       buttons:[{
           name : '删除',
           bclass : 'delete',
           onpress : handle
       },{
-          name : '审核',
-          bclass : 'verify',
-          onpress : handle
-      },{
           separator : true
       }],
       searchitems:[{
-       	  display : '标题',
-       	  name : 'title',
+       	  display : '用户名',
+       	  name : 'username',
        	  isdefault : true
       },{
-          display : '标签',
-          name : 'tag',
+       	  display : '资源名称',
+       	  name : 'restitle',
+       	  isdefault : true
       }],
-      sortname : "createtime",
+      sortname : "downloadtime",
       sortorder : "desc",
       usepager : true,
       singleSelect: true,
-      title : getStrtype(getParamValue("type"))+'管理',
+      title : '下载记录表',
       useRp : true,
       rp : 12,
       showTableToggleBtn : true,
@@ -143,40 +102,18 @@ $("#flex1").flexigrid({
       function handle(com, grid) {
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
-        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
-        	  var index1 = title.indexOf("title=\"");
-        	  var index2 = title.indexOf("\">");
-        	  var tt = title.substring(index1+7,index2);
-              var conf = confirm('删除 ' + tt + ' 吗?');
+              var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 用户吗?');
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
-                          $.get('../user/resourcedata?command=delete&type=' + getParamValue("type") + '&id=' + id,
+                          $.get('../user/dlrecorddata?command=delete' + '&id=' + id,
                         	function(result){
                               	if (result=="true")
                               		alert("删除成功！");
-                              	else 
+                              	else if (result == "reject")
+                              		alert("管理员组用户不能被删除");
+                              	else
                               		alert("删除失败");
-                                  // when ajax returns (callback), update the grid to refresh the data
-                                  $("#flex1").flexReload();
-                          });
-                  });    
-              }
-          } else if (com == '审核') {
-        	  var title = $('.trSelected').children('td').eq(0).children('div').html();
-        	  var index1 = title.indexOf("title=\"");
-        	  var index2 = title.indexOf("\">");
-        	  var tt = title.substring(index1+7,index2);
-        	  var conf = confirm('将 ' + tt + ' 通过审核吗?');
-        	  if(conf){
-                  $.each($('.trSelected', grid),
-                      function(key, value){
-                          $.get('../user/resourcedata?command=verify&type=' + getParamValue("type") + '&id=' + id,
-                        	function(result){
-                              	if (result=="true")
-                              		alert("审核通过");
-                              	else 
-                              		alert("审核失败");
                                   // when ajax returns (callback), update the grid to refresh the data
                                   $("#flex1").flexReload();
                           });
