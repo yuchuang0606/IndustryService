@@ -83,7 +83,6 @@ public class ConfigurationDataHandler extends HttpServlet {
 						ll.setDescription((name[j]));
 						ll.setConfig_path(link[j]);
 						cc.updateConfiguration(ll);
-						System.out.println(j);
 					}
 					j++;
 				}
@@ -91,30 +90,34 @@ public class ConfigurationDataHandler extends HttpServlet {
 			} else if ("online".equals(type)) {
 	
 				String link0 = request.getParameter("contect_qq");
-				int id0 = Integer.parseInt(request.getParameter("id0"));
+				//int id0 = Integer.parseInt(request.getParameter("id0"));
 	
 				String link1 = request.getParameter("contect_email");
-				int id1 = Integer.parseInt(request.getParameter("id1"));
+				//int id1 = Integer.parseInt(request.getParameter("id1"));
 	
 				String link2 = request.getParameter("contect_forum");
-				int id2 = Integer.parseInt(request.getParameter("id2"));
+				//int id2 = Integer.parseInt(request.getParameter("id2"));
 	
 				ConfigurationControl cc = new ConfigurationControl();
 				String link[] = { link0, link1, link2 };
-				int id[] = { id0, id1, id2 };
-				Configuration cf[] = null;
-				for (int i = 0; i < 3; i++) {
-					cf[i] = new Configuration();
-					cf[i].setConfigid(id[i]);
-					cf[i].setConfig_path(link[i]);
+				//int id[] = { id0, id1, id2 };
+				List<Configuration> contactList = cc.listConfiguration("config_name", "contact");
+				int j = 0;
+				for (Configuration cl:contactList) {
+					if ( link[j] != null) {
+						cl.setDescription(link[j]);
+						cc.updateConfiguration(cl);
+					}
+					j++;
 				}
-	
-				cf[0].setConfig_name("contect_qq");
-				cf[1].setConfig_name("contect_eamil");
-				cf[2].setConfig_name("contect_forum");
-	
-				for (int j = 0; j < 3; j++)
-					cc.updateConfiguration(cf[j]);
+				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
+			} else if ("footer".equals(type)) {
+				String content = request.getParameter("content");
+				ConfigurationControl cc = new ConfigurationControl();
+				Configuration foot = cc.listConfiguration("config_name", "footer").get(0);
+				foot.setDescription(content);
+				cc.updateConfiguration(foot);
+				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

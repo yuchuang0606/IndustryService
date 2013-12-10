@@ -3,10 +3,8 @@
 <%@ page import="java.util.List,model.*,datacontrol.*,java.text.SimpleDateFormat" %>
 <%
 	User user = (User)request.getSession().getAttribute("user");
-	String logintime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(user.getLastlogin());
-	String birthday = "";
-	if (null != user.getBirthdate())
-		birthday = new SimpleDateFormat("yyyy-MM-dd").format(user.getBirthdate());
+	String logintime = user.getLastlogin();
+	String birthday = user.getBirthdate();
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/WdatePicker.js"></script>
@@ -273,8 +271,8 @@
 				<tr>
 	                <td align="center" height="30" colspan="4" >
 	                	<div style="text-align:center;margin:10px auto;">
-	                    <input type="submit" name="btSubmit" value="提   交" onclick="updateinfo('<%=request.getContextPath()%>')" id="btSubmit" style="color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
-	                    <input type="submit" value="取   消" onclick="cancel()" style="cursor:pointer;margin-left:20px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                    <input type="submit" name="btSubmit" value="提   交" onclick="updateinfo('<%=request.getContextPath()%>')" id="btSubmit" style="border-width:0px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+	                    <input type="submit" value="取   消" onclick="cancel()" style="border-width:0px;cursor:pointer;margin-left:20px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
 	                	</div>
 	                </td>
             	</tr>

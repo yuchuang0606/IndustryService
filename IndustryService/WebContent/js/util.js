@@ -334,28 +334,44 @@ function updateinfo(contextPath)
 	var postcode = document.getElementById("postcode").value;
 	var postaddress = document.getElementById("postaddress").value;
 	var introduction = document.getElementById("introduction").value;
+	
 	// post the request
-	var url = contextPath + "/user/userdata?type=info" +
-						"&realname=" + realname +
-						"&email="+ email +
-						"&sex=" + sex +
-						"&birthday=" + birthday +
-						"&address=" + address +
-						"&cpname=" + cpname +
-						"&industry=" + industry +
-						"&size=" + size +
-						"&depart=" + depart +
-						"&duty=" + duty + 
-						"&mobile=" + mobile + 
-						"&postcode=" + postcode +
-						"&postaddress=" + postaddress +
-						"&introduction=" + introduction;
+	$.post('../user/userdata?type=info',
+        {realname:realname,email:email,sex:sex,birthday:birthday,address:address,
+		cpname:cpname,industry:industry,size:size,depart:depart,duty:duty,
+		mobile:mobile,postcode:postcode,postaddress:postaddress,introduction:introduction},
+        function (data) {
+            if (data == "true") {
+                alert("修改成功！");
+                location.href = "./user.jsp";
+            }
+            else {
+                alert("修改失败！");
+            }
+        }
+    );
+	/*
+	var url = contextPath + "/user/userdata?type=info";
+						"&realname=" + escape(realname) +
+						"&email="+ escape(email) +
+						"&sex=" + escape(sex) +
+						"&birthday=" + escape(birthday) +
+						"&address=" + escape(address) +
+						"&cpname=" + escape(cpname) +
+						"&industry=" + escape(industry) +
+						"&size=" + escape(size) +
+						"&depart=" + escape(depart) +
+						"&duty=" + escape(duty) + 
+						"&mobile=" + escape(mobile) + 
+						"&postcode=" + escape(postcode) +
+						"&postaddress=" + escape(postaddress) +
+						"&introduction=" + escape(introduction);
     //指定服务端的地址
     http.open("POST", url, true); 
     //请求状态变化时的处理函数
     http.onreadystatechange = updateResult;
     //发送请求
-    http.send(null);
+    http.send(null);*/
 }
 function updateResult()
 {
@@ -391,6 +407,19 @@ function updatepwd(contextPath)
 		document.getElementById("msg_password1").innerHTML="两次密码不一致";return;
 	}
 	// post the request
+	$.post('../user/userdata?type=pwd',
+        {oldpwd:oldpwd,newpwd:newpwd1},
+        function (data) {
+            if (data == "true") {
+                alert("修改成功！");
+                location.href = "./user.jsp";
+            }
+            else {
+                alert("修改失败！");
+            }
+        }
+    );
+	/* post the request
 	var url = contextPath + "/user/userdata?type=pwd" +
 						"&oldpwd=" + oldpwd +
 						"&newpwd="+ newpwd1;
@@ -399,7 +428,7 @@ function updatepwd(contextPath)
     //请求状态变化时的处理函数
     http.onreadystatechange = updateResult;
     //发送请求
-    http.send(null);
+    http.send(null);*/
 }
 
 /*取消修改，回到用户中心*/
@@ -602,10 +631,6 @@ function checkNumscope()
 	}
 }
 
-var filename = null;
-var filepath = null;
-var filesize = null;
-
 /* 上传资源*/
 function uploadResource()
 {
@@ -635,6 +660,8 @@ function uploadResource()
 	if (!checkImg(imgfile))
 		return;
 	var videolink = null;
+	var filename = document.getElementById("filename").value;
+	var filepath = document.getElementById("filepath").value;
 	if (restype == "video") {	// 资源类型为视频
 		videolink = document.getElementById("videolink").value;	// get the link of video
 		if (videolink == null && filepath == null) {
@@ -708,24 +735,43 @@ function uploadPicResult()
         	var restag = document.getElementById("restag").value;	// get the tag of resource
         	var description = document.getElementById("description").value;
         	//alert(restype + ispublic + ressize + rescoin + resname + restag + description + videolink + respic + filename + filepath);
+        	var filename = document.getElementById("filename").value;
+        	var filepath = document.getElementById("filepath").value;
+        	var filesize = document.getElementById("filesize").value;
+        	// post the request
+        	$.post('../user/resourcedata?command=add',
+                {restype:restype,ispublic:ispublic,filesize:filesize,rescoin:rescoin, 
+				resname:resname,restag:restag,videolink:videolink,respic:respic,
+				filename:filename,filepath:filepath,description:description},
+                function (data) {
+        			if (data == "big") {
+        	        	alert("文件大小超过您的最大限制，请联系QQ:1346158517");
+        	        } else if (data == "true") {
+        	        	alert("资源上传成功，等待管理员审核");
+        	        } else if (data == "false") {
+        	        	alert("资源上传发生未知错误，请联系管理员");
+        	        }
+                }
+            );
+        	/*
         	var url = "../user/resourcedata?command=add" +
-        				"&restype=" + restype +
-        				"&ispublic=" + ispublic +
-        				"&ressize=" + filesize + 
-        				"&rescoin=" + rescoin + 
-        				"&resname=" + resname +
-        				"&restag=" + restag +
-        				"&videolink=" + videolink +
-        				"&respic=" + respic +
-        				"&filename=" + filename +
-        				"&path=" + filepath +
-        				"&description=" + description;
+        				"&restype=" + escape(restype) +
+        				"&ispublic=" + escape(ispublic) +
+        				"&filesize=" + escape(filesize) + 
+        				"&rescoin=" + escape(rescoin) + 
+        				"&resname=" + escape(resname) +
+        				"&restag=" + escape(restag) +
+        				"&videolink=" + escape(videolink) +
+        				"&respic=" + escape(respic) +
+        				"&filename=" + escape(filename) +
+        				"&filepath=" + escape(filepath) +
+        				"&description=" + escape(description);
             //指定服务端的地址
             http.open("POST", url, true);
             //请求状态变化时的处理函数
             http.onreadystatechange = uploadResResult;
             //发送请求
-            http.send(null);
+            http.send(null);*/
         }
     }
 }

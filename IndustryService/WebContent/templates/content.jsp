@@ -21,6 +21,7 @@
 	List<Resource> softList = rc.getByPropAndColumn("restype", "software", "downloadtimes", 0, rp);
 	List<Resource> videoList = rc.getByPropAndColumn("restype", "video", "downloadtimes", 0, rp);
 	List<Configuration> linkList = cclink.listConfiguration("config_name", "link");
+	List<Configuration> contactList = cclink.listConfiguration("config_name", "contact");
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -101,15 +102,15 @@
 			<div class="blockdiv" style="height:200px;">
 				<ul class="texthidden">
 					<li style="list-style:none;">
-						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1346158517&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1346158517:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<%=contactList.get(0).getDescription() %>&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:<%=contactList.get(0).getDescription() %>:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
 					</li>
 					<li style="list-style:none;">
 						<img src="./image/email.jpg"></img>
-						<a href="mailto:liuwj@dlut.edu.cn">邮箱：liuwj@dlut.edu.cn</a>
+						<a href="mailto:liuwj@dlut.edu.cn">邮箱：<%=contactList.get(1).getDescription() %></a>
 					</li>
 					<li style="list-style:none;">
 						<img src="./image/luntan.jpg"></img>
-						<a href="http://top.caxa.com">技术论坛</a>
+						<a href="<%=contactList.get(2).getDescription() %>">技术论坛</a>
 					</li>
 				</ul>
 			</div>

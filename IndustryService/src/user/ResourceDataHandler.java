@@ -61,8 +61,11 @@ public class ResourceDataHandler extends HttpServlet {
 		try {
 			User user = (User)request.getSession().getAttribute("user");
 			String command = request.getParameter("command");
-			System.out.println(command);
 			if ("list".equals(command)) {
+				if (user == null) {
+					response.getWriter().write("<html><script> alert('用户不存在或登录已超时');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				String type = request.getParameter("type");
 				String orderby = request.getParameter("orderby");
 				int page = Integer.parseInt(request.getParameter("page"));
@@ -83,8 +86,11 @@ public class ResourceDataHandler extends HttpServlet {
 				request.setAttribute("culPage", page);
 				request.getRequestDispatcher("myupload.jsp").forward(request, response);
 			} else if ("add".equals(command)) {
+				if (user == null) {
+					response.getWriter().write("<html><script> alert('用户不存在或登录已超时');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				/*
-				System.out.println("-1");
 				System.out.println(request.getParameter("restype"));
 				System.out.println(request.getParameter("ispublic"));
 				System.out.println(request.getParameter("ressize"));
@@ -92,23 +98,25 @@ public class ResourceDataHandler extends HttpServlet {
 				System.out.println(request.getParameter("resname"));
 				System.out.println(request.getParameter("description"));
 				System.out.println(request.getParameter("filepath"));
+				System.out.println(request.getParameter("filename"));
 				System.out.println(request.getParameter("restype"));
 				System.out.println(request.getParameter("respic"));
 				System.out.println(request.getParameter("videolink"));*/
 				String restype = request.getParameter("restype");
 				Integer ispublic = Integer.parseInt(request.getParameter("ispublic"));
-				Double ressize = Double.parseDouble(request.getParameter("ressize"));
+				Double filesize = Double.parseDouble(request.getParameter("filesize"));
 				Integer rescoin = Integer.parseInt(request.getParameter("rescoin"));
-				String resname = new String(request.getParameter("resname").getBytes("iso8859-1"),"utf-8");
-				String restag = new String(request.getParameter("restag").getBytes("iso8859-1"),"utf-8");
-				String description = new String(request.getParameter("description").getBytes("iso8859-1"),"utf-8");;
+				String resname = request.getParameter("resname");
+				String restag = request.getParameter("restag");
+				String description = request.getParameter("description");
 				String respic = request.getParameter("respic");
-				String filename = new String(request.getParameter("filename").getBytes("iso8859-1"),"utf-8");;
-				String path = request.getParameter("filepath");
-				String videolink = new String(request.getParameter("videolink").getBytes("iso8859-1"),"utf-8");;
+				String filename = request.getParameter("filename");
+				String filepath = request.getParameter("filepath");
+				String videolink = request.getParameter("videolink");
+				System.out.println(description);
 				
 				DecimalFormat format = new DecimalFormat("#0.0");
-				double size = Double.parseDouble(format.format(ressize));
+				double size = Double.parseDouble(format.format(filesize));
 				if (size > user.getUploadsize()) {	// 超过用户上传大小限制
 					response.getWriter().write("big");
 					return ;
@@ -122,7 +130,7 @@ public class ResourceDataHandler extends HttpServlet {
 				res.setCoin(rescoin);
 				res.setIspass(0);
 				res.setIspublic(ispublic);
-				res.setLink(path);
+				res.setLink(filepath);
 				res.setFilename(filename);
 				res.setSdescribe(description);
 				res.setOnlinelink(videolink);
@@ -132,11 +140,17 @@ public class ResourceDataHandler extends HttpServlet {
 				res.setTag(restag);
 				res.setTitle(resname);
 				res.setViewtimes(0);
-				
 				rc.addResource(res);
+				// 将用户上传数量+1
+				user.setUploadfilenumber(user.getUploadfilenumber()+1);
+				new UserControl().updateUser(user);
 				response.getWriter().write("true");
 				return ;
 			} else if ("jsonlist".equals(command)) {
+				if (user.getUsergroup() != 1) {
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				String type = request.getParameter("type");
 				Integer page = Integer.parseInt(request.getParameter("page"));
 				Integer rp = Integer.parseInt(request.getParameter("rp")); // rp is the size of a page
@@ -159,7 +173,7 @@ public class ResourceDataHandler extends HttpServlet {
 					JSONObject joi = new JSONObject();
 					joi.put("id", res.getResourceid());
 					JSONArray jai = new JSONArray();
-					jai.put("<a href=\"../resinfo.jsp?type="+res.getRestype()+"&id="+res.getResourceid()+"\" title=\""+res.getTitle() + "\">" + res.getTitle() + "</a>")
+					jai.put("<a href=\"../resinfo.jsp?type="+res.getRestype()+"&id="+res.getResourceid()+"\" target=\"_blank\" title=\""+res.getTitle() + "\">" + res.getTitle() + "</a>")
 						.put(author).put(typemap.get(res.getRestype()))
 						.put(createtime).put(res.getSize()+"M").put(res.getCoin())
 						.put(res.getViewtimes()).put(res.getDownloadtimes())
@@ -176,9 +190,19 @@ public class ResourceDataHandler extends HttpServlet {
 				Integer id = Integer.parseInt(request.getParameter("id"));
 				ResourceControl rc = new ResourceControl();
 				Resource res = rc.getResourcebyId(id);
+				if (user.getUsergroup() != 1) {	// 非管理员只能删除与自己相关的记录
+					if (user.getUserid() != res.getAuthorid()) {
+						response.getWriter().write("<html><script> alert('没有权限使用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+						return ;
+					}
+				}
 				rc.deleteResource(res);
 				response.getWriter().write("true");
 			} else if ("verify".equals(command)) {
+				if (user.getUsergroup() != 1) {
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				Integer id = Integer.parseInt(request.getParameter("id"));
 				ResourceControl rc = new ResourceControl();
 				Resource res = rc.getResourcebyId(id);

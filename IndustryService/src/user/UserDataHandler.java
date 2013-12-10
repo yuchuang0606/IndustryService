@@ -55,34 +55,33 @@ public class UserDataHandler extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
-			//request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("utf-8");
 			String type = request.getParameter("type");
 			User user = (User)request.getSession().getAttribute("user");
 			UserControl uc = new UserControl();
-			System.out.println(type);
 			if ("info".equals(type))	// update user information
 			{
-				String realname = new String(request.getParameter("realname").getBytes("iso8859-1"),"utf-8");
-				String email = new String(request.getParameter("email").getBytes("iso8859-1"),"utf-8");
-				String sex = new String(request.getParameter("sex").getBytes("iso8859-1"),"utf-8");
+				String realname = request.getParameter("realname");
+				String email = request.getParameter("email");
+				String sex = request.getParameter("sex");
 				String birthday = request.getParameter("birthday");
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
 				if (birthday == null || "".equals(birthday))
 					birthday = df.format(new Date());	// new Date()为获取当前系统时间
-				String address = new String(request.getParameter("address").getBytes("iso8859-1"),"utf-8");
-				String cpname = new String(request.getParameter("cpname").getBytes("iso8859-1"),"utf-8");
-				String industry = new String(request.getParameter("industry").getBytes("iso8859-1"),"utf-8");
-				String size = new String(request.getParameter("size").getBytes("iso8859-1"),"utf-8");
-				String depart = new String(request.getParameter("depart").getBytes("iso8859-1"),"utf-8");
-				String duty = new String(request.getParameter("duty").getBytes("iso8859-1"),"utf-8");
-				String mobile = new String(request.getParameter("mobile").getBytes("iso8859-1"),"utf-8");
-				String postcode = new String(request.getParameter("postcode").getBytes("iso8859-1"),"utf-8");
-				String postaddress = new String(request.getParameter("postaddress").getBytes("iso8859-1"),"utf-8");
-				String introduction = new String(request.getParameter("introduction").getBytes("iso8859-1"),"utf-8");
+				String address = request.getParameter("address");
+				String cpname = request.getParameter("cpname");
+				String industry = request.getParameter("industry");
+				String size = request.getParameter("size");
+				String depart = request.getParameter("depart");
+				String duty = request.getParameter("duty");
+				String mobile = request.getParameter("mobile");
+				String postcode = request.getParameter("postcode");
+				String postaddress = request.getParameter("postaddress");
+				String introduction = request.getParameter("introduction");
 				user.setRealname(realname);
 				user.setEmail(email);
 				user.setGender(sex);
-				user.setBirthdate(df.parse(birthday));
+				user.setBirthdate(birthday);
 				user.setAddress(address);
 				user.setCompany(cpname);
 				user.setIndustry(industry);
@@ -114,6 +113,10 @@ public class UserDataHandler extends HttpServlet {
 				uc.updateUser(user);
 				response.getWriter().write("true");
 			} else if ("active".equals(type)) {
+				if (user.getUsergroup() != 1) {	// only administrator can call this function
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				int id = Integer.parseInt(request.getParameter("id"));
 				User u = uc.getUser(id);
 				if (u.getUsergroup() == 1) {
@@ -124,6 +127,10 @@ public class UserDataHandler extends HttpServlet {
 				uc.updateUser(u);
 				response.getWriter().write("true");
 			} else if ("jsonlist".equals(type)) {
+				if (user.getUsergroup() != 1) {// only administrator can call this function
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				Integer page = Integer.parseInt(request.getParameter("page"));
 				Integer rp = Integer.parseInt(request.getParameter("rp")); // rp is the  size of a page
 				int count = uc.getUserNumber();
@@ -132,9 +139,9 @@ public class UserDataHandler extends HttpServlet {
 				JSONObject joo = new JSONObject();
 		        JSONArray jao = new JSONArray();
 		        for (User u : userList) {
-					String regtime = new SimpleDateFormat("yyyy/MM/dd").format(u.getRegdate());
-					String lastlogin = new SimpleDateFormat("yyyy/MM/dd").format(u.getLastlogin());
-					String birthday = new SimpleDateFormat("yyyy/MM/dd").format(u.getBirthdate());
+					String regtime = u.getRegdate();
+					String lastlogin = u.getLastlogin();
+					String birthday = u.getBirthdate();
 					String []groupState = {"管理员组","新闻管理组","未激活组","普通用户组"};
 					JSONObject joi = new JSONObject();
 					joi.put("id", u.getUserid());
@@ -155,26 +162,14 @@ public class UserDataHandler extends HttpServlet {
 		        joo.put("total", count);
 		        response.setCharacterEncoding("utf-8");
 		        response.getWriter().write(joo.toString());
-			} else if ("update".equals(type)) {	// 修改用户信息
-				int id = Integer.parseInt(request.getParameter("id"));
-				String username = request.getParameter("username");
-                int group = Integer.parseInt(request.getParameter("group")); 
-                String email = request.getParameter("email");
-                String phoneNum = request.getParameter("phoneNum");
-                String company = request.getParameter("company");
-				User u = new User();
-				u.setUserid(id);
-				u.setUsername(username);
-				u.setUsergroup(group);
-				u.setEmail(email);
-				u.setPhone(phoneNum);
-				u.setCompany(company);
-				uc.updateUser(u);
-				response.getWriter().write("true");   
 			} else if ("delete".equals(type)) {	// 删除用户
+				if (user.getUsergroup() != 1) {// only administrator can call this function
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
 				int id = Integer.parseInt(request.getParameter("id"));
 				User u = uc.getUser(id);
-				if (u.getUsergroup() == 1) {
+				if (u.getUsergroup() == 1) {	// 管理员不能被删除
 					response.getWriter().write("reject");
 					return ;
 				}

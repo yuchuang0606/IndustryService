@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="./image/c.png" type="image/x-icon" />
 <link rel="stylesheet" href="./css/introduce.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
 <%
+	User user = (User)request.getSession().getAttribute("user");
 	String configname = (String)request.getAttribute("configname");
 	String condition = (String)request.getAttribute("condition");
 %>
@@ -20,7 +20,11 @@
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
+		<%if (user.getUsergroup() ==1) {%>
+		<%@ include file="../admin/siderbar.jsp" %>
+		<%} else { %>
 		<%@ include file="/user/userleftmenu.jsp"%>
+		<%} %>
 		<div id="content" class="content">
 			<div class="title" style="height:36px;width:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
 	        	<span style="font-size:18px;"><strong><%=configname%></strong></span>

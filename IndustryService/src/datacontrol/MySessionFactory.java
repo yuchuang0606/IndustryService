@@ -285,7 +285,7 @@ public  class  MySessionFactory {
 			session = factory.openSession();
 			//开启事务
 			session.beginTransaction();
-			Query q=session.createQuery("from "+cname+" x where x."+prop+"= :value and " + prop1+"= :value1 " + " order by x."+column + " desc").setString("value", value).setString("value1", value1);
+			Query q=session.createQuery("from "+cname+" x where x."+prop+"= :value and x." + prop1+"= :value1 " + " order by x."+column + " desc").setString("value", value).setString("value1", value1);
 			q.setMaxResults(size);
 			q.setFirstResult(start);
 			result=q.list();

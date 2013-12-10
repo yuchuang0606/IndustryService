@@ -65,13 +65,6 @@ public class UserControl {
 		return (List<User>)(Object)MySessionFactory.getByColumn("User", column, start, size);
 	}
 	
-	//在登录次数增加前查询 !important
-	public Date getLastLogintime(int userid)
-	{
-		List<User> li=(List<User>)(Object)(MySessionFactory.executeQuery("From User u where u.userid="+userid));
-		if(li.size()>0) return li.get(0).getLastlogin();
-		else return null;
-	}
 	
 	public void addLoginTimes(int userid)
 	{

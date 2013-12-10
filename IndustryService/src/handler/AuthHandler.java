@@ -1,6 +1,8 @@
 package handler;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -65,15 +67,18 @@ public class AuthHandler extends HttpServlet {
 			else if ("true".equals(info)) {
 				User user = null;
 				user = uc.listUser("username", username).get(0);
-				user.setLastlogin(uc.getLastLogintime(user.getUserid()));
-				// 登录次数+1
-				uc.addLoginTimes(user.getUserid());
+
+				// 先登录次数+1
+				user.setLogintimes(user.getLogintimes()+1);
 				HttpSession session = request.getSession(true);
-				// 更新登录时间
-				//user.setLastlogin(new Date());
-				//uc.updateUser(user);
-				// 将用户添加到session
+				// 将用户添加到session，登录时间为上次登录时间
 				session.setAttribute("user", user);
+				String lastlogin = user.getLastlogin();
+				// 再更新登录时间
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+				user.setLastlogin(df.format(new Date()));
+				uc.updateUser(user);// 写到数据库
+				user.setLastlogin(lastlogin);
 				//if (user.getUsergroup() == 1)
 				//	response.sendRedirect("admin/index.jsp");
 				//else

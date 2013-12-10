@@ -15,7 +15,7 @@
 <property name="address"/>
 <property name="userpic"/>
 <property name="regdate"/>
-<property name="lastlogin" type="timestamp" insert="false" update="false"/>
+<property name="lastlogin"/>
 <property name="logintimes"/>
 <property name="uploadfilenumber"/>
 <property name="downloadfilenumber"/>

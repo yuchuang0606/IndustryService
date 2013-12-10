@@ -147,7 +147,7 @@ window.onload=function()
 	    		</div>
 	    		<div class="softhandle">
 	    			<!-- <span><a href="#"><img src="./image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span> -->
-	    			<span><a href="resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
+	    			<span><a href="resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>"><img src="./image/download.jpg" style="height:21px;width:57px;margin-top:15px;border-width:0px;"></img></a></span>
 	    		</div>
 			</div>
 			<%} %>

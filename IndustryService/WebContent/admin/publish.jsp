@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="<%=request.getContextPath() %>/image/c.png" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <link href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
 <title>大连工业设计服务平台</title>
@@ -31,7 +30,7 @@
 	        </div>
 	        <div style="margin-top:5px;padding:0 10px;min-height:370px;">
 	        	<div style="height:820px;width:720px;">
-	        		<form method="post" action="<%=request.getContextPath() %>/newsdata?command=add" onsubmit="return checkNews();">
+	        		<form method="post" action="<%=request.getContextPath() %>/user/newsdata?command=add" onsubmit="return checkNews();">
 	        			<div style="height:40px;line-height:40px;">
 			        		<div style="float:left;">标题：<input id="title" name="title" size="80" style="margin:2px;height:22px;" /></div>
 			        		<div style="float:right;">

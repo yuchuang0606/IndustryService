@@ -58,6 +58,10 @@ public class NewsDataHandler extends HttpServlet {
 		try {
 			User user = (User)request.getSession().getAttribute("user");
 			String command = request.getParameter("command");
+			if (user.getUsergroup() != 1) {	// 此页面的所有功能只有管理员能调用
+				response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+				return ;
+			}
 			System.out.println(command);
 			if ("jsonlist".equals(command)) {
 				String type = request.getParameter("type");
@@ -91,7 +95,7 @@ public class NewsDataHandler extends HttpServlet {
 						JSONObject joi = new JSONObject();
 						joi.put("id", news.getNewsid());
 						JSONArray jai = new JSONArray();
-						jai.put("<a href=\"../newsinfo.jsp?type=news&newsid="+news.getNewsid()+"\" title=\""+news.getTitle() + "\">" + news.getTitle() + "</a>")
+						jai.put("<a href=\"../newsinfo.jsp?type=news&newsid="+news.getNewsid()+"\" target=\"_blank\" title=\""+news.getTitle() + "\">" + news.getTitle() + "</a>")
 							.put(author).put(createtime)
 							.put(modifytime).put(news.getAccesstime()).put(verifyState[news.getIspass()]);
 						joi.put("cell", jai);
@@ -116,7 +120,7 @@ public class NewsDataHandler extends HttpServlet {
 						JSONObject joi = new JSONObject();
 						joi.put("id", notice.getNewsid());
 						JSONArray jai = new JSONArray();
-						jai.put("<a href=\"../newsinfo.jsp?type=notice&newsid="+notice.getNewsid()+"\" title=\""+notice.getTitle() + "\">" + notice.getTitle() + "</a>")
+						jai.put("<a href=\"../newsinfo.jsp?type=notice&newsid="+notice.getNewsid()+"\" target=\"_blank\" title=\""+notice.getTitle() + "\">" + notice.getTitle() + "</a>")
 						.put(author).put(createtime).put(modifytime).put(notice.getAccesstime())
 						.put(verifyState[notice.getIspass()]);
 						joi.put("cell", jai);
@@ -127,30 +131,6 @@ public class NewsDataHandler extends HttpServlet {
 			        joo.put("total", count);
 			        response.setCharacterEncoding("utf-8");
 			        response.getWriter().write(joo.toString());
-					/*StringBuffer sb = new StringBuffer();
-					sb.append("{\"total\":" + count + ",");
-					sb.append("\"page\":" + page + ",");
-					sb.append("\"rows\":[");
-					int i = 0;
-					for (Notification notice : noticeList) {
-						String author = ((new UserControl()).getUser(notice.getAuthor())).getUsername();
-						String createtime = new SimpleDateFormat("yyyy/MM/dd").format(notice.getCreatetime());
-						String modifytime = new SimpleDateFormat("yyyy/MM/dd").format(notice.getModifytime());
-						String []verifyState = {"未审核","已审核"};
-						sb.append("{\"id\":" + notice.getNewsid() + ",");
-						sb.append("\"cell\":[\"" + notice.getTitle() + "\",\""
-								+ author + "\",\"" + createtime + "\",\""
-								+ modifytime + "\",\"" + notice.getAccesstime() + "\",\""
-								+ verifyState[notice.getIspass()] + "\"]}");
-						if (i != noticeList.size() - 1)
-							sb.append(",");
-						i++;
-					}
-					sb.append("]}");
-					String result = new String(sb);
-					response.setCharacterEncoding("utf-8");
-					PrintWriter pw = response.getWriter();
-					pw.write(result);*/
 				}
 			} else if ("add".equals(command)) {
 				String title = request.getParameter("title");
@@ -224,7 +204,6 @@ public class NewsDataHandler extends HttpServlet {
 				if ("news".equals(type)) {
 					NewsControl nc = new NewsControl();
 					News news = nc.getNewsbyId(id);
-					//JSONArray array = new JSONArray();
 					JSONObject obj = new JSONObject();
 					obj.put("id", news.getNewsid());
 					obj.put("title", news.getTitle());

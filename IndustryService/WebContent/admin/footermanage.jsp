@@ -8,8 +8,7 @@
 <title>大连工业设计服务平台</title>
 <%
 	ConfigurationControl cclink = new ConfigurationControl();
-	List<Configuration> linklist= cclink.listConfiguration("config_name", "link");
-	String[] number={"一","二","三","四","五","六"};
+	Configuration foot = cclink.listConfiguration("config_name", "footer").get(0);
 %>
 </head>
 <body>
@@ -21,23 +20,17 @@
 		<%@ include file="/admin/siderbar.jsp"%>
 		<div id="content" class="content" style="background:#fff;height:500px;">
 			<div class="title" style="height:36px;wclassth:100%;line-height:36px;margin:0px auto;text-align:center;background-color:#f5f5f5">
-	        	<span style="font-size:16px;"><strong>链接管理</strong></span>
+	        	<span style="font-size:16px;"><strong>footer配置</strong></span>
 	        </div>
 	        <div style="margin-top:55px;padding:0 10px;">
-	        	<form action="<%=request.getContextPath() %>/user/configdata?type=link" method="post">
+	        	<form action="<%=request.getContextPath() %>/user/configdata?type=footer" method="post">
 				<table width="719px" border="0" cellpadding="0" cellspacing="0" align="center">				
-					<% int i=0; for (Configuration link:linklist) { %>
 					<tr>
-						<td height="40" align="right">
-                               <font size = 2>&nbsp;&nbsp;链接<%=number[i] %>：</font>
-                           </td>
-						<td align="left">
-							<!--  <input name="id<%=i%>" value="<%=link.getConfigid()%>" style="display:none">-->
-                              	名称：<input name="name<%=i %>" type="text" style="width: 200px" value="<%=link.getDescription() %>"/>
-                              	网址：<input name="link<%=i %>" type="text" style="width: 200px" value="<%=link.getConfig_path() %>"/>
-                           </td>
-                       </tr>
-                      <%i++;} %>
+						<td align="center">
+                             <textarea id="content" name="content" rows="7" cols="40" style="height:100px;width:608px;"><%=foot.getDescription() %></textarea>
+                             <br/><label style="font-size:12px;">提示：footer共三行，换行用&lt;br/&gt;表示</label>
+                        </td>
+                    </tr>
 					<tr>
                     	<td align="center" height="40" colspan="4" style="padding-bottom: 10px;">
                     		<input type="submit" name="Submit" value="提交" onclick="" id="Submit" style="border-style:Groove;width:60px;" />   

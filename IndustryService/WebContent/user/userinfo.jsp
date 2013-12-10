@@ -3,10 +3,8 @@
 <%@ page import="java.util.List,model.*,datacontrol.*,java.text.SimpleDateFormat" %>
 <%
 	User user = (User)request.getSession().getAttribute("user");
-	String logintime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(user.getLastlogin());
-	String birthday = "";
-	if (null != user.getBirthdate())
-		birthday = new SimpleDateFormat("yyyy-MM-dd").format(user.getBirthdate());
+	String logintime = user.getLastlogin();
+	String birthday = user.getBirthdate();
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>

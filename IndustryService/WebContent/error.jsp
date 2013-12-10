@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="./image/c.png" type="image/x-icon" />
-<title>Insert title here</title>
+<title>大连工业云平台</title>
 </head>
 <body>
-
+This is a error page!
 </body>
 </html>

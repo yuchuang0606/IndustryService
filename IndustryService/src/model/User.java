@@ -3,7 +3,6 @@
  * @create date 2013-11-14
  */
 package model;
-import java.util.Date;
 public class User {
 	private int userid;
 	private String username;
@@ -13,16 +12,16 @@ public class User {
 	private String qq;
 	private String address;
 	private String userpic;
-	private Date regdate;
+	private String regdate;
 	private String email;
-	private Date lastlogin;
+	private String lastlogin;
 	private int logintimes;
 	private int uploadfilenumber;
 	private int downloadfilenumber;
 	private int credit;
 	private int coin;
 	private String gender;
-	private Date birthdate;
+	private String birthdate;
 	private String company;
 	private String industry;
 	private String department;
@@ -132,13 +131,13 @@ public class User {
 	/**
 	 * @return the regdate
 	 */
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 	/**
 	 * @param regdate the regdate to set
 	 */
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	/**
@@ -156,13 +155,13 @@ public class User {
 	/**
 	 * @return the lastlogin
 	 */
-	public Date getLastlogin() {
+	public String getLastlogin() {
 		return lastlogin;
 	}
 	/**
 	 * @param lastlogin the lastlogin to set
 	 */
-	public void setLastlogin(Date lastlogin) {
+	public void setLastlogin(String lastlogin) {
 		this.lastlogin = lastlogin;
 	}
 	/**
@@ -240,13 +239,13 @@ public class User {
 	/**
 	 * @return the birthdate
 	 */
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 	/**
 	 * @param birthdate the birthdate to set
 	 */
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 	/**

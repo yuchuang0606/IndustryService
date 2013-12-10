@@ -42,7 +42,7 @@ public class LogoutHandler extends HttpServlet {
 	{
 		try {
 			request.getSession().invalidate();
-			response.sendRedirect("index.jsp");
+			response.getWriter().write("<html><script> alert('成功退出登录');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 		} catch (Exception e) {
 			
 		}

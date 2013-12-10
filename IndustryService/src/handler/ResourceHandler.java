@@ -51,8 +51,6 @@ public class ResourceHandler extends HttpServlet {
 			int page = Integer.parseInt(request.getParameter("page"));
 			int rp = Integer.parseInt(request.getParameter("rp"));
 			
-			//SoftwareControl sc = new SoftwareControl();
-			//VideoControl vc = new VideoControl();
 			ResourceControl rc = new ResourceControl();
 			int count = 0;
 			count = rc.getNumberByProp("restype", type);
@@ -62,21 +60,8 @@ public class ResourceHandler extends HttpServlet {
 			else if (count%rp != 0)
 				totalPage = totalPage + 1;
 			int start = (page-1)*rp;
-			//List<Software> softList = null;
-			//List<Video> videoList = null;
 			List<Resource> reslist = rc.getByPropAndColumn("restype", type, orderby, start, rp);
 			request.setAttribute("reslist", reslist);
-			/*
-			if ("software".equals(type))
-			{
-				softList = sc.getListByColumn(start, rp, orderby);
-				request.setAttribute("softList", softList);
-			}
-			else if ("video".equals(type))
-			{
-				videoList = vc.getListByColumn(start, rp, orderby);
-				request.setAttribute("videoList", videoList);
-			}*/
 			request.setAttribute("type", type);
 			request.setAttribute("orderby", orderby);
 			request.setAttribute("totalPage", totalPage);

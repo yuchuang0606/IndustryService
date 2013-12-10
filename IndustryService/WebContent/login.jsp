@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-<form class="login" onsubmit="" action="../auth">
+<form class="login" onsubmit="" action="./auth">
     <h1>大连市工业云平台后台登陆系统</h1>
     <div align="center" style="top:200px;">
 	    <font color="#FFFFFF" size="3">用户名</font><input type="text" name="un" class="login-input" placeholder="Username" autofocus>

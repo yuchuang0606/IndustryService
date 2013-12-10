@@ -52,13 +52,13 @@
 	            <table cellpadding="0" cellspacing="0" align="center">
 	                <tr>
 	                	<%if ("video".equals(type) && res.getOnlinelink() != null) { %>
-	                    <td colspan="2" height="500px;padding:10px 10px;">
+	                    <td colspan="2" style="500px;padding:10px 10px;">
 	                    	<script src='http://union.bokecc.com/player?vid=8352E53A661FD5DC9C33DC5901307461&siteid=470E510AC82C1D91&autoStart=true&width=640&height=481&playerid=3B585756AB7400D2&playertype=2' type="text/javascript"></script>
 	                    </td>
 	                    <% } else if ("video".equals(type) && res.getOnlinelink() ==  null) { %>
-	                    <td colspan="2" height="500px;padding:10px 10px;text-align:center;height:30px;line-height:30px;">该视频暂不提供观看<td>
+	                    <td colspan="2" style="padding:10px 10px;text-align:center;height:50px;line-height:50px;">该视频暂不提供观看<td>
 	                    <%} else { %>
-	                    <td colspan="2" height="20px"></td>
+	                    <td colspan="2" style="50px"></td>
 	                    <%} %>
 	                </tr>
 	                <tr>
@@ -173,7 +173,7 @@
 	                                             	<font size = 2>该视频暂不提供下载</font>
 	                                             </span>
 	                                             <%} else {%>
-	                                             <a href="<%=request.getContextPath() %>/download?type=software&id=<%=res.getResourceid() %>" target="_blank">
+	                                             <a href="<%=request.getContextPath() %>/download?id=<%=res.getResourceid() %>" target="_blank">
 	                                              <span style="color: #614db3; font-weight: bold;text-decoration: underline; line-height: 20px;">
 	                                                  <font size = 2>高速下载</font>
 	                                              </span>

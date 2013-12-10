@@ -2,6 +2,7 @@ package handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datacontrol.DownloadrecordControl;
 import datacontrol.ResourceControl;
+import datacontrol.UserControl;
+import model.Downloadrecord;
 import model.User;
 
 /**
@@ -51,16 +55,19 @@ public class DownloadHandler extends HttpServlet {
 			if (null == user) {
 				pw.write("<html><script> alert('请登录后下载');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} else {
-				String type = request.getParameter("type");
 				String resid = request.getParameter("id");
 				String link = "";
-				ResourceControl rc = new ResourceControl();
-				link = (new ResourceControl()).listResource("softwareid", resid).get(0).getLink();
-				/*
-				if ("software".equals(type))
-					link = (new SoftwareControl()).listSoftware("softwareid", resid).get(0).getLink();
-				else if ("video".equals(type))
-					link = (new VideoControl()).listVideo("videoid", resid).get(0).getLink2();*/
+				link = (new ResourceControl()).listResource("resourceid", resid).get(0).getLink();
+				DownloadrecordControl drc = new DownloadrecordControl();
+				Downloadrecord dr = new Downloadrecord();
+				// 添加下载记录
+				dr.setUserid(user.getUserid());
+				dr.setResourceid(Integer.parseInt(resid));
+				dr.setDownloadtime(new Date());
+				drc.addDownloadrecord(dr);
+				// 用户下载数量+1
+				user.setDownloadfilenumber(user.getDownloadfilenumber()+1);
+				new UserControl().updateUser(user);
 				pw.write("<html><script>location.href='"+request.getContextPath()+link+"';</script></html>");
 			}
 		} catch (Exception e) {

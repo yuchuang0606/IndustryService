@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,model.*,datacontrol.*,java.text.SimpleDateFormat" %>
 <%
+	User userupload = (User)request.getSession().getAttribute("user");
 	String type = (String)request.getAttribute("type");
 	String orderby = (String)request.getAttribute("orderby");
 	Integer culPage = (Integer)request.getAttribute("culPage");
@@ -13,11 +14,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="<%=request.getContextPath() %>/image/c.png" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/callback.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js"></script>
 <title>大连工业设计服务平台</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#s").change(function(){
+		var url = window.location.href;
+		var index = url.indexOf("?");
+		var urlbef = url.substring(0, index+1);
+	    var paramStr = url.substring(url.indexOf("?") + 1);
+	    var params = paramStr.split("&");
+	    var type = null, orderby = null, page = null, rp = null;
+	    for (var i = 0; i < params.length; i++)
+	    {
+	    	var p = params[i].split("=");
+	    	if (p[0] == "type")
+	    		type = p[1];
+	    	else if (p[0] == "orderby")
+	    		orderby = p[1];
+	    	else if (p[0] == "page")
+	    		page = p[1];
+	    	else if (p[0] == "rp")
+	    		rp = p[1];
+	    }
+	    var nrp = $("#s").val();
+	    if (nrp != rp && null != type && null != orderby && null != page && null != rp)
+	    {
+	    	var urltemp = urlbef+"command=list&type={type}&orderby={orderby}&page={page}&rp={rp}";  
+	        var url = urltemp.replace("{type}", type).replace("{orderby}", orderby).replace("{page}", page).replace("{rp}", nrp);
+	        window.location.href = url;
+	    } 
+	});
+});
+
+window.onload=function()
+{
+	var url = window.location.href;
+	var paramStr = url.substring(url.indexOf("?") + 1);
+    var params = paramStr.split("&");
+    var rp = null;
+    for (var i = 0; i < params.length; i++)
+    {
+    	var p = params[i].split("=");
+    	if (p[0] == "rp")
+    		rp = p[1];
+    }
+    document.getElementById("s").value=rp;
+}
+</script>
 </head>
 <body>
 	<%@ include file="/templates/header.jsp" %>
@@ -25,7 +70,11 @@
 	<%@ include file="/templates/navigator.jsp" %>
 	<%@ include file="/templates/location.jsp" %>
 	<div id="main" class="main">
+		<%if (userupload.getUsergroup() ==1) {%>
+		<%@ include file="../admin/siderbar.jsp" %>
+		<%} else { %>
 		<%@ include file="/user/userleftmenu.jsp"%>
+		<%} %>
 		<div id="content" class="content">
 			<div class="divtitle" style="background-color:#f5f5f5;">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">我的上传</span>
@@ -85,7 +134,7 @@
 				<span style="float:right;height:36px;line-height:36px;margin:0px 10px;">
 					<span>每页显示条数：</span>
 					<select id="s" name="selection" style="height:20px;">
-						<option value ="10">10</option>
+						<option value ="10" selected="selected">10</option>
 						<option value ="20">20</option>
 						<option value ="40">40</option>
 					</select>
@@ -103,7 +152,7 @@
 				    	<img src="<%=request.getContextPath() %><%=res.getRespic() %>" height="60" width="60" style="border-width:0px;"></img></a>
 				    </div>
 				    <div class="softdetail">
-		    			<span>名称：<a href="<%=request.getContextPath() %>resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>" title="<%=res.getTitle() %>"><%=res.getTitle() %></a></span><br/>
+		    			<span>名称：<a href="<%=request.getContextPath() %>/resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>" title="<%=res.getTitle() %>"><%=res.getTitle() %></a></span><br/>
 		    			<span>标签：<%=res.getTag() %></span><br/>
 		    			<span>大小：<%=res.getSize() %>M</span>
 		    		</div>
@@ -113,8 +162,8 @@
 		    			<span>时间：<%=createtime %></span>
 		    		</div>
 		    		<div class="softhandle">
-		    			<span><a href="#"><img src="<%=request.getContextPath() %>/image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>
-		    			<span><a href="<%=request.getContextPath() %>resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>"><img src="<%=request.getContextPath() %>/image/download.jpg" style="height:21px;width:57px;margin-top:5px;border-width:0px;"></img></a></span>
+		    			<!-- <span><a href="#"><img src="<%=request.getContextPath() %>/image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>  -->
+		    			<span><a href="<%=request.getContextPath() %>resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>"><img src="<%=request.getContextPath() %>/image/download.jpg" style="height:21px;width:57px;margin-top:15px;border-width:0px;"></img></a></span>
 		    		</div>
 				</div>
 				<%} %>

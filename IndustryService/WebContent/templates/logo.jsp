@@ -6,7 +6,7 @@
 <div class="logo">
 	<div class="logocontent">
 		<div class="logoimg">
-		<img src="<%=request.getContextPath() %>/image/logo_6.png" />
+		<img src="<%=request.getContextPath() %>/image/logo.png" />
 		</div>
 		<div class="top-search">
 			

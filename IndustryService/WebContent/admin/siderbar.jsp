@@ -54,10 +54,17 @@
 		<a href="<%=request.getContextPath() %>/admin/user.jsp"><span>用户管理</span></a>
 	</li>
 	<li>
+		<a href="<%=request.getContextPath() %>/admin/dlrecord.jsp"><span>下载记录</span></a>
+	</li>
+	<li>
+		<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=software&orderby=createtime&page=1&rp=10"><span>我的上传</span></a>
+	</li>
+	<li>
 		<a href="#"><span>配置管理</span></a>
 		<ul style="display: none;">
 			<li><a href="<%=request.getContextPath() %>/admin/link.jsp">友情链接</a></li>
 			<li><a href="<%=request.getContextPath() %>/admin/onlineserv.jsp">在线服务</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/footermanage.jsp">footer配置</a></li>
 		</ul>
 	</li>
 	<li>
