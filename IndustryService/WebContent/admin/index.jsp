@@ -5,54 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
-<link rel="stylesheet" href="../css/index.css" type="text/css" />
-<link rel="stylesheet" href="../css/header.css" type="text/css" />
-<link rel="stylesheet" href="../css/logo.css" type="text/css" />
-<link rel="stylesheet" href="../css/navigator.css" type="text/css"/>
-<link rel="stylesheet" href="../css/footer.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
-<body>	
-	<%@ include file="../templates/header.jsp" %>	
-	<div class="logo">
-		<div class="logocontent">
-			<div class="logoimg">
-				<img src="../image/logo_6.png" />
-			</div>
-		</div>
-	</div>
+<body>
+	<%@ include file="/templates/header.jsp" %>
+	<%@ include file="/templates/logo.jsp" %>
+	<%@ include file="/templates/navigator.jsp" %>
+	<%@ include file="/templates/location.jsp" %>
 	
-	<%@ include file="../templates/navigator.jsp" %>	
-	<div class="conimg" align="center">
-	<br>
+	<div id="main" class="main">
+	<script language="JavaScript" type="text/javascript">
+	today=new Date();
+	function initArray(){
+			this.length=initArray.arguments.length
+			for(var i=0;i<this.length;i++)
+			this[i+1]=initArray.arguments[i]  }
+			var d=new initArray(
+ 				"星期日",
+ 				"星期一",
+ 				"星期二",
+ 				"星期三",
+ 				"星期四",
+ 				"星期五",
+ 				"星期六");
+		document.write(
+ 				"<font color=#000 style='font-size:14pt;'> ",
+ 				today.getYear(),"年",
+ 				today.getMonth()+1,"月",
+ 				today.getDate(),"日 ",
+ 				d[today.getDay()+1],
+ 				"</font>" ); 
+	</script>
 		<div>
 			<font size="5" color="#FF0000">后台配置管理</font>
 			<br><br>
-			<script language="JavaScript" type="text/javascript">
- 				today=new Date();
- 				function initArray(){
-   				this.length=initArray.arguments.length
-   				for(var i=0;i<this.length;i++)
-   				this[i+1]=initArray.arguments[i]  }
-   				var d=new initArray(
-     				"星期日",
-     				"星期一",
-     				"星期二",
-     				"星期三",
-     				"星期四",
-     				"星期五",
-     				"星期六");
-				document.write(
-     				"<font color=#ffffff style='font-size:9pt;font-family: 宋体'> ",
-     				today.getYear(),"年",
-     				today.getMonth()+1,"月",
-     				today.getDate(),"日 ",
-     				d[today.getDay()+1],
-     				"</font>" ); 
-            </script>   
 		</div>
 		<br>
-		<div style="width:960px;">
+		<div style="width:900px;padding:10px 20px;">
 			<table>
 				<tr>
 					<td width="250">
@@ -116,9 +106,6 @@
 		<a href="./contectus.jsp"><img src="../image/c12.PNG"style="border-width:0" /></a>&nbsp;&nbsp;	
 		<a href="#"><img src="../image/c9.PNG" style="border-width:0"/></a>
 	</div>
-	
-	<br><br><br>
-	
 	<%@ include file="../templates/footer.jsp" %>
 </body>
 </html>

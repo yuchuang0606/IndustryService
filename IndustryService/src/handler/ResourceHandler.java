@@ -53,14 +53,14 @@ public class ResourceHandler extends HttpServlet {
 			
 			ResourceControl rc = new ResourceControl();
 			int count = 0;
-			count = rc.getNumberByProp("restype", type);
+			count = rc.getNumberByPropes("restype", type, "ispublic", "1", "ispass", "1");
 			int totalPage= count/rp;
 			if (totalPage ==0)
 				totalPage = 1;
 			else if (count%rp != 0)
 				totalPage = totalPage + 1;
 			int start = (page-1)*rp;
-			List<Resource> reslist = rc.getByPropAndColumn("restype", type, orderby, start, rp);
+			List<Resource> reslist = rc.getByPropAndColumnes("restype", type, "ispublic", "1", "ispass", "1", orderby, start, rp);
 			request.setAttribute("reslist", reslist);
 			request.setAttribute("type", type);
 			request.setAttribute("orderby", orderby);

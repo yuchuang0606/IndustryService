@@ -102,7 +102,7 @@ public class UserControl {
 	    mailInfo.setPassword("daliangysj123");//您的邮箱密码    
 	    mailInfo.setFromAddress("daliangysj@163.com");    
 	    mailInfo.setToAddress(u.getEmail());    
-	    mailInfo.setSubject("大连工业设计服务平台账户激活邮件");    
+	    mailInfo.setSubject("大连工业云平台账户激活邮件");    
 	    mailInfo.setContent("http://ddd.bbb.com?token="+MD5(u.getRegdate().toString())+"&user="+u.getUsername());    
 	         //这个类主要来发送邮件   
 	    SimpleMailSender sms = new SimpleMailSender();   

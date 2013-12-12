@@ -65,16 +65,16 @@ var Tween = {
 }
 
 
-//ÈÝÆ÷¶ÔÏó,»¬¶¯¶ÔÏó,ÇÐ»»ÊýÁ¿
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
 var SlideTrans = function(container, slider, count, options) {
 	this._slider = $$(slider);
-	this._container = $$(container);//ÈÝÆ÷¶ÔÏó
-	this._timer = null;//¶¨Ê±Æ÷
-	this._count = Math.abs(count);//ÇÐ»»ÊýÁ¿
-	this._target = 0;//Ä¿±êÖµ
-	this._t = this._b = this._c = 0;//tween²ÎÊý
+	this._container = $$(container);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	this._timer = null;//ï¿½ï¿½Ê±ï¿½ï¿½
+	this._count = Math.abs(4);//ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½
+	this._target = 0;//Ä¿ï¿½ï¿½Öµ
+	this._t = this._b = this._c = 0;//tweenï¿½ï¿½ï¿½ï¿½
 	
-	this.Index = 0;//µ±Ç°Ë÷Òý
+	this.Index = 0;//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 	
 	this.SetOptions(options);
 	
@@ -87,9 +87,9 @@ var SlideTrans = function(container, slider, count, options) {
 	this.onFinish = this.options.onFinish;
 	
 	var bVertical = !!this.options.Vertical;
-	this._css = bVertical ? "top" : "left";//·½Ïò
+	this._css = bVertical ? "top" : "left";//ï¿½ï¿½ï¿½ï¿½
 	
-	//ÑùÊ½ÉèÖÃ
+	//ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 	var p = CurrentStyle(this._container).position;
 	p == "relative" || p == "absolute" || (this._container.style.position = "relative");
 	this._container.style.overflow = "hidden";
@@ -99,27 +99,27 @@ var SlideTrans = function(container, slider, count, options) {
 		this._slider[bVertical ? "offsetHeight" : "offsetWidth"] / this._count;
 };
 SlideTrans.prototype = {
-  //ÉèÖÃÄ¬ÈÏÊôÐÔ
+  //ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   SetOptions: function(options) {
-	this.options = {//Ä¬ÈÏÖµ
-		Vertical:	true,//ÊÇ·ñ´¹Ö±·½Ïò£¨·½Ïò²»ÄÜ¸Ä£©
-		Auto:		true,//ÊÇ·ñ×Ô¶¯
-		Change:		0,//¸Ä±äÁ¿
-		Duration:	30,//»¬¶¯³ÖÐøÊ±¼ä
-		Time:		10,//»¬¶¯ÑÓÊ±
-		Pause:		3000,//Í£¶ÙÊ±¼ä(AutoÎªtrueÊ±ÓÐÐ§)
-		onStart:	function(){},//¿ªÊ¼×ª»»Ê±Ö´ÐÐ
-		onFinish:	function(){},//Íê³É×ª»»Ê±Ö´ÐÐ
-		Tween:		Tween.Quart.easeOut//tweenËã×Ó
+	this.options = {//Ä¬ï¿½ï¿½Öµ
+		Vertical:	true,//ï¿½Ç·ï¿½Ö±ï¿½ï¿½ï¿½ò£¨·ï¿½ï¿½ï¿½ï¿½Ü¸Ä£ï¿½
+		Auto:		true,//ï¿½Ç·ï¿½ï¿½Ô¶ï¿½
+		Change:		0,//ï¿½Ä±ï¿½ï¿½ï¿½
+		Duration:	30,//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		Time:		10,//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
+		Pause:		3000,//Í£ï¿½ï¿½Ê±ï¿½ï¿½(AutoÎªtrueÊ±ï¿½ï¿½Ð§)
+		onStart:	function(){},//ï¿½ï¿½Ê¼×ªï¿½ï¿½Ê±Ö´ï¿½ï¿½
+		onFinish:	function(){},//ï¿½ï¿½ï¿½×ªï¿½ï¿½Ê±Ö´ï¿½ï¿½
+		Tween:		Tween.Quart.easeOut//tweenï¿½ï¿½ï¿½ï¿½
 	};
 	Extend(this.options, options || {});
   },
-  //¿ªÊ¼ÇÐ»»
+  //ï¿½ï¿½Ê¼ï¿½Ð»ï¿½
   Run: function(index) {
-	//ÐÞÕýindex
+	//ï¿½ï¿½ï¿½ï¿½index
 	index == undefined && (index = this.Index);
 	index < 0 && (index = this._count - 1) || index >= this._count && (index = 0);
-	//ÉèÖÃ²ÎÊý
+	//ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 	this._target = -Math.abs(this.Change) * (this.Index = index);
 	this._t = 0;
 	this._b = parseInt(CurrentStyle(this._slider)[this.options.Vertical ? "top" : "left"]);
@@ -128,10 +128,10 @@ SlideTrans.prototype = {
 	this.onStart();
 	this.Move();
   },
-  //ÒÆ¶¯
+  //ï¿½Æ¶ï¿½
   Move: function() {
 	clearTimeout(this._timer);
-	//Î´µ½´ïÄ¿±ê¼ÌÐøÒÆ¶¯·ñÔò½øÐÐÏÂÒ»´Î»¬¶¯
+	//Î´ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î»ï¿½ï¿½ï¿½
 	if (this._c && this._t < this.Duration) {
 		this.MoveTo(Math.round(this.Tween(this._t++, this._b, this._c, this.Duration)));
 		this._timer = setTimeout(Bind(this, this.Move), this.Time);
@@ -140,15 +140,15 @@ SlideTrans.prototype = {
 		this.Auto && (this._timer = setTimeout(Bind(this, this.Next), this.Pause));
 	}
   },
-  //ÒÆ¶¯µ½
+  //ï¿½Æ¶ï¿½ï¿½ï¿½
   MoveTo: function(i) {
 	this._slider.style[this._css] = i + "px";
   },
-  //ÏÂÒ»¸ö
+  //ï¿½ï¿½Ò»ï¿½ï¿½
   Next: function() {
 	this.Run(++this.Index);
   },
-  //ÉÏÒ»¸ö
+  //ï¿½ï¿½Ò»ï¿½ï¿½
   Previous: function() {
 	this.Run(--this.Index);
   },

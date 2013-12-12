@@ -9,6 +9,7 @@ public class Configuration {
 	private String config_name;
 	private String config_path;
 	private String description;
+	private String property;
 	/**
 	 * @return the configid
 	 */
@@ -56,5 +57,18 @@ public class Configuration {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	/**
+	 * @return the property
+	 */
+	public String getProperty() {
+		return property;
+	}
+	/**
+	 * @param property the property to set
+	 */
+	public void setProperty(String property) {
+		this.property = property;
 	}
 }

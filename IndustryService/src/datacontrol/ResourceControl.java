@@ -41,6 +41,11 @@ public class ResourceControl {
 		return MySessionFactory.getItemNumberByProps("Resource", prop, value, prop1, value1);
 	}
 	
+	public int getNumberByPropes(String prop, String value,String prop1, String value1,String prop2, String value2)
+	{
+		return MySessionFactory.getItemNumberByPropes("Resource", prop, value, prop1, value1, prop2, value2);
+	}
+	
 	public List<Resource> getListByColumn(int start,int size)
 	{
 		return getListByColumn(start,size,"createtime");
@@ -59,6 +64,11 @@ public class ResourceControl {
 	public List<Resource> getByPropAndColumns(String prop,String value,String prop1,String value1,String column,int start,int size)
 	{
 		return (List<Resource>)(Object)MySessionFactory.getByPropAndColumns("Resource", prop, value, prop1, value1, column, start, size);
+	}
+	
+	public List<Resource> getByPropAndColumnes(String prop,String value,String prop1,String value1,String prop2,String value2,String column,int start,int size)
+	{
+		return (List<Resource>)(Object)MySessionFactory.getByPropAndColumnes("Resource", prop, value, prop1, value1, prop2, value2, column, start, size);
 	}
 	
 	public void addDownloadtime(int id)

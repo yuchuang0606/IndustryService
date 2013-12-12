@@ -9,12 +9,8 @@
 <title>大连工业设计服务平台</title>
 <%
 	ConfigurationControl cclink = new ConfigurationControl();
-	List<Configuration> linklist= cclink.listConfiguration("config_name", "purchase");
-	Configuration cf2d = cclink.listConfiguration("config_name", "2dCAD").get(0);
-	Configuration cf3d = cclink.listConfiguration("config_name", "3dCAD").get(0);
-	Configuration cf5d = cclink.listConfiguration("config_name", "5CAM").get(0);
+	List<Configuration> linklist= cclink.listConfiguration("config_name", "newspic");
 	String[] number={"一","二","三","四","五","六"};
-	String[] path = {cf2d.getConfig_path(),cf3d.getConfig_path(),cf5d.getConfig_path()};
 %>
 </head>
 <body>
@@ -31,34 +27,27 @@
 	        	<span style="font-size:16px;"><strong>新闻图片配置</strong></span>
 	        </div>
 	        <div style="margin-top:25px;padding:0 10px;">
-	        	<form action="<%=request.getContextPath() %>/user/configdata?type=purchase" method="post">
+	        	<form action="<%=request.getContextPath() %>/user/configdata?type=newspic" method="post">
 				<table width="719px" border="0" cellpadding="0" cellspacing="0" align="center">	
 					<tr>
 						<td></td>
+						<td><span style="font-size:12px;">请填写本站除域名以外的新闻链接</span></td>
 						<td></td>
-						<td></td>
-						<td><span style="font-size:12px;">提示：请填写本站除域名以外的资源链接</span></td>
 					</tr>			
 					<% int i=0; for (Configuration link:linklist) { %>
 					<tr valign="middle">
-						<td height="80" align="center" valign="middle" style="width:80px;"> 
-                            <img id="newspic<%=i %>" src="<%=request.getContextPath() %><%=path[i] %>" style="height:40px;width:40px;"/>
-                            <input id="name<%=i %>" name="name<%=i %>" value="<%=path[i] %>" style="display:none" />
-                        </td>
-                        <td align="left">
-							名称<%=number[i] %>：<input name="title<%=i%>" type="text" style="width: 120px" value="<%=link.getDescription() %>"/>
-                        </td>
-                        <td align="left">
-							价格<%=number[i] %>：<input name="price<%=i%>" type="text" style="width: 60px" value="<%=link.getProperty() %>"/>
+						<td height="60" align="center" valign="middle" style="width:120px;"> 
+                            <img id="newspic<%=i %>" src="<%=request.getContextPath() %><%=link.getDescription() %>" style="height:40px;width:40px;"/>
+                            <input id="name<%=i %>" name="name<%=i %>" value="<%=link.getDescription() %>" style="display:none" />
                         </td>
 						<td align="left">
-							链接<%=number[i] %>：<input name="link<%=i%>" type="text" style="width: 220px" value="<%=link.getConfig_path() %>"/>
+							链接<%=number[i] %>：<input name="link<%=i%>" type="text" style="width: 300px" value="<%=link.getConfig_path() %>"/>
                         </td>
                         <td>
-                        <div style="float:right;width:180px;">
-						   	<input type="file" name="uploadpic" id="uploadpic<%=i %>"  />
-						   	<div id="fileQueue" style="float:right"></div>
-						</div>
+                        <div style="float:right;width:220px;">
+						   		<input type="file" name="uploadpic" id="uploadpic<%=i %>"  />
+						   		<div id="fileQueue" style="float:right"></div>
+							</div>
                         </td>
                     </tr>
                     <%i++;} %>

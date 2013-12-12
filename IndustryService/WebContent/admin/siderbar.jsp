@@ -62,6 +62,8 @@
 	<li>
 		<a href="#"><span>配置管理</span></a>
 		<ul style="display: none;">
+			<li><a href="<%=request.getContextPath() %>/admin/newspic.jsp">图片新闻</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/setbuy.jsp">套餐购买</a></li>
 			<li><a href="<%=request.getContextPath() %>/admin/link.jsp">友情链接</a></li>
 			<li><a href="<%=request.getContextPath() %>/admin/onlineserv.jsp">在线服务</a></li>
 			<li><a href="<%=request.getContextPath() %>/admin/footermanage.jsp">footer配置</a></li>

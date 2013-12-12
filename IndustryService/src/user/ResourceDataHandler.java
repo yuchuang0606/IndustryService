@@ -159,7 +159,7 @@ public class ResourceDataHandler extends HttpServlet {
 				int start = (page - 1) * rp;
 				List<Resource> resList = rc.getByPropAndColumn("restype", type, "createtime", start, rp);
 				String []verifyState = {"未审核","已审核"};
-				String []publicState = {"公开","不公开"};
+				String []publicState = {"不公开","公开"};
 				HashMap<String,String> typemap = new HashMap<String,String>();
 				typemap.put("software", "软件");
 				typemap.put("model", "模型");

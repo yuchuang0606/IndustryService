@@ -205,12 +205,12 @@
 			</div>
 			<div class="blockdiv">
 				<ul class="texthidden">
-					<%for (Resource r:resList) {%>
+					<%int i=1;for (Resource r:resList) {%>
 					<li>
-						<em class="num1"></em>
-						<a href="resinfo.jsp?type=<%=type%>&id=<%=r.getResourceid()%>" title="<%=r.getTitle()%>"><%=r.getTitle()%></a>
+						<span class="num<%=i%>"></span>
+						<a href="resinfo.jsp?type=<%=type%>&id=<%=r.getResourceid()%>" title="<%=r.getTitle()%>" style="margin-left:0px;"><%=r.getTitle()%></a>
 					</li>
-					<%} %>
+					<%i++;} %>
 				</ul>
 			</div>
 		</div>

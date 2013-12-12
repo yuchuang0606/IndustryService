@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/index.jsp=UTF-8
+encoding//WebContent/js/SlideTrans.js=UTF-8
 encoding//WebContent/js/auth.js=UTF-8
 encoding//WebContent/js/util.js=UTF-8
 encoding//WebContent/user/chpwd.jsp=UTF-8

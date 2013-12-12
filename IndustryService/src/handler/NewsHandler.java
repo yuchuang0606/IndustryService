@@ -54,9 +54,9 @@ public class NewsHandler extends HttpServlet {
 			NotificationControl nfc = new NotificationControl();
 			int count = 0;
 			if ("news".equals(type))
-				count = nc.getNewsNumber();
+				count = nc.getNumberByProp("ispass", "1");
 			else if ("notice".equals(type))
-				count = nfc.getNotificationNumber();
+				count = nfc.getNumberByProp("ispass", "1");
 			// calculate the number of pages
 			int totalPage= count/rp;
 			if (totalPage ==0)
@@ -68,12 +68,12 @@ public class NewsHandler extends HttpServlet {
 			List<Notification> noticeList = null;
 			if ("news".equals(type))
 			{
-				newsList = nc.getListByColumn(start, rp);
+				newsList = nc.getByPropAndColumn("ispass", "1", "modifytime", start, rp);
 				request.setAttribute("newsList", newsList);
 			}
 			else if ("notice".equals(type))
 			{
-				noticeList = nfc.getListByColumn(start, rp);
+				noticeList = nfc.getByPropAndColumn("ispass", "1", "modifytime", start, rp);
 				request.setAttribute("noticeList", noticeList);
 			}
 			request.setAttribute("type", type);
@@ -81,13 +81,13 @@ public class NewsHandler extends HttpServlet {
 			request.setAttribute("culPage", page);
 			request.getRequestDispatcher("newslist.jsp").forward(request, response);
 		} catch (Exception e) {
-			/*
+			e.printStackTrace();
 			try {
 				response.sendRedirect("./error.jsp");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}*/
+			}
 		}
 	}
 }

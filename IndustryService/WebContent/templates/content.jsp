@@ -16,12 +16,17 @@
 	ConfigurationControl cclink = new ConfigurationControl();
 
 	int rp = 6;
-	List<News> newsList = nc.getListByColumn(0, rp);
-	List<Notification> noticeList = nfc.getListByColumn(0, rp);
-	List<Resource> softList = rc.getByPropAndColumn("restype", "software", "downloadtimes", 0, rp);
-	List<Resource> videoList = rc.getByPropAndColumn("restype", "video", "downloadtimes", 0, rp);
+	List<News> newsList = nc.getByPropAndColumn("ispass", "1", "modifytime", 0, rp);
+	List<Notification> noticeList = nfc.getByPropAndColumn("ispass", "1", "modifytime", 0, rp);
+	List<Resource> softList = rc.getByPropAndColumnes("restype", "software", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
+	List<Resource> videoList = rc.getByPropAndColumnes("restype", "video", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
 	List<Configuration> linkList = cclink.listConfiguration("config_name", "link");
 	List<Configuration> contactList = cclink.listConfiguration("config_name", "contact");
+	List<Configuration> newspicList = cclink.listConfiguration("config_name", "newspic");
+	List<Configuration> purchaseList = cclink.listConfiguration("config_name", "purchase");
+	Configuration cf2d = cclink.listConfiguration("config_name", "2dCAD").get(0);
+	Configuration cf3d = cclink.listConfiguration("config_name", "3dCAD").get(0);
+	Configuration cf5d = cclink.listConfiguration("config_name", "5CAM").get(0);
 %>
 <div id="content" class="content">
 	<div class="mainleft">
@@ -135,9 +140,11 @@
 			<div class="container" id="idContainer">
 				<table id="idSlider" border="0"  cellspacing="0">
 				<tr>
-					<td><a href="#"><img src="./image/news_1.jpg"/></a></td>
-					<td><a href="#"><img src="./image/news_2.jpg"/></a></td>
-					<td><a href="#"><img src="./image/news_3.jpg"/></a></td>
+				<% for(Configuration newspic:newspicList) {
+					if (newspic.getDescription() != null && !"".equals(newspic.getDescription())) {
+				%>
+					<td><a href="<%=request.getContextPath()%><%=newspic.getConfig_path()%>" target="_blank"><img src="<%=request.getContextPath()%><%=newspic.getDescription()%>"/></a></td>
+				<%} }%>
 				</tr>
 				</table>
 			</div>
@@ -169,18 +176,18 @@
 			<div class="service">
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div style="height:30px;width:100%;text-align:center;">
-						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;">CAXA工业CAD服务2D套餐</span>
+						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;"><%=purchaseList.get(0).getDescription() %></span>
 					</div>
 					<div class="serviceimage">
 						<div style="float:left">
-						<img src="./image/cad2d.png" WIDTH="80" HEIGHT="80" ALT=""> 
+						<img src="<%=request.getContextPath() %><%=cf2d.getConfig_path() %>" WIDTH="80" HEIGHT="80" ALT=""> 
 						</div>
 						<div style="float:left;padding:5px 10px;text-align:left;">
 	                        <div style="height:30px;color: blue;font-size:14px;">
-	                        	<span style="color:#cc0000;">&nbsp;360</span>元/年<br/>
+	                        	<span style="color:#cc0000;">&nbsp;<%=purchaseList.get(0).getProperty() %></span>元/年<br/>
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
-		                        <a href="#">
+		                        <a href="<%=request.getContextPath() %><%=purchaseList.get(0).getConfig_path() %>" target="_blank">
 		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>
@@ -191,18 +198,18 @@
 				</div>
 				<div class="servicediv" style="border-right:1px solid #eee;">
 					<div style="height:30px;width:100%;text-align:center;">
-						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;">CAXA工业CAD服务3D套餐</span>
+						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;"><%=purchaseList.get(1).getDescription() %></span>
 					</div>
 					<div class="serviceimage">
 						<div style="float:left">
-						<img src="./image/cad3d.png" WIDTH="80" HEIGHT="80" ALT=""> 
+						<img src="<%=request.getContextPath() %><%=cf3d.getConfig_path() %>" WIDTH="80" HEIGHT="80" ALT=""> 
 						</div>
 						<div style="float:left;padding:5px 10px;text-align:left;">
 	                        <div style="height:30px;color: blue;font-size:14px;">
-	                        	<span style="color:#cc0000;">&nbsp;1800</span>元/年<br/>
+	                        	<span style="color:#cc0000;">&nbsp;<%=purchaseList.get(1).getProperty() %></span>元/年<br/>
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
-		                        <a href="#">
+		                        <a href="<%=request.getContextPath() %><%=purchaseList.get(1).getConfig_path() %>" target="_blank">
 		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>
@@ -213,18 +220,18 @@
 				</div>
 				<div class="servicediv">
 					<div style="height:30px;width:100%;text-align:center;">
-						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;">CAXA工业管理套餐</span>
+						<span style="font-size:15px;color:#3c3c3c;font-weight:bold;"><%=purchaseList.get(2).getDescription() %></span>
 					</div>
 					<div class="serviceimage">
 						<div style="float:left">
-						<img src="./image/cam5.jpg" WIDTH="80" HEIGHT="80" ALT=""> 
+						<img src="<%=request.getContextPath() %><%=cf5d.getConfig_path() %>" WIDTH="80" HEIGHT="80" ALT=""> 
 						</div>
 						<div style="float:left;padding:5px 10px;text-align:left;">
 	                        <div style="height:30px;color: blue;font-size:14px;">
-	                        	<span style="color:#cc0000;">&nbsp;2000</span>元/年<br/>
+	                        	<span style="color:#cc0000;">&nbsp;<%=purchaseList.get(2).getProperty() %></span>元/年<br/>
 	                        </div>
 	                        <div style="height:30px;padding: 5px 0px 5px 0px;">
-		                        <a href="#">
+		                        <a href="<%=request.getContextPath() %><%=purchaseList.get(2).getConfig_path() %>" target="_blank">
 		                        <img src="./image/djxz.jpg" style="border-width:0px;height:24px;width:83px;"/></a>
 		                    </div>
                     	</div>

@@ -33,6 +33,11 @@ public class NotificationControl {
 		return MySessionFactory.getItemNumber("Notification");
 	}
 	
+	public int getNumberByProp(String prop, String value)
+	{
+		return MySessionFactory.getItemNumberByProp("Notification", prop, value);
+	}
+	
 	public List<Notification> getListByColumn(int start,int size)
 	{
 		return getListByColumn(start,size,"modifytime");
@@ -41,6 +46,11 @@ public class NotificationControl {
 	public List<Notification> getListByColumn(int start,int size,String column)
 	{
 		return (List<Notification>)(Object)MySessionFactory.getByColumn("Notification", column, start, size);
+	}
+	
+	public List<Notification> getByPropAndColumn(String prop, String value,String column, int start,int size)
+	{
+		return (List<Notification>)(Object)MySessionFactory.getByPropAndColumn("Notification", prop, value, column, start, size);
 	}
 	
 	public Notification getNotificationbyId(int id)

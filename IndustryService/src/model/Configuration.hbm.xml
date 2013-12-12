@@ -9,5 +9,6 @@
 <property name="config_name"/>
 <property name="config_path"/>
 <property name="description"/>
+<property name="property"/>
 </class>
 </hibernate-mapping>

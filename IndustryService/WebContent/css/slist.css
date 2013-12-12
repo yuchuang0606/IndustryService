@@ -41,22 +41,37 @@
 	font-size: 14px;
 	float:left;
 }
-.texthidden li em {
+.blockdiv a {
+	margin-left:0px;
+	text-decoration: none;
+	transition: color .2s;
+	color:#3C3C3C;
+}
+.blockdiv a:link {
+	color:#3C3C3C;
+	cursor: pointer;
+}
+.blockdiv a:hover {
+	color: blue;
+	cursor: pointer;
+}
+.blockdiv ul {
+	margin-left:0px;
+}
+.texthidden li span {
 	width:18px;
 	height:18px;
 	float:left;
-	margin:3px 10px 0px 0px;
-	background: url(../image/listnum.png) no-repeat;
+	margin:3px 5px 0px 0px;
 }
-.num1 {background-position:-20px 0px;}
-.num2 {background-position:-50px 0px;}
-.num3 {background-position:-70px 0px;}
-.num4 {background-position:-90px 0px;}
-.num5 {background-position:-4px 0px;}
-.num6 {background-position:-4px 0px;}
-.num7 {background-position:-4px 0px;}
-.num8 {background-position:-4px -20px;}
-.num9 {background-position:-4px -20px;}
+.num1 {background: url(../image/listnum.png) no-repeat 0px 0px;}
+.num2 {background: url(../image/listnum.png) no-repeat -19px 0px;}
+.num3 {background: url(../image/listnum.png) no-repeat -39px 0px;}
+.num4 {background: url(../image/listnum.png) no-repeat -59px 0px;}
+.num5 {background: url(../image/listnum.png) no-repeat -78px 0px;}
+.num6 {background: url(../image/listnum.png) no-repeat -98px 0px;}
+.num7 {background: url(../image/listnum.png) no-repeat -117px 0px;}
+.num8 {background: url(../image/listnum.png) no-repeat -136px 0px;}
 
 .blockdiv a,.softtype span a,.sortoption span a{
 	transition: color .2s;

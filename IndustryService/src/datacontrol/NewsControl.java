@@ -37,6 +37,11 @@ public class NewsControl {
 		return MySessionFactory.getItemNumber("News");
 	}
 	
+	public int getNumberByProp(String prop, String value)
+	{
+		return MySessionFactory.getItemNumberByProp("News", prop, value);
+	}
+	
 	public List<News> getListByColumn(int start,int size)
 	{
 		return getListByColumn(start,size,"modifytime");
@@ -45,6 +50,11 @@ public class NewsControl {
 	public List<News> getListByColumn(int start,int size,String column)
 	{
 		return (List<News>)(Object)MySessionFactory.getByColumn("News", column, start, size);
+	}
+	
+	public List<News> getByPropAndColumn(String prop, String value,String column, int start,int size)
+	{
+		return (List<News>)(Object)MySessionFactory.getByPropAndColumn("News", prop, value, column, start, size);
 	}
 	
 	
