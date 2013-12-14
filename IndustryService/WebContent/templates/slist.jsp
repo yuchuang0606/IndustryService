@@ -7,6 +7,7 @@
 	Integer culPage = (Integer)request.getAttribute("culPage");
 	Integer totalPage = (Integer)request.getAttribute("totalPage");
 	List<Resource> reslist = (List<Resource>)request.getAttribute("reslist");
+	System.out.println();
 %>
 <link rel="stylesheet" href="./css/slist.css" type="text/css" />
 <script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script>
@@ -126,8 +127,15 @@ window.onload=function()
 		<div class="listinfo">
 		<%for (Resource res:reslist) 
 			{
-				String author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
-				String createtime = new SimpleDateFormat("yyyy/MM/dd").format(res.getCreatetime());
+				UserControl uc = new UserControl();
+				List<User> ulist = uc.listUser("userid", String.valueOf(res.getAuthorid()));
+	        	String author = "";
+	        	System.out.println(ulist.size());
+	        	if (ulist.size() == 0)
+	        		author = "未知";
+	        	else
+	        		author = (ulist.get(0)).getUsername();
+				String createtime = new SimpleDateFormat("yyyy-MM-dd").format(res.getCreatetime());
 			%>
 			<div class="softinfo">
 				<div class="softimage">

@@ -177,6 +177,8 @@ public class UserDataHandler extends HttpServlet {
 				String url = request.getParameter("url");
 				uc.SendEmail(user, url);
 				response.getWriter().write("true");
+			} else if ("getgroup".equals(type)) {
+				response.getWriter().write(String.valueOf(user.getUsergroup()));
 			} else {
 				response.getWriter().write("false");
 			}

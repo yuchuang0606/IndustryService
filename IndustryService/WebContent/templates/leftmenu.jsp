@@ -17,7 +17,7 @@
 			<a href="<%=request.getContextPath() %>/index.jsp">首页</a>
 		</li>
 		<li class="li_out">
-			<a href="<%=request.getContextPath() %>/softlist.jsp">资源下载</a>
+			<a href="javascript:void(0)">资源下载</a>
 		</li>
 		<li class="li_inner">
 			<a href="resource?type=software&orderby=createtime&page=1&rp=10">软件下载</a>
@@ -26,7 +26,7 @@
 			<a href="resource?type=video&orderby=createtime&page=1&rp=10">在线视频</a>
 		</li>
 		<li class="li_out">
-			<a href="#">软件服务</a>
+			<a href="javascript:void(0)">软件服务</a>
 		</li>
 		<li class="li_inner">
 			<a href="<%=request.getContextPath() %>/config?configname=2dCAD" >CAXA 2d套餐</a>
@@ -41,7 +41,7 @@
 			<a href="<%=request.getContextPath() %>/service.jsp" >服务流程</a>
 		</li>
 		<li class="li_out">
-			<a href="#">信息中心</a>
+			<a href="javascript:void(0)">信息中心</a>
 		</li>
 		<li class="li_inner">
 			<a href="<%=request.getContextPath() %>/news?type=news&page=1&rp=10" >新闻</a>

@@ -879,18 +879,20 @@ function getStrtype(type)
 }
 function sendMail(email, ctxpath)
 {
-	alert("确认向 " + email + "发送激活邮件");
-	var url = window.location.href;
-	var index = url.indexOf("/",7);
-	var urlbef = url.substring(0, index)+ctxpath+'/activeuser';
-	// post the request
-	$.post('../user/userdata?type=sendmail',{url:urlbef},
-        function (data) {
-			if (data == "true") {
-	        	alert("邮件发送成功，请在两小时内登录注册邮箱激活");
-	        } else {
-	        	alert("激活邮件发送失败");
+	var conf = confirm("确认向 " + email + "发送激活邮件么？");
+	if (conf) {
+		var url = window.location.href;
+		var index = url.indexOf("/",7);
+		var urlbef = url.substring(0, index)+ctxpath+'/activeuser';
+		// post the request
+		$.post('../user/userdata?type=sendmail',{url:urlbef},
+	        function (data) {
+				if (data == "true") {
+		        	alert("邮件发送成功，请在两小时内登录注册邮箱激活");
+		        } else {
+		        	alert("激活邮件发送失败");
+		        }
 	        }
-        }
-    );
+	    );
+	}
 }

@@ -10,6 +10,18 @@
 		$( '#sidebar' ).scrollFollow();
 	}
 );
+function ckupload()
+{
+	$.post('../user/userdata?type=getgroup',
+	        function (data) {
+				if (data != "3") {
+		        	location.href = "./upload.jsp";
+		        } else {
+		        	alert("账户未激活，不能上传");
+		        }
+	        }
+	    );
+}
 </script>
 <div id="sidebar" class="sidebar" style="top:0px;">
 	<ul>
@@ -37,7 +49,7 @@
 			<a href="#">资源管理</a>
 		</li>
 		<li class="li_inner">
-			<a href="<%=request.getContextPath() %>/user/upload.jsp" >上传资源</a>
+			<a href="#" onclick="ckupload()">上传资源</a>
 		</li>
 		<li class="li_inner">
 			<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=software&orderby=createtime&page=1&rp=10" >我的上传</a>

@@ -194,6 +194,22 @@ public class ConfigurationDataHandler extends HttpServlet {
 				}
 				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
 				return;
+			} else if ("coinexplain".equals(type)) {
+				String content = request.getParameter("content");
+				ConfigurationControl cc = new ConfigurationControl();
+				Configuration coinexplain = cc.listConfiguration("config_name", "coindeclare").get(0);
+				coinexplain.setDescription(content);
+				cc.updateConfiguration(coinexplain);
+				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
+				return;
+			} else if ("regright".equals(type)) {
+				String content = request.getParameter("content");
+				ConfigurationControl cc = new ConfigurationControl();
+				Configuration regright = cc.listConfiguration("config_name", "regright").get(0);
+				regright.setDescription(content);
+				cc.updateConfiguration(regright);
+				response.getWriter().write("<html><script> alert('修改成功');location.href='"+request.getContextPath()+"/user/user.jsp"+"';</script></html>");
+				return;
 			}
 		} catch (Exception e) {
 			request.getServletContext().log(e.getMessage());

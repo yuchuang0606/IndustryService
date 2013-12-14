@@ -6,6 +6,24 @@
 	String type = request.getParameter("type");
 	ResourceControl rc = new ResourceControl();
 	Resource res = rc.getResourcebyId(id);
+	User user = (User)request.getSession().getAttribute("user");
+	if (res.getIspass() == 0) {
+		if (user != null && user.getUserid() == res.getAuthorid()) {}	// 访问用户自己的资源
+		else if (user != null && user.getUsergroup() == 1) {}			// 管理员用户无访问限制
+		else {
+			response.getWriter().write("<html><script> alert('不能访问未通过审核的资源');location.href='"+request.getContextPath()+"/resource?type=software&orderby=createtime&page=1&rp=10"+"';</script></html>");
+			return ;
+		}
+	}
+	
+	if ( res.getIspublic() == 0) {
+		if (user != null && user.getUserid() == res.getAuthorid()) {}	// 访问用户自己的资源
+		else if (user != null && user.getUsergroup() == 1) {}			// 管理员用户无访问限制
+		else {
+			response.getWriter().write("<html><script> alert('不能访问不公开的资源');location.href='"+request.getContextPath()+"/resource?type=software&orderby=createtime&page=1&rp=10"+"';</script></html>");
+			return ;
+		}
+	}
 	String author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
 	String createtime = new SimpleDateFormat("yyyy/MM/dd").format(res.getCreatetime());
 	res.setViewtimes(res.getViewtimes()+1);

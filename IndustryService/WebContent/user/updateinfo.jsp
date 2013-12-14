@@ -45,7 +45,7 @@
 	                    	<span><font size = 2><%=user.getUsername() %></font></span>
 	                    	<% if (user.getUsergroup() == 3) {%>
 	                        <span><font size = 2>&nbsp;&nbsp;[未激活]</font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;" onclick="sendMail('<%=user.getEmail() %>','<%=request.getContextPath()%>')"><font size = 2>[立即激活]</font></a>
+	                        <a href="javascript:void(0);" style="color:#0099FF;" onclick="sendMail('<%=user.getEmail() %>','<%=request.getContextPath()%>')"><font size = 2>[立即激活]</font></a>
 	                        <%} else {%>
 	                        <font size="1" color="gray">（已激活）</font>
 	                        <%} %>
@@ -66,7 +66,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCoin() %></font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a><font size="1" color="gray">（暂未开通）</font>
+	                        <a href="javascript:void(0);" style="color:#0099FF;"><font size = 2>[充值]</font></a><font size="1" color="gray">（暂未开通）</font>
 	                    </td>
 	                </tr>
 	                <tr>

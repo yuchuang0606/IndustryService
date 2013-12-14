@@ -57,6 +57,11 @@ public class UserControl {
 		return MySessionFactory.getItemNumber("User");
 	}
 	
+	public int getNumberByProp(String prop, String value)
+	{
+		return MySessionFactory.getItemNumberByProp("User", prop, value);
+	}
+	
 	public List<User> getListByColumn(int start,int size)
 	{
 		return getListByColumn(start,size,"regdate");

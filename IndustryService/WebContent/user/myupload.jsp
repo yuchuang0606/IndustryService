@@ -8,7 +8,8 @@
 	Integer culPage = (Integer)request.getAttribute("culPage");
 	Integer totalPage = (Integer)request.getAttribute("totalPage");
 	List<Resource> reslist = (List<Resource>)request.getAttribute("userlist");
-	System.out.println(reslist.size());
+	String[] strverify = {"未审核","通过"};
+	String[] strpublic = {"否","是"};
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -161,15 +162,20 @@ window.onload=function()
 				    	<a href="software.jsp?id=<%=res.getResourceid()%>">
 				    	<img src="<%=request.getContextPath() %><%=res.getRespic() %>" height="60" width="60" style="border-width:0px;"></img></a>
 				    </div>
-				    <div class="softdetail">
-		    			<span>名称：<a href="<%=request.getContextPath() %>/resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>" title="<%=res.getTitle() %>"><%=res.getTitle() %></a></span><br/>
+				    <div class="softdetail" style="width:280px;overflow:hidden;">
+		    			<div style="height:22px;line-height:22px;overflow:hidden;">名称：
+		    				<a style="text-decoration:none;" href="<%=request.getContextPath() %>/resinfo.jsp?type=<%=type %>&id=<%=res.getResourceid()%>" title="<%=res.getTitle() %>"><%=res.getTitle() %></a></div>
 		    			<span>标签：<%=res.getTag() %></span><br/>
 		    			<span>大小：<%=res.getSize() %>M</span>
 		    		</div>
-		    		<div class="softext">
+		    		<div class="softext" style="width:140px;">
 		    			<span>浏览：<%=res.getViewtimes() %></span><br/>
 		    			<span>下载：<%=res.getDownloadtimes() %></span><br/>
 		    			<span>时间：<%=createtime %></span>
+		    		</div>
+		    		<div style="float:left;width:120px;margin-top:10px;">
+		    			<span>审核状态：<%=strverify[res.getIspass()] %></span><br/>
+		    			<span>是否公开：<%=strpublic[res.getIspublic()] %></span><br/>
 		    		</div>
 		    		<div class="softhandle">
 		    			<!-- <span><a href="#"><img src="<%=request.getContextPath() %>/image/sc.jpg" style="height:21px;width:57px;margin-top:10px;border-width:0px;"></img></a></span>  -->

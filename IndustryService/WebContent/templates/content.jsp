@@ -103,7 +103,7 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
 						</tr>
 						<tr>
 							<td colspan="2">
-								<font style="color:#0099FF;"><a href="#">[立即充值]</a></font>
+								<font style="color:#0099FF;"><a href="javascript:void(0);">[立即充值]</a></font><font size="1" color="gray">（暂未开通）</font>
 							</td>
 						</tr>
 					</table>
