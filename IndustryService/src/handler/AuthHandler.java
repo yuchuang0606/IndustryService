@@ -51,6 +51,7 @@ public class AuthHandler extends HttpServlet {
 		try {
 			String username = request.getParameter("un");
 			String password = request.getParameter("pwd");
+			request.getServletContext().log("验证用户登录："+username);
 			
 			UserControl uc = new UserControl();
 			String info = uc.verifyUser(username, password);
@@ -79,9 +80,6 @@ public class AuthHandler extends HttpServlet {
 				user.setLastlogin(df.format(new Date()));
 				uc.updateUser(user);// 写到数据库
 				user.setLastlogin(lastlogin);
-				//if (user.getUsergroup() == 1)
-				//	response.sendRedirect("admin/index.jsp");
-				//else
 				response.sendRedirect("user/user.jsp");
 				return ;
 			} else {
@@ -89,7 +87,13 @@ public class AuthHandler extends HttpServlet {
 				return ;
 			}
 		} catch (Exception e) {
-			
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('验证过程出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

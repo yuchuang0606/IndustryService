@@ -16,6 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/location.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js"></script>
 <title>大连工业设计服务平台</title>
 <script type="text/javascript">
@@ -69,7 +70,15 @@ window.onload=function()
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
-	<%@ include file="/templates/location.jsp" %>
+	<div class="location">
+		<div class="loccontent">
+			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
+			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
+			<span style="font-size:14px;color:#3C3C3C">
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 我的上传
+			</span>
+		</div>
+	</div>
 	<div id="main" class="main">
 		<%if (userupload.getUsergroup() ==1) {%>
 		<%@ include file="../admin/siderbar.jsp" %>

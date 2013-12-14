@@ -33,5 +33,7 @@
 <property name="uploadsize"/>
 <property name="realname"/>
 <property name="scale"/>
+<property name="activetime"/>
+<property name="activetoken"/>
 </class>
 </hibernate-mapping>

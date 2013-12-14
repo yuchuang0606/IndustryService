@@ -61,7 +61,13 @@ public class SearchHandler extends HttpServlet {
 			request.setAttribute("resList", resList);
 			request.getRequestDispatcher("search.jsp").forward(request, response);
 		} catch (Exception e) {
-			
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('搜索过程出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

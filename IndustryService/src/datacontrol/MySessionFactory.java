@@ -246,7 +246,7 @@ public  class  MySessionFactory {
 			}
 	}
 	
-	public static List<Object> getBypropLike(String cname,String prop,String value)
+	public static List<Object> getByColumnsAndPropLike(String cname,String colname, String colvalue, String colname1, String colvalue1, String prop,String value)
 	{
 		if(!isInit) 
 		{
@@ -259,7 +259,10 @@ public  class  MySessionFactory {
 			session = factory.openSession();
 			//开启事务
 			session.beginTransaction();
-			result=session.createQuery("from "+cname+" where "+prop+" like ?").setString(0, '%'+value+'%').list();
+			result=session.createQuery("from "+cname+" where " + colname + "= ? and " +
+											colname1 + "= ? and "+ prop + " like ?")
+											.setString(0, colvalue).setString(1, colvalue1)
+											.setString(2, '%'+value+'%').list();
 			//提交事务
 			session.getTransaction().commit();
 			} catch(HibernateException e) {

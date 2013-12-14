@@ -115,12 +115,12 @@
 						<option value="3">国防军工行业</option>
 						<option value="4">汽车行业</option>
 						<option value="5">教育行业</option>
-						<option value="6">其他行业</option>
 						<option value="9">房屋建筑行业</option>
 						<option value="10">土木工程行业</option>
 						<option value="11">施工与装饰行业</option>
-						<option value="12">模具工装</option>
-						<option value="13">家电厨卫</option>
+						<option value="12">模具工装行业</option>
+						<option value="13">家电厨卫行业</option>
+						<option value="6">其他行业</option>
 					</select>
                 </td>
                 <td style="text-align:right;padding-right:5px;">

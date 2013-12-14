@@ -236,6 +236,7 @@ function register()
 	var province = document.getElementById("province").options[document.getElementById("province").selectedIndex].text;
 	var city = document.getElementById("city").options[document.getElementById("city").selectedIndex].text;
 	var area = document.getElementById("area").options[document.getElementById("area").selectedIndex].text;
+	if (area == "--请选择--") {area = "";}
 	var address = province + " " + city + " " + area;
 	var cpname = document.getElementById("cpname").value;
 	if (cpname.length == 0) {
@@ -312,6 +313,7 @@ function updateinfo(contextPath)
 	var province = document.getElementById("province").options[document.getElementById("province").selectedIndex].text;
 	var city = document.getElementById("city").options[document.getElementById("city").selectedIndex].text;
 	var area = document.getElementById("area").options[document.getElementById("area").selectedIndex].text;
+	if (area == "--请选择--") {area = "";}
 	var address = province + " " + city + " " + area;
 	var cpname = document.getElementById("cpname").value;
 	if (cpname.length == 0) {
@@ -874,4 +876,21 @@ function getStrtype(type)
 		 return "文档";
 	 else if (type == "video")
 		 return "视频";
+}
+function sendMail(email, ctxpath)
+{
+	alert("确认向 " + email + "发送激活邮件");
+	var url = window.location.href;
+	var index = url.indexOf("/",7);
+	var urlbef = url.substring(0, index)+ctxpath+'/activeuser';
+	// post the request
+	$.post('../user/userdata?type=sendmail',{url:urlbef},
+        function (data) {
+			if (data == "true") {
+	        	alert("邮件发送成功，请在两小时内登录注册邮箱激活");
+	        } else {
+	        	alert("激活邮件发送失败");
+	        }
+        }
+    );
 }

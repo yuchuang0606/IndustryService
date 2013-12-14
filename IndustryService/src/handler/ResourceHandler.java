@@ -68,7 +68,13 @@ public class ResourceHandler extends HttpServlet {
 			request.setAttribute("culPage", page);
 			request.getRequestDispatcher("reslist.jsp").forward(request, response);
 		} catch (Exception e) {
-			
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('资源数据读取出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

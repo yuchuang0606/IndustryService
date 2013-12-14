@@ -58,29 +58,28 @@ public class ConfigurationDataHandler extends HttpServlet {
 				return ;
 			}
 			String type = request.getParameter("type");
+			request.getServletContext().log(user.getUsername() + " call " + type + "in configuration data");
 			if ("link".equals(type)) {
 				String name0 = request.getParameter("name0");
 				String link0 = request.getParameter("link0");
 				//int id0 = Integer.parseInt(request.getParameter("id0"));
 				String name1 = request.getParameter("name1");
 				String link1 = request.getParameter("link1");
-				//int id1 = Integer.parseInt(request.getParameter("id1"));
+
 				String name2 = request.getParameter("name2");
 				String link2 = request.getParameter("link2");
-				//int id2 = Integer.parseInt(request.getParameter("id2"));
+
 				String name3 = request.getParameter("name3");
 				String link3 = request.getParameter("link3");
-				//int id3 = Integer.parseInt(request.getParameter("id3"));
+
 				String name4 = request.getParameter("name4");
 				String link4 = request.getParameter("link4");
-				//int id4 = Integer.parseInt(request.getParameter("id4"));
+
 				String name5 = request.getParameter("name5");
 				String link5 = request.getParameter("link5");
-				//int id5 = Integer.parseInt(request.getParameter("id5"));
 	
 				String name[] = { name0, name1, name2, name3, name4, name5 };
 				String link[] = { link0, link1, link2, link3, link4, link5 };
-				//int id[] = { id0, id1, id2, id3, id4, id5 };
 				ConfigurationControl cc = new ConfigurationControl();
 				List<Configuration> linkList = cc.listConfiguration("config_name", "link");
 				int j = 0;
@@ -96,17 +95,11 @@ public class ConfigurationDataHandler extends HttpServlet {
 			} else if ("online".equals(type)) {
 	
 				String link0 = request.getParameter("contect_qq");
-				//int id0 = Integer.parseInt(request.getParameter("id0"));
-	
 				String link1 = request.getParameter("contect_email");
-				//int id1 = Integer.parseInt(request.getParameter("id1"));
-	
 				String link2 = request.getParameter("contect_forum");
-				//int id2 = Integer.parseInt(request.getParameter("id2"));
 	
 				ConfigurationControl cc = new ConfigurationControl();
 				String link[] = { link0, link1, link2 };
-				//int id[] = { id0, id1, id2 };
 				List<Configuration> contactList = cc.listConfiguration("config_name", "contact");
 				int j = 0;
 				for (Configuration cl:contactList) {
@@ -203,7 +196,13 @@ public class ConfigurationDataHandler extends HttpServlet {
 				return;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('用户配置数据操作出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

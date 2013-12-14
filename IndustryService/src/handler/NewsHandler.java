@@ -81,9 +81,9 @@ public class NewsHandler extends HttpServlet {
 			request.setAttribute("culPage", page);
 			request.getRequestDispatcher("newslist.jsp").forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
 			try {
-				response.sendRedirect("./error.jsp");
+				response.getWriter().write("<html><script> alert('新闻读取出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

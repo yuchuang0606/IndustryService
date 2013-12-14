@@ -3,6 +3,9 @@
  * @create date 2013-11-14
  */
 package model;
+
+import java.util.Date;
+
 public class User {
 	private int userid;
 	private String username;
@@ -32,6 +35,8 @@ public class User {
 	private double uploadsize;
 	private String realname;
 	private String scale;
+	private Date activetime;
+	private String activetoken;
 	/**
 	 * @return the userid
 	 */
@@ -367,6 +372,31 @@ public class User {
 	 */
 	public void setScale(String scale) {
 		this.scale = scale;
+	}
+	
+	/**
+	 * @return the activetime
+	 */
+	public Date getActivetime() {
+		return activetime;
+	}
+	/**
+	 * @param activetime the activetime to set
+	 */
+	public void setActivetime(Date activetime) {
+		this.activetime = activetime;
+	}
+	/**
+	 * @return the activetoken
+	 */
+	public String getActivetoken() {
+		return activetoken;
+	}
+	/**
+	 * @param activetoken the activetoken to set
+	 */
+	public void setActivetoken(String activetoken) {
+		this.activetoken = activetoken;
 	}
 
 }

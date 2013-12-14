@@ -5,6 +5,8 @@
 package datacontrol;
 
 import java.security.MessageDigest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -92,7 +94,7 @@ public class UserControl {
 		return "false";
 	}
 	
-	public void SendEmail(User u)
+	public void SendEmail(User u, String url)
 	{
 		MailSenderInfo mailInfo = new MailSenderInfo();    
 	    mailInfo.setMailServerHost("smtp.163.com");    
@@ -102,12 +104,17 @@ public class UserControl {
 	    mailInfo.setPassword("daliangysj123");//您的邮箱密码    
 	    mailInfo.setFromAddress("daliangysj@163.com");    
 	    mailInfo.setToAddress(u.getEmail());    
-	    mailInfo.setSubject("大连工业云平台账户激活邮件");    
-	    mailInfo.setContent("http://ddd.bbb.com?token="+MD5(u.getRegdate().toString())+"&user="+u.getUsername());    
+	    mailInfo.setSubject("大连工业云平台账户激活邮件"); 
+	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    String activetoken = MD5(df.format(new Date()));
+	    mailInfo.setContent(url + "?token="+activetoken+"&username="+u.getUsername());    
 	         //这个类主要来发送邮件   
-	    SimpleMailSender sms = new SimpleMailSender();   
+	    SimpleMailSender sms = new SimpleMailSender();
 	    //sms.sendTextMail(mailInfo);//发送文体格式    
-	    sms.sendHtmlMail(mailInfo);//发送html格式   
+	    sms.sendHtmlMail(mailInfo);//发送html格式 
+	    u.setActivetime(new Date());	// 将激活邮件发出的时间设置为激活时间
+	    u.setActivetoken(activetoken);	// 保存激活的token
+	    updateUser(u);
 	}
 	public boolean ActiveUser(String token,String username)
 	{

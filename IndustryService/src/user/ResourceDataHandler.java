@@ -61,6 +61,7 @@ public class ResourceDataHandler extends HttpServlet {
 		try {
 			User user = (User)request.getSession().getAttribute("user");
 			String command = request.getParameter("command");
+			request.getServletContext().log(user.getUsername() + " call " + command + " in resource data");
 			if ("list".equals(command)) {
 				if (user == null) {
 					response.getWriter().write("<html><script> alert('用户不存在或登录已超时');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
@@ -168,7 +169,12 @@ public class ResourceDataHandler extends HttpServlet {
 				JSONObject joo = new JSONObject();
 		        JSONArray jao = new JSONArray();
 		        for (Resource res : resList) {
-		        	String author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
+		        	User u = (new UserControl()).getUser(res.getAuthorid());
+		        	String author = "";
+		        	if (u == null)
+		        		author = "已删除用户";
+		        	else
+		        		author = ((new UserControl()).getUser(res.getAuthorid())).getUsername();
 					String createtime = new SimpleDateFormat("yyyy/MM/dd").format(res.getCreatetime());
 					JSONObject joi = new JSONObject();
 					joi.put("id", res.getResourceid());
@@ -211,9 +217,9 @@ public class ResourceDataHandler extends HttpServlet {
 				response.getWriter().write("true");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
 			try {
-				response.getWriter().print("false");
+				response.getWriter().write("<html><script> alert('用户资源数据操作出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

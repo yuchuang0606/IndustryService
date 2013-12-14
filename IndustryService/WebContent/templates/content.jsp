@@ -28,6 +28,54 @@
 	Configuration cf3d = cclink.listConfiguration("config_name", "3dCAD").get(0);
 	Configuration cf5d = cclink.listConfiguration("config_name", "5CAM").get(0);
 %>
+<script type="text/javascript">  
+//判断浏览器是否支持 placeholder属性  
+function isPlaceholder(){  
+    var input = document.createElement('input');  
+    return 'placeholder' in input;  
+}  
+  
+if (!isPlaceholder()) {//不支持placeholder 用jquery来完成  
+    $(document).ready(function() {  
+        if(!isPlaceholder()){  
+            $("input").not("input[type='password']").each(//把input绑定事件 排除password框  
+                function(){  
+                    if($(this).val()=="" && $(this).attr("placeholder")!=""){  
+                        $(this).val($(this).attr("placeholder"));  
+                        $(this).focus(function(){  
+                            if($(this).val()==$(this).attr("placeholder")) $(this).val("");  
+                        });  
+                        $(this).blur(function(){  
+                            if($(this).val()=="") $(this).val($(this).attr("placeholder"));  
+                        });  
+                    }  
+            });  
+            //对password框的特殊处理1.创建一个text框 2获取焦点和失去焦点的时候切换  
+            var pwdField    = $("input[type=password]");  
+            var pwdVal      = pwdField.attr('placeholder');  
+            pwdField.after('<input id="pwdPlaceholder" type="text" value='+pwdVal+' autocomplete="off" />');  
+            var pwdPlaceholder = $('#pwdPlaceholder');  
+            pwdPlaceholder.show();  
+            pwdField.hide();  
+              
+            pwdPlaceholder.focus(function(){  
+                pwdPlaceholder.hide();  
+                pwdField.show();  
+                pwdField.focus();  
+            });  
+              
+            pwdField.blur(function(){  
+                if(pwdField.val() == '') {  
+                    pwdPlaceholder.show();  
+                    pwdField.hide();  
+                }  
+            });  
+              
+        }  
+    });  
+      
+}  
+</script>  
 <div id="content" class="content">
 	<div class="mainleft">
 		<div class="memberlogin">
@@ -69,11 +117,11 @@
 				<form action="./auth?" method="post" onsubmit="return checkLogin();">
 				<div class="row">
 					<label>用户名：</label>
-					<input id="un" type="text" name="un" size="20" value="请输入用户名" style="color:gray" onfocus="if(this.value==defaultValue){this.value='';this.style.color='black';}" onblur="if(!value){this.value=defaultValue;this.style.color='gray'}"/><br>
+					<input id="un" type="text" name="un" size="20" placeholder="请输入用户名" style="color:gray"  /><br>
 				</div>
 				<div class="row">
 					<label>密&nbsp;&nbsp;码：</label>
-					<input id="pwd" type="text" name="pwd" size="20" value="请输入密码" style="color:gray" onfocus="this.type='password';if(this.value==defaultValue){this.value='';this.style.color='black';}" onblur="if(!value){this.value=defaultValue;this.type='text',this.style.color='gray'}"/>
+					<input id="pwd" type="password" name="pwd" size="20" placeholder="请输入密码" style="color:gray" autocomplete="off"/>
 				</div>
 				<div class="row">
 					<input type="submit" value="登  录" id="submit" style="font-weight:bold;margin-left:100px;border-width:0px;"/>

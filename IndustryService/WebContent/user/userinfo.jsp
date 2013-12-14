@@ -5,6 +5,16 @@
 	User user = (User)request.getSession().getAttribute("user");
 	String logintime = user.getLastlogin();
 	String birthday = user.getBirthdate();
+	String realname = user.getRealname();
+	if (realname == null) realname = "";
+	String jobtitle = user.getJobtitle();
+	if (jobtitle == null) jobtitle = "";
+	String postcode = user.getPostcode();
+	if (postcode == null) postcode = "";
+	String mailaddress = user.getMailaddress();
+	if (mailaddress == null) mailaddress = "";
+	String introduction = user.getIntroduction();
+	if (introduction == null) introduction = "";
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
@@ -32,7 +42,9 @@
 	                    	<span><font size = 2><%=user.getUsername() %></font></span>
 	                    	<% if (user.getUsergroup() == 3) {%>
 	                        <span><font size = 2>&nbsp;&nbsp;[未激活]</font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[立即激活]</font></a>
+	                        <a href="#" style="color:#0099FF;" onclick="sendMail('<%=user.getEmail() %>','<%=request.getContextPath()%>')"><font size = 2>[立即激活]</font></a>
+	                        <%} else {%>
+	                        <font size="1" color="gray">（已激活）</font>
 	                        <%} %>
 	                    </td>
 	                </tr>
@@ -51,7 +63,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCoin() %></font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a>
+	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a><font size="1" color="gray">（暂未开通）</font>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -121,7 +133,7 @@
 						<font size = 2>&nbsp;真实姓名：</font>
 					</td>
 					<td width="267" align="left">
-						<span><font size = 2><%=user.getRealname() %></font></span>
+						<span><font size = 2><%=realname %></font></span>
 					</td>
 					<td width="80" align="left">
 						<font size = 2> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</font>
@@ -182,10 +194,10 @@
 					    <span><font size = 2><%=user.getDepartment() %></font></span>
 					</td>
 					<td  align="left">
-					    <font size = 2>职&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
+					    <font size = 2>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
 					</td>
 					<td align="left">
-					    <span><font size = 2><%=user.getJobtitle() %></font></span>
+					    <span><font size = 2><%=jobtitle %></font></span>
 					</td>
 				</tr>
 				<tr>
@@ -199,7 +211,7 @@
 					   <font size = 2> 联系邮编：</font>
 					</td>
 					<td width="267" align="left">
-					    <span><font size = 2><%=user.getPostcode() %></font></span>
+					    <span><font size = 2><%=postcode %></font></span>
 					</td>
 				</tr>
 				<tr>
@@ -207,7 +219,7 @@
 					    <font size = 2>&nbsp;邮寄地址：</font>
 					</td>
 					<td colspan="3" align="left">
-					    <span><font size = 2><%=user.getMailaddress() %></font></span>
+					    <span><font size = 2><%=mailaddress %></font></span>
 					</td>
 				</tr>
 				<tr>
@@ -215,7 +227,7 @@
 					    <font size = 2>&nbsp;个人介绍</font>
 					</td>
 					<td colspan="3" align="left">
-					    <span><font size = 2><%=user.getIntroduction() %></font></span>
+					    <span><font size = 2><%=introduction %></font></span>
 					</td>
 				</tr>
 			</table>

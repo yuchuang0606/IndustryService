@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/location.css" type="text/css" />
 <link href="<%=request.getContextPath() %>/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/layer/skin/layer.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/admin/Flexigrid-master/css/flexigrid.css" />
@@ -20,7 +21,15 @@
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
-	<%@ include file="/templates/location.jsp" %>
+	<div class="location">
+		<div class="loccontent">
+			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
+			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
+			<span style="font-size:14px;color:#3C3C3C">
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 信息管理
+			</span>
+		</div>
+	</div>
 	<div id="main" class="main">
 		<%@ include file="/admin/siderbar.jsp"%>
 		<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -230,7 +239,7 @@ $("#flex1").flexigrid({
   	<div id="newsdiv" style="height:820px;width:720px;padding:10px 10px;display:none">
   		<div style="height:40px;line-height:40px;">
     		<div style="float:left;">标题：<input id="title" name="title" size="80" style="margin:2px;height:22px;" /></div>
-    		<div style="float:right;">
+    		<div style="float:left;margin-left:20px;">
     			<input type="submit" name="publish" value="保   存" id="publish" onclick="saveNews()" style="border-width:0px;margin-top:5px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
     		</div>
    		</div>

@@ -77,9 +77,4 @@ public class VideoControl {
 		return null;
 	}
 	
-	public List<Video> SearchByColumn(String column,String value)
-	{
-		return (List<Video>)(Object)MySessionFactory.getBypropLike("Video", column, value);
-	}
-	
 }

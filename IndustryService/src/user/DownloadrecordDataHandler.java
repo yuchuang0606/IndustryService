@@ -57,6 +57,7 @@ public class DownloadrecordDataHandler extends HttpServlet {
 		try {
 			User user = (User)request.getSession().getAttribute("user");
 			String command = request.getParameter("command");
+			request.getServletContext().log(user.getUsername() + " call " + command + "in downloadrecord data");
 			if ("jsonlist".equals(command)) {	// only administrator can call this function
 				if (user.getUsergroup() != 1) {
 					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
@@ -112,7 +113,13 @@ public class DownloadrecordDataHandler extends HttpServlet {
 				response.getWriter().write("true");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('用户下载记录数据操作出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

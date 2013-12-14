@@ -34,7 +34,9 @@
 	                    	<span><font size = 2><%=user.getUsername() %></font></span>
 	                    	<% if (user.getUsergroup() == 3) {%>
 	                        <span><font size = 2>&nbsp;&nbsp;[未激活]</font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[立即激活]</font></a>
+	                        <a href="#" style="color:#0099FF;" onclick="sendMail('<%=user.getEmail() %>','<%=request.getContextPath()%>')"><font size = 2>[立即激活]</font></a>
+	                        <%} else {%>
+	                        <font size="1" color="gray">（已激活）</font>
 	                        <%} %>
 	                    </td>
 	                </tr>
@@ -53,7 +55,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCoin() %></font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a>
+	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a><font size="1" color="gray">（暂未开通）</font>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -120,7 +122,9 @@
 					</td>
 				</tr>
 				<tr height="50">
-					<td><font size="2">*&nbsp;新&nbsp;密&nbsp;码：</font></td>
+					<td width="95" height="30" align="right" class="border15">
+						<font size="2">*&nbsp;新&nbsp;密&nbsp;码：</font>
+					</td>
 		            <td align="left">
 		                <input name="pwd1" type="password" id="pwd1" onfocus="clearPwdMsg()" onblur="checkPwdLength(this.value)" style="width: 180px;height:22px;"/>
 		                <label id="msg_password" style="font-size:12px;color:red;"></label>

@@ -19,15 +19,21 @@ import model.User;
 public class Test {
 
 	public static void main(String[] args) {
+		UserControl uc = new UserControl();
+		User user = uc.listUser("username", "yuchuang").get(0);
+		System.out.println(user.getUsername());
+		uc.SendEmail(user,"http://210.30.97.135/IndustryService/activeuser");
 		// TODO Auto-generated method stub
-		NewsControl nc=new NewsControl();
+		//NewsControl nc=new NewsControl();
 		//List<News> li=nc.getListByColumn(1, 3);
 		//System.out.print(li.get(0).getContent());
 		//UserControl uc=new UserControl();
 		//uc.SendEmail("admin", "350543585@qq.com");
-		/*
-		System.out.println(nc.getNewsNumber());
-		ResourceControl rc = new ResourceControl();
+		
+		//System.out.println(nc.getNewsNumber());
+		/*ResourceControl rc = new ResourceControl();
+		List<Resource> reslist = rc.SearchByColumn("title", "caxa");
+		System.out.println(reslist.size());
 		Resource res = new Resource();
 		res.setAuthorid(1);
 		res.setCreatetime(new Date());
@@ -53,7 +59,7 @@ public class Test {
 		System.out.println(rc.getResourceNumber());
 		System.out.println(nc.listNews("author", "1").size());
 		System.out.println(rc.getByPropAndColumn("authorid", "1", "createtime", 0, 5));*/
-		System.out.println(new Date().toLocaleString());
+		
 	}
 
 }

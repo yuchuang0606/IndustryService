@@ -19,6 +19,8 @@
 		restype = "模型";
 	else if ("doc".equals(type))
 		restype = "文档";
+	else if ("video".equals(type))
+		restype = "视频";
 	/*SoftwareControl sc = new SoftwareControl();
 	Software soft = (sc.listSoftware("softwareid", id)).get(0);
 	String author = ((new UserControl()).getUser(soft.getAuthorid())).getUsername();
@@ -36,13 +38,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
 <link rel="stylesheet" href="./css/slist.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/location.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
 <body>
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
-	<%@ include file="/templates/location.jsp" %>
+	<div class="location">
+		<div class="loccontent">
+			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
+			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
+			<span style="font-size:14px;color:#3C3C3C">
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <%=restype %>信息
+			</span>
+		</div>
+	</div>
 	<div style='width:960px;height:auto;min-height:500px;clear:both;text-align:left;margin: 5px auto;background:#fff;'>
 	    <div style="width: 698px; float: left;"> 
 	    	<div style="width:100%;height:36px;line-height:36px;text-align:center;background:#f5f5f5;">

@@ -51,9 +51,9 @@ public class DownloadHandler extends HttpServlet {
 	{
 		try {
 			User user = (User)request.getSession().getAttribute("user");
-			PrintWriter pw = response.getWriter();
+			request.getServletContext().log(user.getUsername()+"下载资源id:" + request.getParameter("id"));
 			if (null == user) {
-				pw.write("<html><script> alert('请登录后下载');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+				response.getWriter().write("<html><script> alert('请登录后下载');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} else {
 				String resid = request.getParameter("id");
 				String link = "";
@@ -68,9 +68,16 @@ public class DownloadHandler extends HttpServlet {
 				// 用户下载数量+1
 				user.setDownloadfilenumber(user.getDownloadfilenumber()+1);
 				new UserControl().updateUser(user);
-				pw.write("<html><script>location.href='"+request.getContextPath()+link+"';</script></html>");
+				response.getWriter().write("<html><script>location.href='"+request.getContextPath()+link+"';</script></html>");
 			}
 		} catch (Exception e) {
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('下载记录出错，请联系管理员^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 		}
 		

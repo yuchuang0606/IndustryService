@@ -87,7 +87,7 @@ public class ResourceControl {
 	
 	public List<Resource> SearchByColumn(String column,String value)
 	{
-		return (List<Resource>)(Object)MySessionFactory.getBypropLike("Resource", column, value);
+		return (List<Resource>)(Object)MySessionFactory.getByColumnsAndPropLike("Resource","ispass","1","ispublic","1", column, value);
 	}
 	
 }

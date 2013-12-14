@@ -5,10 +5,21 @@
 	User user = (User)request.getSession().getAttribute("user");
 	String logintime = user.getLastlogin();
 	String birthday = user.getBirthdate();
+	String realname = user.getRealname();
+	if (realname == null) realname = "";
+	String jobtitle = user.getJobtitle();
+	if (jobtitle == null) jobtitle = "";
+	String postcode = user.getPostcode();
+	if (postcode == null) postcode = "";
+	String mailaddress = user.getMailaddress();
+	if (mailaddress == null) mailaddress = "";
+	String introduction = user.getIntroduction();
+	if (introduction == null) introduction = "";
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/WdatePicker.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/util.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/location.css" type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/reg.css" type="text/css"/>
 <div id="main" class="main">
 	<%if (user.getUsergroup() ==1) {%>
@@ -34,7 +45,9 @@
 	                    	<span><font size = 2><%=user.getUsername() %></font></span>
 	                    	<% if (user.getUsergroup() == 3) {%>
 	                        <span><font size = 2>&nbsp;&nbsp;[未激活]</font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[立即激活]</font></a>
+	                        <a href="#" style="color:#0099FF;" onclick="sendMail('<%=user.getEmail() %>','<%=request.getContextPath()%>')"><font size = 2>[立即激活]</font></a>
+	                        <%} else {%>
+	                        <font size="1" color="gray">（已激活）</font>
 	                        <%} %>
 	                    </td>
 	                </tr>
@@ -53,7 +66,7 @@
 	                    </td>
 	                    <td colspan="3" style="text-align: left">
 	                        <span><font size = 2><%=user.getCoin() %></font></span>&nbsp;&nbsp;
-	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a>
+	                        <a href="#" style="color:#0099FF;"><font size = 2>[充值]</font></a><font size="1" color="gray">（暂未开通）</font>
 	                    </td>
 	                </tr>
 	                <tr>
@@ -116,7 +129,7 @@
 						<font size = 2>&nbsp;真实姓名：</font>
 					</td>
 					<td width="257" align="left">
-						<input name="realname" type="text" id="realname" value="<%=user.getRealname() %>" style="width:150px;"/>
+						<input name="realname" type="text" id="realname" value="<%=realname %>" style="width:150px;"/>
 					</td>
 					<td width="70" align="left">
 						<font size = 2> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</font>
@@ -231,7 +244,7 @@
 					    <font size = 2>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</font>
 					</td>
 					<td align="left">
-					    <input name="duty" type="text" id="duty" value="<%=user.getJobtitle() %>" onfocus="clearDutyMsg()" onblur="isDutyNull(this.value)" style="width:150px;"/>
+					    <input name="duty" type="text" id="duty" value="<%=jobtitle %>" onfocus="clearDutyMsg()" onblur="isDutyNull(this.value)" style="width:150px;"/>
 	                    <label id="duty_msg" style="font-size:12px;color:red;"></label>
 		                <img id="duty_img" src="<%=request.getContextPath() %>/image/gou.png" style="display:none"/>
 					</td>
@@ -249,7 +262,7 @@
 					   <font size = 2> 联系邮编：</font>
 					</td>
 					<td width="267" align="left">
-					    <input name="postcode" type="text" id="postcode" value="<%=user.getPostcode() %>" style="width:150px;"/>
+					    <input name="postcode" type="text" id="postcode" value="<%=postcode %>" style="width:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -257,7 +270,7 @@
 					    <font size = 2>&nbsp;邮寄地址：</font>
 					</td>
 					<td colspan="3" align="left">
-					    <input name="postaddress" id="postaddress" type="text" value="<%=user.getMailaddress() %>" style="width: 275px;" />
+					    <input name="postaddress" id="postaddress" type="text" value="<%=mailaddress %>" style="width: 275px;" />
 					</td>
 				</tr>
 				<tr>
@@ -265,7 +278,7 @@
 					    <font size = 2>&nbsp;个人介绍：</font>
 					</td>
 					<td style="height:60px" colspan="3" align="left">
-					    <textarea name="introduction" id="introduction" rows="4" cols="20" style="height:50px;width:508px;"><%=user.getIntroduction() %></textarea>
+					    <textarea name="introduction" id="introduction" rows="4" cols="20" style="height:50px;width:508px;"><%=introduction %></textarea>
 					</td>
 				</tr>
 				<tr>

@@ -12,8 +12,10 @@
 	String modifytime = "";
 	int accesstime = 0;
 	String content = "";
+	String strtype = "";
 	if ("news".equals(type))
 	{
+		strtype = "新闻";
 		News news = (nc.listNews("newsid", newsid)).get(0);
 		title = news.getTitle();
 		modifytime = new SimpleDateFormat("yyyy-MM-dd").format(news.getModifytime());
@@ -28,6 +30,7 @@
 	}
 	if ("notice".equals(type))
 	{
+		strtype = "公告";
 		Notification notice = (nfc.listNotification("newsid", newsid)).get(0);
 		title = notice.getTitle();
 		modifytime = new SimpleDateFormat("yyyy-MM-dd").format(notice.getModifytime());
@@ -47,13 +50,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="<%=request.getContextPath() %>/image/small.gif" type="image/x-icon" />
 <link rel="stylesheet" href="./css/introduce.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/location.css" type="text/css" />
 <title>大连工业设计服务平台</title>
 </head>
 <body>
 	<%@ include file="/templates/header.jsp" %>
 	<%@ include file="/templates/logo.jsp" %>
 	<%@ include file="/templates/navigator.jsp" %>
-	<%@ include file="/templates/location.jsp" %>
+	<div class="location">
+		<div class="loccontent">
+			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
+			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
+			<span style="font-size:14px;color:#3C3C3C">
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <%=strtype %>
+			</span>
+		</div>
+	</div>
 	<div id="main" class="main">
 		<%@ include file="/templates/leftmenu.jsp"%>
 		<div id="content" class="content">

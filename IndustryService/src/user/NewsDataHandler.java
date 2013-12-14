@@ -62,7 +62,7 @@ public class NewsDataHandler extends HttpServlet {
 				response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 				return ;
 			}
-			System.out.println(command);
+			request.getServletContext().log(user.getUsername() +  " call " + command +  "in news data");
 			if ("jsonlist".equals(command)) {
 				String type = request.getParameter("type");
 				Integer page = Integer.parseInt(request.getParameter("page"));
@@ -241,7 +241,13 @@ public class NewsDataHandler extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('用户新闻数据操作出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

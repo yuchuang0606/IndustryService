@@ -59,15 +59,13 @@ public class UserDataHandler extends HttpServlet {
 			String type = request.getParameter("type");
 			User user = (User)request.getSession().getAttribute("user");
 			UserControl uc = new UserControl();
+			request.getServletContext().log(user.getUsername() +  " call  " + type + " in user data");
 			if ("info".equals(type))	// update user information
 			{
 				String realname = request.getParameter("realname");
 				String email = request.getParameter("email");
 				String sex = request.getParameter("sex");
 				String birthday = request.getParameter("birthday");
-				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
-				if (birthday == null || "".equals(birthday))
-					birthday = df.format(new Date());	// new Date()为获取当前系统时间
 				String address = request.getParameter("address");
 				String cpname = request.getParameter("cpname");
 				String industry = request.getParameter("industry");
@@ -175,11 +173,21 @@ public class UserDataHandler extends HttpServlet {
 				}
 				uc.deleteUser(u);
 				response.getWriter().write("true");
+			} else if ("sendmail".equals(type)) {
+				String url = request.getParameter("url");
+				uc.SendEmail(user, url);
+				response.getWriter().write("true");
 			} else {
 				response.getWriter().write("false");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('用户数据读取出错，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

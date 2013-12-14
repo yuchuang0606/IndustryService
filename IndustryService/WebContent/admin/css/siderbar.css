@@ -30,10 +30,10 @@ ul#menu li {
 ul#menu li a {
 	color: #333;
 	
-	background-color: #90bfee;
+	background-color: #f5f5f5;
 	border-bottom-width: thin;
 	border-bottom-style: solid;
-	border-bottom-color: #f5f5f5;
+	border-bottom-color: #E6E6FA;
 	font-size: 14px;
 	padding-top: 5px;
 	padding-right: 5px;

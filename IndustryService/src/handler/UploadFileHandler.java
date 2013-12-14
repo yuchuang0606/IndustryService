@@ -33,7 +33,6 @@ public class UploadFileHandler extends HttpServlet {
 	                .getRealPath("");
 	        savePath = savePath + "\\uploads\\";  
 	        File f1 = new File(savePath);  
-	        System.out.println(savePath);  
 	        if (!f1.exists()) {  
 	            f1.mkdirs();  
 	        }  

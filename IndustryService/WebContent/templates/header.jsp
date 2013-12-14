@@ -24,6 +24,8 @@ function AddFavorite(title, url) {
 	<div class="headcontent">
 		<div class="contentleft">
 		<% if (null == u) {%>
+			<span><a href="<%=request.getContextPath() %>/index.jsp">登录</a></span>
+			<span class="pipe">|</span>
 			<span><a  onClick="AddFavorite('http://dl.caxa.com','大连工业设计服务平台')" href="#">收藏本站</a></span>
 		<!--  	<span class="pipe">|</span>
 			<a href="http://www.caxa.com">CAXA首页</a>-->

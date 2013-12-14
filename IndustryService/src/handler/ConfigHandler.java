@@ -70,8 +70,9 @@ public class ConfigHandler extends HttpServlet {
 			request.setAttribute("condition", condition);
 			request.getRequestDispatcher("introduce.jsp").forward(request, response);
 		} catch (Exception e) {
+			request.getServletContext().log(e.getMessage());
 			try {
-				response.sendRedirect("error.jsp");
+				response.getWriter().write("<html><script> alert('数据读取出错啦，请联系管理员！^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

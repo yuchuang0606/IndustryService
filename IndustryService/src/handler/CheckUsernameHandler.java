@@ -47,15 +47,21 @@ public class CheckUsernameHandler extends HttpServlet {
 	{
 		try {
 			String username = request.getParameter("username");
+			request.getServletContext().log("检查用户名："+username);
 			PrintWriter pw = response.getWriter();
-			System.out.println(username);
 			UserControl uc = new UserControl();
 			if (uc.listUser("username", username).size() != 0)
 				pw.write("true");
 			else
 				pw.write("false");
 		} catch (Exception e) {
-			
+			request.getServletContext().log(e.getMessage());
+			try {
+				response.getWriter().write("<html><script> alert('检查用户名出错，请联系管理员^。^');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }
