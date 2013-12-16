@@ -29,14 +29,14 @@
 <div class="box_main" style="display: block; width:220px;">
 <ul id="menu">
 	<li>
-		<a href="<%=request.getContextPath() %>/user/user.jsp"><span>个人中心</span></a>
+		<a href="<%=request.getContextPath() %>/user/user.jsp"><span>用户中心</span></a>
 	</li>
 	<li style="background:gray">
 		<a href="javascript:void(0);"><span>信息管理</span></a>
         <ul style="display: none;">
        		<li><a href="<%=request.getContextPath() %>/admin/publish.jsp">信息发布</a></li>
 			<li><a href="<%=request.getContextPath() %>/admin/news.jsp?type=news">新闻管理</a></li>
-			<li><a href="<%=request.getContextPath() %>/admin/news.jsp?type=notice">通知管理</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/news.jsp?type=notice">公告管理</a></li>
 			<li><a href="javascript:void(0);">政策法规</a></li>
 		</ul>
 	</li>

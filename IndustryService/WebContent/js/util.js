@@ -867,7 +867,7 @@ function getStrtype(type)
 	 if (type == "news")
 		 return "新闻";
 	 else if (type == "notice")
-		 return "通知";
+		 return "公告";
 	 else if (type == "software")
 		 return "软件";
 	 else if (type == "model")

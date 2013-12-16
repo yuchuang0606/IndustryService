@@ -160,6 +160,31 @@ public class UserDataHandler extends HttpServlet {
 		        joo.put("total", count);
 		        response.setCharacterEncoding("utf-8");
 		        response.getWriter().write(joo.toString());
+			} else if ("get".equals(type)) {
+				if (user.getUsergroup() != 1) {// only administrator can call this function
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
+				int id = Integer.parseInt(request.getParameter("id"));
+				User u = uc.getUser(id);
+				JSONObject obj = new JSONObject();
+				obj.put("id", u.getUserid());
+				obj.put("username", u.getUsername());
+				obj.put("uploadsize", u.getUploadsize());
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().write(obj.toString());
+			} else if ("updatesize".equals(type)) {
+				if (user.getUsergroup() != 1) {// only administrator can call this function
+					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
+					return ;
+				}
+				int id = Integer.parseInt(request.getParameter("id"));
+				int uploadsize = Integer.parseInt(request.getParameter("uploadsize"));
+				User u = uc.getUser(id);
+				u.setUploadsize(uploadsize);
+				uc.updateUser(u);
+				response.getWriter().write("true");
+				return ;
 			} else if ("delete".equals(type)) {	// 删除用户
 				if (user.getUsergroup() != 1) {// only administrator can call this function
 					response.getWriter().write("<html><script> alert('没有权限调用此操作');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");

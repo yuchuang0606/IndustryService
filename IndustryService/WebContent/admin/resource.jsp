@@ -25,7 +25,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 资源管理
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/admin/index.jsp">管理中心</a> 》 资源管理
 			</span>
 		</div>
 	</div>
@@ -150,6 +150,9 @@ $("#flex1").flexigrid({
       
 	  var layerindex;
       function handle(com, grid) {
+    	  var sel = $('.trSelected', grid).attr("id");
+    	  if (sel==null)
+    		  alert("请选择被操作的数据行");
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
         	  var title = $('.trSelected').children('td').eq(0).children('div').html();

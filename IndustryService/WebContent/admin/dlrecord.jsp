@@ -25,7 +25,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 下载记录管理
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/admin/index.jsp">管理中心</a> 》 下载记录管理
 			</span>
 		</div>
 	</div>
@@ -109,9 +109,12 @@ $("#flex1").flexigrid({
       
 	  var layerindex;
       function handle(com, grid) {
+    	  var sel = $('.trSelected', grid).attr("id");
+    	  if (sel==null)
+    		  alert("请选择被操作的数据行");
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
-              var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 用户吗?');
+              var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 记录吗?');
               if(conf){
                   $.each($('.trSelected', grid),
                       function(key, value){
@@ -119,8 +122,6 @@ $("#flex1").flexigrid({
                         	function(result){
                               	if (result=="true")
                               		alert("删除成功！");
-                              	else if (result == "reject")
-                              		alert("管理员组用户不能被删除");
                               	else
                               		alert("删除失败");
                                   // when ajax returns (callback), update the grid to refresh the data

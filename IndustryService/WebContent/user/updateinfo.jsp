@@ -15,6 +15,28 @@
 	if (mailaddress == null) mailaddress = "";
 	String introduction = user.getIntroduction();
 	if (introduction == null) introduction = "";
+	int areaIndex = 0;
+	String[] location = user.getAddress().split(" ");
+	String[] area = {"中山区","西岗区","沙河口区","甘井子区","经济技术开发区","金州新区",
+			"旅顺口区","瓦房店市","普兰店市","庄河市","长海县"};
+	if (location.length == 3) {
+		for (int i = 0 ; i < area.length; i++ )
+			if (area[i].equals(location[2]))
+				areaIndex = i + 1;
+	}
+	int industryIndex = 0;
+	String[] industry = {"装备行业","电子电器行业","国防军工行业","汽车行业","教育行业","房屋建筑行业",
+			"土木工程行业","施工与装饰行业","模具工装行业","家电厨卫行业","其他行业"};
+	for (int i = 0; i < industry.length; i++) {
+		if (industry[i].equals(user.getIndustry()))
+			industryIndex = i;
+	}
+	int scaleIndex = 0;
+	String[] scale = {"3000万以下","3000万-3亿","3亿以上"};
+	for (int i = 0; i < scale.length; i++) {
+		if (scale[i].equals(user.getScale()))
+			scaleIndex = i;
+	}
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slist.css" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/WdatePicker.js"></script>
@@ -146,12 +168,12 @@
 					</td>
 					<td align="left">
 						<div style="float:left;width:100px;height:30px;padding:5px 0px;">
-						<div style="float:left;height:30px;line-height:30px;margin-left:20px;"><input id="Sex_0" type="radio" name="Sex" value="1" checked="checked" style="width:20px;"/></div>
-						<div style="float:left;height:30px;line-height:30px;"><label for="Sex_0"><font size="2">男</font></label></div>
+						<div style="float:left;height:30px;line-height:30px;margin-left:20px;"><input id="male" type="radio" name="Sex" value="1" checked="checked" style="width:20px;"/></div>
+						<div style="float:left;height:30px;line-height:30px;"><label><font size="2">男</font></label></div>
 						</div>
 						<div style="float:left;width:100px;height:30px;padding:5px 0px;">	
-							<div style="float:left;height:30px;line-height:30px;"><input id="Sex_1" type="radio" name="Sex" value="2" style="width:20px;"/></div>
-							<div style="float:left;height:30px;line-height:30px;"><label for="Sex_1"><font size="2">女</font></label></div>
+							<div style="float:left;height:30px;line-height:30px;"><input id="female" type="radio" name="Sex" value="2" style="width:20px;"/></div>
+							<div style="float:left;height:30px;line-height:30px;"><label><font size="2">女</font></label></div>
 						</div>
 					</td>
 					<td align="left">
@@ -206,19 +228,19 @@
 					    <font size = 2>&nbsp;行业类别：</font>
 					</td>
 					<td align="left">
-					    <select name="industry" id="industry" style="width:154px;height:28px">
-						<option selected="selected" value="1">装备行业</option>
-						<option value="2">电子电器行业</option>
-						<option value="3">国防军工行业</option>
-						<option value="4">汽车行业</option>
-						<option value="5">教育行业</option>
-						<option value="6">其他行业</option>
-						<option value="9">房屋建筑行业</option>
-						<option value="10">土木工程行业</option>
-						<option value="11">施工与装饰行业</option>
-						<option value="12">模具工装</option>
-						<option value="13">家电厨卫</option>
-					</select>
+					    <select name="industry" id="industry" style="width:164px;height:28px">
+							<option selected="selected" value="1">装备行业</option>
+							<option value="2">电子电器行业</option>
+							<option value="3">国防军工行业</option>
+							<option value="4">汽车行业</option>
+							<option value="5">教育行业</option>
+							<option value="9">房屋建筑行业</option>
+							<option value="10">土木工程行业</option>
+							<option value="11">施工与装饰行业</option>
+							<option value="12">模具工装行业</option>
+							<option value="13">家电厨卫行业</option>
+							<option value="6">其他行业</option>
+						</select>
 					</td>
 					<td class="table_td6" align="left">
 					    <font size = 2>产业规模：</font>
@@ -295,4 +317,11 @@
 </div>
 <script type="text/javascript">
 	document.getElementById("main").style.height=document.getElementById("content").offsetHeight+"px";
+	if ('<%=user.getGender()%>' == '男')
+		document.getElementById("male").checked = "checked";
+	else
+		document.getElementById("female").checked = "checked";
+	document.getElementById("area").options[<%=areaIndex%>].selected = true;
+	document.getElementById("industry").options[<%=industryIndex%>].selected = true;
+	document.getElementById("size").options[<%=scaleIndex%>].selected = true;
 </script>

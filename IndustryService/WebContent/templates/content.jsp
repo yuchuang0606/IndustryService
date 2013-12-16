@@ -133,7 +133,7 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
 		</div>
 		<div class="notice">
 			<div class="divtitle">
-				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">通知</span>
+				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">公告</span>
 				<div class="more">
 					<a href="./news?type=notice&page=1&rp=10">更多》</a>
 				</div>

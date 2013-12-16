@@ -51,10 +51,10 @@ public class DownloadHandler extends HttpServlet {
 	{
 		try {
 			User user = (User)request.getSession().getAttribute("user");
-			request.getServletContext().log(user.getUsername()+"下载资源id:" + request.getParameter("id"));
 			if (null == user) {
 				response.getWriter().write("<html><script> alert('请登录后下载');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 			} else {
+				request.getServletContext().log(user.getUsername()+"下载资源id:" + request.getParameter("id"));
 				String resid = request.getParameter("id");
 				String link = "";
 				link = (new ResourceControl()).listResource("resourceid", resid).get(0).getLink();

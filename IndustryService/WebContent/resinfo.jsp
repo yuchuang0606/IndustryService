@@ -68,7 +68,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <%=restype %>信息
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/resource?type=software&orderby=createtime&page=1&rp=10">资源列表</a> 》 <%=restype %>信息
 			</span>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 	                <tr>
 	                	<%if ("video".equals(type) && res.getOnlinelink() != null) { %>
 	                    <td colspan="2" style="500px;padding:10px 10px;">
-	                    	<script src='http://union.bokecc.com/player?vid=8352E53A661FD5DC9C33DC5901307461&siteid=470E510AC82C1D91&autoStart=true&width=640&height=481&playerid=3B585756AB7400D2&playertype=2' type="text/javascript"></script>
+	                    	<script src='<%=res.getOnlinelink() %>' type="text/javascript"></script>
 	                    </td>
 	                    <% } else if ("video".equals(type) && res.getOnlinelink() ==  null) { %>
 	                    <td colspan="2" style="padding:10px 10px;text-align:center;height:50px;line-height:50px;">该视频暂不提供观看<td>

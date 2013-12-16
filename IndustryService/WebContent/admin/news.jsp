@@ -26,7 +26,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 信息管理
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/admin/index.jsp">管理中心</a> 》 信息管理
 			</span>
 		</div>
 	</div>
@@ -132,6 +132,9 @@ $("#flex1").flexigrid({
       
 	  var layerindex;
       function handle(com, grid) {
+    	  var sel = $('.trSelected', grid).attr("id");
+    	  if (sel==null)
+    		  alert("请选择被操作的数据行");
     	  var id = $('.trSelected', grid).attr("id").replace("row", "");
           if (com == '删除') {
         	  var title = $('.trSelected').children('td').eq(0).children('div').html();
@@ -240,7 +243,7 @@ $("#flex1").flexigrid({
   		<div style="height:40px;line-height:40px;">
     		<div style="float:left;">标题：<input id="title" name="title" size="80" style="margin:2px;height:22px;" /></div>
     		<div style="float:left;margin-left:20px;">
-    			<input type="submit" name="publish" value="保   存" id="publish" onclick="saveNews()" style="border-width:0px;margin-top:5px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
+    			<input type="submit" name="publish" value="保   存" id="publish" onclick="saveNews()" style="cursor:pointer;border-width:0px;margin-top:5px;color:#fff;font-weight:bold;height:30px;width:80px;background:url(<%=request.getContextPath() %>/image/nav_bg.png) repeat-x" />
     		</div>
    		</div>
    		<input id="id" name="id" style="display:none"/>

@@ -224,7 +224,7 @@
 				</tr>
 				<tr>
 					<td height="30"  align="left">
-					    <font size = 2>&nbsp;个人介绍</font>
+					    <font size = 2>&nbsp;个人介绍：</font>
 					</td>
 					<td colspan="3" align="left">
 					    <span><font size = 2><%=introduction %></font></span>

@@ -24,7 +24,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 后台管理中心
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 管理中心
 			</span>
 		</div>
 	</div>
@@ -101,7 +101,7 @@
 						<font color=#4B0082 style='font-size:14pt;font-family: 宋体'>未审核视频：<%=rc.getNumberByProps("restype", "video", "ispass", "0") %></font>
 					</td>
 					<td>
-						<font color=#4B0082 style='font-size:14pt;font-family: 宋体'>公开视频数量：<%=rc.getNumberByProps("restype", "software", "ispublic", "0") %></font>
+						<font color=#4B0082 style='font-size:14pt;font-family: 宋体'>公开视频数量：<%=rc.getNumberByProps("restype", "video", "ispublic", "1") %></font>
 					</td>
 				</tr>
 			</table>

@@ -22,6 +22,6 @@
 		</div>
 	</div>
 	<%@ include file="/user/userinfo.jsp" %>
-	<%@ include file="/templates/footer.jsp" %>
 </body>
 </html>
+<%@ include file="/templates/footer.jsp" %>

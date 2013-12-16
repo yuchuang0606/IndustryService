@@ -24,7 +24,7 @@
 	}
 	if ("notice".equals(type))
 	{
-		newstype = "通知列表";
+		newstype = "公告列表";
 		noticeList = (List<Notification>)request.getAttribute("noticeList");
 	}
 %>
