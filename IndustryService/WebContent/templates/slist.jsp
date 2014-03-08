@@ -139,7 +139,7 @@ window.onload=function()
 			%>
 			<div class="softinfo">
 				<div class="softimage">
-			    	<a href="software.jsp?id=<%=res.getResourceid()%>">
+			    	<a href="software.jsp?type=<%=type %>>&id=<%=res.getResourceid()%>">
 			    	<img src="<%=request.getContextPath() %><%=res.getRespic() %>" height="60" width="60" style="border-width:0px;"></img></a>
 			    </div>
 			    <div class="softdetail">
