@@ -115,7 +115,7 @@ $(function () {
     		var urlbef = url.substring(0, index);
     		var editor = CKEDITOR.instances.editor1;
     		if (editor.mode == 'wysiwyg') {
-    			alert('<a href=\''+ urlbef + ctxpath + data + '\'>' + file.name + '</a>');
+    			//alert('<a href=\''+ urlbef + ctxpath + data + '\'>' + file.name + '</a>');
     			editor.insertHtml('<a href=\''+ urlbef + ctxpath + data + '\'>' + file.name + '</a>');
     		} else {
     			alert('必须处于编辑模式');

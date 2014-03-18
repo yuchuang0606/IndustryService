@@ -29,7 +29,7 @@
 	res.setViewtimes(res.getViewtimes()+1);
 	rc.updateResource(res);
 	int rp = 8;
-	List<Resource> resList = rc.getByPropAndColumn("restype", type, "downloadtimes", 0, rp);
+	List<Resource> resList = rc.getByPropAndColumnes("restype", type, "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
 	String restype = "";
 	if ("software".equals(type))
 		restype = "软件";
