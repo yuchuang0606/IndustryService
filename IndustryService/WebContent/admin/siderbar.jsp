@@ -26,7 +26,7 @@
         });
     });
 </script>
-<div class="box_main" style="display: block; width:220px;">
+<div class="box_main" style="display: block; width:220px;float:left;">
 <ul id="menu">
 	<li>
 		<a href="<%=request.getContextPath() %>/user/user.jsp"><span>用户中心</span></a>
