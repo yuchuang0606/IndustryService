@@ -27,6 +27,8 @@ org.hibernate.connection.ProxoolConnectionProvider
 <mapping resource="model/Video.hbm.xml" />
 <mapping resource="model/Notification.hbm.xml" />
 <mapping resource="model/Downloadrecord.hbm.xml" />
+<mapping resource="model/Restype.hbm.xml"/>
+<mapping resource="model/Newstype.hbm.xml"/>
 </session-factory>
 
 </hibernate-configuration>

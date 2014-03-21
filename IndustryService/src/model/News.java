@@ -16,6 +16,7 @@ public class News {
 	private int ispass;
 	private int newstype;
 	private String title;
+	private int typeid;
 	/**
 	 * @return the newsid
 	 */

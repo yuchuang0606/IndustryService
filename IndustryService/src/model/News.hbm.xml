@@ -13,5 +13,6 @@
 <property name="accesstime"/>
 <property name="ispass"/>
 <property name="title"/>
+<property name="typeid"/>
 </class>
 </hibernate-mapping>
