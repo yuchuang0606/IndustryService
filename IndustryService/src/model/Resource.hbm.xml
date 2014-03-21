@@ -19,7 +19,7 @@
 <property name="viewtimes" />
 <property name="size" />
 <property name="title"/>
-<property name="restype"/>
+<property name="typeid"/>
 <property name="ispublic"/>
 <property name="coin"/>
 </class>

@@ -16,3 +16,11 @@
 	<%@ include file="/templates/footer.jsp" %>
 </body>
 </html>
+
+<!-- 
+项目记录：
+疑问：
+navigator.jsp页面中，为什么要加入计时器？
+content.jsp页面中，套餐购买等几个块写死，如果数据表中没有数据可能会出现问题
+content.jsp页面中，登录验证不完全
+ -->

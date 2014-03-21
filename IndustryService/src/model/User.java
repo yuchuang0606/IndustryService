@@ -23,6 +23,7 @@ public class User {
 	private int downloadfilenumber;
 	private int credit;
 	private int coin;
+	private int newcoin;
 	private String gender;
 	private String birthdate;
 	private String company;
@@ -397,6 +398,16 @@ public class User {
 	 */
 	public void setActivetoken(String activetoken) {
 		this.activetoken = activetoken;
+	}
+	
+	
+	
+	public int getNewcoin() {
+		return newcoin;
+	}
+
+	public void setNewcoin(int newcoin) {
+		this.newcoin = newcoin;
 	}
 
 }

@@ -29,6 +29,23 @@ public class Resource {
 	private String restype;
 	private int ispublic;
 	private int coin;
+	private int typeid;
+
+	public int getCoin() {
+		return this.coin;
+	}
+
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+
+	public int getTypeid() {
+		return typeid;
+	}
+
+	public void setTypeid(int typeid) {
+		this.typeid = typeid;
+	}
 
 	public Resource() {
 	}
@@ -198,12 +215,6 @@ public class Resource {
 		this.ispublic = ispublic;
 	}
 
-	public int getCoin() {
-		return this.coin;
-	}
-
-	public void setCoin(int coin) {
-		this.coin = coin;
-	}
+	
 
 }

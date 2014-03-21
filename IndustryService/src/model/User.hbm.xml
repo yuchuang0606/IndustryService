@@ -21,6 +21,7 @@
 <property name="downloadfilenumber"/>
 <property name="credit"/>
 <property name="coin"/>
+<property name="newcoin"/>
 <property name="gender"/>
 <property name="birthdate"/>
 <property name="company"/>

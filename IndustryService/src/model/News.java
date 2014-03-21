@@ -113,5 +113,13 @@ public class News {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public int getTypeid(){
+		return typeid;
+	}
+	
+	public void setTypeid(int typeid){
+		this.typeid = typeid;
+	}
 
 }
