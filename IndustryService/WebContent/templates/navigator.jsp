@@ -17,8 +17,8 @@
 		</li>
 		<li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">资源下载</a>
 			<div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-			<a href="<%=request.getContextPath() %>/resource?type=software&orderby=createtime&page=1&rp=10">软件下载</a>
-			<a href="<%=request.getContextPath() %>/resource?type=video&orderby=createtime&page=1&rp=10">在线视频</a>
+			<a href="<%=request.getContextPath() %>/resource?type=1&orderby=createtime&page=1&rp=10">软件下载</a>
+			<a href="<%=request.getContextPath() %>/resource?type=2&orderby=createtime&page=1&rp=10">在线视频</a>
 			</div>
 		</li>
 		<li><a href="http://top.caxa.com">社区交流</a></li>

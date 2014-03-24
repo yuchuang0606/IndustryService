@@ -11,7 +11,7 @@
 		if (user != null && user.getUserid() == res.getAuthorid()) {}	// 访问用户自己的资源
 		else if (user != null && user.getUsergroup() == 1) {}			// 管理员用户无访问限制
 		else {
-			response.getWriter().write("<html><script> alert('不能访问未通过审核的资源');location.href='"+request.getContextPath()+"/resource?type=software&orderby=createtime&page=1&rp=10"+"';</script></html>");
+			response.getWriter().write("<html><script> alert('不能访问未通过审核的资源');location.href='"+request.getContextPath()+"/resource?type=1&orderby=createtime&page=1&rp=10"+"';</script></html>");
 			return ;
 		}
 	}
@@ -20,7 +20,7 @@
 		if (user != null && user.getUserid() == res.getAuthorid()) {}	// 访问用户自己的资源
 		else if (user != null && user.getUsergroup() == 1) {}			// 管理员用户无访问限制
 		else {
-			response.getWriter().write("<html><script> alert('不能访问不公开的资源');location.href='"+request.getContextPath()+"/resource?type=software&orderby=createtime&page=1&rp=10"+"';</script></html>");
+			response.getWriter().write("<html><script> alert('不能访问不公开的资源');location.href='"+request.getContextPath()+"/resource?type=1&orderby=createtime&page=1&rp=10"+"';</script></html>");
 			return ;
 		}
 	}
@@ -29,15 +29,15 @@
 	res.setViewtimes(res.getViewtimes()+1);
 	rc.updateResource(res);
 	int rp = 8;
-	List<Resource> resList = rc.getByPropAndColumnes("restype", type, "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
+	List<Resource> resList = rc.getByPropAndColumnes("typeid", type, "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
 	String restype = "";
-	if ("software".equals(type))
+	if ("1".equals(type))
 		restype = "软件";
-	else if ("model".equals(type))
+	else if ("4".equals(type))
 		restype = "模型";
-	else if ("doc".equals(type))
+	else if ("3".equals(type))
 		restype = "文档";
-	else if ("video".equals(type))
+	else if ("2".equals(type))
 		restype = "视频";
 	/*SoftwareControl sc = new SoftwareControl();
 	Software soft = (sc.listSoftware("softwareid", id)).get(0);
@@ -68,7 +68,7 @@
 			<span style="font-size:14px;color:#3C3C3C">您当前位置：</span>
 			<img src="<%=request.getContextPath() %>/image/house.png" width="15" height="15"></img>
 			<span style="font-size:14px;color:#3C3C3C">
-			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/resource?type=software&orderby=createtime&page=1&rp=10">资源列表</a> 》 <%=restype %>信息
+			<a href="<%=request.getContextPath() %>/index.jsp">首页</a> 》 <a href="<%=request.getContextPath() %>/resource?type=1&orderby=createtime&page=1&rp=10">资源列表</a> 》 <%=restype %>信息
 			</span>
 		</div>
 	</div>

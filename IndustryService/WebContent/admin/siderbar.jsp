@@ -44,10 +44,10 @@
 		<a href="javascript:void(0);"><span>资源管理</span></a>
         <ul style="display: none;">
         	<li><a href="<%=request.getContextPath() %>/user/upload.jsp">资源上传</a></li>
-			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=software">软件管理</a></li>
-			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=video">视频管理</a></li>
-			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=model">模型管理</a></li>
-			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=doc">文档管理</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=1">软件管理</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=2">视频管理</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=4">模型管理</a></li>
+			<li><a href="<%=request.getContextPath() %>/admin/resource.jsp?type=3">文档管理</a></li>
 		</ul>
 	</li>
 	<li>

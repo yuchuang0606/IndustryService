@@ -145,7 +145,7 @@ public class UserDataHandler extends HttpServlet {
 					joi.put("id", u.getUserid());
 					JSONArray jai = new JSONArray();
 					jai.put(u.getUsername()).put(groupState[u.getUsergroup()-1])
-					.put(u.getCoin()).put(u.getUploadsize())
+					.put(u.getCoin()).put(u.getNewcoin()).put(u.getUploadsize())
 					.put(u.getDownloadfilenumber()).put(u.getUploadfilenumber())
 					.put(lastlogin).put(u.getLogintimes()).put(regtime)
 					.put(u.getEmail()).put(u.getPhone()).put(u.getCompany())

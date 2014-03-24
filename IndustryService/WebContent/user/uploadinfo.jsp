@@ -30,10 +30,10 @@
                		<td valign="middle" align="left" valign = "top">
                		<table id="ty" border="0">
 						<tr>
-							<td><input type="radio" name="restype" value="software" checked="checked" onclick="hiddenVideoLink()"/><label><font size = 2>软件</font></label></td>
-							<td><input type="radio" name="restype" value="model" onclick="hiddenVideoLink()"/><label><font size = 2>模型</font></label></td>
-							<td><input type="radio" name="restype" value="doc" onclick="hiddenVideoLink()"/><label><font size = 2>文档</font></label></td>
-							<td><input type="radio" name="restype" value="video" onclick="dispVideoLink()"/><label><font size = 2>视频</font></label></td>
+							<td><input type="radio" name="restype" value="1" checked="checked" onclick="hiddenVideoLink()"/><label><font size = 2>软件</font></label></td>
+							<td><input type="radio" name="restype" value="4" onclick="hiddenVideoLink()"/><label><font size = 2>模型</font></label></td>
+							<td><input type="radio" name="restype" value="3" onclick="hiddenVideoLink()"/><label><font size = 2>文档</font></label></td>
+							<td><input type="radio" name="restype" value="2" onclick="dispVideoLink()"/><label><font size = 2>视频</font></label></td>
 						</tr>
 					</table>
                    	</td>

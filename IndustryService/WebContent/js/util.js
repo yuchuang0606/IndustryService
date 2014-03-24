@@ -699,12 +699,12 @@ function uploadPicResult()
             return false;
         } else {
         	var typegroup = document.getElementsByName("restype");
-        	var restype = null;		// get the resource type
+        	var typeid = null;		// get the resource type
         	for (var i = 0; i < typegroup.length; i++)
         	{
         		if (typegroup[i].checked)
         		{
-        			restype = typegroup[i].value;
+        			typeid = typegroup[i].value;
         			break;
         		}
         	}
@@ -731,7 +731,7 @@ function uploadPicResult()
         	var rescoin = document.getElementById("rescoin").value;	// get the coin
         	var resname = document.getElementById("resname").value;	// get the title of resource
         	var videolink = null;
-        	if (restype == 3) {	// 资源类型为视频
+        	if (typeid == 2) {	// 资源类型为视频
         		videolink = document.getElementById("videolink").value;	// get the link of video
         	}
         	var restag = document.getElementById("restag").value;	// get the tag of resource
@@ -742,7 +742,7 @@ function uploadPicResult()
         	var filesize = document.getElementById("filesize").value;
         	// post the request
         	$.post('../user/resourcedata?command=add',
-                {restype:restype,ispublic:ispublic,filesize:filesize,rescoin:rescoin, 
+                {typeid:typeid,ispublic:ispublic,filesize:filesize,rescoin:rescoin, 
 				resname:resname,restag:restag,videolink:videolink,respic:respic,
 				filename:filename,filepath:filepath,description:description},
                 function (data) {
@@ -868,13 +868,13 @@ function getStrtype(type)
 		 return "新闻";
 	 else if (type == "notice")
 		 return "公告";
-	 else if (type == "software")
+	 else if (type == "1")
 		 return "软件";
-	 else if (type == "model")
+	 else if (type == "4")
 		 return "模型";
-	 else if (type == "doc")
+	 else if (type == "3")
 		 return "文档";
-	 else if (type == "video")
+	 else if (type == "2")
 		 return "视频";
 }
 function sendMail(email, ctxpath)

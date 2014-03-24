@@ -47,6 +47,7 @@ public class LogoutHandler extends HttpServlet {
 			User user = (User)request.getSession().getAttribute("user");
 			if (null != user)
 				request.getServletContext().log(user.getUsername()+"退出登录");
+			// 清除用户Session
 			request.getSession().invalidate();
 			response.getWriter().write("<html><script> alert('成功退出登录');location.href='"+request.getContextPath()+"/index.jsp"+"';</script></html>");
 		} catch (Exception e) {

@@ -72,14 +72,14 @@ public class ResourceDataHandler extends HttpServlet {
 				int page = Integer.parseInt(request.getParameter("page"));
 				int rp = Integer.parseInt(request.getParameter("rp"));
 				ResourceControl rc = new ResourceControl();
-				int count = rc.getNumberByProps("authorid", String.valueOf(user.getUserid()), "restype", type);
+				int count = rc.getNumberByProps("authorid", String.valueOf(user.getUserid()), "typeid", type);
 				int totalPage= count/rp;
 				if (totalPage ==0)
 					totalPage = 1;
 				else if (count%rp != 0)
 					totalPage = totalPage + 1;
 				int start = (page-1)*rp;
-				List<Resource> ureslist = rc.getByPropAndColumns("authorid", String.valueOf(user.getUserid()), "restype", type, orderby, start, rp);
+				List<Resource> ureslist = rc.getByPropAndColumns("authorid", String.valueOf(user.getUserid()), "typeid", type, orderby, start, rp);
 				request.setAttribute("userlist", ureslist);
 				request.setAttribute("type", type);
 				request.setAttribute("orderby", orderby);
@@ -103,7 +103,7 @@ public class ResourceDataHandler extends HttpServlet {
 				System.out.println(request.getParameter("restype"));
 				System.out.println(request.getParameter("respic"));
 				System.out.println(request.getParameter("videolink"));*/
-				String restype = request.getParameter("restype");
+				Integer typeid = Integer.parseInt(request.getParameter("typeid"));
 				Integer ispublic = Integer.parseInt(request.getParameter("ispublic"));
 				Double filesize = Double.parseDouble(request.getParameter("filesize"));
 				Integer rescoin = Integer.parseInt(request.getParameter("rescoin"));
@@ -137,7 +137,7 @@ public class ResourceDataHandler extends HttpServlet {
 				res.setOnlinelink(videolink);
 				res.setSize(size);
 				res.setRespic(respic);
-				res.setRestype(restype);
+				res.setTypeid(typeid);
 				res.setTag(restag);
 				res.setTitle(resname);
 				res.setViewtimes(0);
@@ -156,16 +156,16 @@ public class ResourceDataHandler extends HttpServlet {
 				Integer page = Integer.parseInt(request.getParameter("page"));
 				Integer rp = Integer.parseInt(request.getParameter("rp")); // rp is the size of a page
 				ResourceControl rc = new ResourceControl();
-				int count = rc.getNumberByProp("restype", type);
+				int count = rc.getNumberByProp("typeid", type);
 				int start = (page - 1) * rp;
-				List<Resource> resList = rc.getByPropAndColumn("restype", type, "createtime", start, rp);
+				List<Resource> resList = rc.getByPropAndColumn("typeid", type, "createtime", start, rp);
 				String []verifyState = {"未审核","已审核"};
 				String []publicState = {"不公开","公开"};
 				HashMap<String,String> typemap = new HashMap<String,String>();
-				typemap.put("software", "软件");
-				typemap.put("model", "模型");
-				typemap.put("doc", "文档");
-				typemap.put("video", "视频");
+				typemap.put("1", "软件");
+				typemap.put("4", "模型");
+				typemap.put("3", "文档");
+				typemap.put("2", "视频");
 				JSONObject joo = new JSONObject();
 		        JSONArray jao = new JSONArray();
 		        for (Resource res : resList) {
@@ -179,7 +179,7 @@ public class ResourceDataHandler extends HttpServlet {
 					JSONObject joi = new JSONObject();
 					joi.put("id", res.getResourceid());
 					JSONArray jai = new JSONArray();
-					jai.put("<a href=\"../resinfo.jsp?type="+res.getRestype()+"&id="+res.getResourceid()+"\" target=\"_blank\" title=\""+res.getTitle() + "\">" + res.getTitle() + "</a>")
+					jai.put("<a href=\"../resinfo.jsp?type="+res.getTypeid()+"&id="+res.getResourceid()+"\" target=\"_blank\" title=\""+res.getTitle() + "\">" + res.getTitle() + "</a>")
 						.put(author).put(typemap.get(res.getRestype()))
 						.put(createtime).put(res.getSize()+"M").put(res.getCoin())
 						.put(res.getViewtimes()).put(res.getDownloadtimes())

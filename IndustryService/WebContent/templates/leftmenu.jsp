@@ -20,10 +20,10 @@
 			<a href="javascript:void(0)">资源下载</a>
 		</li>
 		<li class="li_inner">
-			<a href="resource?type=software&orderby=createtime&page=1&rp=10">软件下载</a>
+			<a href="resource?type=1&orderby=createtime&page=1&rp=10">软件下载</a>
 		</li>
 		<li class="li_inner">
-			<a href="resource?type=video&orderby=createtime&page=1&rp=10">在线视频</a>
+			<a href="resource?type=2&orderby=createtime&page=1&rp=10">在线视频</a>
 		</li>
 		<li class="li_out">
 			<a href="javascript:void(0)">软件服务</a>

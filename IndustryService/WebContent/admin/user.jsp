@@ -80,6 +80,7 @@ $("#flex1").flexigrid({
         {display : '用户名',name : 'username', width : 50,sortable : true,align : 'left'},
       	{display : '用户组',name : 'usergroup',width : 55,sortable : true,align : 'left'},
       	{display : '金币',name : 'coin',width : 25,sortable : true,align : 'left'},
+      	{display : '新增金币',name : 'newcoin',width : 45,sortable : true,align : 'left'},
       	{display : '上传限制',name : 'uploadsize',width : 45,sortable : true,align : 'left'},
       	{display : '下载数量',name : 'downloadnumber',width : 45,sortable : true,align : 'left'},
       	{display : '上传数量',name : 'uploadnumber',width : 45,sortable : true,align : 'left'},

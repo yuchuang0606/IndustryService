@@ -67,31 +67,31 @@ window.onload=function()
 		<div class="softtype">
 			<span>产品类型：</span>
 			<span>
-				<%if("software".equals(type)) {%>
+				<%if("1".equals(type)) {%>
 				<font style="font-weight:bold;background-color:#39F;color:#fff">软件</font>
 				<%} else {%>
-			 	<a href="resource?type=software&orderby=createtime&page=1&rp=10">软件</a>
+			 	<a href="resource?type=1&orderby=createtime&page=1&rp=10">软件</a>
 				<%} %>
 			</span>
 			<span>
-				<%if("model".equals(type)) {%>
+				<%if("4".equals(type)) {%>
 				<font style="font-weight:bold;background-color:#39F;color:#fff">模型</font>
 				<%} else {%>
-				<a href="resource?type=model&orderby=createtime&page=1&rp=10">模型</a>
+				<a href="resource?type=4&orderby=createtime&page=1&rp=10">模型</a>
 				<%} %>
 			</span>
 			<span>
-				<%if("doc".equals(type)) {%>
+				<%if("3".equals(type)) {%>
 				<font style="font-weight:bold;background-color:#39F;color:#fff">文档</font>
 				<%} else {%>
-				<a href="resource?type=doc&orderby=createtime&page=1&rp=10">文档</a>
+				<a href="resource?type=3&orderby=createtime&page=1&rp=10">文档</a>
 				<%} %>
 			</span>
 			<span>
-				<%if("video".equals(type)) {%>
+				<%if("2".equals(type)) {%>
 				<font style="font-weight:bold;background-color:#39F;color:#fff">视频</font>
 				<%} else {%>
-				<a href="resource?type=video&orderby=createtime&page=1&rp=10">视频</a>
+				<a href="resource?type=2&orderby=createtime&page=1&rp=10">视频</a>
 				<%} %>
 			</span>
 		</div>

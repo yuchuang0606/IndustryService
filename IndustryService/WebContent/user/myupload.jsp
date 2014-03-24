@@ -97,28 +97,28 @@ window.onload=function()
 					<%if("software".equals(type)) {%>
 					<font style="font-weight:bold;background-color:#39F;color:#fff">软件</font>
 					<%} else {%>
-				 	<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=software&orderby=createtime&page=1&rp=10">软件</a>
+				 	<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=1&orderby=createtime&page=1&rp=10">软件</a>
 					<%} %>
 				</span>
 				<span>
 					<%if("model".equals(type)) {%>
 					<font style="font-weight:bold;background-color:#39F;color:#fff">模型</font>
 					<%} else {%>
-					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=model&orderby=createtime&page=1&rp=10">模型</a>
+					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=4&orderby=createtime&page=1&rp=10">模型</a>
 					<%} %>
 				</span>
 				<span>
 					<%if("doc".equals(type)) {%>
 					<font style="font-weight:bold;background-color:#39F;color:#fff">文档</font>
 					<%} else {%>
-					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=doc&orderby=createtime&page=1&rp=10">文档</a>
+					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=3&orderby=createtime&page=1&rp=10">文档</a>
 					<%} %>
 				</span>
 				<span>
 					<%if("video".equals(type)) {%>
 					<font style="font-weight:bold;background-color:#39F;color:#fff">视频</font>
 					<%} else {%>
-					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=video&orderby=createtime&page=1&rp=10">视频</a>
+					<a href="<%=request.getContextPath() %>/user/resourcedata?command=list&type=2&orderby=createtime&page=1&rp=10">视频</a>
 					<%} %>
 				</span>
 			</div>

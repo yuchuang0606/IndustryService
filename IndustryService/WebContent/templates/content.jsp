@@ -18,8 +18,8 @@
 	int rp = 6;
 	List<News> newsList = nc.getByPropAndColumn("ispass", "1", "modifytime", 0, rp);
 	List<Notification> noticeList = nfc.getByPropAndColumn("ispass", "1", "modifytime", 0, rp);
-	List<Resource> softList = rc.getByPropAndColumnes("restype", "software", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
-	List<Resource> videoList = rc.getByPropAndColumnes("restype", "video", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
+	List<Resource> softList = rc.getByPropAndColumnes("typeid", "1", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
+	List<Resource> videoList = rc.getByPropAndColumnes("typeid", "2", "ispublic", "1", "ispass", "1", "downloadtimes", 0, rp);
 	List<Configuration> linkList = cclink.listConfiguration("config_name", "link");
 	List<Configuration> contactList = cclink.listConfiguration("config_name", "contact");
 	List<Configuration> newspicList = cclink.listConfiguration("config_name", "newspic");
@@ -294,7 +294,7 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">软件服务</span>
 				<div class="more">
-					<a href="resource?type=software&orderby=createtime&page=1&rp=10">更多》</a>
+					<a href="resource?type=1&orderby=createtime&page=1&rp=10">更多》</a>
 				</div>
 			</div>
 			<div class="softrows">
@@ -380,7 +380,7 @@ if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
 			<div class="divtitle">
 				<span style="font-size:16px;color:#3C3C3C;font-weight:bold;margin:0px 10px;">视频教程</span>
 				<div class="more">
-					<a href="resource?type=video&orderby=createtime&page=1&rp=10">更多》</a>
+					<a href="resource?type=2&orderby=createtime&page=1&rp=10">更多》</a>
 				</div>
 			</div>
 			<div class="service">
